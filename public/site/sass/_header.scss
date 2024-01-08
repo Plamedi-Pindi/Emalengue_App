@@ -1,0 +1,189 @@
+// FUNCTIONS
+@mixin menu-category() {
+    position: relative;
+    border-radius: 0px 10px 10px 10px;
+    box-shadow: 1px 2px 10px #ccc;
+    margin-left: 1rem;
+    top: 0;
+    /***Dropdown cursos***/
+    display: none;
+    transition: 1s;
+}
+
+nav {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+
+    // .navbar-collapse{
+    //     min-height: 100px !important;
+    // }
+}
+
+.nav-add {
+    display: none;
+
+}
+
+.navbar-content {
+
+    .search-bar {
+        input {
+            outline: none !important;
+        }
+
+        input::placeholder {
+            color: #ccc;
+        }
+    }
+
+    .midia {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        a {
+            text-decoration: none;
+            color: #111;
+        }
+
+        i {
+            font-size: 25px;
+            margin-left: 10px;
+        }
+    }
+
+    .login-reg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-login {
+        text-decoration: none;
+        color: #111;
+        padding: 8px;
+        margin-right: 10px;
+        text-align: center;
+        width: 150px;
+        margin-bottom: 10px;
+        border-radius: 2px;
+        border: 1px solid #111;
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .nav-cadastrar {
+        text-decoration: none;
+        color: #111;
+        padding: 8px;
+        text-align: center;
+        width: 150px;
+        margin-bottom: 10px;
+        border-radius: 2px;
+        border: 1px solid #111;
+    }
+
+    .nav-cadastrar:hover,
+    .nav-login:hover {
+        background-color: #111;
+        color: #ddd;
+        transition: ease .5s;
+    }
+
+    .menu-items {
+        max-height: 400px;
+        display: flex;
+        justify-content: center;
+
+        li {
+            margin-right: 40px;
+        }
+
+        li:hover {
+            color: rgb(3, 3, 83);
+            font-weight: bold;
+            transition: .5s;
+        }
+    }
+}
+
+/************ CATEGORIAS DE MENU CURSOS *************/
+.menu-cursos {
+    .menu-curso-container {
+
+        @include menu-category();
+
+
+        ul {
+            padding: 0;
+            margin: 12px;
+        }
+
+        ul li {
+            width: 100%;
+            list-style: none;
+            border-bottom: 1px solid #ddd;
+            outline: none !important;
+        }
+
+        ul li:hover {
+            transform: translateX(8px);
+            border-radius: 30px;
+            transition: ease-in-out 0.4s;
+
+        }
+    }
+}
+// /***** Ativa o dropdown menu cursos ******/ 
+.menu-cursos:hover>.menu-curso-container {
+    display: block;
+    transition: ease-in .5s;
+    z-index: 2;
+}
+
+.menu-cursos:hover {
+    margin-top: 11.5rem;
+}
+
+
+/************* CATEGORIA DOS FREEELANCERS **************/ 
+
+.freelance-menu {
+    .freelance-menu-container {
+
+        @include menu-category();
+
+        ul {
+            padding: 0;
+            margin: 12px;
+        }
+
+        ul li {
+            width: 100%;
+            list-style: none;
+            border-bottom: 1px solid #ddd;
+        }
+
+        ul li:hover {
+            transform: translateX(8px);
+            border-radius: 30px;
+            transition: ease-in-out 0.4s;
+
+        }
+    }
+}
+// Dropdaw
+.freelance-menu:hover>.freelance-menu-container {
+    display: block;
+    transition: ease-in .5s;
+    z-index: 2;
+}
+
+.freelance-menu:hover {
+    margin-top: 12.5rem;
+}

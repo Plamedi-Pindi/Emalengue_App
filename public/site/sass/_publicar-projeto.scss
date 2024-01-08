@@ -1,0 +1,109 @@
+
+
+.proj_pub_banner{
+    margin-top: 4rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(../img/banner/ban4.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        color: #eee;
+        font-size: 35px;
+        font-weight: 300;
+    }
+    .prob_pro_line{
+        display: block;
+        background-color: #ddd;
+        height: 1px;
+        width: 80px;
+    }
+    ul {
+        display: inherit;
+        margin: 0;
+        margin-top: 10px;
+
+        li {
+            list-style: none;
+            margin-right: 10px;
+        }
+
+        li:first-child::after {
+            content: "/";
+            color: #eee;
+            margin-left: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #eee;
+            font-weight: 300;
+
+        }
+    }
+
+}
+
+.project_pub_container{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    h2{
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 1rem;
+        border-bottom: 1px solid #ddd;
+        font-size: 20px;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+        width: 300px;
+    }
+
+    label{
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    input,
+    textarea,
+    select{
+        margin-bottom: 10px;
+    }
+
+    .pub_button{
+        margin: 0 auto;
+        display: block;
+        margin-top: 2rem;
+        width: 300px;
+    }
+
+    span{
+        color: red;
+    }
+}
+
+@media(min-width:720px){
+    .project_pub_container{
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding-bottom: 2rem;
+    }
+}
+@media(min-width:992px){
+    .project_pub_container{
+        width: 70%;
+    }
+    .pub_prazo{
+        margin-top: 2rem;
+    }
+}
+@media(min-width:1024px){
+    .proj_pub_banner{
+        margin-top: 6rem !important;
+    }
+}

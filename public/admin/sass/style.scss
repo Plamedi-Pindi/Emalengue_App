@@ -1,0 +1,136 @@
+/***** GENERAL CONFIG START *****/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 0.6fr 1fr 1fr 1fr;
+}
+
+header {
+    background-color: rgb(11, 11, 49);
+    // height: 48px;
+    height: 7vh;
+
+    // grig config
+    grid-column: 1 / sapn 4;
+    // grid-row:  1/ span 2;
+}
+
+#sidebar {
+    background-color: rgb(2, 2, 92);
+    // height: 00px;
+    height: 93vh;
+
+    // grig config
+    grid-column: 1 /span 1;
+    grid-row: 2 / span 3;
+}
+
+main {
+    background-color: #eee;
+    height: 89vh;
+    grid-column: 2 / span 3;
+    grid-row: 2 / span 2;
+
+    // Scroll
+    overflow-y: auto;
+}
+
+footer {
+    background-color: #ddd;
+    height: 4vh;
+    grid-column: 2 / span 3;
+
+
+    text-align: center;
+    color: #888;
+
+}
+
+/***** GENERAL CONFIG END *****/
+
+/***** IMPORTING FILE START *****/
+@import './header';
+@import './sidebar';
+@import './frRegister';
+@import './newProject';
+@import './freelancer';
+
+
+/***** IMPORTING FILE END *****/
+
+
+
+/* MEDIA CONFIG START ===========================================*/
+
+@media(min-width:500px) {
+    body {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr 1fr 1fr;
+    }
+
+}
+
+@media(min-width:720px) {
+    body {
+        display: grid;
+        grid-template-columns: 0.4fr 1fr 1fr 1fr;
+    }
+
+}
+
+@media(min-width:992px) {
+    body {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr !important;
+    }
+
+    #sdb-slide {
+        display: none;
+    }
+
+    .sb-content {
+        display: inline !important;
+    }
+
+    .sd-title {
+        display: block;
+        color: #ddd;
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-left: 15px;
+        margin-bottom: 20px;
+    }
+
+    #sidebar {
+        .sb-content {
+            margin-left: 10px !important;
+        }
+    }
+
+    ul:first-child {
+        border-bottom: none !important;
+    }
+
+    main .container {
+        width: 90%;
+    }
+
+    #fr_rg_photo_input {
+        width: 45%;
+    }
+
+}
+
+@media(min-width:1200px) {
+    body {
+        display: grid;
+        grid-template-columns: 0.7fr 1fr 1fr 1fr !important;
+    }
+
+}

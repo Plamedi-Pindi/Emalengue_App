@@ -1,0 +1,10 @@
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+
+@mixin container() {
+    background-color: #fff;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 1px 2px 5px #ddd;
+    padding-bottom: 1.5rem;
+}

@@ -1,0 +1,23 @@
+
+.header-container{
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    height: 100%;
+}
+.hd-container{
+    #user-menu{
+        img{
+            z-index: 100;
+            width: 35px;
+            border-radius: 100px;;
+        }
+    }
+}
+.logo{
+    a{
+        color: #fff;
+        text-decoration: none;
+    }
+}

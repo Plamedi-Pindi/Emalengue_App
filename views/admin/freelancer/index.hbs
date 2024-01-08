@@ -1,0 +1,144 @@
+    {{> dashHeader }}
+    {{> dashSidebar }}
+    <!-- MAIN START -->
+    <main>
+        <div class="container">
+            <div class="fr_container">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Imagem</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Habilidades</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="fr_rows">
+
+                            <td><span class="fr_id">1</span></td>
+                            <td>
+                                <img src="/admin/img/user.jpg" alt="Imagem do Freelancer" class="fr_img">
+                            </td>
+                            <td>
+                                <h5 class="fr_name">Plamedi Pindi</h5>
+                                <span class="fr_profissao">Engenheiro de Software</span>
+                            </td>
+                            <td><span class="fr_skills">HTML5, CSS3, JS, NodeJs...</span></td>
+                            <td><span class="fr_email text-primary">info43@gmail.com</span></td>
+                            <td>
+                                <span class="fr_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
+                                <span class="fr_delete" title="Deletar"><i class="bi bi-trash3"></i></i></span>
+                                <button type="button" class="fr_view" title="Mais detalhes" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop"> <i class="bi bi-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="fr_rows">
+                            <td><span class="fr_id">2</span></td>
+                            <td>
+                                <img src="/admin/img/user.jpg" alt="Imagem do Freelancer" class="fr_img">
+                            </td>
+                            <td>
+                                <h5 class="fr_name">Plamedi Pindi</h5>
+                                <span class="fr_profissao">Engenheiro de Software</span>
+                            </td>
+                            <td><span class="fr_skills">HTML5, CSS3, JS, NodeJs...</span></td>
+                            <td><span class="fr_email text-primary">info43@gmail.com</span></td>
+                            <td>
+                                <span class="fr_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
+                                <span class="fr_delete" title="Deletar"><i class="bi bi-trash3"></i></i></span>
+                                <button type="button" class="fr_view" title="Mais detalhes" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop"> <i class="bi bi-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr class="fr_rows">
+                            <td><span class="fr_id">3</span></td>
+                            <td>
+                                <img src="/admin/img/user.jpg" alt="Imagem do Freelancer" class="fr_img">
+                            </td>
+                            <td>
+                                <h5 class="fr_name">Plamedi Pindi</h5>
+                                <span class="fr_profissao">Engenheiro de Software</span>
+                            </td>
+                            <td><span class="fr_skills">HTML5, CSS3, JS, NodeJs...</span></td>
+                            <td><span class="fr_email text-primary">info43@gmail.com</span></td>
+                            <td>
+                                <span class="fr_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
+                                <span class="fr_delete" title="Deletar"><i class="bi bi-trash3"></i></i></span>
+                                <button type="button" class="fr_view" title="Mais detalhes" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop"> <i class="bi bi-eye"></i></button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- MODALS ================================================= -->
+
+            <!--Freelancer Modal View -->
+            <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Mais Detalhes sobre Freelancer</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-10 col-md-5 container-fluid   fr_mdl_data1">
+                                    <img src="/admin/img/user.jpg" alt="">
+                                    <h3>Plamedi Pindi</h3>
+                                    <span>Engenheiro de Software</span>
+
+                                    <ul>
+                                        <li>
+                                            <i class="bi bi-telephone-fill"></i> (+244) 999 999 999
+                                        </li>
+                                        <li>
+                                            <i class="bi bi-envelope-at-fill"></i> info43@gmail.com
+                                        </li>
+                                        <li>
+                                            <i class="bi bi-globe-americas"></i> Angola
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="fr_mdl_data2 col-10 col-md-5 container-fluid">
+                                    <h3>Habilidades e Certificações</h3>
+                                    <ul>
+                                        <li>HTML5, CSS3, Javascript</li>
+                                        <li>React js</li>
+                                        <li>Node js</li>
+                                        <li>MongoDB</li>
+                                    </ul>
+                                </div>
+                                <hr class="col-10 container-fluid">
+                                <div class="col-10 container-fluid fr_mdl_data3">
+                                    <h3>Sobre o Freelancer</h3>
+                                    <div>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate obcaecati
+                                        vel voluptates velit dolore omnis vitae nulla dolor officia debitis
+                                        exercitationem neque eos nobis et similique, odio nam dolores eligendi, ducimus
+                                        excepturi quam doloremque atque. Aliquam at velit odio eos!
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est molestias neque
+                                        cumque quisquam esse non beatae ducimus voluptate voluptatem! Quia?
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary ft_mdl_dwl"> <i
+                                    class="bi bi-cloud-arrow-down-fill"></i> Baixar CV</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN END -->
+    {{> dashFooter }}

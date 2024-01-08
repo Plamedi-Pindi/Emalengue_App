@@ -1,0 +1,298 @@
+// Function 
+@mixin pr_subtitle() {
+    color: rgb(211, 139, 5);
+    font-size: 20px;
+    padding-bottom: 1rem;
+    border-bottom: solid 1px;
+
+    span {
+        color: #333;
+    }
+}
+
+.fr_profil_banner {
+    margin-top: 4rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(../img/Freelancer/4.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        color: #eee;
+        font-size: 35px;
+        font-weight: 300;
+    }
+
+    .fr_pr_line {
+        display: block;
+        background-color: #ddd;
+        height: 1px;
+        width: 80px;
+    }
+
+    ul {
+        display: inherit;
+        margin: 0;
+        margin-top: 10px;
+
+        li {
+            list-style: none;
+            margin-right: 10px;
+        }
+
+        li:first-child::after {
+            content: "/";
+            color: #eee;
+            margin-left: 10px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #eee;
+            font-weight: 300;
+
+        }
+    }
+}
+
+.fr_profil_container {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    width: 100%;
+
+    .row {
+        width: 100%;
+        // background-color: aqua;
+        margin: 0 !important;
+    }
+
+}
+
+.fr_profil_data {
+
+    figure {
+        width: 100%;
+        height: 340px;
+        position: relative;
+
+        img {
+            width: inherit;
+            height: 100%;
+        }
+    }
+
+    figcaption {
+        position: absolute;
+        width: 100%;
+        bottom: 10px;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+
+        ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin-right: 8px;
+            }
+
+            li:last-child {
+                margin-right: 0;
+            }
+
+            li a {
+                text-decoration: none;
+                background-color: rgb(221, 145, 3);
+                color: #fff;
+                padding: 10px 8px;
+            }
+
+            li a:hover {
+                background-color: rgb(158, 104, 4);
+            }
+
+            i {
+                font-size: 19px;
+            }
+        }
+    }
+
+    h3 {
+        color: #555;
+        font-size: 18px;
+    }
+
+    p {
+        color: #555;
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    p span {
+        color: #888;
+        font-weight: 400;
+    }
+
+    .fr_pr_phone,
+    .fr_pr_email,
+    .fr_pr_website {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+
+        h4 {
+            color: #555;
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+
+        p {
+            color: #888;
+            font-size: 14px;
+        }
+    }
+
+    .fr_pr_website {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+}
+
+.fr_pr_skills {
+    width: 100%;
+    padding-bottom: 2rem;
+    // margin-bottom: 1rem;
+
+    h3 {
+        @include pr_subtitle();
+    }
+
+    p {
+        font-size: 15px;
+        margin-bottom: 5px;
+        margin-top: 10px;
+    }
+
+    .progress {
+        height: 10px;
+    }
+}
+
+.fr_pr_works {
+
+    .row {
+        padding: 0px;
+    }
+
+    h3 {
+        @include pr_subtitle();
+    }
+
+    figure {
+        .fr_view{
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        figcaption {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 10px;
+
+            span {
+                color: rgb(255, 208, 0);
+            }
+
+            p {
+                margin-bottom: 0;
+                // margin-top: 10px;
+                color: #666;
+            }
+        }
+    }
+
+    .fr_pr_work_view{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+        width: 100%;
+        height: 100%;
+        
+        // Dynamic use
+        display: none;
+
+        a{
+            text-decoration: none;
+            color: #fff;
+            transition: .4s;
+            i{
+                font-size: 30px;
+            }
+        }
+
+        a:hover{
+            transform: rotate(180deg);
+            color: orange;
+        }
+    }
+    .fr_view:hover > .fr_pr_work_view{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+}
+
+@media(min-width:720px) {
+    .fr_pr_border {
+        border: 1px solid #eee;
+        width: 100%;
+        padding: 10px;
+    }
+
+    // .progress_conatiner {
+    //     width: 70%;
+    // }
+}
+
+@media(min-width:992px) {
+    .fr_profil_container {
+        width: 86%;
+        margin: 3rem auto;
+
+    }
+
+    .fr_profil_banner {
+        margin-top: 6rem;
+    }
+}
+
+@media(min-width:1024px) {
+    // .progress_conatiner {
+    //     width: 60%;
+    // }
+
+    .fr_profil_data {
+
+        figure {
+            height: 260px !important;
+
+            img {
+                width: inherit;
+                height: 100% !important;
+            }
+        }
+    }
+}

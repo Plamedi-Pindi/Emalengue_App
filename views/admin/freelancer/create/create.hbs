@@ -1,0 +1,79 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+
+<!-- MAIN START -->
+<main>
+    <div class="container ">
+        <div class="fr_rg_container">
+            <!-- <a href="index.html" class="logo">eMaLENGUE</a> -->
+            <h2>Cadastra freelancer</h2>
+            <!-- Form start -->
+            <form action="/dashboard/freelancer/enviar_cadastro", method="post">
+                <div class="row">
+                    <!-- update profile photo -->
+                    <div class="col-10  fr_rg_photo container-fluid">
+                        <img src="/admin/img/profile.jpg" alt="" id="fr_rg_photo_img">
+                        <input type="file" class="form-control" id="fr_rg_photo_input" name="image">
+                    </div>
+                    <!-- Personal Information -->
+                    <div class="col-10 col-md-5 fr_rg_personalData container-fluid">
+                        <!-- Name -->
+                        <label for="name">Nome <span>*</span></label>
+                        <input type="text" placeholder="Seu nome..." class="form-control" name="name" >
+                        <!-- Email -->
+                        <label for="email">Email <span>*</span></label>
+                        <input type="text" placeholder="...@gmail.com" class="form-control" name="email" >
+                        <!-- Password -->
+                        <label for="password">Senha <span>*</span></label>
+                        <input type="password" placeholder="" class="form-control" name="password" >
+                        <!-- Country -->
+                        <label for="country">Pais <span>*</span></label>
+                        <select name="country" id="" class="form-select" >
+                            <option value="" selected>Angola</option>
+                            <option value="">Amerca</option>
+                            <option value="">Argentina</option>
+                            <option value="">Brazil</option>
+                            <option value="">Canada</option>
+                        </select>
+
+                        <!-- Province -->
+                        <label for="province">Provincia <span>*</span></label>
+                        <input type="text" placeholder="Provincia" class="form-control" name="province" >
+                    </div>
+
+                    <!-- Proffssional Information -->
+                    <div class="col-10 col-md-5 fr_rg_professionalData container-fluid">
+
+                        <!-- Habiliteis -->
+                        <label for="skills">Principais Habilidades <span>*</span></label>
+                        <input type="text" placeholder="HTML, JS, CSS..." class="form-control" name="skills" >
+
+                        <!-- Cetification -->
+                        <label for="certification">Certificações <span>*</span></label>
+                        <input type="text" placeholder="Certificações" class="form-control" name="certification" >
+
+                        <!-- About User -->
+                        <label for="about">Sobre mim <span>*</span></label>
+                        <textarea name="about" id="" cols="30" rows="7" placeholder="Escreva sobre você..."
+                            class="form-control" ></textarea>
+                    </div>
+
+                    <!-- update Docs -->
+                    <div class="col-10 col-md-5 container-fluid">
+                        <label for="identification">Anexar Bilhete de Identidade <span>*</span></label>
+                        <input type="file" placeholder="" name="identification" class="form-control" >
+                    </div>
+                    <div class="col-10 col-md-5 fr_rg_doc container-fluid">
+                        <label for="cv">Anexar CV <span>*</span></label>
+                        <input type="file" name="cv" class="form-control" >
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>
+            </form>
+            <!-- Form end -->
+        </div>
+    </div>
+</main>
+<!-- MAIN END -->
+{{> dashFooter }}

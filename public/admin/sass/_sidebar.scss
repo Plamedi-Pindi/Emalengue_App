@@ -1,0 +1,37 @@
+
+#sidebar{
+    
+    ul{
+        list-style: none;
+        padding: 0;
+        padding-left: 18px;
+        // text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #777;
+
+        li a{
+            color: #ccc;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        li{
+            margin-bottom: 5px;
+        }
+        .sb-content{
+            font-size: 15px;
+            color: #ccc;
+            margin-left: 20px;
+
+        }
+    }
+
+    #sdb-slide{
+        color: #fff;
+        font-size: 25px;
+        margin-top: 15px;
+    }
+}
+
+.sd-title{
+    display: none;
+}

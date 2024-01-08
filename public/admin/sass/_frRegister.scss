@@ -1,0 +1,59 @@
+
+.fr_rg_container{
+    background-color: #fff;
+    padding: 10px;
+    padding-bottom: 2rem;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    box-shadow: 1px 2px 5px #ddd;
+    border-radius: 4px;
+
+    .logo{
+        color: #333;
+        text-decoration: none;
+        text-align: center ;
+        font-size: 20px;
+        display: block;
+        font-weight: 600;
+    }
+
+    h2{
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        text-transform: capitalize;
+    }
+    input{
+        margin-bottom: 10px;
+    }
+    label span{
+        color: red;
+    }
+    label{
+        margin: 10px;
+    }
+
+    .fr_rg_photo,
+    .fr_rg_personalData,
+    .fr_rg_professionalData,
+    .fr_rg_doc{
+        margin-bottom: 2rem;
+    }
+    .fr_rg_photo img{
+        width: 100px;
+        height: 100px;
+    }
+    form {
+        button{
+            width: 210px;
+            margin: 0 auto;
+        }
+
+    }
+    
+
+}

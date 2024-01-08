@@ -1,0 +1,659 @@
+@import "./fonts";
+
+// SUBTITLES FUNCTION
+@mixin subtitle() {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+// PARAGRAPHS FUNCTION
+@mixin paragraph() {
+    margin-left: 10px;
+    border-left: 5px solid orange;
+    padding-left: 10px;
+
+    font-size: 16px;
+    color: #888;
+}
+
+
+main {
+    flex: 1 0 auto;
+    margin-top: -6px !important;
+}
+
+
+/****** BANNER START ********/
+#banner {
+    // background-color: rosybrown;
+    height: 400px;
+    margin-top: 3.5rem;
+
+    //carousel
+    .carousel {
+        height: 100%;
+        width: 100%;
+
+        .carousel-inner {
+            height: inherit;
+            width: inherit;
+
+            // Carousel items 1
+            .carousel_1 {
+                height: inherit;
+                width: inherit;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url("../img/2.jpg");
+                background-position: top;
+
+
+
+                // Carousel 1 Content
+                .crs_1_content {
+                    height: inherit;
+                    width: inherit;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    color: whitesmoke;
+                    font-family: $roboto;
+                    font-size: 16px;
+
+                    // Title
+                    h1 {
+                        text-align: center;
+                        margin-bottom: 1rem;
+                    }
+
+                    // Brief Description
+                    p {
+                        text-align: center;
+                        margin-bottom: 3rem;
+                    }
+
+                    .bnnr-buttons {
+                        // background-color: #111;
+                        // height: 100px;
+                        width: 100%;
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .bnnr-saberMais {
+                        text-decoration: none;
+                        color: whitesmoke;
+                        padding: 9px;
+                        background: #111;
+                        width: 130px;
+                        text-align: center;
+                        border-radius: 2px;
+                        margin-bottom: 1rem;
+                        font-size: 17px;
+                        font-weight: 600;
+                        margin-right: 10px;
+                    }
+
+                    .bnnr-saberMais:hover {
+                        transform: scale(1.05);
+                        transition: ease-in-out .5s;
+                        border: 1px solid #111;
+                        background: transparent;
+                        color: #ddd;
+                        padding: 8px;
+                    }
+
+
+                    .calling-Button {
+                        border-radius: 2px;
+                        padding: 6px;
+                        background: linear-gradient(45deg, rgb(207, 136, 3), rgb(252, 179, 43), rgb(214, 140, 2));
+                        width: 130px;
+                        margin-bottom: 20px;
+
+                        color: #111;
+                        font-size: 17px;
+                        font-weight: 600;
+                        font-family: $roboto;
+                        text-align: center;
+                        text-decoration: none;
+
+                        //Animation
+                        animation: callingButton;
+                        animation-duration: 1s;
+                        animation-delay: 1s;
+                        animation-iteration-count: infinite;
+                        animation-direction: alternate;
+                    }
+
+                    .calling-Button:hover {
+                        transform: scale(1.06);
+                        background: linear-gradient(45deg, rgb(153, 103, 9), rgb(240, 167, 33), rgb(172, 114, 6));
+                        transition: ease-in-out .4s;
+                    }
+
+                }
+            }
+
+            // Carousel item 2
+            .carousel_2 {
+                height: 100%;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/3.jpg);
+                background-position: top;
+
+                // Carousel 2 Content
+                .crs_2_content {
+                    height: inherit;
+                    width: inherit;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    color: whitesmoke;
+                    font-family: $roboto;
+                    font-size: 16px;
+
+                    // Title
+                    h1 {
+                        text-align: center;
+                        margin-bottom: 1rem;
+                    }
+
+                    // Brief Description
+                    p {
+                        text-align: center;
+                        margin-bottom: 3rem;
+                    }
+
+                    .bnnr-buttons {
+                        // background-color: #111;
+                        // height: 100px;
+                        width: 100%;
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    .bnnr-saberMais {
+                        text-decoration: none;
+                        color: whitesmoke;
+                        padding: 9px;
+                        background: #111;
+                        width: 130px;
+                        text-align: center;
+                        border-radius: 2px;
+                        margin-bottom: 1rem;
+                        font-size: 17px;
+                        font-weight: 600;
+                        margin-right: 10px;
+                    }
+
+                    .bnnr-saberMais:hover {
+                        transform: scale(1.05);
+                        transition: ease-in-out .5s;
+                        border: 1px solid #111;
+                        background: transparent;
+                        color: #111;
+                        padding: 8px;
+                    }
+
+
+                    .calling-Button {
+                        border-radius: 2px;
+                        padding: 6px;
+                        background: linear-gradient(45deg, rgb(207, 136, 3), rgb(252, 179, 43), rgb(214, 140, 2));
+                        width: 130px;
+                        margin-bottom: 20px;
+
+                        color: #111;
+                        font-size: 17px;
+                        font-weight: 600;
+                        font-family: $roboto;
+                        text-align: center;
+                        text-decoration: none;
+
+                        //Animation
+                        animation: callingButton;
+                        animation-duration: 1s;
+                        animation-delay: 1s;
+                        animation-iteration-count: infinite;
+                        animation-direction: alternate;
+                    }
+
+                    .calling-Button:hover {
+                        transform: scale(1.06);
+                        background: linear-gradient(45deg, rgb(153, 103, 9), rgb(240, 167, 33), rgb(172, 114, 6));
+                        transition: ease-in-out .4s;
+                    }
+
+                }
+            
+        }
+
+        .carousel_1,
+        .carousel_2 {
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+}
+}
+
+/****** BANNER END ********/
+
+/******** CURSOS RECOMENDADOS START *************/
+#cursos-recomendados {
+    width: 100%;
+    min-height: 400px;
+
+    h2 {
+        @include subtitle();
+    }
+
+    .c_r_init {
+        @include paragraph();
+    }
+
+    // .cursos-rec-container::-webkit-scrollbar {
+    //     width: 0;
+    // }
+ 
+    .cursos-recomendados-swiper {
+        width: 85%;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+  
+    .cursos-rec-container {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 340px;
+
+        .cursos-erc-card {
+            height: 265px !important;
+            width: 210px !important;
+            display: flex;
+            flex-direction: column;
+            margin-right: 10px;
+            margin-left: 4px;
+            margin-bottom: 1rem;
+            border: 1px solid #eee;
+
+            img {
+                width: 100%;
+                height: 45%;
+            }
+
+            .cursos-rec-content {
+                padding: 5px;
+                height: 55%;
+
+                h5 {
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-bottom: 2px;
+                }
+
+                .c_r_teacher {
+                    font-size: 14px;
+                    color: #bbb;
+                    margin: 0;
+                    cursor: pointer;
+                }
+
+                .c_r_rate {
+                    margin-bottom: 2px;
+                    margin-top: -5px;
+                    cursor: pointer;
+
+                    p {
+                        font-size: 13px;
+                        font-weight: 600;
+                        display: inline;
+                        color: black;
+                        margin-right: 5px;
+                    }
+
+                    i {
+                        color: rgb(223, 165, 4);
+                        font-size: 12px;
+                    }
+
+                    span {
+                        color: #bbb;
+                        font-size: 13px;
+                    }
+                }
+
+                .c_r_price {
+                    margin-top: 0px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin-bottom: 0px;
+                    cursor: pointer;
+                }
+
+                .c_r_class1 {
+                    background: rgba(196, 196, 3, 0.658);
+                    padding: 5px;
+                    font-size: 13px;
+                    cursor: pointer;
+                }
+
+                .c_r_class2 {
+                    background: rgba(231, 171, 6, 0.658);
+                    padding: 5px;
+                    font-size: 13px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+
+        .cursos-erc-card:hover {
+            border: 1px solid #ddd;
+            transition: ease-in-out;
+
+            img {
+                border-top: 1px solid #ddd;
+                border-right: 1px solid #ddd;
+                border-left: 1px solid #ddd;
+            }
+        }
+    }
+}
+
+/******** CURSOS RECOMENDADOS END *************/
+
+/***********CONTRATAR FREELANCERS START *****************/
+#contratar_freelancers {
+    width: 100%;
+    margin-bottom: 2rem;
+    // padding: 10px;
+    // background-color: rosybrown;
+
+    h2 {
+        @include subtitle();
+    }
+
+    .c_f_init {
+        @include paragraph();
+    }
+
+    // .c_f_container::-webkit-scrollbar {
+    //     width: 0;
+    // }
+  
+    .contratar_freelancers-swiper{
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    // container
+    .c_f_container {
+        width: 100%;
+        height: 340px;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+
+
+        // card
+        .c_f_card {
+            width: 230px !important;
+            height: 300px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-right: 30px;
+            box-shadow: 4px 3px 10px #444;
+
+            // img div
+            .c_f_img {
+                width: 80px;
+                height: 80px;
+                border-radius: 100%;
+                border: 2px solid rgb(1, 1, 78);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 1rem;
+
+                img {
+                    width: 75px;
+                    height: 75px;
+                    border-radius: 100%;
+                }
+            }
+
+            // content
+            .c_f_content {
+                text-align: center;
+                text-transform: capitalize;
+                color: #333;
+
+                h5 {
+                    font-size: 16px;
+                    font-weight: 600;
+                    padding-top: 10px;
+                    margin-bottom: 5px;
+                }
+
+                p {
+                    font-size: 15px;
+                    color: #888;
+                    margin-bottom: 10px;
+                }
+
+                a {
+                    text-decoration: none;
+                    padding: 6px;
+                    color: #ddd;
+                    font-size: 13px;
+                    background: linear-gradient(45deg, rgb(3, 3, 153), rgb(4, 78, 236), rgb(2, 2, 128));
+                    // background: rgb(1, 75, 233);
+                    border-radius: 2px;
+                }
+
+            }
+
+            // Skills
+            .c_f_skill {
+                background-color: rgb(2, 2, 73);
+                color: #aaa;
+                margin-top: 1rem;
+                padding: 10px;
+                width: 100%;
+                border-radius: 0 0 5px 5px;
+
+                p {
+                    font-size: 15px;
+                    margin: 0;
+                }
+
+                span {
+                    font-size: 12px;
+                    border: 1px solid #aaa;
+                    padding: 2px;
+                    border-radius: 2px;
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+}
+
+/***********CONTRATAR FREELANCERS END *****************/
+
+/***********  COUNTER START *****************/
+    .counter_section{
+        height: 250px;
+        width: 100%;
+        background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(../img/banner/banner\ 7.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #fff;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        
+        .container{
+            height: 100%;
+        }
+        .row{
+            // background-color: red;
+            height: 100% !important;
+        }
+        .counter{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+            margin-bottom: 5px;
+            margin-top: 5px;
+            border-radius: 10px;
+            // width: 300px;
+        }
+        h3{
+            font-size: 35px;
+
+            span{
+                margin-left: 10px;
+            }
+        }
+        .cntr_info{
+            font-size: 20px;
+        }
+    }
+/***********  COUNTER END *****************/
+
+/***********NOSSOS PARCEIROS START *****************/
+#parceiros {
+    width: 100%;
+    background-color: #333;
+    padding-bottom: 5rem;
+
+    h2 {
+        @include subtitle();
+        color: whitesmoke;
+    }
+
+    .parceiros_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -3rem;
+    }
+
+    img {
+        width: 300px;
+    }
+
+    .img_1 {
+        margin-top: 4rem;
+        width: 150px;
+    }
+
+    .img_2 {
+        margin-top: -2rem;
+    }
+
+    .img_3 {
+        margin-top: -2rem;
+    }
+
+    .img_4 {
+        margin-top: 4rem;
+    }
+
+    .img_5 {
+        margin-top: 4rem;
+    }
+
+}
+
+/***********NOSSOS PARCEIROS END *****************/
+
+/*********** TESTEMUNHOS START *****************/
+#testemunhos {
+    width: 100%;
+    padding-bottom: 2rem;
+    background-color: #fff;
+
+    h2 {
+        @include subtitle();
+    }
+
+    .t_init {
+        @include paragraph();
+        margin-bottom: 3rem;
+    }
+
+    .testemunhos_container {
+        width: 100%;
+        padding: 10px;
+        margin-top: 2rem;
+        display: flex;
+        // flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+
+
+        .testemunhos_card {
+            max-width: 310px;
+            min-height: 250px;
+            background-color: #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            border-radius: 10px;
+            margin-bottom: 4rem;
+
+            img {
+                width: 90px;
+                height: 90px;
+                border-radius: 100%;
+                position: absolute;
+                top: -35px;
+
+
+            }
+
+            .t_content {
+                margin-top: 4rem;
+                text-align: center;
+
+                h5 {
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: #888;
+                    margin: 0;
+                }
+
+                div {
+                    font-size: 14px;
+                    padding: 8px;
+                    margin-top: -2px;
+                    color: #777;
+                }
+            }
+        }
+    }
+}
+
+/***********tESTEMUNHOS END *****************/

@@ -1,0 +1,58 @@
+
+    {{> header }}
+    <!-- MAIN START -->
+    <main>
+        <div class="proj_pub_banner">
+            <h2>Publicar um Projeto</h2>
+            <span class="prob_pro_line"></span>
+            <ul>
+                <li><a href="/freelancer">Freelancer</a></li>
+                <li><a href="/projetos/publicarprojeto">Publicar Projeto</a></li>
+            </ul>
+        </div>
+        <div class="container project_pub_container">
+
+            <h2>Publique um Projeto</h2>
+
+            <form action="">
+                <div class="row">
+                    <div class=" col-12 col-sm-10 col-md-6 container-fluid">
+                        <label for="">Escolha uma categoria <span>*</span></label>
+                        <select name="" id="" class="form-select" required>
+                            <option value="" selected>Selecione uma categoria</option>
+                            <option name="" id="">Categoria 1</option>
+                            <option name="" id="">Categoria 2</ooption>
+                            <option name="" id="">Categoria 3</optiion>
+                            <option name="" id="">Categoria 4</option>
+                            <option name="" id="">Categoria 5</option>
+                        </select>
+    
+                        <label for="">Dê um Nome para o trabalho <span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Ex: Redator para blog de tecnologia" required>
+    
+                        <label for="">Descreva o trabalho a ser feito <span>*</span></label>
+                        <textarea name="" id="" cols="30" rows="5" required class="form-control"></textarea>
+                    </div>
+                    <div class="col-12 col-sm-10 col-md-6 container-fluid">
+                        <label for="">Quais habilidades são desejadas? <span>*</span></label>
+                        <select name="" id="" class="form-control" multiple>
+                            <option value="">Habilidade 1</option>
+                            <option value="">Habilidade 2</option>
+                            <option value="">Habilidade 3</option>
+                            <option value="">Habilidade 4</option>
+                            <option value="">Habilidade 5</option>
+                        </select>
+    
+                        <label for="" class="pub_prazo">Prazo<span>*</span></label>
+                        <input type="datetime-local" class="form-control" required>
+                    </div>
+
+                    <input type="submit" value="Publicar Projeto" class="btn btn-primary pub_button">
+                </div>
+            </form>
+
+        </div>
+    </main>
+    <!-- MAIN END -->
+
+   {{> footer }}

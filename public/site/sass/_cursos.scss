@@ -1,0 +1,268 @@
+@import './fonts';
+
+.cursos {
+    .cs_recomendados {
+        h2 {
+            padding-bottom: 4rem !important;
+        }
+    }
+    .curso-search {
+        input {
+            margin-right: 10px;
+        }
+    }
+
+}
+
+#cursos_display {
+    h2 {
+        font-size: 26px;
+        font-weight: 600;
+        text-align: center;
+        padding-bottom: 2rem;
+    }
+}
+
+.cursos {
+    margin-top: 5rem;
+
+    form {
+        display: flex;
+        margin-bottom: 2rem;
+    }
+
+    .cs_recomendados {
+        h2 {
+            margin-bottom: -40px !important;
+            margin-top: -90px;
+        }
+    }
+}
+
+.dropdown {
+    margin-bottom: 10px;
+}
+
+#cursos_display {
+    padding-top: 3rem;
+    width: 100%;
+    background-color: #eee;
+
+
+    .cs_heart {
+        position: absolute;
+        right: 40px;
+        top: 20px;
+
+        i {
+            color: #fff;
+            font-size: 25px;
+        }
+    }
+
+    .cs_dis_container {
+        width: 100%;
+        margin: 0 auto;
+
+        .cs_dis_card {
+            background-color: #fff;
+            position: relative;
+
+            margin-bottom: 2rem;
+
+            img {
+                margin-top: 10px;
+                width: 100%;
+                height: 200px;
+                border-radius: 10px;
+            }
+        }
+
+        .cs_dis_card_contente {
+            margin-top: 15px;
+
+            .cs_dis_user {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 38px;
+                    height: 38px;
+                    border-radius: 100%;
+                    margin-right: 8px;
+                    margin-top: 0;
+                }
+
+                h5 {
+                    font-size: 15px;
+                    padding-top: 8px;
+                }
+            }
+        }
+
+        .cs_dis_descriptio {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #888;
+        }
+
+        .cs_rate {
+            margin-bottom: 20px;
+
+            p {
+                display: inline;
+                margin-left: 5px;
+            }
+
+            span {
+                color: #888;
+            }
+        }
+    }
+}
+
+// Pagination
+.cs_pagination_container {
+    padding-top: 10px;
+    padding-bottom: 3rem;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.cs_pagination {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    i{
+        font-size: 20px;
+    }
+}
+
+.cs_pagination a {
+    padding: 7px 13px;
+    text-decoration: none;
+    color: black;
+    float: left;
+    font-size: 15px;
+    color: #777;
+    transition: .5s;
+}
+
+.cs_pagination a:hover {
+    color: #222;
+}
+
+.cs_active {
+    border-bottom: #222 2px solid;
+    color: #222 !important;
+}
+
+#instrutor{
+    min-height: 350px;
+    background-color: #eee;
+    padding-top: 1rem;
+    
+    .instrutor_container{
+        padding-bottom: 2rem;
+    } 
+    .instrutor_container, 
+    .row{
+        width: 100%;
+        height: 100%;
+    }
+    .ins_content{
+        button{
+            border-radius: 0px !important;
+        }
+    }
+    .ins_img{
+        margin-bottom: 2rem;
+        height: 100%;
+        img{
+            width: 100%;
+            height: 340px;
+        }
+    }
+}
+
+
+
+@media(min-width:720px) {
+    .cs_pagination_container{
+        width: 65%;
+    }
+    .ins_content{
+        margin-top: 3rem;
+    }
+
+}
+
+@media(min-width:992px) {
+
+    .cs_pagination_container{
+        width: 60%;
+    }
+
+    #cursos_display {
+        h2 {
+            text-align: start;
+            width: 86%;
+            margin: 0 auto;
+        }
+
+    }
+
+    .cursos {
+        margin-top: 8rem;
+    }
+
+    .cs_recomendados {
+        h2 {
+            // margin-bottom: -40px !important;
+            margin-top: -10rem !important;
+        }
+    }
+
+
+    .cs_dis_card {
+        background-color: #fff;
+        position: relative;
+        width: 310px;
+    }
+
+    .cs_dis_container {
+        width: 95% !important;
+    }
+
+    .cont_card_container {
+        width: 95% !important;
+
+        .cont_card {
+            width: 310px;
+        }
+    }
+
+    #instrutor{
+        margin-top: -4rem;
+        padding-top: 1rem;
+    }
+
+    .instrutor_container{
+        width: 86% !important;
+        margin: 0 auto;
+    }
+    .ins_content{
+        margin-top: 3rem;
+    }
+}
+
+@media(min-width:1020px) {
+    .cs_dis_card {
+        width: 296px;
+    }
+}

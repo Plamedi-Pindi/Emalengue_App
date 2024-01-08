@@ -1,0 +1,138 @@
+@import "./fonts";
+
+
+/****** CALLING BUTTON ANIMATION *******/ 
+    @keyframes callingButton{
+       from{
+        transform: scale(1.06);
+       }
+       to{
+        transform: scale(1);
+       }
+    }
+
+
+
+footer{
+    background-color: #111;
+    min-height: 200px;
+    color: white;
+
+    position: relative;
+
+    .footer-body{
+        margin-bottom: 4rem;
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        .ftr-calling-btn{
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin-top: 15px;
+
+
+            .callingButton{
+                border-radius: 2px;
+                padding: 7px;
+                background: linear-gradient(45deg, rgb(207, 136, 3),rgb(252, 179, 43), rgb(214, 140, 2));
+                width: 150px;
+                margin-bottom: 20px;
+
+                color: #111;
+                font-size: 18px;
+                font-weight: 600;
+                font-family: $roboto;
+                text-align: center;
+
+                //Animation
+                animation: callingButton ; 
+                animation-duration: 1s;
+                animation-delay: 1s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+            }
+
+            .callingButton:hover{
+                transform: scale(1.08);
+                background: linear-gradient(45deg, rgb(153, 103, 9),rgb(240, 167, 33), rgb(172, 114, 6));
+                transition: ease-in-out .4s;
+            }
+
+            .ftn-logo{
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .footer-copyright{
+        position: absolute;
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 7px;
+        text-align: center;
+    }
+
+
+    .ftr-content{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       
+        ul{
+            list-style: none;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0;
+            // text-align: center;
+        }
+        ul li{
+            padding: 4px;
+            font-size: 15px;
+            font-weight: 100;
+        }
+        h3{
+            text-align: center;
+            margin-bottom: 0.3rem;
+            margin-top: 0.5rem;
+            font-size: 19px;
+        }
+
+        .ftr-contact{
+            width: 200px;
+            // background-color: green;
+            display: block;
+            
+        }
+        .ftr-cursos{
+            width: 250px;
+            // background-color: greenyellow;
+            display: block;
+        }
+        .ftr-links{
+            width: 250px;
+            display: block;
+            // background-color: yellow;
+        }
+
+        .ftr-sobre{
+            width: 300px;
+            p{
+                text-align: center;
+            }
+        }
+    }
+
+}
+

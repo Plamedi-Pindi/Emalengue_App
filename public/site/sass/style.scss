@@ -1,0 +1,555 @@
+/***** FILE IMPOTINHG *****/
+
+@import './header';
+@import './footer';
+@import './fonts';
+@import './main';
+@import './freelancer';
+@import './cursos';
+@import './cadastro.css';
+@import './freelancer-profil';
+@import './publicar-projeto';
+@import './contanct';
+
+
+/****** GENERAL SITTINGS START *******/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $roboto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/****** GENERAL SITTINGS END *******/
+
+/*************** FUNCTIONS START***********************/
+// Menus
+@mixin menu-category() {
+    position: absolute;
+    margin-left: 0;
+    top: 40px;
+    background-color: white;
+    z-index: 100;
+    box-shadow: 1px 2px 10px #111;
+    width: 480px !important;
+}
+
+/*************** FUNCTIONS END***********************/
+
+/******** MEDIA QUIRY *********/
+@media(min-width:600px) {
+    .footer-body {
+
+        .ftr-calling-bt {
+            display: flex;
+            flex-direction: row;
+            background-color: #111;
+        }
+
+        .ftr-content {
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            justify-content: space-between !important;
+            width: 86%;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        h3{
+            text-align: start !important;
+        }
+        ul{
+            align-items: flex-start !important;
+        }
+        .ftr-sobre{
+            p{
+                text-align: start !important;
+            }
+        }
+
+    }
+}
+
+@media(min-width:720px) {
+    
+    .menu-curso-container {
+        width: 300px !important;
+    }
+
+    .contratar_freelancers-swiper {
+        width: 85%;
+    }
+
+    .freelance-menu {
+        .freelance-menu-container {
+            width: 300px !important;
+        }
+    }
+}
+
+@media(min-width:920px) {
+    .footer-body {
+        .ftr-calling-btn {
+            justify-content: space-between;
+            width: 86%;
+            margin: 0 auto;
+            border-bottom: 1px solid #888;
+
+            flex-direction: row !important;
+        }
+
+        .ftr-content {
+            width: 86%;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        h3{
+            text-align: start !important;
+        }
+        ul{
+            align-items: flex-start !important;
+        }
+        ul li {
+            font-size: 15px;
+            font-weight: 100;
+            
+        }
+
+        h3 {
+            font-family: 16px;
+            font-weight: 400;
+        }
+    }
+}
+
+@media(min-width: 992px) {
+
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-add {
+        // background-color: rosybrown !important;
+        width: 100%;
+        height: 35px;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .midia1 {
+        // background-color: #888;
+        width: 100px;
+        position: relative;
+        right: 5.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        a {
+            color: #111;
+            text-decoration: none;
+        }
+
+        i {
+            font-size: 23px;
+        }
+    }
+
+    .nav-login1 {
+        text-decoration: none;
+        color: #111;
+        padding: 4px;
+        margin-right: 10px;
+        text-align: center;
+        width: 100px;
+        border: solid 1px #888;
+        border-radius: 2px;
+        font-size: 15px;
+        right: 5rem;
+        position: relative;
+
+        i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+    }
+
+    .nav-login1:hover {
+        background-color: #111;
+        border: none;
+        padding: 5px;
+        color: #ddd;
+        transition: ease .5s;
+    }
+
+    .nav-cadastrar1 {
+        text-decoration: none;
+        color: #ddd;
+        padding: 5px;
+        text-align: center;
+        width: 110px;
+        border-radius: 2px;
+        background-color: #111;
+        font-size: 15px;
+        right: 5rem;
+        position: relative;
+    }
+
+    .nav-cadastrar1:hover {
+        border: #111 solid 1px;
+        background: transparent;
+        color: #111;
+        transition: ease .5s;
+    }
+
+    .nav-cadastrar,
+    .nav-login,
+    .midia {
+        display: none !important;
+    }
+
+    .navbar-content {
+        width: 90%;
+        font-size: 16px;
+
+        .search-bar {
+            width: 34%;
+        }
+
+        .menu-items {
+            width: 66%;
+
+            li {
+                margin-right: 20px;
+            }
+
+            li:hover {
+                color: rgb(3, 3, 83);
+                font-weight: bold;
+                transition: .5s;
+            }
+        }
+    }
+
+    /********** CATEGORIAS DO CURSO *************/
+    .menu-cursos {
+        position: relative;
+
+        .menu-curso-container {
+            @include menu-category();
+
+            ul li {
+                font-size: 15px;
+            }
+
+            ul {
+                width: 200px;
+            }
+        }
+
+    }
+
+    .menu-cursos:hover {
+        margin-top: 0;
+    }
+
+    /*********** SUBCATEGORIA DO CURSO  ************/
+    .menu-cursos:hover>.menu-curso-container {
+        margin-top: 0;
+        display: flex !important;
+
+        .ul li {
+            font-size: 15px;
+        }
+    }
+
+    // DEFINE A FLEXIBILIDADE DOS SUBMENUS LONGOS
+
+    // Lado esquerdo
+    .negocio:hover>.negocio-container,
+    .fin-cont:hover>.fin-cont-container,
+    .design:hover>.design-container,
+    .marketing:hover>.marketing-container,
+    .saud-fit:hover>.saud-fit-container {
+        display: flex;
+
+        ul {
+            width: 200px;
+        }
+    }
+
+    // Lado direto
+    .saud-fit:hover>.saud-fit-container,
+    .ensino:hover>.ensino-container,
+    .desnvol-pes:hover>.desnvol-pes-container {
+        display: flex;
+
+        ul {
+            width: 140px;
+        }
+    }
+
+    // Caso particular
+    .marketing:hover>.marketing-container {
+        display: flex;
+        top: -150px;
+
+        // bottom: 0.4rem;
+        ul {
+            width: 200px;
+        }
+    }
+
+     /********* CATEGORIA DOS FREELANCERS************/
+     .freelance-menu {
+        position: relative;
+
+        .freelance-menu-container {
+            @include menu-category();
+
+            ul li {
+                font-size: 15px;
+            }
+            ul {
+                width: 300px;
+            }
+        }
+    }
+    .freelance-menu:hover > .freelance-menu-container {
+        margin-top: 0;
+        display: flex !important;
+        
+        .ul li {
+            font-size: 15px;
+        }
+    }
+    .freelance-menu:hover {
+        margin-top: 0;
+    }
+    /************ PAGINA DE FREELANCERS ****************/
+    #fr_init_section{
+        margin-top: 6.5rem;
+    }
+
+    // Banner Start
+    #banner {
+        margin-top: 5rem;
+    }
+
+    .carousel_1 {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: start;
+
+
+        .crs_1_content {
+            width: 400px !important;
+            height: 300px !important;
+            background-color: white;
+            color: #111 !important;
+            margin-left: 8rem;
+
+            .bnnr-saberMais:hover {
+                color: #111 !important;
+            }
+        }
+    }
+
+    .carousel_2 {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: start;
+
+
+        .crs_2_content {
+            width: 450px !important;
+            height: 300px !important;
+            background-color: white;
+            color: #111 !important;
+            margin-left: 8rem;
+            transition: 0.4s;
+            padding: 5px;
+
+            .bnnr-saberMais:hover {
+                color: #111 !important;
+            }
+
+        }
+    }
+
+    // Banner End
+
+    // Cursos Recomendados Start
+    #cursos-recomendados {
+        h2 {
+            text-align: start;
+            width: 86%;
+            margin: 0 auto;
+            font-size: 25px;
+        }
+
+        .swiper {
+            width: 85%;
+            // background-color: #ddd;
+        }
+
+        .cursos-recomendados-swiper {
+            margin: 0 auto;
+            // width: 80%;
+
+        }
+
+        .c_r_init {
+            margin-bottom: 10px !important;
+        }
+
+        h2 {
+            font-size: 25px;
+        }
+
+        // .cursos-rec-container{
+        //     background-color: red;
+        //     margin: 0;
+        // }
+        .cursos-rec-container,
+        .c_r_init {
+            width: 86%;
+            margin: 0 auto;
+            // background-color: aqua;
+        }
+    }
+
+    // Cursos Recomendados End
+
+    // Contratar Freelancer Start
+    #contratar_freelancers {
+        h2 {
+            text-align: start;
+            width: 86%;
+            margin: 0 auto;
+            font-size: 25px;
+        }
+
+        .c_f_init {
+            width: 86%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        .c_f_container {
+            width: 86%;
+        }
+
+        .swiper {
+            width: 85%;
+        }
+    }
+
+    // Contratar Freelancer End
+
+    // Nossos Parceiros Start
+    #parceiros {
+        width: 100%;
+
+        h2 {
+            text-align: start;
+            width: 86%;
+            margin: 0 auto;
+            font-size: 25px;
+        }
+
+        .parceiros_container {
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 0;
+            // background-color: aqua;
+        }
+
+        img {
+            width: 200px;
+        }
+
+        .img_1 {
+            margin-top: 0;
+            width: 90px;
+        }
+
+        .img_2 {
+            margin-top: 0;
+            margin-left: -30px;
+        }
+
+        .img_3 {
+            margin-top: 0;
+            margin-left: -80px;
+        }
+
+        .img_4 {
+            margin-top: 0;
+            margin-left: -70px;
+            width: 190px;
+        }
+
+        .img_5 {
+            margin-top: 0;
+            width: 140px;
+        }
+
+    }
+
+    // Nossos Parceiros End
+
+    // TESTEMUNHO START
+    #testemunhos {
+        h2 {
+            text-align: start;
+            width: 86%;
+            margin: 0 auto;
+            font-size: 25px;
+        }
+
+        .t_init {
+            width: 86%;
+            margin: 0 auto;
+            margin-bottom: 4rem;
+        }
+
+        .testemunhos_container {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 86%;
+            margin: 0 auto;
+        }
+
+        .testemunhos_card {
+            margin-right: 10px;
+        }
+    }
+
+    // TESTEMUNHO END
+}
+
+
+@media(min-width:1200px) {
+  
+    .menu-cursos {
+        .menu-curso-container {
+            ul {
+                width: 198px !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,172 @@
+@import './main';
+@import "./fonts";
+
+.fr_container {
+    @include container();
+
+
+    table {
+
+        .fr_name {
+            font-size: 15px;
+            margin: 0;
+            color: #222;
+            font-family: $roboto;
+        }
+
+        .fr_profissao {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .fr_img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .fr_skills {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .fr_email {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .fr_id {
+            font-size: 16px;
+            color: #888;
+            display: block;
+        }
+        
+        .fr_edit{
+            background-color: rgba(2, 119, 228, 0.322);
+            color: rgb(0, 60, 255);
+        }
+        .fr_delete{
+            background-color: rgba(255, 0, 0, 0.233);
+            color: red;
+        }
+        .fr_view{
+            background-color: rgba(0, 128, 0, 0.301);
+            color: green;
+            border: none;
+            
+        }
+        .fr_edit,
+        .fr_delete,
+        .fr_view{
+            padding: 4px;
+            border-radius: 4px;
+        }
+    }
+}
+
+.fr_mdl_data1{
+    margin-bottom: 2rem;
+
+    img{
+        width: 100%;
+        border-radius: 5px;
+    }
+    h3{
+        font-size: 16px;
+        color: #444;
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+    span{
+        color: #888;
+        font-size: 14px;
+    }
+    ul{
+        margin: 1rem 0 0 0;
+        list-style: none;
+        padding: 0;
+        li{
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #888;
+        }
+        i{
+            margin-right: 10px;
+        }
+    }
+}
+.fr_mdl_data2{
+    margin-bottom: 2rem;
+    h3{
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+        padding-left: 10px; 
+        border-left: 2px solid rgb(236, 154, 2);
+    }
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li{
+            color: #888;
+            font-size: 14px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+    }
+}
+.fr_mdl_data3{
+    margin-bottom: 2rem;
+    h3{
+        font-size: 16px;
+        color: #333;
+        margin-bottom: 10px;
+        padding-left: 10px; 
+        border-left: 2px solid rgb(236, 154, 2);
+    }
+    div{
+        text-align: justify;
+        font-size: 14px;
+        color: #888;
+    }
+    .ft_mdl_dwl{
+        i{
+            font-size: 20px;
+            margin-right: 10px;
+        }
+    }
+
+}
+
+/** MEDIA ======================================= */
+@media(min-width:320px){
+    // .fr_container::-webkit-scrollbar{
+    //     scrollbar-color: blue yellow;
+    //     scrollbar-width: thin;
+    //     border-radius: 5px;
+
+    // }
+
+    .fr_container{
+        overflow-x: auto;
+        
+        table{
+            // background-color: green;
+            min-width: 820px;
+        }
+    }
+    
+}
+@media(min-width:1200px){
+    .fr_container{
+        overflow-x: unset;
+
+        table{
+            // background-color: green;
+            min-width: 0px;
+        }
+    }
+}
