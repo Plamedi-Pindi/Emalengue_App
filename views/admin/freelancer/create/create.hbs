@@ -8,12 +8,12 @@
             <!-- <a href="index.html" class="logo">eMaLENGUE</a> -->
             <h2>Cadastra freelancer</h2>
             <!-- Form start -->
-            <form action="/dashboard/freelancer/enviar_cadastro", method="post">
+            <form action="/dashboard/freelancer/enviar_cadastro", method="post" enctype="multipart/form-data">
                 <div class="row">
                     <!-- update profile photo -->
                     <div class="col-10  fr_rg_photo container-fluid">
                         <img src="/admin/img/profile.jpg" alt="" id="fr_rg_photo_img">
-                        <input type="file" class="form-control" id="fr_rg_photo_input" name="image">
+                        <input type="file" class="form-control" id="fr_rg_photo_input" name="img">
                     </div>
                     <!-- Personal Information -->
                     <div class="col-10 col-md-5 fr_rg_personalData container-fluid">
@@ -29,16 +29,16 @@
                         <!-- Country -->
                         <label for="country">Pais <span>*</span></label>
                         <select name="country" id="" class="form-select" >
-                            <option value="" selected>Angola</option>
-                            <option value="">Amerca</option>
-                            <option value="">Argentina</option>
-                            <option value="">Brazil</option>
-                            <option value="">Canada</option>
+                            <option value="Angola" selected>Angola</option>
+                            <option value="Amerca">Amerca</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Canada">Canada</option>
                         </select>
 
                         <!-- Province -->
                         <label for="province">Provincia <span>*</span></label>
-                        <input type="text" placeholder="Provincia" class="form-control" name="province" >
+                        <input type="text" placeholder="Provincia" class="form-control" name="province" > 
                     </div>
 
                     <!-- Proffssional Information -->

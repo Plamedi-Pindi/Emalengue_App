@@ -18,7 +18,7 @@ const Freelancer = db.sequelize.define('freelancers', {
     },
     senha:{
         type: db.Sequelize.STRING,
-        unique:true
+        // unique:true
     },
     pais:{
         type: db.Sequelize.STRING

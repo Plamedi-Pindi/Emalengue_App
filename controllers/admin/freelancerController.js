@@ -1,7 +1,24 @@
 /**IMPORTS CONFIG ===========================================================*/
+
 // Models inports
 const Freelancer = require('../../models/Freelancer')
 
+//Multer config
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+    destination: (req, file, cd)=>{
+        cd(null, 'public/admin/img/freelancers')
+    },
+    filename: (req, file, cd) => {
+        cd(null, `${Date.now()}-${file.originalname}`)
+    }
+})
+
+const upload = multer({ storage })
+
+
+/**METHODS CONFIG ========================================================== */
 
 //Index
 const index = (reqe, res) => {
@@ -21,6 +38,7 @@ const create = (req, res) => {
 
 //Store
 const store = (req, res) => {
+    //Freelancer Model
     Freelancer.create({
         name: req.body.name,
         email: req.body.email,
@@ -28,19 +46,24 @@ const store = (req, res) => {
         pais: req.body.country,
         provincia: req.body.province,
         habilidades: req.body.skills,
-        certicacoes: req.body.certification,
-        // sobre: req.body.aboute,
+        certificacoes: req.body.certification,
+        sobre: req.body.about,
         // bi: req.body.identification
+        // cv: req.body.cv
     }).then(() => {
-        console.log('Freelancer Cadastrado!');
+        res.send('Freelancer cadastrado com sucesso!');
     }).catch((err) => {
         console.log(`Erro ao cadastrar freelancer: ${err}`);
     })
+
+    console.log(req.body, req.file);
+
 }
 
 /**EXPORT ================================================================= */
 module.exports = {
     index,
     store, 
-    create
+    create,
+    upload
 }
