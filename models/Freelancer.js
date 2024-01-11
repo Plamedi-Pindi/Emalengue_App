@@ -40,6 +40,9 @@ const Freelancer = db.sequelize.define('freelancers', {
     },
     cv:{
         type: db.Sequelize.TEXT
+    },
+    imagem: {
+        type: db.Sequelize.STRING
     }
 
 })

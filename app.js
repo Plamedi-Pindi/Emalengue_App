@@ -22,7 +22,12 @@ const adminProjetRoute = require('./routes/admin/projetoRoute')
 app.engine('hbs', handlebars.engine({
     defaultLayout: 'main',
     extname: 'hbs',
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true,
+    },
     // partialsDir: 'views/partials'
+
 }))
 app.set('view engine', 'hbs')
 

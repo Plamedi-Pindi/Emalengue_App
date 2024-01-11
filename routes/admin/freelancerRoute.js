@@ -6,7 +6,8 @@ const freelancerController = require('../../controllers/admin/freelancerControll
 //Routes
 freelancer.get('/', freelancerController.index)
 freelancer.get('/cadastrar', freelancerController.create)
-freelancer.post('/enviar_cadastro', freelancerController.upload.single('img'), freelancerController.store)
+freelancer.post('/enviar_cadastro', freelancerController.coletionUpload, freelancerController.store)
+freelancer.get('/eliminar/:id', freelancerController.destroy)
 
 /**EXPORT =========================================================== */
 module.exports = freelancer
