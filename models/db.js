@@ -1,9 +1,19 @@
 /**IMPORT CONFIG ================================================= */
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('emalengue', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql'
-})
+const dotenv = require('dotenv')
+
+/** Dotenv Config ========================================================= */
+dotenv.config({path: './env'})
+
+const sequelize = new Sequelize(
+    process.env.DATABASE, 
+    'root',
+    process.env.PASSWORD, 
+    {
+    host: process.env.HOST,
+    dialect:'mysql'
+    }
+)
 
 sequelize.authenticate().then(() => {
     console.log('App connected to DB!');

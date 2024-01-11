@@ -5,50 +5,53 @@
     <div class="container">
         <div class="nw_pr_container">
             <h2>Publicar Projeto</h2>
-            <div class="row">
-                <!-- Category -->
-                <div class="col-10 col-md-5 container-fluid">
-                    <label for="">Escolha uma categoria <span>*</span></label>
-                    <select name="" id="" class="form-select" required>
-                        <option value="" selected>Selecionar uma categoria</option>
-                        <option value="">categoria 1</option>
-                        <option value="">categoria 2</option>
-                        <option value="">categoria 3</option>
-                        <option value="">categoria 4</option>
-                    </select>
+            <form action="/dashboard/projeto/criar" method="post">
+                <div class="row">
+                    <!-- Category -->
+                    <div class="col-10 col-md-5 container-fluid">
+                        <label for="categoria">Escolha uma categoria <span>*</span></label>
+                        <select name="categoria" id="" class="form-select" required>
+                            <option value="" selected>Selecionar uma categoria</option>
+                            <option value="1">categoria 1</option>
+                            <option value="2">categoria 2</option>
+                            <option value="3">categoria 3</option>
+                            <option value="4">categoria 4</option>
+                        </select>
+                    </div>
+                    <!-- Project Name -->
+                    <div class="col-10 col-md-5 container-fluid">
+                        <label for="nome">Dê um nome para o trabalho <span>*</span></label>
+                        <input type="text" placeholder="Ex: Redator para blog de tecnologia" name="nome"
+                            class="form-control" required>
+                    </div>
+                    <!-- Project Description -->
+                    <div class="col-10 col-md-10 container-fluid nw-pj-description">
+                        <label for="descricao">Descreva o trabalho a se feito <span>*</span></label>
+                        <textarea name="descricao" id="" cols="30" rows="6" class="form-control" required></textarea>
+                    </div>
+                    <!-- Desired Hability for Project -->
+                    <div class="col-10 col-md-5 container-fluid">
+                        <label for="habilidades">Quais habilidades são desejadas? <span>*</span></label>
+                        <select name="habilidades" id="" class="form-select" multiple required>
+                            <option value="" selected>Selecionar no máximo 5</option>
+                            <option value="1">habilidade 1</option>
+                            <option value="2">habilidade 2</option>
+                            <option value="3">habilidade 3</option>
+                            <option value="4">habilidade 4</option>
+                            <option value="5">habilidade 5</option>
+                            <option value="6">habilidade 6</option>
+                        </select>
+                    </div>
+                    <!-- Project Duration -->
+                    <div class="col-10 col-md-5 container-fluid">
+                        <label for="prazo">Prazo <span>*</span></label>
+                        <input type="date" name="prazo" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Publicar</button>
                 </div>
-                <!-- Project Name -->
-                <div class="col-10 col-md-5 container-fluid">
-                    <label for="">Dê um nome para o trabalho <span>*</span></label>
-                    <input type="text" placeholder="Ex: Redator para blog de tecnologia" class="form-control" required>
-                </div>
-                <!-- Project Description -->
-                <div class="col-10 col-md-10 container-fluid nw-pj-description">
-                    <label for="">Descreva o trabalho a se feito <span>*</span></label>
-                    <textarea name="" id="" cols="30" rows="6" class="form-control" required></textarea>
-                </div>
-                <!-- Desired Hability for Project -->
-                <div class="col-10 col-md-5 container-fluid">
-                    <label for="">Quais habilidades são desejadas? <span>*</span></label>
-                    <select name="" id="" class="form-select" multiple required>
-                        <option value="" selected>Selecionar no máximo 5</option>
-                        <option value="">habilidade 1</option>
-                        <option value="">habilidade 2</option>
-                        <option value="">habilidade 3</option>
-                        <option value="">habilidade 4</option>
-                        <option value="">habilidade 5</option>
-                        <option value="">habilidade 6</option>
-                    </select>
-                </div>
-                <!-- Project Duration -->
-                <div class="col-10 col-md-5 container-fluid">
-                    <label for="">Prazo <span>*</span></label>
-                    <input type="text" class="form-control" required>
-                </div>
-                <button class="btn btn-success">Publicar</button>
-            </div>
+            </form>
         </div>
     </div>
 </main>
 <!-- MAIN END -->
-  {{> dashFooter }}
+{{> dashFooter }}

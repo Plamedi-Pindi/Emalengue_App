@@ -1,8 +1,13 @@
 /**IMPORTS CONGING ============================================*/
-
+const Freelancer = require('../../models/Freelancer')
 //index
 const index = (req, res) => {
-    res.render('site/freelancer/index', {title: 'Freelancers'})
+    Freelancer.findAll().then(posts => {
+        res.render('site/freelancer/index', {
+            Freelancers: posts,
+            title: 'Freelancers',
+        })
+    })
 }
 
 

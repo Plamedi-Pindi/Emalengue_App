@@ -14,37 +14,37 @@
 
             <h2>Publique um Projeto</h2>
 
-            <form action="">
+            <form action="/dashboard/projeto/criar" method="post">
                 <div class="row">
                     <div class=" col-12 col-sm-10 col-md-6 container-fluid">
-                        <label for="">Escolha uma categoria <span>*</span></label>
-                        <select name="" id="" class="form-select" required>
+                        <label for="categoria">Escolha uma categoria <span>*</span></label>
+                        <select name="categoria" id="" class="form-select" required>
                             <option value="" selected>Selecione uma categoria</option>
-                            <option name="" id="">Categoria 1</option>
-                            <option name="" id="">Categoria 2</ooption>
-                            <option name="" id="">Categoria 3</optiion>
-                            <option name="" id="">Categoria 4</option>
-                            <option name="" id="">Categoria 5</option>
+                            <option name="1" id="">Categoria 1</option>
+                            <option name="2" id="">Categoria 2</ooption>
+                            <option name="3" id="">Categoria 3</optiion>
+                            <option name="4" id="">Categoria 4</option>
+                            <option name="5" id="">Categoria 5</option>
                         </select>
     
-                        <label for="">Dê um Nome para o trabalho <span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Ex: Redator para blog de tecnologia" required>
+                        <label for="nome">Dê um Nome para o trabalho <span>*</span></label>
+                        <input type="text" name="nome" class="form-control" placeholder="Ex: Redator para blog de tecnologia" required>
     
-                        <label for="">Descreva o trabalho a ser feito <span>*</span></label>
-                        <textarea name="" id="" cols="30" rows="5" required class="form-control"></textarea>
+                        <label for="descricao">Descreva o trabalho a ser feito <span>*</span></label>
+                        <textarea name="descricao" id="" cols="30" rows="5" required class="form-control"></textarea>
                     </div>
                     <div class="col-12 col-sm-10 col-md-6 container-fluid">
-                        <label for="">Quais habilidades são desejadas? <span>*</span></label>
-                        <select name="" id="" class="form-control" multiple>
-                            <option value="">Habilidade 1</option>
-                            <option value="">Habilidade 2</option>
-                            <option value="">Habilidade 3</option>
-                            <option value="">Habilidade 4</option>
-                            <option value="">Habilidade 5</option>
+                        <label for="habilidades">Quais habilidades são desejadas? <span>*</span></label>
+                        <select name="habilidades" id="" class="form-control" multiple>
+                            <option value="1">Habilidade 1</option>
+                            <option value="2">Habilidade 2</option>
+                            <option value="3">Habilidade 3</option>
+                            <option value="4">Habilidade 4</option>
+                            <option value="5">Habilidade 5</option>
                         </select>
     
-                        <label for="" class="pub_prazo">Prazo<span>*</span></label>
-                        <input type="datetime-local" class="form-control" required>
+                        <label for="prazo" class="pub_prazo">Prazo<span>*</span></label>
+                        <input type="date" name="prazo" class="form-control" required>
                     </div>
 
                     <input type="submit" value="Publicar Projeto" class="btn btn-primary pub_button">

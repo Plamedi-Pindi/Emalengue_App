@@ -4,6 +4,7 @@ const app = express()
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 
+
 //Routes imports
 const homeRoute = require('./routes/site/homeRoute')
 const freelancerRoute = require('./routes/site/freelancerRoute')
