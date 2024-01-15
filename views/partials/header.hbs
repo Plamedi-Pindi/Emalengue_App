@@ -11,8 +11,14 @@
                     <a href="#"><i class="bi bi-whatsapp"></i></a>
                     <a href="#"> <i class="bi bi-instagram"></i></a>
                 </div>
-                <a href="/dashboard" class="nav-login1"><i class="bi bi-person-circle"></i>Login</a>
-                <a href="/cadastrar" class="nav-cadastrar1">Cadastrar-se</a>
+                 {{#if user}}
+                    <a href="/logout" class="nav-login1"><i class="bi bi-grid-fill"></i></i>Painel</a>
+                    <a href="/logout" class="nav-login1"><i class="bi bi-box-arrow-left"></i></i>Logout</a>
+
+                 {{else}}
+                    <a href="/login" class="nav-login1"><i class="bi bi-person-circle"></i>Login</a>
+                    <a href="/cadastrar" class="nav-cadastrar1">Cadastrar-se</a>
+                 {{/if }}
             </div>
             <div class="container-fluid navbar-content ">
                 <!-- ***** LOGO ***** -->
@@ -96,8 +102,13 @@
                     </ul>
                     <!-- Mobile Ligin and Register -->
                     <div class="login-reg">
-                        <a href="dashboard/index.html" class="nav-login"> <i class="bi bi-person-circle"></i>Login</a>
-                        <a href="cadastro.html" class="nav-cadastrar">Cadastrar-se</a>
+                        {{#if user}}
+                            <a href="/logout" class="nav-login"> <i class="bi bi-box-arrow-left"></i></i>Logout</a>
+                            <a href="/dashboard" class="nav-login"><i class="bi bi-grid-fill"></i></i></i>Meu Painel</a>
+                        {{else }}
+                            <a href="/login" class="nav-login"> <i class="bi bi-person-circle"></i>Login</a>
+                            <a href="cadastro.html" class="nav-cadastrar">Cadastrar-se</a>
+                        {{/if }}
                     </div>
                     <div class="midia">
                         <a href="#"> <i class="bi bi-facebook"></i></a>

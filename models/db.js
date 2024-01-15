@@ -1,4 +1,4 @@
-/**IMPORT CONFIG ================================================= */
+/**IMPORT CONFIG ========================================================= */
 const Sequelize = require('sequelize')
 const dotenv = require('dotenv')
 
@@ -6,7 +6,7 @@ const dotenv = require('dotenv')
 dotenv.config({path: './env'})
 
 const sequelize = new Sequelize(
-    process.env.DATABASE, 
+    'emalengue', 
     'root',
     process.env.PASSWORD, 
     {

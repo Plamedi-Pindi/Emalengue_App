@@ -1,10 +1,11 @@
 /**IMPORTS CONFIG ==================================================== */
 const express = require('express')
 const register = express.Router()
-const registerControllet = require('../../controllers/auth/registerController')
+const registerController = require('../../controllers/auth/registerController')
 
 // Route
-register.get('/', registerControllet.index)
+register.get('/', registerController.index)
+register.post('/enviar_registro', registerController.store)
 
 /**EXPORT ================================================================ */
 module.exports = register
