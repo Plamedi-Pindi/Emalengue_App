@@ -4,19 +4,22 @@
         <div class="container">
             <div class="form_container">
                 <h2>Cadastro</h2>
-                <form action="/cadastrar/enviar_registro" class="row" method="post">
+                <form action="/cadastrar/enviar_registro" method="post" class="row"  id="register_form">
                     <div class="col-10 col-md-5 container-fluid">
                         <label for="nome">Nome:</label>
-                        <input type="text" name="name" class="form-control" placeholder="Seu nome..">
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Seu nome.." >
 
                         <label for="email">Email:</label>
-                        <input type="email" name="email" class="form-control" placeholder="...@gmail.com">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="...@gmail.com" >
+                        <div id="email_warnig"></div>
 
                         <label for="password">Senha:</label>
-                        <input type="password" name="password" class="form-control" placeholder="Senha">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
+                        <div id="password_warnig"></div>
 
                         <label for="confirmPassword">Confirmar Senha:</label>
-                        <input type="password" name="confirmPassword" class="form-control" placeholder="Confirmar senha">
+                        <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirmar senha">
+                        <div id="confPw_warnig" ></div>
                     </div>
                     <div class="col-10 col-md-5 container-fluid">
                         <label for="">Pais:</label>

@@ -12,7 +12,7 @@ const index = (req, res) => {
 // Token 
 const maxAge =3 * 24 * 120;
 const createToken = (id) => {
-    return jwt.sign({id}, 'emalengue app', {expiresIn: maxAge})
+    return  jwt.sign({id}, 'emalengue app', {expiresIn: maxAge})
 }
 
 //Store
@@ -25,20 +25,17 @@ const store = async (req, res) => {
         email: req.body.email,
         password: encrypted 
 
-    }).then(() => {
-        res.redirect('/cadastrar')
+    }).then( async() => {
+        //cookie
+        const user =  await User.findOne({row:true, where: { email } })
+        const token = createToken(user.id) 
+         res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000})
+
+        res.redirect('/')
+        
     }).catch((err) => {
         console.log('Erro ao cadastrar! ' + err);
     })
-
-    if (create) {
-        const user = await User.findOne({where: { email } })
-        const token = createToken(user.id) 
-       
-        //cookie
-        res.cookie('jwt', token, {httpOnly: true, maxAge: maxAge * 1000})
-    }
-
 
 }
 

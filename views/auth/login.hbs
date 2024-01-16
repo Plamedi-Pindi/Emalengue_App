@@ -4,15 +4,17 @@
         <div class="container">
             <div class="form_container">
                 <h2>Login</h2>
-                <form action="/login/verificacao" class="row" method="post">
+                <form action="/login/verificacao" class="row" method="post" id="login_form">
                     <div class="col-10 col-md-10 container-fluid">
                        
 
                         <label for="email">Email:</label>
-                        <input type="email" name="email" class="form-control" placeholder="...@gmail.com">
+                        <input type="email" name="email" id="login_email" class="form-control" placeholder="...@gmail.com">
+                        <div id="email_warnig1"></div>
 
                         <label for="password">Senha:</label>
-                        <input type="password" name="password" class="form-control" placeholder="Senha">
+                        <input type="password" name="password" class="form-control" placeholder="Senha" id="login_password">
+                        <div id="password_warnig1"></div>
                     </div>
                     {{!-- <div class="col-10 col-md-5 container-fluid">
                         <label for="">Pais:</label>
