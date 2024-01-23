@@ -11,7 +11,13 @@ const index = (req, res) => {
     })
 }
 
+
+const error = (req, res) => {
+    res.render('site/error')
+}
+
 /**EXPORTS CONFIG ============================================== */
 module.exports = {
-    index
+    index,
+    error,
 }

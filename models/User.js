@@ -1,7 +1,13 @@
 /**IMPORT ========================================================= */
 const db = require('./db')
 
+
 const User = db.sequelize.define('users',{
+    id:{
+        type: db.Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
     nome: {
         type: db.Sequelize.STRING,
         allowNull: false

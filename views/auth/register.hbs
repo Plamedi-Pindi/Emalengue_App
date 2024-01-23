@@ -1,37 +1,114 @@
-    {{> header }}
-    <!-- MAIN START -->
-    <main class="cadastro_form">
-        <div class="container">
-            <div class="form_container">
-                <h2>Cadastro</h2>
-                <form action="/cadastrar/enviar_registro" method="post" class="row"  id="register_form">
-                    <div class="col-10 col-md-5 container-fluid">
-                        <label for="nome">Nome:</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Seu nome.." >
+{{> header }}
+<!-- MAIN START -->
+<main class="cadastro_form">
+    <div class="container">
+        <div class="form_container">
+            <h2>Cadastro</h2>
+            <form class="row" id="register_form">
+                <div class="col-10 col-md-5 container-fluid">
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Seu nome.." required>
 
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="...@gmail.com" >
-                        <div id="email_warnig"></div>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="...@gmail.com"
+                        required>
+                    <div id="email_warnig"></div>
 
-                        <label for="password">Senha:</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Senha">
-                        <div id="password_warnig"></div>
+                    <label for="password">Senha:</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Senha"
+                        required>
+                    <div id="password_warnig"></div>
 
-                        <label for="confirmPassword">Confirmar Senha:</label>
-                        <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirmar senha">
-                        <div id="confPw_warnig" ></div>
-                    </div>
-                    <div class="col-10 col-md-5 container-fluid">
-                        <label for="">Pais:</label>
-                        <input type="text" name="" id="" class="form-control">
+                    <label for="confirmPassword">Confirmar Senha:</label>
+                    <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
+                        placeholder="Confirmar senha" required>
+                    <div id="confPw_warnig"></div>
+                </div>
+                <div class="col-10 col-md-5 container-fluid">
+                    <label for="">Pais:</label>
+                    <input type="text" name="" id="" class="form-control">
 
-                        <label for="">Telefone:</label>
-                        <input type="tel" class="form-control" placeholder="+244 9....">
-                    </div>
-                    <input type="submit" class="btn btn-primary" value="Cadastrar-se">
-                </form>
-            </div>
+                    <label for="">Telefone:</label>
+                    <input type="tel" class="form-control" placeholder="+244 9....">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Cadastrar-se">
+            </form>
         </div>
-    </main>
-    <!-- MAIN END -->
-    {{> footer }}
+    </div>
+</main>
+<!-- MAIN END -->
+
+<script>
+    const password_warnig = document.getElementById("password_warnig")
+    const confPw_warnig = document.getElementById("confPw_warnig")
+    const email_warnig = document.getElementById("email_warnig")
+
+
+    password_warnig.style.display = 'none'
+    confPw_warnig.style.display = 'none'
+    email_warnig.style.display = 'none'
+
+    const form = document.querySelector('#register_form')
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const confirmPassword = form.confirmPassword.value
+        const password = form.password.value
+        const name = form.name.value
+        const email = form.email.value
+
+        password_warnig.innerHTML = " "
+        confPw_warnig.innerHTML = " "
+        password_warnig.style.display = 'none'
+        confPw_warnig.style.display = 'none'
+        email_warnig.style.display = 'none'
+
+
+        if (password.length < 6) {
+            //e.preventDefault()
+            password_warnig.style.display = 'block'
+            password_warnig.innerHTML = "Senha não pode conter menos de 6 carateres"
+
+        } else if (confirmPassword.length < 6) {
+            e.preventDefault()
+            confPw_warnig.style.display = 'block'
+            confPw_warnig.innerHTML = "Confirmação da Senha não pode conter menos de 6 carateres"
+
+        } else if (confirmPassword !== password) {
+            e.preventDefault()
+            confPw_warnig.style.display = 'block'
+            confPw_warnig.innerHTML = "A senha de confirmação não deve ser diferente"
+        } else {
+
+            try {
+
+                const response = await fetch('/cadastrar/enviar_registro', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name, email, password, confirmPassword })
+                })
+
+                const result = await response.json()
+                if (result[0] === 1) {
+                    email_warnig.style.display = 'block'
+                    email_warnig.innerHTML = result[1]
+                }
+                else if(result.user){
+                    location.assign('/')
+                }
+
+            } catch (err) {
+                console.log("Fetch error Front: " + err )
+
+            }
+
+        }
+
+    })
+
+
+
+</script>
+{{> footer }}
