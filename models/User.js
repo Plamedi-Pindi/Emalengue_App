@@ -1,6 +1,6 @@
 /**IMPORT ========================================================= */
 const db = require('./db')
-
+// const bcrypt1 = require('bcrypt')
 
 const User = db.sequelize.define('users',{
     id:{
@@ -18,10 +18,28 @@ const User = db.sequelize.define('users',{
     },
     password:{
         type: db.Sequelize.STRING
+    },
+    role:{
+        type: db.Sequelize.STRING,
+        enum: db.Sequelize.ENUM('admin', 'user', 'freelancer'),
+        defaultValue: 'user'
     }
-    
 })
 
-// User.sync({force: true})
+//Creir um admin por default
+// const password = '12345678'
+// const encrypted = bcrypt1.hash(password, 10)
+// console.log(encrypted);
+
+// User.create({
+//     id:1,
+//     nome: 'Admim',
+//     email: 'Admin@gmail.com',
+//     password: encrypted,
+//     role: 'admin'
+// })
+
+
+//  User.sync({force: true})
 
 module.exports = User

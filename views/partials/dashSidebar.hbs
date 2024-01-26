@@ -1,58 +1,71 @@
-    <!-- SIDEBAR START -->
-    <div id="sidebar">
-        <nav>
-            <ul>
-                <li id="sdb-slide"><i class="bi bi-arrow-right" id="slide-icon"></i></li>
-            </ul>
+<!-- SIDEBAR START -->
+<div id="sidebar">
+    <nav>
+        <ul>
+            <li id="sdb-slide"><i class="bi bi-arrow-right" id="slide-icon"></i></li>
+        </ul>
 
-            <h3 class="sd-title">Painel de Controlo</h3>
-            <ul>
-                <li>
-                    <a href="/dashboard"><i class="bi bi-house-fill"></i>
-                        <span class="sb-content">Home</span>
-                    </a>
-                </li>
-            </ul>
+        <h3 class="sd-title">Painel de Controlo</h3>
+        <ul>
+            <li>
+                <a href="/dashboard"><i class="bi bi-house-fill"></i>
+                    <span class="sb-content">Home</span>
+                </a>
+            </li>
+        </ul>
 
-            <h3 class="sd-title">Freelancer</h3>
-            <ul>
-                <li>
-                    <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
-                        <span class="sb-content">Freelancers</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/freelancer/cadastrar"><i class="bi bi-person-fill-add"></i>
-                        <span class="sb-content">Cadastrar Freelancer</span>
-                    </a>
-                </li>
-            </ul>
+        <h3 class="sd-title">Freelancer</h3>
 
-            <h3 class="sd-title">Curso</h3>
-            <ul>
-                <li>
-                    <a href="#"><i class="bi bi-grid-fill"></i>
-                        <span class="sb-content">Cursos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#"><i class="bi bi-file-earmark-plus-fill"></i>
-                        <span class="sb-content">Novo Curso</span>
-                    </a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a href="#"><i class="bi bi-building-fill"></i>
-                        <span class="sb-content">Projetos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/dashboard/projeto/novo_projeto"><i class="bi bi-building-fill-add"></i></i>
-                        <span class="sb-content">Publicar Projeto</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <!-- SIDEBAR END -->
+        <ul>
+            {{#ifIqual user.role "admin" }}
+            <li>
+                <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
+                    <span class="sb-content">Freelancers</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="/dashboard/freelancer/cadastrar"><i class="bi bi-person-fill-add"></i>
+                    <span class="sb-content">Cadastrar Freelancer</span>
+                </a>
+            </li>
+            {{/ifIqual }}
+
+            {{#ifIqual user.role "freelancer" }}
+            <li>
+                <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
+                    <span class="sb-content">Freelancers</span>
+                </a>
+
+            </li>
+            {{/ifIqual }}
+        </ul>
+
+        <h3 class="sd-title">Curso</h3>
+        <ul>
+            <li>
+                <a href="#"><i class="bi bi-grid-fill"></i>
+                    <span class="sb-content">Cursos</span>
+                </a>
+            </li>
+            <li>
+                <a href="#"><i class="bi bi-file-earmark-plus-fill"></i>
+                    <span class="sb-content">Novo Curso</span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="#"><i class="bi bi-building-fill"></i>
+                    <span class="sb-content">Projetos</span>
+                </a>
+            </li>
+            <li>
+                <a href="/dashboard/projeto/novo_projeto"><i class="bi bi-building-fill-add"></i></i>
+                    <span class="sb-content">Publicar Projeto</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!-- SIDEBAR END -->

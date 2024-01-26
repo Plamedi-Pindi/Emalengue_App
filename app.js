@@ -6,8 +6,6 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const { checkUsser} = require('./middleware/authMiddleware')
 
-
-
 //Routes imports
 const homeRoute = require('./routes/site/homeRoute')
 const freelancerRoute = require('./routes/site/freelancerRoute')
@@ -24,6 +22,8 @@ const registerRoute = require('./routes/auth/registerRoute')
 
 
 /**  Handlebars Config =====================================================*/
+
+
 app.engine('hbs', handlebars.engine({
     defaultLayout: 'main',
     extname: 'hbs',
@@ -31,9 +31,28 @@ app.engine('hbs', handlebars.engine({
         allowProtoPropertiesByDefault: true,
         allowProtoMethodsByDefault: true,
     },
-    // partialsDir: 'views/partials'
-
+    helpers:{
+      hello:  ()=>{return "Ola, plamedi Pindi"}, 
+      ifIqual:  (v1, v2, options)=> {
+          if(v1 === v2){
+            return options.fn(this)
+          }else{
+            return options.inverse(this)
+          }
+      }
+    }
+    // partialsDir: 'views/partials',
 }))
+
+// handlebars.registerHelper("if", function(v1, v2, options) {
+//     if (v1 === v2) {
+//       return options.fn(this);
+//     }
+//     return options.inverse(this);
+//   });
+
+
+
 app.set('view engine', 'hbs')
 
 /**Middleware ===================================================== */
