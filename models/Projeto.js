@@ -11,7 +11,7 @@ const Projeto = db.sequelize.define('projetos', {
         type: db.Sequelize.STRING,
         allowNull: false,
     },
-    descricao: {
+    descricao: { 
         type: db.Sequelize.TEXT,
     },
     prazo: {
@@ -25,7 +25,7 @@ const Projeto = db.sequelize.define('projetos', {
     }
 })
 
-// Projeto.sync({ force: 'true' })
+Projeto.sync()
 
 
 /**EXPORTS ============================================ */

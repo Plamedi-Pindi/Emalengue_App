@@ -48,6 +48,6 @@ const Freelancer = db.sequelize.define('freelancers', {
 })
 
 //Sync data in DB
-// Freelancer.sync({force:true})
+Freelancer.sync()
 
 module.exports = Freelancer

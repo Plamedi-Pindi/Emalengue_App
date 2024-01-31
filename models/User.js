@@ -21,25 +21,15 @@ const User = db.sequelize.define('users',{
     },
     role:{
         type: db.Sequelize.STRING,
-        enum: db.Sequelize.ENUM('admin', 'user', 'freelancer'),
+        enum: db.Sequelize.ENUM('admin', 'gerente', 'user', 'freelancer'),
         defaultValue: 'user'
     }
+},
+{
+    // timestamps: false
 })
 
-//Creir um admin por default
-// const password = '12345678'
-// const encrypted = bcrypt1.hash(password, 10)
-// console.log(encrypted);
 
-// User.create({
-//     id:1,
-//     nome: 'Admim',
-//     email: 'Admin@gmail.com',
-//     password: encrypted,
-//     role: 'admin'
-// })
-
-
-//  User.sync({force: true})
+ User.sync()
 
 module.exports = User
