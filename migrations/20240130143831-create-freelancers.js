@@ -10,18 +10,6 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      email: {
-        type: Sequelize.STRING,
-        unique: true,
-      },
-      senha: {
-        type: Sequelize.STRING,
-        // unique:true
-      },
       pais: {
         type: Sequelize.STRING
       },
@@ -46,6 +34,13 @@ module.exports = {
       imagem: {
         type: Sequelize.STRING
       },
+    //   userId:{
+    //     type: Sequelize.INTEGER,
+    //     references:{
+    //         model: 'users',
+    //         key: 'id',   
+    //     }
+    // },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,

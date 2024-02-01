@@ -26,6 +26,13 @@ module.exports = {
       habilidade: {
         type: Sequelize.INTEGER,
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id',
+        }
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,

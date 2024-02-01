@@ -1,5 +1,5 @@
 /**IMPORTS CONFIG ==================================================== */
-const User = require('../../models/User')
+const User = require('../../models/User') 
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { UniqueConstraintError } = require('sequelize')
@@ -39,7 +39,7 @@ const store = async (req, res, next) => {
             nome: name,
             email: email,
             password: encrypted
-    
+     
         }).then(async () => {
             //cookie
             const user = await User.findOne({ row: true, where: { email } })

@@ -18,6 +18,8 @@ const adminFreeRoute = require('./routes/admin/freelancerRoute')
 const adminProjetRoute = require('./routes/admin/projetoRoute')
 const loginRoute = require('./routes/auth/loginRoute')
 const registerRoute = require('./routes/auth/registerRoute')
+const { sequelize } = require('./models/db')
+
 
 
 
@@ -66,6 +68,8 @@ app.use(cookieParser())
 
 
 /**SERVER =================================================================== */
+sequelize.sync()
+
 app.listen(8080, () => {
     console.log('Server up!');
 })

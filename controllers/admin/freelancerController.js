@@ -1,6 +1,7 @@
 /**IMPORTS CONFIG ===========================================================*/
 
 const Freelancer = require('../../models/Freelancer')
+const User = require('../../models/User')
 const multer = require('multer')
 const bcrypt = require('bcrypt')
 const { name } = require('body-parser')
@@ -52,29 +53,45 @@ const create = (req, res) => {
 const store = async (req, res) => {
 
     const password = req.body.password
-    const img = req.files['img'][0].filename
+    const img = req.files[img][0].filename
     const cv = req.files['cv'][0].filename
     const bi = req.files['identification'][0].filename
     const encryptdePw = await bcrypt.hash(password, 10) //Hashing password
+    const email = req.body.email
+    
+    //Registra primeiramente com usuario
+    await User.create({
+        nome: req.body.name,
+        email: email, 
+        password: encryptdePw,
+        role: 'freelancer'
+    }).then( async ()=> {
+        const user = await User.findOne({ row: true, where: { email } })
+        
+        // Registra como freelancer
+        const fr = Freelancer.create({
+            pais: req.body.country,
+            provincia: req.body.province,
+            habilidades: req.body.skills,  
+            certificacoes: req.body.certification,
+            sobre: req.body.about,
+            imagem: img,
+            bi: bi,
+            cv: cv,
+            user_id: user.id
 
-    Freelancer.create({
-        name: req.body.name,
-        email: req.body.email,
-        senha: encryptdePw,
-        pais: req.body.country,
-        provincia: req.body.province,
-        habilidades: req.body.skills,
-        certificacoes: req.body.certification,
-        sobre: req.body.about,
-        imagem: img,
-        bi: bi,
-        cv: cv
-    }).then(() => {
-        res.redirect('/dashboard/freelancer')
-        // res.send('Freelancer cadastrado com sucesso!');
+        }).then(() => {
+            // res.redirect('/dashboard/freelancer')
+            res.status(200).json(fr)
+ 
+        }).catch((err) => {
+            console.log(`Erro ao cadastrar freelancer: ${err}`);
+        })
+
     }).catch((err) => {
-        console.log(`Erro ao cadastrar freelancer: ${err}`);
+        console.log("Erro ao cadastrar o usuario: " + err);
     })
+
 
 }
 

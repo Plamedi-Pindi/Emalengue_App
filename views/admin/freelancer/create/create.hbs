@@ -8,7 +8,7 @@
             <!-- <a href="index.html" class="logo">eMaLENGUE</a> -->
             <h2>Cadastra freelancer</h2>
             <!-- Form start -->
-            <form action="/dashboard/freelancer/enviar_cadastro", method="post" enctype="multipart/form-data">
+            <form enctype="multipart/form-data" id="new_freelancer_form">
                 <div class="row">
                     <!-- update profile photo -->
                     <div class="col-10  fr_rg_photo container-fluid">
@@ -19,16 +19,16 @@
                     <div class="col-10 col-md-5 fr_rg_personalData container-fluid">
                         <!-- Name -->
                         <label for="name">Nome <span>*</span></label>
-                        <input type="text" placeholder="Seu nome..." class="form-control" name="name" >
+                        <input type="text" placeholder="Seu nome..." class="form-control" name="name">
                         <!-- Email -->
                         <label for="email">Email <span>*</span></label>
-                        <input type="text" placeholder="...@gmail.com" class="form-control" name="email" >
+                        <input type="text" placeholder="...@gmail.com" class="form-control" name="email">
                         <!-- Password -->
                         <label for="password">Senha <span>*</span></label>
-                        <input type="password" placeholder="" class="form-control" name="password" >
+                        <input type="password" placeholder="" class="form-control" name="password">
                         <!-- Country -->
                         <label for="country">Pais <span>*</span></label>
-                        <select name="country" id="" class="form-select" >
+                        <select name="country" id="" class="form-select">
                             <option value="Angola" selected>Angola</option>
                             <option value="Amerca">Amerca</option>
                             <option value="Argentina">Argentina</option>
@@ -38,7 +38,7 @@
 
                         <!-- Province -->
                         <label for="province">Provincia <span>*</span></label>
-                        <input type="text" placeholder="Provincia" class="form-control" name="province" > 
+                        <input type="text" placeholder="Provincia" class="form-control" name="province">
                     </div>
 
                     <!-- Proffssional Information -->
@@ -46,26 +46,26 @@
 
                         <!-- Habiliteis -->
                         <label for="skills">Principais Habilidades <span>*</span></label>
-                        <input type="text" placeholder="HTML, JS, CSS..." class="form-control" name="skills" >
+                        <input type="text" placeholder="HTML, JS, CSS..." class="form-control" name="skills">
 
                         <!-- Cetification -->
                         <label for="certification">Certificações <span>*</span></label>
-                        <input type="text" placeholder="Certificações" class="form-control" name="certification" >
+                        <input type="text" placeholder="Certificações" class="form-control" name="certification">
 
                         <!-- About User -->
                         <label for="about">Sobre mim <span>*</span></label>
                         <textarea name="about" id="" cols="30" rows="7" placeholder="Escreva sobre você..."
-                            class="form-control" ></textarea>
+                            class="form-control"></textarea>
                     </div>
 
                     <!-- update Docs -->
                     <div class="col-10 col-md-5 container-fluid">
                         <label for="identification">Anexar Bilhete de Identidade <span>*</span></label>
-                        <input type="file" placeholder="" name="identification" class="form-control" >
+                        <input type="file" placeholder="" name="identification" class="form-control">
                     </div>
                     <div class="col-10 col-md-5 fr_rg_doc container-fluid">
                         <label for="cv">Anexar CV <span>*</span></label>
-                        <input type="file" name="cv" class="form-control" >
+                        <input type="file" name="cv" class="form-control">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -76,4 +76,55 @@
     </div>
 </main>
 <!-- MAIN END -->
+
+{{!-- SCRIPPT --}}
+<script>
+    const form = document.getElementById('new_freelancer_form')
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        const img = form.img.value
+        console.log(img)
+        const name = form.name.value
+        const email = form.email.value
+        const password = form.password.value
+        const country = form.country.value
+        const province = form.province.value
+        const skills = form.skills.value
+        const certification = form.certification.value
+        const about = form.about.value
+        const bi = form.identification
+        const cv = form.cv.files
+
+        const data = {
+            img,
+            name,
+            email, 
+            password, 
+            country, 
+            province,
+            skills, 
+            certification, 
+            about, 
+            bi, 
+            cv}
+
+        try {
+            const response = await fetch('/dashboard/freelancer/enviar_cadastro', {
+                method: 'POST',
+                headers: {
+                    "Content-type": "/applicatiion/json"
+                },
+                body: JSON.stringify(data)
+            })
+
+            const result = await response.json()
+            console.log(result)
+        } catch (err) {
+
+        }
+    })
+</script>
+
 {{> dashFooter }}

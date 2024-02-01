@@ -22,10 +22,22 @@ const Projeto = db.sequelize.define('projetos', {
     },
     habilidade: {
         type: db.Sequelize.INTEGER,
-    }
+    }, 
+    // user_id: {
+    //     type: db.Sequelize.INTEGER,
+    //     references: {
+    //       model: 'users',
+    //       key: 'id',
+    //     }
+    //   },
 })
 
-Projeto.sync()
+// db.sequelize.sync({ force: true });
+// Projeto.sync()
+// (async () => {
+//     await sequelize.sync({ force: true });
+//     // Code here
+//   })(); 
 
 
 /**EXPORTS ============================================ */

@@ -1,6 +1,8 @@
 /**IMPORT ========================================================= */
+const Freelancer = require('./Freelancer')
+const Projeto = require('./Projeto')
 const db = require('./db')
-// const bcrypt1 = require('bcrypt')
+
 
 const User = db.sequelize.define('users',{
     id:{
@@ -29,7 +31,23 @@ const User = db.sequelize.define('users',{
     // timestamps: false
 })
 
+// Association With Freelancer
+User.hasOne(Freelancer, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    foreignKey: { name:'user_id' },
+    allowNull: false
+})
+// Freelancer.belongsTo(User);
 
- User.sync()
+//Association With Projeto
+User.hasOne(Projeto, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+Projeto.belongsTo(User); 
+
+User.sync()
 
 module.exports = User
+
