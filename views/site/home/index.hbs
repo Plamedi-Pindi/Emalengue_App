@@ -259,16 +259,16 @@
             <div class="contratar_freelancers-swiper ">
                 <!-- container -->
                 <div class="c_f_container swiper-wrapper">
-                    {{!-- {{#each freelancers}} --}}
+                    {{#each freelancers}}
                     <!-- Card Start -->
                     <div class="c_f_card swiper-slide">
                         <div class="c_f_img">
-                            <img src="site/img/Freelancer/1.jpg" alt="">
+                            <img src="/admin/img/freelancers/{{ imagem }}" alt="">
                         </div>
                         <div class="c_f_content">
-                            <h5></h5>
-                            <p>Desenvolvedor de Software</p>
-                            <a href="/perfildofreelancer">Visualizar Perfil</a>
+                            <h5> {{ user.nome }} </h5>
+                            <p>{{ especialidade }}</p>
+                            <a href="/perfildofreelancer/{{ id }}">Visualizar Perfil</a>
                         </div>
                         <div class="c_f_skill">
                             <p>Skills</p>
@@ -280,7 +280,7 @@
                     </div>
                     <!-- Card End -->
                        
-                    {{!-- {{/each}} --}}
+                    {{/each}}
                     <!-- Card Start -->
                     {{!-- <div class="c_f_card swiper-slide">
                         <div class="c_f_img">

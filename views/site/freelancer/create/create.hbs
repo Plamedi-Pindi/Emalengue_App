@@ -1,17 +1,44 @@
-{{> dashHeader }}
-{{> dashSidebar }}
-
+{{> header }}
 <!-- MAIN START -->
-<main>
-    <div class="container ">
-        <div class="fr_rg_container">
-            <!-- <a href="index.html" class="logo">eMaLENGUE</a> -->
-            <h2>Cadastra freelancer</h2>
+<main class="cadastro_form">
+    <div class="container">
+        <div class="fr_reg_form_container">
+            <h2>Cadastro</h2>
+            {{!-- <form class="row" id="register_form">
+                <div class="col-10 col-md-5 container-fluid">
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Seu nome.." required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="...@gmail.com"
+                        required>
+                    <div id="email_warnig"></div>
+
+                    <label for="password">Senha:</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Senha"
+                        required>
+                    <div id="password_warnig"></div>
+
+                    <label for="confirmPassword">Confirmar Senha:</label>
+                    <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
+                        placeholder="Confirmar senha" required>
+                    <div id="confPw_warnig"></div>
+                </div>
+                <div class="col-10 col-md-5 container-fluid">
+                    <label for="">Pais:</label>
+                    <input type="text" name="" id="" class="form-control">
+
+                    <label for="">Telefone:</label>
+                    <input type="tel" class="form-control" placeholder="+244 9....">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Cadastrar-se">
+            </form> --}}
+
             <!-- Form start -->
-            <form enctype="multipart/form-data" id="new_freelancer_form">
+            <form enctype="multipart/form-data" id="freelancer_form">
                 <div class="row">
                     <!-- update profile photo -->
-                    <div class="col-10  fr_rg_photo container-fluid"> 
+                    <div class="col-10 col-md-8 fr_rg_photo container-fluid">
                         <img src="/admin/img/profile.jpg" alt="" id="fr_rg_photo_img">
                         <input type="file" class="form-control" id="fr_rg_photo_input" name="img">
                     </div>
@@ -85,9 +112,9 @@
 </main>
 <!-- MAIN END -->
 
-{{!-- SCRIPPT --}}
 <script>
-    const form = document.getElementById('new_freelancer_form')
+
+    const form = document.getElementById('freelancer_form')
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault()
@@ -103,15 +130,16 @@
             const result = await response.json()
             console.log(result)
 
-            if(result.fr){
-                location.assign('/dashboard/freelancer')
+            if (result.fr) {
+                location.assign('/perfildofreelancer/'+ result.fr.id)
             }
         } catch (err) {
             console.log("Ocorreu um erro com o Fetch(): " + err)
         }
 
     })
-    
-</script>
 
-{{> dashFooter }}
+
+
+</script>
+{{> footer }}

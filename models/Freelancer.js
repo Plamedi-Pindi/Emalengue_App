@@ -1,12 +1,21 @@
 /**IMPORTS CONFIG ========================================================= */
 //DB connection
 const db = require('./db')
+const User = require('./User')
+
 
 const Freelancer = db.sequelize.define('freelancers', {
     id:{
         type: db.Sequelize.INTEGER, 
         autoIncrement: true,
         primaryKey: true 
+    },
+    phone: {
+        type:db.Sequelize.STRING,
+        
+    },
+    especialidade: {
+        type:db.Sequelize.STRING,
     },
     pais:{
         type: db.Sequelize.STRING 

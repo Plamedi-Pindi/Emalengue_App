@@ -3,11 +3,11 @@
     <main>
         <!-- BANNER -->
         <div class="fr_profil_banner">
-            <h2>Perfil do Freelancer</h2>
+            <h2>Perfil do Freelancer: {{ freelancer.user.nome }} </h2>
             <span class="fr_pr_line"></span>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/freelancer">Perfil do freelancer</a></li>
+                <li><a href="/freelancer">Perfil do freelancer </a></li>
             </ul>
         </div>
         <!-- MAIN CONTAINER START -->
@@ -18,7 +18,7 @@
                     <div class="fr_pr_border">
                         <!-- FREELANCER MAIN DATA -->
                         <figure>
-                            <img src="site/img/profil/team-3.jpg" alt="">
+                            <img src="/admin/img/freelancers/{{ freelancer.imagem }}" alt="">
                             <figcaption>
                                 <ul>
                                     <li><a href="#"><i class="bi bi-facebook"></i></a></li>
@@ -28,20 +28,20 @@
                                 </ul>
                             </figcaption>
                         </figure>
-                        <h3>Nome do Freelancer</h3>
-                        <p>Profissão: <span>Engenheiro de Software</span></p>
+                        <h3> {{ freelancer.user.nome }} </h3>
+                        <p>Especialidade: <span> {{ freelancer.especialidade }} </span></p>
                         <div class="fr_pr_phone">
                             <h4><i class="bi bi-telephone-fill"></i> Telefone</h4>
-                            <p>(+244) 999 999 999</p>
+                            <p>(+244) {{ freelancer.phone }}</p>
                         </div>
                         <div class="fr_pr_email">
                             <h4><i class="bi bi-envelope-at-fill"></i> Email</h4>
-                            <p>freelancer@gmail.com</p>
+                            <p> {{ freelancer.user.email }} </p>
                         </div>
-                        <div class="fr_pr_website">
+                        {{!-- <div class="fr_pr_website">
                             <h4> <i class="bi bi-globe"></i> Website</h4>
                             <p>www.freelancer.co.ao</p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!-- Profil work start -->
@@ -96,7 +96,7 @@
                         <div class="row d-flex flex-row justify-content-between">
                             <figure class="col-12 col-sm-6 col-xl-4">
                                 <div class="fr_view">
-                                    <img src="site/img/Freelancer/cards/1.jpg" alt="">
+                                    <img src="/site/img/Freelancer/cards/1.jpg" alt="">
                                     <div class="fr_pr_work_view">
                                         <a href="#"><i class="bi bi-eye-fill"></i></a>
                                     </div>
@@ -115,7 +115,7 @@
                             </figure>
                             <figure class="col-12 col-sm-6 col-xl-4 ">
                                 <div class="fr_view">
-                                    <img src="site/img/Freelancer/cards/2.jpg" alt="">
+                                    <img src="/site/img/Freelancer/cards/2.jpg" alt="">
                                     <div class="fr_pr_work_view">
                                         <a href="#"><i class="bi bi-eye-fill"></i></a>
                                     </div>
@@ -133,7 +133,7 @@
                             </figure>
                             <figure class="col-12 col-sm-6 col-xl-4 ">
                                 <div class="fr_view">
-                                    <img src="site/img/Freelancer/cards/6.jpg" alt="">
+                                    <img src="/site/img/Freelancer/cards/6.jpg" alt="">
                                     <div class="fr_pr_work_view">
                                         <a href="#"><i class="bi bi-eye-fill"></i></a>
                                     </div>
@@ -151,7 +151,7 @@
                             </figure>
                             <figure class="col-12 col-sm-6 col-xl-4 ">
                                 <div class="fr_view">
-                                    <img src="site/img/Freelancer/cards/7.jpg" alt="">
+                                    <img src="/site/img/Freelancer/cards/7.jpg" alt="">
                                     <div class="fr_pr_work_view">
                                         <a href="#"><i class="bi bi-eye-fill"></i></a>
                                     </div>

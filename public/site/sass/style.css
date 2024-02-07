@@ -987,6 +987,9 @@ main {
   }
 }
 @media (min-width: 1020px) {
+  #fr_init_section {
+    margin-top: 8rem !important;
+  }
   .fr_dis_card {
     width: 296px;
   }
@@ -1707,6 +1710,75 @@ main {
   display: none;
 }
 
+.fr_reg_form_container {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding-bottom: 2.5rem;
+}
+.fr_reg_form_container h2 {
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  padding-top: 2rem;
+  width: 200px;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+}
+.fr_reg_form_container form label {
+  margin-bottom: 8px;
+}
+.fr_reg_form_container form input {
+  margin-bottom: 10px;
+}
+.fr_reg_form_container form input[type=submit] {
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+}
+
+#freelancer_form input {
+  margin-bottom: 10px;
+}
+#freelancer_form label span {
+  color: red;
+}
+#freelancer_form label {
+  margin: 10px;
+}
+#freelancer_form .fr_rg_photo,
+#freelancer_form .fr_rg_personalData,
+#freelancer_form .fr_rg_professionalData,
+#freelancer_form .fr_rg_doc {
+  margin-bottom: 2rem;
+}
+#freelancer_form .fr_rg_photo img {
+  width: 100px;
+  height: 100px;
+}
+#freelancer_form button {
+  width: 210px;
+  margin: 0 auto;
+}
+
+@media (min-width: 720px) {
+  .fr_reg_form_container {
+    box-shadow: 2px 3px 8px #aaa;
+    border-radius: 4px;
+  }
+}
+@media (min-width: 992px) {
+  .fr_reg_form_container {
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+    background-color: #fff;
+  }
+  .cadastro_form {
+    background-color: #eee;
+  }
+}
 /****** GENERAL SITTINGS START *******/
 * {
   margin: 0;

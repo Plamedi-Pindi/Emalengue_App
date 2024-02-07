@@ -4,8 +4,8 @@ const Projeto = require('./Projeto')
 const db = require('./db')
 
 
-const User = db.sequelize.define('users',{
-    id:{
+const User = db.sequelize.define('users', {
+    id: {
         type: db.Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -18,34 +18,36 @@ const User = db.sequelize.define('users',{
         type: db.Sequelize.STRING,
         unique: true
     },
-    password:{
+    password: {
         type: db.Sequelize.STRING
     },
-    role:{
+    role: {
         type: db.Sequelize.STRING,
         enum: db.Sequelize.ENUM('admin', 'gerente', 'user', 'freelancer'),
         defaultValue: 'user'
     }
 },
-{
-    // timestamps: false
-})
+    {
+        // timestamps: false
+    })
 
 // Association With Freelancer
 User.hasOne(Freelancer, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
-    foreignKey: { name:'user_id' },
-    allowNull: false
+    foreignKey: {
+        name: 'user_id', 
+         allowNull: false
+    },
 })
-// Freelancer.belongsTo(User);
+Freelancer.belongsTo(User, {foreignKey: 'user_id'});
 
 //Association With Projeto
 User.hasOne(Projeto, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE'
 })
-Projeto.belongsTo(User); 
+Projeto.belongsTo(User);
 
 User.sync()
 

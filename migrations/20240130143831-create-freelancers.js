@@ -10,6 +10,13 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
       },
+      phone: {
+        type: Sequelize.STRING,
+
+      },
+      especialidade: {
+        type: Sequelize.STRING,
+      },
       pais: {
         type: Sequelize.STRING
       },
@@ -34,13 +41,14 @@ module.exports = {
       imagem: {
         type: Sequelize.STRING
       },
-    //   userId:{
-    //     type: Sequelize.INTEGER,
-    //     references:{
-    //         model: 'users',
-    //         key: 'id',   
-    //     }
-    // },
+      user_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id',
+          allowNull: false
+        }
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -56,7 +64,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    
+
     await queryInterface.dropTable('freelancers');
   }
 };

@@ -1,0 +1,87 @@
+.fr_reg_form_container {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    padding-bottom: 2.5rem;
+
+    h2 {
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        padding-top: 2rem;
+        width: 200px;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+    }
+
+    form {
+        label {
+            margin-bottom: 8px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        input[type=submit] {
+            width: 300px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+            margin-top: 3rem;
+        }
+    }
+
+}
+
+#freelancer_form {
+    input {
+        margin-bottom: 10px;
+    }
+
+    label span {
+        color: red;
+    }
+
+    label {
+        margin: 10px;
+    }
+
+    .fr_rg_photo,
+    .fr_rg_personalData,
+    .fr_rg_professionalData,
+    .fr_rg_doc {
+        margin-bottom: 2rem;
+    }
+
+    .fr_rg_photo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    button {
+        width: 210px;
+        margin: 0 auto;
+    }
+
+
+}
+
+@media(min-width:720px) {
+    .fr_reg_form_container {
+        box-shadow: 2px 3px 8px #aaa;
+        border-radius: 4px;
+    }
+}
+
+@media(min-width:992px) {
+    .fr_reg_form_container {
+        width: 75%;
+        margin: 0 auto;
+        margin-top: 8rem;
+        margin-bottom: 3rem;
+        background-color: #fff;
+    }
+
+    .cadastro_form {
+        background-color: #eee;
+    }
+}

@@ -10,9 +10,17 @@ const index = (req, res) => {
     })
 }
 
+//Create
+const create = (req, res) => {
+    res.render('site/freelancer/create/create', {
+        title: 'Novo Freelancer'
+    }) 
+}
+
 
 
 /**EXPORTS CONFIG ============================================== */
 module.exports = {
-    index
+    index,
+    create
 }
