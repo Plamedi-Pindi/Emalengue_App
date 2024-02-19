@@ -141,6 +141,12 @@ footer {
   margin: 0 auto;
 }
 
+#emailMessage {
+  background: rgba(243, 90, 90, 0.564);
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .nw_pr_container {
   background-color: #fff;
   margin-top: 1.5rem;

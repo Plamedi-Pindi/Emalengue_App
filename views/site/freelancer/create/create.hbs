@@ -40,22 +40,22 @@
                     <!-- update profile photo -->
                     <div class="col-10 col-md-8 fr_rg_photo container-fluid">
                         <img src="/admin/img/profile.jpg" alt="" id="fr_rg_photo_img">
-                        <input type="file" class="form-control" id="fr_rg_photo_input" name="img">
+                        <input type="file" class="form-control" id="fr_rg_photo_input" name="img" required>
                     </div>
                     <!-- Personal Information -->
                     <div class="col-10 col-md-5 fr_rg_personalData container-fluid">
                         <!-- Name -->
                         <label for="name">Nome <span>*</span></label>
-                        <input type="text" placeholder="Seu nome..." class="form-control" name="name">
+                        <input type="text" placeholder="Seu nome..." class="form-control" name="name" required>
                         <!-- Email -->
                         <label for="email">Email <span>*</span></label>
-                        <input type="text" placeholder="...@gmail.com" class="form-control" name="email">
+                        <input type="text" placeholder="...@gmail.com" class="form-control" name="email" required>
                         <!-- Password -->
                         <label for="password">Senha <span>*</span></label>
-                        <input type="password" placeholder="" class="form-control" name="password">
+                        <input type="password" placeholder="" class="form-control" name="password" required>
                         <!-- Country -->
                         <label for="country">Pais <span>*</span></label>
-                        <select name="country" id="fr_seletor" class="form-select">
+                        <select name="country" id="fr_seletor" class="form-select" required>
                             <option value="Angola" selected>Angola</option>
                             <option value="Amerca">Amerca</option>
                             <option value="Argentina">Argentina</option>
@@ -65,11 +65,11 @@
 
                         <!-- Telefone -->
                         <label for="province">Telefone <span>*</span></label>
-                        <input type="tel" placeholder="Provincia" class="form-control" name="phone">
+                        <input type="tel" placeholder="Provincia" class="form-control" name="phone" required>
 
                         <!-- Province -->
                         <label for="province">Provincia <span>*</span></label>
-                        <input type="text" placeholder="Provincia" class="form-control" name="province">
+                        <input type="text" placeholder="Provincia" class="form-control" name="province" required>
                     </div>
 
                     <!-- Proffssional Information -->
@@ -77,30 +77,30 @@
 
                         <!-- Especialidade -->
                         <label for="skills">Sua Especialidade <span>*</span></label>
-                        <input type="text" placeholder="Designer" class="form-control" name="especialidade">
+                        <input type="text" placeholder="Designer" class="form-control" name="especialidade" required>
 
                         <!-- Habiliteis -->
                         <label for="skills">Principais Habilidades <span>*</span></label>
-                        <input type="text" placeholder="HTML, JS, CSS..." class="form-control" name="skills">
+                        <input type="text" placeholder="HTML, JS, CSS..." class="form-control" name="skills" required>
 
                         <!-- Cetification -->
                         <label for="certification">Certificações <span>*</span></label>
-                        <input type="text" placeholder="Certificações" class="form-control" name="certification">
+                        <input type="text" placeholder="Certificações" class="form-control" name="certification" required>
 
                         <!-- About User -->
                         <label for="about">Sobre mim <span>*</span></label>
                         <textarea name="about" id="fr_aboutMi" cols="30" rows="7" placeholder="Escreva sobre você..."
-                            class="form-control"></textarea>
+                            class="form-control"></textarea required>
                     </div>
 
                     <!-- update Docs -->
                     <div class="col-10 col-md-5 container-fluid">
                         <label for="identification">Anexar Bilhete de Identidade <span>*</span></label>
-                        <input type="file" placeholder="" name="identification" class="form-control">
+                        <input type="file" placeholder="" name="identification" class="form-control" required>
                     </div>
                     <div class="col-10 col-md-5 fr_rg_doc container-fluid">
                         <label for="cv">Anexar CV <span>*</span></label>
-                        <input type="file" name="cv" class="form-control">
+                        <input type="file" name="cv" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Cadastrar</button>

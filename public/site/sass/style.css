@@ -869,6 +869,9 @@ main {
   font-size: 15px;
   padding-top: 8px;
 }
+#freelancer_display .fr_dis_container a {
+  text-decoration: none;
+}
 #freelancer_display .fr_dis_container .fr_dis_descriptio {
   margin-top: 10px;
   margin-bottom: 10px;

@@ -2,10 +2,12 @@
 const express = require('express')
 const projeto = express.Router()
 const projetoController = require('../../controllers/site/projetosController')
+const { requireAuth, checkUsser } = require('../../middleware/authMiddleware')
 
 
 //Route
-projeto.get('/publicarprojeto', projetoController.publicarPojeto)
+projeto.get('*', checkUsser)
+projeto.get('/publicarprojeto', requireAuth, projetoController.publicarPojeto)
 
 
 

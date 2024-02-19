@@ -14,8 +14,9 @@
 
             <h2>Publique um Projeto</h2>
 
-            <form action="/dashboard/projeto/criar" method="post">
+            <form id="projeto_form">
                 <div class="row">
+                    
                     <div class=" col-12 col-sm-10 col-md-6 container-fluid">
                         <label for="categoria">Escolha uma categoria <span>*</span></label>
                         <select name="categoria" id="" class="form-select" required>
@@ -45,6 +46,9 @@
     
                         <label for="prazo" class="pub_prazo">Prazo<span>*</span></label>
                         <input type="date" name="prazo" class="form-control" required>
+
+                        <label for="pj_img">Escolha uma Imagem <span>*</span></label>
+                        <input type="file" id="pj_img" name="pj_img" class="form-select">
                     </div>
 
                     <input type="submit" value="Publicar Projeto" class="btn btn-primary pub_button">
@@ -54,5 +58,35 @@
         </div>
     </main>
     <!-- MAIN END -->
+
+    {{!-- Script --}}
+    <script>
+
+        const form = document.getElementById('projeto_form')
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault()
+
+           const formData = new FormData(form)
+            const url = '/dashboard/projeto/criar' 
+           
+            try{
+                const response = await fetch('/dashboard/projeto/criar', {
+                    method: "POST",
+                    body: formData
+                })
+
+                const result = await response.json()
+                console.log(result)
+                if(result.project) {
+                    console.log(result)
+                    location.assign('/dashboard')
+                }
+
+            } catch (err) {
+                console.log('There is an error in Fatch(): ' + err)
+            }
+        })
+         
+    </script>
 
    {{> footer }}

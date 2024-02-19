@@ -4,9 +4,11 @@
     <!-- ********* BUSCAS E FILTRAGENS DE FREELANCERS START ********* -->
     <section id="fr_init_section">
         <div class="fr_calling row">
-            <a href="/projetos/publicarprojeto" class="btn btn-warning col-8 col-sm-4 col-md-3 container-fluid">Contratar Um
+            <a href="/projetos/publicarprojeto"
+                class="btn btn-warning col-8 col-sm-4 col-md-3 container-fluid">Contratar Um
                 Freelancer</a>
-            <a href="/freelancer/cadastrar" class="btn btn-primary col-10 col-sm-7 col-md-5 container-fluid">Ganhe Dinheiro
+            <a href="/freelancer/cadastrar" class="btn btn-primary col-10 col-sm-7 col-md-5 container-fluid">Ganhe
+                Dinheiro
                 Trabalhando Como Freelancer</a>
         </div>
         <hr class="container">
@@ -51,29 +53,31 @@
 
             <!-- Card start -->
             {{#each Freelancers }}
-                <div class="fr_dis_card col-12 col-sm-5   container-fluid">
-                    <img src="admin/img/Freelancers/{{ imagem }}" alt="">
-                    <!-- Heart -->
-                    <span class="fr_heart"><i class="bi bi-heart"></i></span>
-                    <div class="fr_dis_card_contente">
-                        <!-- freelancer name and image -->
-                        <div class="fr_dis_user">
-                            <img src="admin/img/Freelancers/{{ imagem }}" alt="">
-                            <h5> {{ name }} </h5>
-                        </div>
-                        <!-- Litle description -->
+            <div class="fr_dis_card col-12 col-sm-5   container-fluid">
+                <img src="admin/img/Freelancers/{{ imagem }}" alt="">
+                <!-- Heart -->
+                <span class="fr_heart"><i class="bi bi-heart"></i></span>
+                <div class="fr_dis_card_contente">
+                    <!-- freelancer name and image -->
+                    <div class="fr_dis_user">
+                        <img src="admin/img/Freelancers/{{ imagem }}" alt="">
+                        <h5> {{ user.nome }} </h5>
+                    </div>
+                    <!-- Litle description -->
+                    <a href="/perfildofreelancer/{{ id }}">
                         <div class="fr_dis_descriptio">
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni exercitationem veniam omnis
                             repellendus ab reiciendis?
                         </div>
-                        <!-- rate -->
-                        <div class="fr_rate">
-                            <i class="bi bi-star-fill"></i>
-                            <p>5.0 <span>(132)</span></p>
-                            <p></p>
-                        </div>
+                    </a>
+                    <!-- rate -->
+                    <div class="fr_rate">
+                        <i class="bi bi-star-fill"></i>
+                        <p>5.0 <span>(132)</span></p>
+                        <p></p>
                     </div>
                 </div>
+            </div>
             {{/each}}
             <!-- Card end -->
 
@@ -136,4 +140,3 @@
 </main>
 <!-- MAIN END -->
 {{> footer }}
-

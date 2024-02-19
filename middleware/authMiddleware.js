@@ -41,7 +41,7 @@ const checkUsser = (req, res, next) => {
                 console.log(decodedToken);
                 const user = await User.findByPk(decodedToken.id)
                 res.locals.user = user
-                
+    
                 next()
             }
         })

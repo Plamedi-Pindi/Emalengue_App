@@ -1,7 +1,7 @@
 /**IMPORTS ============================================ */
 const db = require('./db')
 
-const Projeto = db.sequelize.define('projetos', {
+const Projeto =  db.sequelize.define('projetos', {
     id: {
         type: db.Sequelize.INTEGER,
         autoIncrement: true,
@@ -10,6 +10,9 @@ const Projeto = db.sequelize.define('projetos', {
     nome: {
         type: db.Sequelize.STRING,
         allowNull: false,
+    },
+    image: { 
+        type: db.Sequelize.STRING,
     },
     descricao: { 
         type: db.Sequelize.TEXT,
@@ -32,12 +35,6 @@ const Projeto = db.sequelize.define('projetos', {
     //   },
 })
 
-// db.sequelize.sync({ force: true });
-// Projeto.sync()
-// (async () => {
-//     await sequelize.sync({ force: true });
-//     // Code here
-//   })(); 
 
 
 /**EXPORTS ============================================ */

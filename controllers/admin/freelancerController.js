@@ -66,6 +66,16 @@ const store = async (req, res) => {
     const encryptdePw = await bcrypt.hash(password, 10) //Hashing password
     const email = req.body.email
 
+    //Verify if there is alread a user with the email entered
+    const user = User.findOne({ where: { email: email}})
+    if(user) {
+        console.log("Thre is alread a user with this email!")
+    const message = {
+        code: 1,
+        desc: "Já há um usuário cadastrado com este nome. Se pretende associar este cadastro ao usuário Existente clique em 'Já sou um usário' ! "}
+        res.status(401).json(message)
+    }
+
     //Registra primeiramente com usuario
     await User.create({
         nome: req.body.name,

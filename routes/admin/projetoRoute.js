@@ -5,7 +5,7 @@ const projetoController = require('../../controllers/admin/projetoController')
 
 //Routes
 projeto.get('/novo_projeto', projetoController.create)
-projeto.post('/criar', projetoController.store)
+projeto.post('/criar', projetoController.imageUpload, projetoController.store)
 
 /**EXPORT =========================================================== */
-module.exports = projeto
+module.exports = projeto 
