@@ -65,55 +65,112 @@ const store = async (req, res) => {
     const bi = req.files['identification'][0].filename
     const encryptdePw = await bcrypt.hash(password, 10) //Hashing password
     const email = req.body.email
+    const checkbox = req.body.fr_checkbox
 
     //Verify if there is alread a user with the email entered
-    const user = User.findOne({ where: { email: email}})
-    if(user) {
-        console.log("Thre is alread a user with this email!")
-    const message = {
-        code: 1,
-        desc: "Já há um usuário cadastrado com este nome. Se pretende associar este cadastro ao usuário Existente clique em 'Já sou um usário' ! "}
+    const user = await User.findOne({row: true, where: { email: email } })
+    
+    
+    if (user && checkbox != "on") {
+        const userId = user.id
+        const freelancer = await Freelancer.findOne({ row: true, where: { user_id: userId } })
+
+        // Verify if there is a freelancer registered with this email
+        if (freelancer) {
+            const message = {
+                code: 1,
+                desc: "Já há um freelancer cadastrado com este email. Por favor, tente com um outro email! "
+            }
+            res.status(401).json(message)
+        } else {
+            const message = {
+                code: 1,
+                desc: "Já há um usuário cadastrado com este email. Se pretende associar este cadastro ao usuário Existente clique em 'Já sou um usário' ! "
+            }
+            res.status(401).json(message)
+        }
+
+    } else if (user && checkbox == "on") {
+        const userId = user.id
+        const freelancer = await Freelancer.findOne({ where: { user_id: userId } })
+        if (freelancer) {
+            const message = {
+                code: 1,
+                desc: "Já há um freelancer cadastrado com este email. Por favor, tente com um outro email! "
+            }
+            res.status(401).json(message)
+        } 
+        else {
+
+            const userId = user.id
+            // Registra como freelancer
+            await Freelancer.create({
+                pais: req.body.country,
+                provincia: req.body.province,
+                habilidades: req.body.skills,
+                certificacoes: req.body.certification,
+                sobre: req.body.about,
+                imagem: img,
+                bi: bi,
+                cv: cv,
+                user_id: user.id,
+                especialidade: req.body.especialidade,
+                phone: req.body.phone
+
+            }).then(async () => {
+                // res.redirect('/dashboard/freelancer')
+                const fr = await Freelancer.findOne({ row: true, where: { user_id: userId } })
+                res.status(200).json({ fr })
+            }).catch((err) => {
+                console.log(`Erro ao cadastrar freelancer: ${err}`);
+            })
+        }
+    } else if (!user && checkbox == "on") {
+        const message = {
+            code: 1,
+            desc: "Não há usuário com este email, desmarque a opção 'Já sou um usuário' !"
+        }
         res.status(401).json(message)
     }
+    else {
 
-    //Registra primeiramente com usuario
-    await User.create({
-        nome: req.body.name,
-        email: email,
-        password: encryptdePw,
-        role: 'freelancer'
-    }).then(async () => {
-        const user = await User.findOne({ row: true, where: { email } })
-        const userId = user.id
-        // Registra como freelancer
-        await Freelancer.create({
-            pais: req.body.country,
-            provincia: req.body.province,
-            habilidades: req.body.skills,
-            certificacoes: req.body.certification,
-            sobre: req.body.about,
-            imagem: img,
-            bi: bi,
-            cv: cv,
-            user_id: user.id,
-            especialidade: req.body.especialidade,
-            phone: req.body.phone
-
+        //Registra primeiramente com usuario
+        await User.create({
+            nome: req.body.name,
+            email: email,
+            password: encryptdePw,
+            role: 'freelancer'
         }).then(async () => {
-            // res.redirect('/dashboard/freelancer')
-            const fr = await Freelancer.findOne({ row: true, where: { user_id: userId } })
-            res.status(200).json({ fr })
+            const user = await User.findOne({ row: true, where: { email } })
+            const userId = user.id
+            // Registra como freelancer
+            await Freelancer.create({
+                pais: req.body.country,
+                provincia: req.body.province,
+                habilidades: req.body.skills,
+                certificacoes: req.body.certification,
+                sobre: req.body.about,
+                imagem: img,
+                bi: bi,
+                cv: cv,
+                user_id: user.id,
+                especialidade: req.body.especialidade,
+                phone: req.body.phone
+
+            }).then(async () => {
+                // res.redirect('/dashboard/freelancer')
+                const fr = await Freelancer.findOne({ row: true, where: { user_id: userId } })
+                res.status(200).json({ fr })
+            }).catch((err) => {
+                console.log(`Erro ao cadastrar freelancer: ${err}`);
+            })
 
         }).catch((err) => {
-            console.log(`Erro ao cadastrar freelancer: ${err}`);
+            console.log("Erro ao cadastrar o usuario: " + err);
         })
 
-    }).catch((err) => {
-        console.log("Erro ao cadastrar o usuario: " + err);
-    })
-
-
-}
+    } //End Main If
+} 
 
 //Destroy
 const destroy = (req, res) => {
@@ -127,12 +184,12 @@ const destroy = (req, res) => {
 //Download
 const downloadBI = (req, res) => {
     const id = req.params.id
-    Freelancer.findOne({ row: true, where: { id: id}}).then( posts => {
+    Freelancer.findOne({ row: true, where: { id: id } }).then(posts => {
         const file = posts.bi
         res.download(`public/admin/img/freelancers/${file}`, (err) => {
-            if(err){
+            if (err) {
                 console.log(err);
-            } 
+            }
         })
         // res.send('Ola esta funcionando') 
     })
@@ -140,12 +197,12 @@ const downloadBI = (req, res) => {
 //Download
 const downloadCV = (req, res) => {
     const id = req.params.id
-    Freelancer.findOne({ row: true, where: { id: id } }).then( posts => {
+    Freelancer.findOne({ row: true, where: { id: id } }).then(posts => {
         const file = posts.cv
         res.download(`public/admin/img/freelancers/${file}`, (err) => {
-            if(err){
+            if (err) {
                 console.log(err);
-            } 
+            }
         })
         // res.send('Ola esta funcionando') 
     })

@@ -42,17 +42,24 @@
                         <img src="/admin/img/profile.jpg" alt="" id="fr_rg_photo_img">
                         <input type="file" class="form-control" id="fr_rg_photo_input" name="img" required>
                     </div>
+
+                    <!-- Checkbox -->
+                    <div class="col-10  container-fluid" style="background-color:;">
+                        <span >Já sou um usuário</sp> <input type="checkbox" id="fr_checkbox" name="fr_checkbox">
+                    </div>
+
                     <!-- Personal Information -->
                     <div class="col-10 col-md-5 fr_rg_personalData container-fluid">
                         <!-- Name -->
-                        <label for="name">Nome <span>*</span></label>
+                        <label for="name" id="label_name">Nome <span>*</span></label>
                         <input type="text" placeholder="Seu nome..." class="form-control" name="name" required>
                         <!-- Email -->
                         <label for="email">Email <span>*</span></label>
                         <input type="text" placeholder="...@gmail.com" class="form-control" name="email" required>
+                        <div id="emailMessage"></div>
                         <!-- Password -->
-                        <label for="password">Senha <span>*</span></label>
-                        <input type="password" placeholder="" class="form-control" name="password" required>
+                        <label for="password" id="label_pw">Senha <span>*</span></label>
+                        <input type="password" placeholder="" class="form-control" name="password" min="6" required>
                         <!-- Country -->
                         <label for="country">Pais <span>*</span></label>
                         <select name="country" id="fr_seletor" class="form-select" required>
@@ -113,33 +120,59 @@
 <!-- MAIN END -->
 
 <script>
-
     const form = document.getElementById('freelancer_form')
+    const emailMessage = document.getElementById('emailMessage')
+    const fr_checkbox = document.getElementById('fr_checkbox')
+    const label_name = document.getElementById('label_name')
+    const label_pw = document.getElementById('label_pw')
+    emailMessage.style.display = 'none'
 
+    //Handle with Checkbox to analise if the user have been alread registed
+    fr_checkbox.addEventListener('click', () => {
+        const name = form.name
+        const email = form.email
+        const password = form.password
+        emailMessage.innerHTML = ""
+        emailMessage.style.display = "none"
+
+        if(fr_checkbox.checked == true){
+            name.setAttribute('type', 'hidden')              
+            password.setAttribute('type', 'hidden')
+            label_name.style.display = "none"
+            label_pw.style.display = "none"   
+        } else{
+            name.setAttribute('type', 'text')               
+            password.setAttribute('type', 'password')  
+            label_name.style.display = "block"
+            label_pw.style.display = "block"        
+        }
+    })
+    //Send data from the  front-end to the back-end
     form.addEventListener('submit', async (e) => {
         e.preventDefault()
-
         const formData = new FormData(form)
-
         try {
             const response = await fetch('/dashboard/freelancer/enviar_cadastro', {
                 method: 'POST',
                 body: formData
             })
-
             const result = await response.json()
-            console.log(result)
 
-            if (result.fr) {
-                location.assign('/perfildofreelancer/'+ result.fr.id)
+            //Handle With Existent User Massage
+            if(result.code == 1) {
+                console.log(result.desc)
+                emailMessage.style.display = "block"
+                emailMessage.innerHTML = result.desc
+            }
+
+            if(result.fr){
+                location.assign('/dashboard/freelancer') 
             }
         } catch (err) {
             console.log("Ocorreu um erro com o Fetch(): " + err)
         }
 
     })
-
-
-
+    
 </script>
 {{> footer }}
