@@ -41,13 +41,7 @@ const Freelancer = db.sequelize.define('freelancers', {
     imagem: {
         type: db.Sequelize.STRING
     },
-    // userId:{
-    //     type: db.Sequelize.INTEGER,
-    //     references:{
-    //         model: 'users',
-    //         key: 'id',
-    //     }
-    // }
+    
 
 })
 

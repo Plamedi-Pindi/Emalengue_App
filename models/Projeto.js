@@ -26,13 +26,7 @@ const Projeto =  db.sequelize.define('projetos', {
     habilidade: {
         type: db.Sequelize.INTEGER,
     }, 
-    // user_id: {
-    //     type: db.Sequelize.INTEGER,
-    //     references: {
-    //       model: 'users',
-    //       key: 'id',
-    //     }
-    //   },
+  
 })
 
 

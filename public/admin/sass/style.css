@@ -332,6 +332,101 @@ footer {
     min-width: 0px;
   }
 }
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.pj_container {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding-bottom: 1.5rem;
+  font-family: "Roboto", sans-serif;
+}
+.pj_container .pj_search {
+  width: 90%;
+  display: flex;
+  justify-content: end;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+.pj_container .pj_search_btn {
+  display: none;
+}
+.pj_container .pj_searc_form_input {
+  outline: none !important;
+  border: solid 1px #aaa !important;
+}
+.pj_container .pj_searc_form {
+  display: flex;
+}
+.pj_container .table_container {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+.pj_container table {
+  min-width: 800px !important;
+}
+.pj_container td {
+  vertical-align: middle;
+}
+.pj_container tr {
+  padding: 1002px !important;
+}
+.pj_container .pj_name {
+  font-size: 15px;
+  margin: 0;
+  color: #666;
+  font-family: "Roboto", sans-serif;
+}
+.pj_container .pj_prazo {
+  font-size: 15px;
+  margin: 0;
+  color: #666;
+  font-family: "Roboto", sans-serif;
+}
+.pj_container .pj_user {
+  font-size: 15px;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+.pj_container .pj_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+.pj_container .pj_edit {
+  background-color: rgba(2, 119, 228, 0.322);
+  color: rgb(0, 60, 255);
+}
+.pj_container .pj_delete {
+  background-color: rgba(255, 0, 0, 0.233);
+  color: red;
+}
+.pj_container .pj_view {
+  background-color: rgba(0, 128, 0, 0.301);
+  color: green;
+  border: none;
+}
+.pj_container .pj_edit,
+.pj_container .pj_delete,
+.pj_container .pj_view {
+  padding: 4px;
+  border-radius: 4px;
+}
+
+@media (min-width: 720px) {
+  .pj_search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+    margin: 0 auto;
+    padding-top: 10px;
+  }
+  .pj_search_btn {
+    display: block !important;
+    font-size: 15px;
+  }
+}
 /***** IMPORTING FILE END *****/
 /* MEDIA CONFIG START ===========================================*/
 @media (min-width: 500px) {

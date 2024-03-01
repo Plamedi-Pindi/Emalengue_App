@@ -2,7 +2,7 @@
 
 //index
 const index = (req, res) => {
-    res.render('site/contacts/contact', {title: 'Contatos'})
+    res.render('site/contacts/contact', {title: 'eMaLENGUE | Contatos'})
 }
 
 

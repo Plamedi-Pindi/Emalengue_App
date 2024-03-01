@@ -3,7 +3,8 @@ const express = require('express')
 const projeto = express.Router()
 const projetoController = require('../../controllers/admin/projetoController')
 
-//Routes
+//Routes 
+projeto.get('/', projetoController.index)
 projeto.get('/novo_projeto', projetoController.create)
 projeto.post('/criar', projetoController.imageUpload, projetoController.store)
 

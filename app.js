@@ -19,6 +19,7 @@ const adminProjetRoute = require('./routes/admin/projetoRoute')
 const loginRoute = require('./routes/auth/loginRoute')
 const registerRoute = require('./routes/auth/registerRoute')
 const { sequelize } = require('./models/db')
+const adminCursoRoute = require('./routes/admin/cursoRoute')
 
 
 
@@ -45,17 +46,10 @@ app.engine('hbs', handlebars.engine({
     }
     // partialsDir: 'views/partials',
 }))
-
-// handlebars.registerHelper("if", function(v1, v2, options) {
-//     if (v1 === v2) {
-//       return options.fn(this);
-//     }
-//     return options.inverse(this);
-//   });
-
-
-
 app.set('view engine', 'hbs')
+// app.set('views', './views')
+
+
 
 /**Middleware ===================================================== */
 //Body Parser Config
@@ -87,6 +81,7 @@ app.use('/projetos', projetoRoute)
 app.use('/dashboard', mainAdminRoute)
 app.use('/dashboard/freelancer', adminFreeRoute)
 app.use('/dashboard/projeto', adminProjetRoute) 
+app.use('/dashboard/cursos', adminCursoRoute)
 // For Auth
 app.use('/cadastrar', registerRoute)
 app.use('/', loginRoute)

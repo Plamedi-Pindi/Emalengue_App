@@ -25,7 +25,7 @@ const index = async (reqe, res) => {
         res.render('admin/freelancer/index', {
             freelancers: posts,
             layout: 'main2',
-            title: 'Freelancers',
+            title: 'eMaLENGUE | Freelancers',
         })
 
     })

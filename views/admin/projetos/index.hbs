@@ -1,0 +1,120 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        <div class="pj_container">
+            <!-- Seach form ===================================================-->
+            <div class="pj_search">
+                <a href="/dashboard/projeto/novo_projeto" class="btn btn-primary pj_search_btn">Novo Projeto</a>
+
+                <form id="pj_searc_form" class="pj_searc_form">
+                    <input type="text" name="search" class="form-control pj_searc_form_input" placeholder="Pesquisar...">
+                    <button class="btn btn-outline-dark pj_searc_form_btn" type="submit"><i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+            <!--Projects Table ===================================================-->
+            <section class="table_container">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Imagem</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Visionário</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="searchResult">
+                        {{#each projetos }}
+                        <tr class="pj_rows">
+                            {{!-- id --}}
+                            <td><span class="pj_id">{{ id }}</span></td>
+                            {{!-- image --}}
+                            <td>
+                                <img src="/admin/img/projetos/{{ image }}" alt="Imagem do Projeto" class="pj_img">
+                            </td>
+                            {{!-- Name --}}
+                            <td>
+                                <h5 class="pj_name"> {{ nome }} </h5>
+                            </td>
+                            {{!-- Visionário --}}
+                            <td><span class="pj_user text-primary"> {{ user.nome }} </span></td>
+                            {{!-- Data --}}
+                            <td><span class="pj_prazo"> {{ prazo }} </span></td>
+                            {{!-- Ações --}}
+                            <td>
+                                <span class="pj_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
+                                <a href="/dashboard/freelancer/eliminar/{{ id }}" class="pj_delete" title="Deletar"><i
+                                        class="bi bi-trash3"></i></i></a>
+                                <span class="pj_view" title="Mais detalhes" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop{{ id }}"> <i class="bi bi-eye"></i></span>
+                            </td>
+                        </tr>
+                        {{/each }}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</main>
+<!-- MAIN END -->
+
+<script type="text/javascrit">
+    const searchInput = document.getElementById('pj_searc_form_input');
+    const searchResult = document.getElementById('searchResult');
+
+    function load_data(query = ''){
+        const request = new XMLHttpResquest()
+        request.open('GET', `/dashboard/projeto?q=${query}`)
+        request.onload =() => {
+            const results = JSON.parse(request.responseText)
+
+            let html = ''
+
+            if (results.length > 0) {
+                results.forEach(result => {
+                    html += `
+                          <tr class="pj_rows">
+                            <td><span class="pj_id">{{ id }}</span></td>
+
+                            <td>
+                                <img src="/admin/img/projetos/${result.image}" alt="Imagem do Projeto" class="pj_img">
+                            </td>
+
+                            <td>
+                                <h5 class="pj_name"> ${result.nome} </h5>
+                            </td>
+
+                            <td><span class="pj_user text-primary"> ${result.user.name} </span></td>
+
+                            <td><span class="pj_prazo"> ${result.prazo} </span></td>
+
+                            <td>
+                                <span class="pj_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
+                                <a href="/dashboard/freelancer/eliminar/${result.id}" class="pj_delete" title="Deletar"><i
+                                        class="bi bi-trash3"></i></i></a>
+                                <span class="pj_view" title="Mais detalhes" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop{{ id }}"> <i class="bi bi-eye"></i></span>
+                            </td>
+                        </tr>
+                    `
+                })
+
+            } else {
+                html += `
+                    <tr>
+                        <td> Nenhum Projeto encontrado</td>
+                    </tr>
+                `
+            }
+            searchResult.innerHTML = html
+        }
+    }
+
+    
+</script>
+{{> dashFooter }}
+ 

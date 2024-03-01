@@ -43,7 +43,7 @@ User.hasOne(Freelancer, {
 Freelancer.belongsTo(User, {foreignKey: 'user_id'});
 
 //Association With Projeto
-User.hasOne(Projeto, {
+User.hasMany(Projeto, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     foreignKey: {
@@ -52,6 +52,8 @@ User.hasOne(Projeto, {
     }
 })
 Projeto.belongsTo(User, { foreignKey: 'user_id'});
+
+
 
 User.sync()
 

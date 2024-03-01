@@ -10,7 +10,7 @@ const index = (req, res) => {
         }]
     }).then(posts => {
         res.render('site/home/index', {
-            title: 'Home',
+            title: 'eMaLENGUE',
             freelancers: posts,
 
             helpers:{

@@ -2,7 +2,7 @@
 
 //index
 const index = (req, res) => {
-    res.render('site/course/index', {title: 'Cursos'})
+    res.render('site/course/index', {title: 'eMaLENGUE | Cursos'})
 }
 
 /**EXPORTS CONFIG ============================================== */

@@ -7,6 +7,28 @@ const multer = require('multer')
 const nodemailer = require('nodemailer') 
 
 
+
+
+//Index =====================================================
+const index = async (req, res)=>{
+    await Projeto.findAll({
+        include: [{
+            model: User 
+        }],
+        order: [
+            ['id', 'DESC']
+        ]
+    }).then((posts) => {
+        res.render('admin/projetos/index', {
+            title: 'eMaLENGUE | Projetos',
+            layout: 'main2',
+            projetos: posts,
+        })
+    })
+}
+
+
+
 // NODEMAILER CONFIG =========================================
 const transporter = nodemailer.createTransport({
     // service: 'gmail',
@@ -117,4 +139,5 @@ module.exports = {
     create,
     store,
     imageUpload,
+    index,
 }

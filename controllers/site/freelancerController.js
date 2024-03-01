@@ -10,7 +10,7 @@ const index = (req, res) => {
     }).then(posts => {
         res.render('site/freelancer/index', {
             Freelancers: posts,
-            title: 'Freelancers',
+            title: 'eMaLENGUE | Freelancers',
         })
     })
 }

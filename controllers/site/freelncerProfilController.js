@@ -12,7 +12,7 @@ const index = (req, res) => {
         }]
     }).then( posts => {
         res.render('site/freeProfile/freelancer-profile', {
-            title: 'Perfil do Freelancer',
+            title: 'eMaLENGUE | Perfil do Freelancer',
             freelancer: posts
         })
     })
