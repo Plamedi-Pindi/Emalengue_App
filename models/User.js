@@ -1,7 +1,7 @@
 /**IMPORT ========================================================= */
-const Freelancer = require('./Freelancer')
-const Projeto = require('./Projeto')
+
 const db = require('./db')
+ 
 
 
 const User = db.sequelize.define('users', {
@@ -31,31 +31,32 @@ const User = db.sequelize.define('users', {
         // timestamps: false
     })
 
-// Association With Freelancer
-User.hasOne(Freelancer, {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-    foreignKey: {
-        name: 'user_id', 
-         allowNull: false
-    },
-})
-Freelancer.belongsTo(User, {foreignKey: 'user_id'});
+// // Association With Freelancer
+// User.hasOne(Freelancer, {
+//     onDelete: 'CASCADE',
+//     onUpdate: 'CASCADE',
+//     foreignKey: {
+//         name: 'user_id', 
+//          allowNull: false
+//     },
+// })
+// Freelancer.belongsTo(User, {foreignKey: 'user_id'});
 
-//Association With Projeto
-User.hasMany(Projeto, {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-    foreignKey: {
-        name: 'user_id',
-        allowNull: false
-    }
-})
-Projeto.belongsTo(User, { foreignKey: 'user_id'});
+// //Association With Projeto
+// User.hasMany(Projeto, {
+//     onDelete: 'CASCADE',
+//     onUpdate: 'CASCADE',
+//     foreignKey: {
+//         name: 'user_id',
+//         allowNull: false
+//     }
+// })
+// Projeto.belongsTo(User, { foreignKey: 'user_id'});
 
 
 
-User.sync()
+User.sync() 
 
 module.exports = User
 
+ 

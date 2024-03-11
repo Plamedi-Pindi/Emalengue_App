@@ -1,7 +1,9 @@
 /**IMPORTS ============================================ */
+// const Projeto = require('../routes/admin/projetoRoute')
+
 const db = require('./db')
 
-const Projeto =  db.sequelize.define('projetos', {
+const Projeto = db.sequelize.define('projetos', {
     id: {
         type: db.Sequelize.INTEGER,
         autoIncrement: true,
@@ -11,10 +13,10 @@ const Projeto =  db.sequelize.define('projetos', {
         type: db.Sequelize.STRING,
         allowNull: false,
     },
-    image: { 
+    image: {
         type: db.Sequelize.STRING,
     },
-    descricao: { 
+    descricao: {
         type: db.Sequelize.TEXT,
     },
     prazo: {
@@ -25,11 +27,38 @@ const Projeto =  db.sequelize.define('projetos', {
     },
     habilidade: {
         type: db.Sequelize.INTEGER,
-    }, 
-  
+    },
+    user_id: {
+        type: db.Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id',
+        }
+    }
+
 })
 
+// Projeto.belongsToMany(Freelancer, {
+//     through: 'Freelancerprojetos', 
+//     onDelete: 'CASCADE',
+//     onUpdate: 'CASCADE',
+//     foreignKey: {
+//         name: 'projetoId',
+//         allowNull: false
+//     }
+// })
+// Freelancer.belongsToMany(Projeto, { 
+//     through: 'Freelancerprojetos',
+//     onDelete: 'CASCADE',
+//     onUpdate: 'CASCADE', 
+//     foreignKey: {
+//         name: 'freelancerId',
+//         allowNull: false
+//     }
+// }) 
 
+ 
+Projeto.sync()
 
-/**EXPORTS ============================================ */
+/**EXPORTS ============================================ */ 
 module.exports = Projeto

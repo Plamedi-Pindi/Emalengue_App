@@ -9,7 +9,7 @@
                 <a href="/dashboard/projeto/novo_projeto" class="btn btn-primary pj_search_btn">Novo Projeto</a>
 
                 <form id="pj_searc_form" class="pj_searc_form">
-                    <input type="text" name="search" class="form-control pj_searc_form_input" placeholder="Pesquisar...">
+                    <input type="text" name="search" class="form-control pj_searc_form_input" placeholder="Pesquisar..." id="pj_searc_form_input">
                     <button class="btn btn-outline-dark pj_searc_form_btn" type="submit"><i class="bi bi-search"></i>
                     </button>
                 </form>
@@ -46,14 +46,22 @@
                             <td><span class="pj_prazo"> {{ prazo }} </span></td>
                             {{!-- Ações --}}
                             <td>
-                                <span class="pj_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
+                                {{#ifIqual authUser.id user.id }}
+                                     <span class="pj_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
+
+                                {{/ifIqual  }}
+                        
                                 <a href="/dashboard/freelancer/eliminar/{{ id }}" class="pj_delete" title="Deletar"><i
                                         class="bi bi-trash3"></i></i></a>
-                                <span class="pj_view" title="Mais detalhes" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop{{ id }}"> <i class="bi bi-eye"></i></span>
+                                <a href="/dashboard/projeto/detalhes/{{ id }}" class="pj_view" title="Mais detalhes" > <i class="bi bi-eye"></i></a>
                             </td>
                         </tr>
                         {{/each }}
+                        
+                        
+
+                        
+                    
                     </tbody>
                 </table>
             </section>
@@ -62,15 +70,21 @@
 </main>
 <!-- MAIN END -->
 
-<script type="text/javascrit">
+<script type="text/javascript">
     const searchInput = document.getElementById('pj_searc_form_input');
     const searchResult = document.getElementById('searchResult');
 
+    load_data()
+
     function load_data(query = ''){
-        const request = new XMLHttpResquest()
+        // Create XMLHttpRequest
+        const request = new XMLHttpRequest()
+        // Send data to de server
         request.open('GET', `/dashboard/projeto?q=${query}`)
+        // Handle with the response
         request.onload =() => {
             const results = JSON.parse(request.responseText)
+            console.log(result)
 
             let html = ''
 
@@ -112,7 +126,17 @@
             }
             searchResult.innerHTML = html
         }
+
+        request.send()
     }
+
+    searchInput.addEventListener('input', ()=> {
+        const query = searchInput.value
+        load_data(query)
+        console.log( 'Teste esta funcionando muito bem: ' + query)
+    }) 
+
+    
 
     
 </script>

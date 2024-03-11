@@ -4,27 +4,25 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
 
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('freelancerprojetos', {
       id: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         autoIncrement: true,
-        primaryKey: true
       },
-      nome: {
-        type: Sequelize.STRING,
-        allowNull: false
+      freelancerId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'freelancers',
+          key: 'id'
+        }
       },
-      email: {
-        type: Sequelize.STRING,
-        unique: true
-      },
-      password: {
-        type: Sequelize.STRING
-      },
-      role: { 
-        type: Sequelize.STRING,
-        enum: Sequelize.ENUM('admin', 'gerente', 'user', 'freelancer'),
-        defaultValue: 'user'
+      projetoId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'projetos',
+          key: 'id'
+        }
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -37,12 +35,11 @@ module.exports = {
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
 
-
-    });
-
+    }); 
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('users');
+
+    await queryInterface.dropTable('freelancerprojetos');
   }
 };

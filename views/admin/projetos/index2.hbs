@@ -1,0 +1,48 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        <div class="pj_disp_nav">
+            <input type="text" placeholder="Pesquisar...." class="form-control pj_disp_search">
+        </div>
+
+        <div class="pj_display_container">
+            <div class="row">
+                {{#each projetos }}
+                <div class="card col-12 col-sm-8 col-lg-5 col-xl-4 container-fluid">
+                    <img src="/admin/img/projetos/{{ image }}" alt="" class="pj_disp_img">
+                    <div class="pj_disp_content">
+                        <a href="/dashboard/projeto/detalhes/{{ id }}">
+                            <h3> {{ nome }} </h3>
+                        </a>
+                        <p> Período: <span> {{ prazo }} </span> </p>
+                        <p> Categoria: <span> {{ categoria }} </span></p>
+                        <hr>
+                        <div class="user">
+                            <div>
+                                <img src="/admin/img/user.jpg" alt="">
+                                <p> {{ user.nome }} </p>
+                            </div>
+
+                            <a href="/dashboard/projeto/detalhes/{{ id }}" class=" ">Mais Detalhes</a>
+                        </div>
+
+                    </div>
+                </div>
+                {{/each }}
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<script type="text/javascript">
+
+    
+
+
+
+</script>
+<!-- MAIN END -->
+{{> dashFooter }}

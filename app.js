@@ -4,7 +4,10 @@ const app = express()
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
-const { checkUsser} = require('./middleware/authMiddleware')
+const { checkUsser } = require('./middleware/authMiddleware')
+const Habilidade = require('./models/Habilidade')
+const Categoria = require('./models/Categoria')
+require('./models/associations')
 
 //Routes imports
 const homeRoute = require('./routes/site/homeRoute')
@@ -28,23 +31,33 @@ const adminCursoRoute = require('./routes/admin/cursoRoute')
 
 
 app.engine('hbs', handlebars.engine({
-    defaultLayout: 'main',
-    extname: 'hbs',
-    runtimeOptions: {
-        allowProtoPropertiesByDefault: true,
-        allowProtoMethodsByDefault: true,
-    },
-    helpers:{
-      hello:  ()=>{return "Ola, plamedi Pindi"}, 
-      ifIqual:  (v1, v2, options)=> {
-          if(v1 === v2){
-            return options.fn(this)
-          }else{
-            return options.inverse(this)
-          }
+  defaultLayout: 'main',
+  extname: 'hbs',
+  runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true,
+  },
+  helpers: {
+
+    ifIqual: (v1, v2, options) => {
+      if (v1 === v2) {
+        return options.fn(this)
+      } else {
+        return options.inverse(this)
       }
-    }
-    // partialsDir: 'views/partials',
+
+    },
+    ifDif: (v1, v2, options) => {
+      if (v1 !== v2) {
+        return options.fn(this)
+      } else {
+        return options.inverse(this)
+      }
+
+    },
+
+  }
+  // partialsDir: 'views/partials',
 }))
 app.set('view engine', 'hbs')
 // app.set('views', './views')
@@ -62,10 +75,10 @@ app.use(cookieParser())
 
 
 /**SERVER =================================================================== */
-sequelize.sync()
+// sequelize.sync()
 
 app.listen(8080, () => {
-    console.log('Server up!');
+  console.log('Server up!');
 })
 
 /**ROUTES MIDDLEWARE ======================================================== */
@@ -80,7 +93,7 @@ app.use('/projetos', projetoRoute)
 // For Dashboard
 app.use('/dashboard', mainAdminRoute)
 app.use('/dashboard/freelancer', adminFreeRoute)
-app.use('/dashboard/projeto', adminProjetRoute) 
+app.use('/dashboard/projeto', adminProjetRoute)
 app.use('/dashboard/cursos', adminCursoRoute)
 // For Auth
 app.use('/cadastrar', registerRoute)

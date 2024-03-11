@@ -1,6 +1,7 @@
 /** IMPORTS ============================================================*/
 const jwt = require('jsonwebtoken')
-const User = require('../models/User')
+const User = require('../models/User');
+const Freelancer = require('../models/Freelancer');
 
 
 
@@ -39,8 +40,13 @@ const checkUsser = (req, res, next) => {
                 next()
             } else {
                 console.log(decodedToken);
-                const user = await User.findByPk(decodedToken.id)
-                res.locals.user = user
+                const user = await User.findByPk(decodedToken.id, {
+                    include: {
+                        model: Freelancer
+                    }
+                })
+                req.authUser = user
+                res.locals.authUser = user
     
                 next()
             }

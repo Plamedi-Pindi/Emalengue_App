@@ -1,0 +1,79 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        <div class="pj_detail_container">
+            <div class="row d-flex flex-row justify-content-between">
+                <div class="project_info col-12 col-sm-10 col-lg-7 container-fluid">
+                    <h1> {{ projeto.nome }} </h1>
+
+                    <div class="ltl_details ">
+                        {{!-- img and user --}}
+                        <figure class=" ">
+                            <img src="/admin/img/projetos/{{ projeto.image }}" alt="">
+                            <figcaption>
+                                <span>Publicado por</span>
+                                <h4> {{ projeto.user.nome }} </h4>
+                            </figcaption>
+                        </figure>
+
+                    </div>
+
+                    <img class="main_img" src="/admin/img/projetos/{{ projeto.image }}" alt="">
+
+                    <h2>Descrição do projeto</h2>
+                    <div class="pj_description">
+                        {{ projeto.descricao }}
+                    </div>
+                </div>
+                <div class="project_apply col-12 col-sm-10 col-lg-4  container-fluid">
+                    <h4>Detalhes</h4>
+                    <ul>
+                        <li class="item">
+                            <div> <i class="bi bi-clock"></i> Publicado em:</div>
+                            <span> {{ projeto.prazo }} </span>
+                        </li>
+                        <li class="item">
+                            <div><i class="bi bi-hourglass-split"></i> Válido até:</div>
+                            <span> {{ projeto.prazo }} </span>
+                        </li>
+                        <li class="item">
+                            <div><i class="bi bi-ui-radios-grid"></i> Categoria:</div>
+                            <span> {{ projeto.categoria }} </span>
+                        </li>
+                        <li class="item">
+                            <div><i class="bi bi-star"></i>Avaliação:</div>
+                            <span class="star">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </span>
+                        </li>
+                        <li>
+                            <div><i class="bi bi-list-stars"></i>Habilidades:</div>
+                            <ul class="skill">
+                                <li>item</li>
+                                <li>item</li>
+                                <li>item</li>
+                                <li>item</li>
+                                <li>item</li>
+                            </ul>
+                        </li>
+                    </ul>
+                        {{#ifIqual projeto.freelancers.user_id authUser.id }}
+                            <a href="#" class="sbsb sbsb_insc">Inscrito</a>
+                        {{else}}
+                            <a href="/dashboard/projeto/inscrever/{{ projeto.id }}" class="sbsb">Inscrever-se</a>
+                        {{/ifIqual }}   
+                            
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<!-- MAIN END -->
+{{> dashFooter }}

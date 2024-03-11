@@ -17,8 +17,8 @@
         <h3 class="sd-title">Freelancer</h3>
 
         <ul>
-            {{#ifIqual user.role "admin" }}
-            <li>
+            {{#ifIqual authUser.role "admin" }}
+            <li> 
                 <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
                     <span class="sb-content">Freelancers</span>
                 </a>
@@ -31,7 +31,7 @@
             </li>
             {{/ifIqual }}
 
-            {{#ifIqual user.role "freelancer" }}
+            {{#ifIqual authUser.role "freelancer" }}
             <li>
                 <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
                     <span class="sb-content">Freelancers</span>
@@ -56,8 +56,13 @@
         </ul>
         <ul>
             <li>
+                <a href="#"><i class="bi bi-building-fill"></i>
+                    <span class="sb-content">Meus Projetos</span>
+                </a>
+            </li>
+            <li>
                 <a href="/dashboard/projeto"><i class="bi bi-building-fill"></i>
-                    <span class="sb-content">Projetos</span>
+                    <span class="sb-content">Projetos Publicados</span>
                 </a>
             </li>
             <li>
