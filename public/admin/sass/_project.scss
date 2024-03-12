@@ -1,6 +1,11 @@
 @import './main';
 @import './fonts';
 
+.pj_breadcrumbs {
+    @include container();
+    padding-bottom: 0;
+}
+
 .pj_container {
     @include container();
     font-family: $roboto;

@@ -147,21 +147,34 @@ footer {
   border-radius: 5px;
 }
 
-.nw_pr_container {
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.nw_pr_breadcrumbs {
   background-color: #fff;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
   padding-bottom: 1.5rem;
+  padding-bottom: 0;
+}
+
+.nw_pr_container {
+  padding-top: 1.5rem;
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding-bottom: 1.5rem;
+  font-family: "Roboto", sans-serif;
 }
 .nw_pr_container h2 {
-  text-align: center;
   font-size: 20px;
   font-weight: 600;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  margin-left: 25px;
+  padding: 10px;
   text-transform: capitalize;
+  border-left: 5px solid #f7aa00;
 }
 .nw_pr_container label {
   margin-bottom: 5px;
@@ -333,6 +346,16 @@ footer {
   }
 }
 /* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.pj_breadcrumbs {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding-bottom: 1.5rem;
+  padding-bottom: 0;
+}
+
 .pj_container {
   background-color: #fff;
   margin-top: 1.5rem;
@@ -438,7 +461,7 @@ footer {
   padding: 6px;
   padding-top: 0.5rem;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   font-family: "Roboto", sans-serif;
 }
 .pj_disp_nav .pj_disp_search {
@@ -551,6 +574,16 @@ footer {
   }
 }
 /* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.pj_detail_breadcrumbs {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding-bottom: 1.5rem;
+  padding-bottom: 0;
+}
+
 .pj_detail_container {
   background-color: #fff;
   margin-top: 1.5rem;
@@ -707,6 +740,97 @@ footer {
 .project_apply .sbsb_insc {
   background-color: rgb(55, 55, 255) !important;
   color: #fff;
+}
+
+.project_table {
+  margin-top: 1rem;
+  overflow-x: auto;
+  background-color: #fff;
+}
+
+table {
+  min-width: 800px !important;
+}
+
+td {
+  vertical-align: middle;
+}
+
+tr {
+  padding: 1002px !important;
+}
+
+.sf_name {
+  font-size: 15px;
+  margin: 0;
+  color: #666;
+  font-family: "Roboto", sans-serif;
+}
+
+.sf_nome {
+  font-size: 15px;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.sf_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.sf_area {
+  color: #888;
+  font-size: 13px;
+}
+
+.pj_edit {
+  background-color: rgba(2, 119, 228, 0.322);
+  color: rgb(0, 60, 255);
+}
+
+.pj_delete {
+  background-color: rgba(255, 0, 0, 0.233);
+  color: red;
+}
+
+.pj_view {
+  background-color: rgba(0, 128, 0, 0.301);
+  color: green;
+  border: none;
+}
+
+.breadcrumbs {
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
+}
+.breadcrumbs ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 25px;
+}
+.breadcrumbs li {
+  display: inline-block;
+}
+.breadcrumbs li::before {
+  content: " / ";
+  margin: 0 0;
+  color: rgb(55, 108, 252);
+}
+.breadcrumbs li:first-child::before {
+  content: " ";
+}
+.breadcrumbs li:last-child a {
+  color: #888;
+}
+.breadcrumbs a {
+  text-decoration: none;
+  color: rgba(55, 107, 252, 0.815);
+  font-size: 14px;
+  transition: ease-in-out 0.4s;
+}
+.breadcrumbs a:hover {
+  color: #888;
 }
 
 /***** IMPORTING FILE END *****/

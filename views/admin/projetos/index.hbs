@@ -3,6 +3,14 @@
 <!-- MAIN START -->
 <main>
     <div class="container">
+        <div class="pj_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/projeto">Meus projetos</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="pj_container">
             <!-- Seach form ===================================================-->
             <div class="pj_search">
@@ -46,7 +54,7 @@
                             <td><span class="pj_prazo"> {{ prazo }} </span></td>
                             {{!-- Ações --}}
                             <td>
-                                {{#ifIqual authUser.id user.id }}
+                                {{#ifIqual ../authUser.id user.id }}
                                      <span class="pj_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
 
                                 {{/ifIqual  }}

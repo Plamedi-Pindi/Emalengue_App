@@ -3,6 +3,10 @@
 @import './color';
 
 
+.pj_detail_breadcrumbs {
+    @include container;
+    padding-bottom: 0
+}
 .pj_detail_container {
     @include container;
     padding: 20px;
@@ -10,6 +14,7 @@
     background: #eee !important;
 
 }
+
 
 .project_info {
     padding: 40px !important;
@@ -190,6 +195,72 @@
         color: #fff;
     }
 }
+
+// Tabel ================
+.project_table {
+    margin-top: 1rem;
+    overflow-x: auto;
+    background-color: #fff;
+
+}
+
+table {
+    min-width: 800px !important;
+}
+
+td{
+    vertical-align: middle;
+    
+}
+tr {
+    padding: 1002px !important;
+
+}
+
+.sf_name {
+    font-size: 15px;
+    margin: 0;
+    color: #666;
+    font-family: $roboto;
+}
+
+.sf_nome {
+    font-size: 15px;
+    margin: 0;
+    font-family: $roboto;
+}
+.sf_img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+.sf_email {
+
+}
+.sf_phone {
+
+}
+
+.sf_area {
+    color: #888;
+    font-size: 13px;
+}
+.pj_edit {
+    background-color: rgba(2, 119, 228, 0.322);
+    color: rgb(0, 60, 255);
+}
+
+.pj_delete {
+    background-color: rgba(255, 0, 0, 0.233);
+    color: red;
+}
+
+.pj_view {
+    background-color: rgba(0, 128, 0, 0.301);
+    color: green;
+    border: none;
+}
+
 
 
 //=================

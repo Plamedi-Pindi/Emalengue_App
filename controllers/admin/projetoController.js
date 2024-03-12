@@ -45,6 +45,7 @@ const index = async (req, res) => {
         })
 
     }
+    
     // Check if the user is Freelancer
     else if (correntUser.role === 'freelancer' || correntUser.role === 'user') {
         await Projeto.findAll({
@@ -92,16 +93,60 @@ const details = async (req, res) => {
         ],
         raw: true,
         nest: true, 
-    }).then(result => {
-        console.log(result);
+    }).then( async (result) => {
+
+        const projeto = result
+        const freelancerId = projeto.freelancers.Freelancerprojetos.freelancerId
+        const freelancer = await Freelancer.findAll({
+            where: { id: freelancerId },
+            include: [
+                { model: User}
+            ],
+            raw: true,
+            nest: true
+        })
+        console.log(freelancer);
         res.render('admin/projetos/details/detail', {
             title: 'eMaLENGUE | Detalhe do Projetos',
             layout: 'main2',
             projeto: result,
-
+            freeNumber: freelancer.length,
+            subFreelancer: freelancer,
         })
     })
+} 
+
+// My Projects ==============================================
+
+const myProjects = async (req, res) => {
+    const correntUser = req.authUser
+     await Projeto.findAll({
+            where: {
+                user_id: correntUser.id
+            },
+            include: [
+                {
+                    model: User,
+                },
+                {
+                    model: Freelancer
+                }
+
+            ],
+            order: [
+                ['id', 'DESC']
+            ]
+        }).then((posts) => {
+
+            res.render('admin/projetos/index', {
+                title: 'eMaLENGUE | Meus Projetos',
+                layout: 'main2',
+                projetos: posts,
+                correntUser: correntUser,
+            })
+        })
 }
+
 
 //Search =====================================================
 
@@ -245,7 +290,7 @@ const applayToProject = async (req, res) => {
 
     // Check if it is a freelancer
     if (authUser.role === 'freelancer') {
-
+       
         const fr = await Freelancer.findOne({
             where: { user_id: authUser.id },
             include: [
@@ -257,14 +302,13 @@ const applayToProject = async (req, res) => {
             raw: true,
             nest: true,
         })
-        // const frId = fr.projetos.Freelancerprojetos.freelancerId
-        // const frUser = await 
-
+        
+         // Check if this freelancer is alread subscribed
         if (fr) {
             console.log('Ja estas inscrito!');
             res.status(400).redirect('back')
         } else {
-
+            // Subscribe a freelancer to a project
             Freelancerprojeto.create({
                 projetoId: projectId,
                 freelancerId: fr.id,
@@ -272,6 +316,8 @@ const applayToProject = async (req, res) => {
             console.log('inscrito!');
             res.status(200).redirect('back')
         }
+    } else {
+        res.redirect('back')
     }
 
 
@@ -288,5 +334,6 @@ module.exports = {
     index,
     search,
     details,
+    myProjects,
     applayToProject,
 }

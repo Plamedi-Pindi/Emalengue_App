@@ -10,6 +10,7 @@ const Categoria = db.sequelize.define('categorias', {
     name: {
         type: db.Sequelize.STRING,
         allowNull: false,
+        unique: true,
     }
 }, 
 {

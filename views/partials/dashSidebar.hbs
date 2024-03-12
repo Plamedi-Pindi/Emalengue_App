@@ -40,7 +40,7 @@
             </li>
             {{/ifIqual }}
         </ul>
-
+        <!-- CURSOS ===========================================================  -->
         <h3 class="sd-title">Curso</h3>
         <ul>
             <li>
@@ -54,14 +54,16 @@
                 </a>
             </li>
         </ul>
+        <!-- PROJETOS ===========================================================  -->
+        <h3 class="sd-title">Projetos</h3>
         <ul>
             <li>
-                <a href="#"><i class="bi bi-building-fill"></i>
+                <a href="/dashboard/projeto/meuprojeto"><i class="bi bi-kanban"></i></i>
                     <span class="sb-content">Meus Projetos</span>
                 </a>
             </li>
             <li>
-                <a href="/dashboard/projeto"><i class="bi bi-building-fill"></i>
+                <a href="/dashboard/projeto"><i class="bi bi-kanban"></i>
                     <span class="sb-content">Projetos Publicados</span>
                 </a>
             </li>
@@ -70,6 +72,16 @@
                     <span class="sb-content">Publicar Projeto</span>
                 </a>
             </li>
+        </ul>
+        <!-- PPERFIL ===========================================================  -->
+        <h3 class="sd-title">Perfil</h3>
+        <ul>
+            <li>
+                <a href="#"><i class="bi bi-person-fill"></i>
+                    <span class="sb-content"> {{ authUser.nome }} </span>
+                </a>
+            </li>
+            
         </ul>
     </nav>
 </div>

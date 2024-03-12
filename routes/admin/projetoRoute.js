@@ -11,6 +11,7 @@ projeto.post('/criar', projetoController.imageUpload, projetoController.store)
 projeto.get('/search', projetoController.search)
 projeto.get('/detalhes/:id', projetoController.details)
 projeto.get('/inscrever/:id', projetoController.applayToProject)
+projeto.get('/meuprojeto', projetoController.myProjects) 
 
 /**EXPORT =========================================================== */
 module.exports = projeto 

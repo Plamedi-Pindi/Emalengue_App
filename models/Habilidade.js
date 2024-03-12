@@ -9,7 +9,9 @@ const Habilidade = db.sequelize.define('habilidades', {
     },
     name: {
         type: db.Sequelize.STRING,
-        allowNull:false
+        allowNull:false,
+        unique: true
+        
     },
 },
 {
