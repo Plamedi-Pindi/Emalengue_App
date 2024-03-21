@@ -20,12 +20,11 @@
                     <div class=" col-12 col-sm-10 col-md-6 container-fluid">
                         <label for="categoria">Escolha uma categoria <span>*</span></label>
                         <select name="categoria" id="" class="form-select" required>
-                            <option value="" selected>Selecione uma categoria</option>
-                            <option name="1" id="">Categoria 1</option>
-                            <option name="2" id="">Categoria 2</ooption>
-                            <option name="3" id="">Categoria 3</optiion>
-                            <option name="4" id="">Categoria 4</option>
-                            <option name="5" id="">Categoria 5</option>
+                            <option  selected>Selecione uma categoria</option>
+                            {{#each categorias}}
+                                <option value="{{ id }}"> {{ name }} </option>
+                            {{/each}}
+                            
                         </select>
     
                         <label for="nome">Dê um Nome para o trabalho <span>*</span></label>
@@ -37,11 +36,9 @@
                     <div class="col-12 col-sm-10 col-md-6 container-fluid">
                         <label for="habilidades">Quais habilidades são desejadas? <span>*</span></label>
                         <select name="habilidades" id="" class="form-control" multiple>
-                            <option value="1">Habilidade 1</option>
-                            <option value="2">Habilidade 2</option>
-                            <option value="3">Habilidade 3</option>
-                            <option value="4">Habilidade 4</option>
-                            <option value="5">Habilidade 5</option>
+                            {{#each habilidades}}
+                                <option value="{{ id }}"> {{ name }} </option>                              
+                            {{/each}}
                         </select>
     
                         <label for="prazo" class="pub_prazo">Prazo<span>*</span></label>

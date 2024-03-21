@@ -1,6 +1,13 @@
 
 
-
+.login {
+    padding-bottom: 2rem;
+}
+.login_btn {
+    display: block;
+    margin: 0 auto;
+    // max-width: 300px;
+}
 #email_warnig1,
 #password_warnig1{
     background: rgba(243, 90, 90, 0.564);
@@ -10,5 +17,18 @@
     margin-top: 5px;
 
     display: none;
+}
+
+@media(min-width:1200px){
+    .login{
+       width: 40%;
+       margin: 0 auto;
+       margin-top: 8rem;
+       margin-bottom: 3rem;
+       background-color: #fff;
+    }
+    .cadastro_form{
+        background-color: #eee;
+    }
 }
 

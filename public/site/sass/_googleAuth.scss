@@ -1,0 +1,22 @@
+.google_btn {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #555;
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+    width: 300px;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: -10px;
+    transition: ease-in-out .4s;
+}
+.google_btn:hover {
+    transform: scale(1.02);
+}
+
+.google_svg {
+    margin-right: 10px;
+}
+

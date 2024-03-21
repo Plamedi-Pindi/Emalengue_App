@@ -69,7 +69,7 @@ app.set('view engine', 'hbs')
 
 
 // GOOGLE AUTH =======================================================
-const maxAge = 60000*60
+const maxAge = 60000*60*3
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -77,7 +77,7 @@ app.use(session({
   cookie: { secure: false, maxAge: maxAge }
 }))
 
-app.use(passport.initialize())
+app.use(passport.initialize()) 
 app.use(passport.session())
 
 

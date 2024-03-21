@@ -52,4 +52,17 @@
   .cadastro_form {
     background-color: #eee;
   }
+}
+@media (min-width: 1200px) {
+  .form_container {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+    background-color: #fff;
+    padding-bottom: 2rem;
+  }
+  .cadastro_form {
+    background-color: #eee;
+  }
 }/*# sourceMappingURL=cadastro.css.map */
