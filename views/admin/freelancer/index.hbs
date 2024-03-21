@@ -10,12 +10,13 @@
                         <th scope="col">ID</th>
                         <th scope="col">Imagem</th>
                         <th scope="col">Nome</th>
-                        <th scope="col">Habilidades</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Telefone</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
+                    
                     {{#each freelancers }}
                     <tr class="fr_rows">
                         {{!-- id --}}
@@ -29,10 +30,12 @@
                             <h5 class="fr_name"> {{ user.nome }} </h5>
                             <span class="fr_profissao"> {{ especialidade }} </span>
                         </td>
-                        {{!-- Skills --}}
-                        <td><span class="fr_skills"> {{ habilidades }} </span></td>
+                    
                         {{!-- Email --}}
                         <td><span class="fr_email text-primary"> {{ user.email }} </span></td>
+                        
+                        {{!-- Email --}}
+                        <td><span class="fr_email text-primary"> {{ phone }} </span></td>
                         <td>
                             <span class="fr_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
                             <a href="/dashboard/freelancer/eliminar/{{ id }}" class="fr_delete" title="Deletar"><i class="bi bi-trash3"></i></i></a>
@@ -76,14 +79,19 @@
                                             </ul>
                                         </div>
                                         <div class="fr_mdl_data2 col-10 col-md-5 container-fluid">
-                                            <h3>Habilidades e Certificações</h3>
+                                            <h3>Habilidades</h3>
                                             <ul>
-                                                <li> {{ habilidades }}</li>
-                                                <li>React js</li>
-                                                <li>Node js</li>
-                                                <li>MongoDB</li>
+                                                {{#each habilidades}}   
+                                                 <li> {{ name }}</li>
+                                                {{/each}}
+                                            </ul>
+                                            {{!--  --}}
+                                            <h3 class="certificacoes"> Certificações</h3>
+                                            <ul>   
+                                                 <li> {{ certificacoes }}</li>
                                             </ul>
                                         </div>
+        
                                         <hr class="col-10 container-fluid">
                                         <div class="col-10 container-fluid fr_mdl_data3">
                                             <h3>Sobre o Freelancer</h3>
@@ -105,43 +113,7 @@
                         </div>
                     </div>
                     {{/each }}
-
-                    {{!-- <tr class="fr_rows">
-                        <td><span class="fr_id">2</span></td>
-                        <td>
-                            <img src="/admin/img/user.jpg" alt="Imagem do Freelancer" class="fr_img">
-                        </td>
-                        <td>
-                            <h5 class="fr_name">Plamedi Pindi</h5>
-                            <span class="fr_profissao">Engenheiro de Software</span>
-                        </td>
-                        <td><span class="fr_skills">HTML5, CSS3, JS, NodeJs...</span></td>
-                        <td><span class="fr_email text-primary">info43@gmail.com</span></td>
-                        <td>
-                            <span class="fr_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
-                            <span class="fr_delete" title="Deletar"><i class="bi bi-trash3"></i></i></span>
-                            <button type="button" class="fr_view" title="Mais detalhes" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop"> <i class="bi bi-eye"></i></button>
-                        </td>
-                    </tr>
-                    <tr class="fr_rows">
-                        <td><span class="fr_id">3</span></td>
-                        <td>
-                            <img src="/admin/img/user.jpg" alt="Imagem do Freelancer" class="fr_img">
-                        </td>
-                        <td>
-                            <h5 class="fr_name">Plamedi Pindi</h5>
-                            <span class="fr_profissao">Engenheiro de Software</span>
-                        </td>
-                        <td><span class="fr_skills">HTML5, CSS3, JS, NodeJs...</span></td>
-                        <td><span class="fr_email text-primary">info43@gmail.com</span></td>
-                        <td>
-                            <span class="fr_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
-                            <span class="fr_delete" title="Deletar"><i class="bi bi-trash3"></i></i></span>
-                            <button type="button" class="fr_view" title="Mais detalhes" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop"> <i class="bi bi-eye"></i></button>
-                        </td>
-                    </tr> --}}
+                    
 
                 </tbody>
             </table>

@@ -19,13 +19,17 @@
 
                 <input type="submit" class="btn btn-primary" value="Login">
             </form>
+                <a href="/auth/google">Iniciar sessao com google</a>
         </div>
     </div>
 </main>
 <!-- MAIN END -->
 
-<script>
 
+
+<script> 
+
+    
     const password_warnig1 = document.getElementById('password_warnig1')
     const email_warnig1 = document.getElementById('email_warnig1')
     password_warnig1.style.display = 'none'
@@ -86,11 +90,11 @@
                     password_warnig1.style.display = 'block'
                     password_warnig1.innerHTML = result[1]
                 }
-                else if(result[0] === 2){
+                else if (result[0] === 2) {
                     email_warnig1.style.display = 'block'
                     email_warnig1.innerHTML = result[1]
                 }
-                else if(result.user) {
+                else if (result.user) {
                     location.assign('/')
                 }
 
@@ -104,6 +108,7 @@
 
     })
 
+  
 
 </script>
 {{> footer }}

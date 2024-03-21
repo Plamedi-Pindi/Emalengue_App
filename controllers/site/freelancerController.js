@@ -4,9 +4,11 @@ const User = require('../../models/User')
 //index
 const index = (req, res) => {
     Freelancer.findAll({
-        include: [{
-            model: User
-        }]
+        include: [
+            {
+                model: User
+            },
+        ]
     }).then(posts => {
         res.render('site/freelancer/index', {
             Freelancers: posts,
@@ -19,7 +21,7 @@ const index = (req, res) => {
 const create = (req, res) => {
     res.render('site/freelancer/create/create', {
         title: 'Novo Freelancer'
-    }) 
+    })
 }
 
 

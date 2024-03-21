@@ -20,6 +20,6 @@ const Habilidade = db.sequelize.define('habilidades', {
 
 Habilidade.sync()
 
-// module.exports = Habilidade
+module.exports = Habilidade
 
 

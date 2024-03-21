@@ -8,6 +8,9 @@ const nodemailer = require('nodemailer')
 const Freelancerprojeto = require('../../models/Freelancerprojeto')
 const Freelancer = require('../../models/Freelancer')
 const freelancer = require('../../routes/site/freelancerRoute')
+const Habilidade = require('../../models/Habilidade')
+const Categoria = require('../../models/Categoria')
+const ProjetoHabilidade = require('../../models/ProjetoHabilidade')
 
 
 
@@ -17,7 +20,8 @@ const freelancer = require('../../routes/site/freelancerRoute')
 const index = async (req, res) => {
 
     // Get logged user
-    const correntUser = req.authUser
+    const correntUser = req.user
+
 
     // Check if the user is Admin
     if (correntUser.role === 'admin') {
@@ -31,6 +35,7 @@ const index = async (req, res) => {
                 }
 
             ],
+
             order: [
                 ['id', 'DESC']
             ]
@@ -45,7 +50,7 @@ const index = async (req, res) => {
         })
 
     }
-    
+
     // Check if the user is Freelancer
     else if (correntUser.role === 'freelancer' || correntUser.role === 'user') {
         await Projeto.findAll({
@@ -55,6 +60,13 @@ const index = async (req, res) => {
                 },
                 {
                     model: Freelancer,
+                },
+                {
+                    model: Habilidade,
+                    as: 'habilidades'
+                },
+                {
+                    model: Categoria
                 }
             ],
             // raw: true,
@@ -78,11 +90,111 @@ const index = async (req, res) => {
     }
 }
 
+
+
+
 // Details ===================================================
 
 const details = async (req, res) => {
+    // Finde the selected project by it ID
     await Projeto.findOne({
         where: { id: req.params.id },
+        include: [
+            { model: User },
+            { model: Freelancer },
+            {
+                model: Habilidade,
+                as: 'habilidades'
+            },
+            { model: Categoria }
+        ],
+    
+    }).then(async (result) => {
+
+        const projeto = result.toJSON()
+        const freelancer = projeto.freelancers
+        const authUser = req.user
+
+        // Teste if there is freelancer subscribed into this project or not
+        if (freelancer.length != 0) {
+
+            const correntFree = await Freelancer.findOne({
+                where: { user_id: authUser.id },
+                include: [
+                    { model: User },
+                    {
+                        model: Projeto,
+                        where: { id: projeto.id }
+                    }
+                ],
+
+            })
+
+            const allFreelancer = await Freelancer.findAll({
+                include: [
+                    { model: User },
+                    {
+                        model: Projeto,
+                        where: { id: projeto.id}
+                    },
+                    { 
+                        model: Habilidade,
+                        as: 'habilidades'
+                    }
+                ],
+                // raw: true,
+                nest: true
+            })
+            
+            console.log(allFreelancer)
+            // Check if the corrent user is subscribed into this project or not
+            if (correntFree){
+                res.render('admin/projetos/details/detail', {
+                    title: 'eMaLENGUE | Detalhe do Projetos',
+                    layout: 'main2',
+                    projeto: projeto,
+                    freeNumber: freelancer.length,
+                    subscribedUser: correntFree.toJSON(),
+                    subFreelancer: allFreelancer,
+                })
+            } else {
+                res.render('admin/projetos/details/detail', {
+                    title: 'eMaLENGUE | Detalhe do Projetos',
+                    layout: 'main2',
+                    projeto: projeto,
+                    freeNumber: freelancer.length,
+                    subscribedUser: null,
+                    subFreelancer: allFreelancer,
+                })
+            }
+           
+        } else {
+
+            // console.log(habilidade);
+            res.render('admin/projetos/details/detail', {
+                title: 'eMaLENGUE | Detalhe do Projetos',
+                layout: 'main2',
+                projeto: projeto,
+                freeNumber: freelancer.length,
+                
+            })
+
+        }
+    })
+}
+
+
+
+
+
+// My Projects ==============================================
+
+const myProjects = async (req, res) => {
+    const correntUser = req.user
+    await Projeto.findAll({
+        where: {
+            user_id: correntUser.id
+        },
         include: [
             {
                 model: User,
@@ -90,62 +202,25 @@ const details = async (req, res) => {
             {
                 model: Freelancer
             }
-        ],
-        raw: true,
-        nest: true, 
-    }).then( async (result) => {
 
-        const projeto = result
-        const freelancerId = projeto.freelancers.Freelancerprojetos.freelancerId
-        const freelancer = await Freelancer.findAll({
-            where: { id: freelancerId },
-            include: [
-                { model: User}
-            ],
-            raw: true,
-            nest: true
-        })
-        console.log(freelancer);
-        res.render('admin/projetos/details/detail', {
-            title: 'eMaLENGUE | Detalhe do Projetos',
+        ],
+        order: [
+            ['id', 'DESC']
+        ]
+    }).then((posts) => {
+
+        res.render('admin/projetos/index', {
+            title: 'eMaLENGUE | Meus Projetos',
             layout: 'main2',
-            projeto: result,
-            freeNumber: freelancer.length,
-            subFreelancer: freelancer,
+            projetos: posts,
+            correntUser: correntUser,
         })
     })
-} 
-
-// My Projects ==============================================
-
-const myProjects = async (req, res) => {
-    const correntUser = req.authUser
-     await Projeto.findAll({
-            where: {
-                user_id: correntUser.id
-            },
-            include: [
-                {
-                    model: User,
-                },
-                {
-                    model: Freelancer
-                }
-
-            ],
-            order: [
-                ['id', 'DESC']
-            ]
-        }).then((posts) => {
-
-            res.render('admin/projetos/index', {
-                title: 'eMaLENGUE | Meus Projetos',
-                layout: 'main2',
-                projetos: posts,
-                correntUser: correntUser,
-            })
-        })
 }
+
+
+
+
 
 
 //Search =====================================================
@@ -166,6 +241,7 @@ const search = (req, res) => {
         })
     }
 }
+
 
 
 
@@ -195,12 +271,28 @@ async function sendMial(emailOption) {
 
 //Create ============================================
 
-const create = (reqe, res) => {
+const create = async (req, res) => {
+    await Habilidade.findAll({
+        order: [
+            ['id', 'DESC']
+        ]
+    }).then(async (result) => {
 
-    res.render('admin/projetos/create/create', {
-        layout: 'main2',
-        title: 'Publicar Projeto'
+        await Categoria.findAll({
+            order: [
+                ['id', 'DESC']
+            ]
+        }).then(result1 => {
+
+            res.render('admin/projetos/create/create', {
+                layout: 'main2',
+                title: 'Publicar Projeto',
+                habilidade: result,
+                categoria: result1,
+            })
+        })
     })
+
 }
 
 //Multer config =======================================
@@ -238,17 +330,26 @@ const store = ((req, res) => {
             const about = req.body.descricao;
             const date = req.body.prazo;
             const img = req.file.filename;
+            const habilidade = req.body.habilidades;
+
+            console.log(req.body.habilidades.length)
 
             await Projeto.create({
                 nome: name,
-                categoria: categoria,
+                categoriaId: categoria,
                 descricao: about,
-                habilidade: req.body.habilidades,
                 prazo: date,
                 user_id: user.id,
                 image: img
 
             }).then(async (project) => {
+
+                habilidade.forEach(async element => {
+                    await ProjetoHabilidade.create({
+                        habilidadeId: element,
+                        projetoId: project.id
+                    })
+                });
 
                 //Sending mail ========================
                 const mailOption = {
@@ -278,6 +379,83 @@ const store = ((req, res) => {
 
 })
 
+
+
+// UPDATE ========================================================================
+
+const update = async (req, res) => {
+
+    const projectId = req.params.id
+    await Projeto.findOne({
+        where: { id: projectId }
+    }).then(results => {
+
+        res.render('admin/projetos/update/update', {
+            layout: 'main2',
+            title: 'eMaLENGUE | Editar projeto',
+            projeto: results,
+        })
+    })
+}
+
+const updateProject = (req, res) => {
+    res.json({ teste: 'Ola meu perseverante amigo programador de sucesso' })
+
+    // Get token from the cookies
+    const token = req.cookies.jwt;
+    jwt.verify(token, 'emalengue app', async (err, decodedToken) => {
+
+        // Fire a message if the token was not verified
+        if (err) {
+            console.log(err.message);
+            res.locals.user = null
+        } else {
+            //Find logged user through te gotten token
+            const user = await User.findByPk(decodedToken.id)
+
+            console.log(req.body);
+
+            // const name = req.body.nome;
+            // const categoria = req.body.categoria;
+            // const about = req.body.descricao;
+            // const date = req.body.prazo;
+
+            // const updates = {
+            //     name,
+            //     categoria,
+            //     about,
+            //     date,
+            // }
+            // if (req.file) {
+            //     const image = req.file.filename;
+            //     updates.image = image;
+            // }
+
+            // const condition = { where: { id: req.params.id } }
+            // const value = {
+            //     nome: updates.name,
+            //     categoria: updates.categoria,
+            //     descricao: updates.about,
+            //     // habilidade: updates.req.body.habilidades,
+            //     prazo: updates.date,
+            //     // user_id: correntUser.id,
+            //     image: updates.img
+            // }
+
+            // await Projeto.update(value, condition).then(async (project) => {
+
+            //     res.status(200).json(req.body)
+            // }).catch((err) => {
+            //     console.log('Erro ao criar Projeto!' + err);
+            // })
+
+
+        }
+    })
+}
+
+
+
 // ========================================================================
 /** 
  * This methos is responsible for allowing somoane to apply for a published project
@@ -285,39 +463,40 @@ const store = ((req, res) => {
 */
 
 const applayToProject = async (req, res) => {
-    const authUser = req.authUser
+    const authUser = req.user
     const projectId = req.params.id
 
     // Check if it is a freelancer
     if (authUser.role === 'freelancer') {
-       
-        const fr = await Freelancer.findOne({
-            where: { user_id: authUser.id },
+        const pr = await Projeto.findOne({
+            where: { id: projectId },
             include: [
                 {
-                    model: Projeto
-
+                    model: Freelancer
                 }
             ],
             raw: true,
             nest: true,
         })
-        
-         // Check if this freelancer is alread subscribed
-        if (fr) {
+
+        // Check if this freelancer is alread subscribed
+        const existentFree = pr.freelancers.Freelancerprojetos.freelancerId
+        const freelancer = await Freelancer.findOne({ where: { user_id: authUser.id } })
+
+        if (existentFree == freelancer.id) {
             console.log('Ja estas inscrito!');
             res.status(400).redirect('back')
         } else {
             // Subscribe a freelancer to a project
-            Freelancerprojeto.create({
+            await Freelancerprojeto.create({
                 projetoId: projectId,
-                freelancerId: fr.id,
+                freelancerId: freelancer.id,
             })
             console.log('inscrito!');
             res.status(200).redirect('back')
         }
     } else {
-        res.redirect('back')
+        res.redirect('/dashboard/projeto/detalhes/projectId')
     }
 
 
@@ -336,4 +515,6 @@ module.exports = {
     details,
     myProjects,
     applayToProject,
+    update,
+    updateProject,
 }

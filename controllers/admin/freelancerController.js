@@ -5,6 +5,8 @@ const User = require('../../models/User')
 const multer = require('multer')
 const bcrypt = require('bcrypt')
 const { name } = require('body-parser')
+const Habilidade = require('../../models/Habilidade')
+const Freelancerhabilidade = require('../../models/freelancerhabilidades')
 // const freelancer = require('../../routes/admin/freelancerRoute')
 
 
@@ -15,13 +17,20 @@ const { name } = require('body-parser')
 /**METHODS CONFIG ========================================================== */
 
 //Index
-const index = async (reqe, res) => {
+const index = async (req, res) => {
     Freelancer.findAll({
-        include: [{
-            model: User,
-            // attributes: ['nome', 'email', 'role']
-        }]
-    }).then((posts) => {
+        include: [
+            {
+                model: User,
+            },
+            {
+                model: Habilidade,
+                as: 'habilidades',
+            }
+        ]
+    }).then( async (posts) => {
+        const freelancer = posts
+        console.log(freelancer);
         res.render('admin/freelancer/index', {
             freelancers: posts,
             layout: 'main2',
@@ -34,9 +43,13 @@ const index = async (reqe, res) => {
 
 //Create
 const create = (req, res) => {
-    res.render('admin/freelancer/create/create', {
-        layout: 'main2',
-        title: 'Cadastrar Freelancer'
+    Habilidade.findAll().then(result => {
+
+        res.render('admin/freelancer/create/create', {
+            layout: 'main2',
+            title: 'Cadastrar Freelancer',
+            habilidades: result,
+        })
     })
 }
 
@@ -68,9 +81,9 @@ const store = async (req, res) => {
     const checkbox = req.body.fr_checkbox
 
     //Verify if there is alread a user with the email entered
-    const user = await User.findOne({row: true, where: { email: email } })
-    
-    
+    const user = await User.findOne({ row: true, where: { email: email } })
+
+
     if (user && checkbox != "on") {
         const userId = user.id
         const freelancer = await Freelancer.findOne({ row: true, where: { user_id: userId } })
@@ -99,15 +112,15 @@ const store = async (req, res) => {
                 desc: "Já há um freelancer cadastrado com este email. Por favor, tente com um outro email! "
             }
             res.status(401).json(message)
-        } 
+        }
         else {
 
             const userId = user.id
+
             // Registra como freelancer
             await Freelancer.create({
                 pais: req.body.country,
                 provincia: req.body.province,
-                habilidades: req.body.skills,
                 certificacoes: req.body.certification,
                 sobre: req.body.about,
                 imagem: img,
@@ -120,6 +133,15 @@ const store = async (req, res) => {
             }).then(async () => {
                 // res.redirect('/dashboard/freelancer')
                 const fr = await Freelancer.findOne({ row: true, where: { user_id: userId } })
+
+                const habilidade = req.body.skills
+                habilidade.forEach(async element => {
+                    await Freelancerhabilidade.create({
+                        habilidadeId: element,
+                        freelancerId: fr.id,
+                    })
+                });
+
                 res.status(200).json({ fr })
             }).catch((err) => {
                 console.log(`Erro ao cadastrar freelancer: ${err}`);
@@ -147,7 +169,6 @@ const store = async (req, res) => {
             await Freelancer.create({
                 pais: req.body.country,
                 provincia: req.body.province,
-                habilidades: req.body.skills,
                 certificacoes: req.body.certification,
                 sobre: req.body.about,
                 imagem: img,
@@ -160,6 +181,15 @@ const store = async (req, res) => {
             }).then(async () => {
                 // res.redirect('/dashboard/freelancer')
                 const fr = await Freelancer.findOne({ row: true, where: { user_id: userId } })
+
+                const habilidade = req.body.skills
+                habilidade.forEach(async element => {
+                    await Freelancerhabilidade.create({
+                        habilidadeId: element,
+                        freelancerId: fr.id,
+                    })
+                });
+
                 res.status(200).json({ fr })
             }).catch((err) => {
                 console.log(`Erro ao cadastrar freelancer: ${err}`);
@@ -170,7 +200,7 @@ const store = async (req, res) => {
         })
 
     } //End Main If
-} 
+}
 
 //Destroy
 const destroy = (req, res) => {

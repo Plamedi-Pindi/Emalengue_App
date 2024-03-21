@@ -3,6 +3,10 @@ const User = require('../../models/User')
 const bcrypt = require('bcrypt')
 const { get } = require('express/lib/response')
 const jwt = require('jsonwebtoken')
+require('./googleAuth2')
+require('passport')
+const session = require('express-session')
+
 
 
 
@@ -32,7 +36,7 @@ const login = async (req, res) => {
                 // cookie
                 res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
                 // res.redirect('/')
-                res.status(200).json({user})
+                res.status(200).json({ user })
                 console.log("##### Certo #######")
 
             } else {
@@ -40,7 +44,7 @@ const login = async (req, res) => {
                 const error = "Senha invalida!"
                 const Message = [id, error]
                 res.status(401).json(Message)
-                console.log('######### Senha errada ############' )
+                console.log('######### Senha errada ############')
             }
 
         } else {
@@ -61,8 +65,14 @@ const login = async (req, res) => {
 
 // Logout
 const logout = async (req, res) => {
+    
+    req.logout(function (err) {
+        req.session.destroy(function (err) { })
+    })
     res.cookie('jwt', '', { maxAge: 1 })
     res.redirect('/')
+
+
 }
 
 

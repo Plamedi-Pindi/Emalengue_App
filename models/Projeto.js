@@ -22,16 +22,21 @@ const Projeto = db.sequelize.define('projetos', {
     prazo: {
         type: db.Sequelize.DATEONLY,
     },
-    categoria: {
-        type: db.Sequelize.INTEGER,
-    },
-    habilidade: {
-        type: db.Sequelize.INTEGER,
-    },
+    
+    // habilidade: {
+    //     type: db.Sequelize.INTEGER,
+    // },
     user_id: {
         type: db.Sequelize.INTEGER,
         references: {
           model: 'users',
+          key: 'id',
+        }
+    },
+    categoriaId: {
+        type: db.Sequelize.INTEGER,
+        references: {
+          model: 'categorias',
           key: 'id',
         }
     }

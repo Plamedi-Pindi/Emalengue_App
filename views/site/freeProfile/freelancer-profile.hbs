@@ -53,7 +53,7 @@
                         <div class="progress_conatiner row">
                             <!-- SKILL PROGRESS BAR START -->
                             <div class="col-12 col-lg-10 col-xl-6">
-                                <p>HTML5</p>
+                                {{!-- <p>HTML5</p>
                                 <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="25"
                                     aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar bg-info text-dark" style="width: 95%">95%</div>
@@ -67,10 +67,15 @@
                                 <div class="progress" role="progressbar" aria-label="Warning example" aria-valuenow="75"
                                     aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar bg-info text-dark" style="width: 85%">85%</div>
-                                </div>
+                                </div> --}}
+
+                                {{#each freelancer.habilidades}}
+                                   <p> {{ name }} </p>
+                                {{/each}}
+                                {{ habilidades }}
                             </div>
                             <div class="col-12 col-lg-10 col-xl-6">
-                                <p>Node JS</p>
+                                {{!-- <p>Node JS</p>
                                 <div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="100"
                                     aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar bg-info text-dark" style="width: 80%">80%</div>
@@ -84,7 +89,7 @@
                                 <div class="progress" role="progressbar" aria-label="Danger example" aria-valuenow="100"
                                     aria-valuemin="0" aria-valuemax="100">
                                     <div class="progress-bar bg-info text-dark text-dark" style="width: 100%">96%</div>
-                                </div>
+                                </div> --}}
                             </div>
                             <!-- SKILL PROGRESS BAR END -->
                         </div>

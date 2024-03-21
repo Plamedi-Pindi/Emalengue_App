@@ -32,6 +32,9 @@
                     </div>
 
                     <img class="main_img" src="/admin/img/projetos/{{ projeto.image }}" alt="">
+                    <div class="ltl_category">
+                        <i class="bi bi-ui-radios-grid"></i> Categoria: <span> {{ projeto.categoria.name }} </span>
+                    </div>
 
                     <h2>Descrição do projeto</h2>
                     <div class="pj_description">
@@ -49,10 +52,7 @@
                             <div><i class="bi bi-hourglass-split"></i> Válido até:</div>
                             <span> {{ projeto.prazo }} </span>
                         </li>
-                        <li class="item">
-                            <div><i class="bi bi-ui-radios-grid"></i> Categoria:</div>
-                            <span> {{ projeto.categoria }} </span>
-                        </li>
+
                         <li class="item">
                             <div><i class="bi bi-star"></i>Avaliação:</div>
                             <span class="star">
@@ -63,7 +63,7 @@
                                 <i class="bi bi-star-half"></i>
                             </span>
                         </li>
-                        {{#ifIqual projeto.user.id authUser.id }}
+                        {{#ifIqual projeto.user.id user.id }}
                         <li class="item">
                             <div><i class="bi bi-people-fill"></i> Inscritos: </div>
                             <span> {{ ../freeNumber }} </span>
@@ -72,26 +72,25 @@
                         <li>
                             <div><i class="bi bi-list-stars"></i>Habilidades:</div>
                             <ul class="skill">
-                                <li>item</li>
-                                <li>item</li>
-                                <li>item</li>
-                                <li>item</li>
-                                <li>item</li>
+                                {{#each projeto.habilidades}}
+                                <li>{{ name }}</li>
+                                {{/each}}
                             </ul>
                         </li>
                     </ul>
-                    {{#ifIqual projeto.freelancers.user_id authUser.id }}
+                    {{#if subscribedUser }}
                     <a href="#" class="sbsb sbsb_insc">Inscrito</a>
                     {{else}}
-                    <a href="/dashboard/projeto/inscrever/{{ ../projeto.id }}" class="sbsb">Inscrever-se</a>
-                    {{/ifIqual }}
+                    <a href="/dashboard/projeto/inscrever/{{ projeto.id }}" class="sbsb">Inscrever-se</a>
+                    {{/if }}
 
                 </div>
 
                 {{!-- Subscribed freelancers --}}
 
-                {{#ifIqual projeto.user.id authUser.id }}
+                {{#ifIqual projeto.user.id user.id }}
                 <div class="project_table col-12 col-sm-12 col-lg-12  container-fluid">
+                    <h4>Inscritos</h4>
                     <table class="table table-hover">
                         <thead class="table-light">
                             <tr>
@@ -99,6 +98,7 @@
                                 <th scope="col">Nome </th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Telefone</th>
+                                <th scope="col">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -111,7 +111,77 @@
                                 </td>
                                 <td> <span class="text-primary sf_email "> {{ user.email }} </span> </td>
                                 <td> <span class="sf_phone"> {{ phone }} </span> </td>
+                                <td>
+                                    <span class="sf_view" title="Mais detalhes" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop{{ id }}"> <i class="bi bi-eye"></i></span>
+                                </td>
                             </tr>
+
+                            <!--Freelancer Modal View -->
+                            <div class="modal fade " id="staticBackdrop{{ id }}" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable ">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Mais Detalhes sobre
+                                                Freelancer
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-10 col-md-6 container-fluid   fr_mdl_data1">
+                                                    {{!-- Image --}}
+                                                    <img src="/admin/img/freelancers/{{ imagem }}" alt="">
+                                                    {{!-- Name --}}
+                                                    <h3> {{ user.nome }} </h3>
+                                                    <span> {{ especialidade }} </span>
+
+                                                    <ul>
+                                                        <li>
+                                                            <i class="bi bi-telephone-fill"></i> (+244) {{ phone }}
+                                                        </li>
+                                                        <li>
+                                                            <i class="bi bi-envelope-at-fill"></i>
+                                                            {{ user.email }}
+                                                        </li>
+                                                        <li>
+                                                            <i class="bi bi-globe-americas"></i> {{ pais }}
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="fr_mdl_data2 col-10 col-md-5 container-fluid">
+                                                    <h3>Habilidades e Certificações</h3>
+                                                    <ul>
+                                                    
+                                                        {{#each habilidades}}
+                                                            <li> {{ name }} </li>       
+                                                        {{/each}}
+                                                    </ul>
+                                                </div>
+                                                <hr class="col-10 container-fluid">
+                                                <div class="col-10 container-fluid fr_mdl_data3">
+                                                    <h3>Sobre o Freelancer</h3>
+                                                    <div>
+                                                        {{ sobre }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Fechar</button>
+                                            <a href="/dashboard/freelancer/baixar_cv/{{ id }}" type="button"
+                                                class="btn btn-primary ft_mdl_dwl"> <i
+                                                    class="bi bi-cloud-arrow-down-fill"></i> Baixar CV</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             {{/each }}
                         </tbody>
                     </table>

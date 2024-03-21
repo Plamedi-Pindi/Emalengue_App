@@ -1,20 +1,30 @@
 /**IMPORTS CONGING ============================================*/
 const Freelancer = require('../../models/Freelancer')
 const User = require('../../models/User')
+const Habilidade = require('../../models/Habilidade')
 
 //Index
 const index = (req, res) => {
+    const user = req.user
     Freelancer.findAll({
-        include: [{
-            model: User,
-        }]
+        include: [
+            {
+                model: User,
+            },
+            {
+                model: Habilidade, 
+                as: 'habilidades',
+            }
+        ],
+
     }).then(posts => {
+        console.log(user);
         res.render('site/home/index', {
             title: 'eMaLENGUE',
             freelancers: posts,
 
-            helpers:{
-                hello: ()=>{
+            helpers: {
+                hello: () => {
                     return "Ola"
                 }
             }

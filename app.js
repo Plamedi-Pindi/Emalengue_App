@@ -7,7 +7,11 @@ const cookieParser = require('cookie-parser')
 const { checkUsser } = require('./middleware/authMiddleware')
 const Habilidade = require('./models/Habilidade')
 const Categoria = require('./models/Categoria')
+const passport = require('passport')
+const session = require('express-session')
 require('./models/associations')
+require('./controllers/auth/googleAuth2')
+require('dotenv').config()
 
 //Routes imports
 const homeRoute = require('./routes/site/homeRoute')
@@ -23,6 +27,7 @@ const loginRoute = require('./routes/auth/loginRoute')
 const registerRoute = require('./routes/auth/registerRoute')
 const { sequelize } = require('./models/db')
 const adminCursoRoute = require('./routes/admin/cursoRoute')
+const googleRoute = require('./routes/auth/googleRoute')
 
 
 
@@ -63,6 +68,44 @@ app.set('view engine', 'hbs')
 // app.set('views', './views')
 
 
+// GOOGLE AUTH =======================================================
+const maxAge = 60000*60
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false, maxAge: maxAge }
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+
+app.get('/auth/google',
+  passport.authenticate('google', {
+    scope:
+      [
+        'email',  
+        'profile',
+        // 'https://www.googleapis.com/auth/user.phonenumbers.read',
+        // 'https://www.googleapis.com/auth/user.addresses.read',
+      ]
+  }
+  ));
+
+app.get('/auth/google/callback',
+  passport.authenticate('google', {
+    successRedirect: '/',
+    failureRedirect: '/auth/google/failure'
+  }));
+
+app.get('/sair', (req, res) => {
+  req.logout( function(err) {
+    res.send('Good bay')
+    req.session.destroy( function (err) {})
+
+  })
+})
 
 /**Middleware ===================================================== */
 //Body Parser Config
@@ -72,6 +115,7 @@ app.use(bodyParser.json())
 app.use(express.static('public'))
 // Cookie parser
 app.use(cookieParser())
+
 
 
 /**SERVER =================================================================== */
@@ -98,5 +142,6 @@ app.use('/dashboard/cursos', adminCursoRoute)
 // For Auth
 app.use('/cadastrar', registerRoute)
 app.use('/', loginRoute)
+app.use('/auth', googleRoute)
 
 

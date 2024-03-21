@@ -8,24 +8,26 @@
                 <ul>
                     <li><a href="/dashboard">Home</a></li>
                     <li><a href="/dashboard/projeto">Projetos publicados</a></li>
-                    
+
                 </ul>
             </div>
             <input type="text" placeholder="Pesquisar...." class="form-control pj_disp_search">
         </div>
 
         <div class="pj_display_container">
-            <div class="row">
+            <div class="row d-flex flex-row justify-content-between">
                 {{#each projetos }}
                 <div class="card col-12 col-sm-8 col-lg-5 col-xl-4 container-fluid">
                     <img src="/admin/img/projetos/{{ image }}" alt="" class="pj_disp_img">
                     <div class="pj_disp_content">
-                        <a href="/dashboard/projeto/detalhes/{{ id }}">
-                            <h3> {{ nome }} </h3>
-                        </a>
-                        <p> Período: <span> {{ prazo }} </span> </p>
-                        <p> Categoria: <span> {{ categoria }} </span></p>
-                        <hr>
+                        <div>
+                            <a href="/dashboard/projeto/detalhes/{{ id }}">
+                                <h3> {{ nome }} </h3>
+                            </a>
+                            <p> Período: <span> {{ prazo }} </span> </p>
+                            <p> Categoria: <span> {{ categoria.name }} </span></p>
+                        </div>
+                    
                         <div class="user">
                             <div>
                                 <img src="/admin/img/user.jpg" alt="">
@@ -46,7 +48,7 @@
 
 <script type="text/javascript">
 
-    
+
 
 
 

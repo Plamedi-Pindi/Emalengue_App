@@ -2,11 +2,11 @@
 const express = require('express')
 const main = express.Router()
 const mainController = require('../../controllers/admin/mainController')
-const {requireAuth, checkUsser} = require('../../middleware/authMiddleware')
+const { checkUsser, isLogged} = require('../../middleware/authMiddleware')
 
 //Routes
-main.get('*', checkUsser)
-main.get('/', requireAuth,  mainController.index)
+main.get('*', isLogged)
+main.get('/', mainController.index)
 
 /**EXPORT =========================================================== */
 module.exports = main

@@ -1,5 +1,6 @@
 @import './main';
 @import "./fonts";
+@import './color';
 
 .fr_container {
     @include container();
@@ -64,8 +65,14 @@
     }
 }
 
+.modal-title {
+    border-left: solid 5px $primary !important;
+    padding-left: 10px;
+}
+
 .fr_mdl_data1{
     margin-bottom: 2rem;
+
 
     img{
         width: 100%;
@@ -93,6 +100,7 @@
         }
         i{
             margin-right: 10px;
+            color: $primary;
         }
     }
 }
@@ -103,8 +111,9 @@
         color: #333;
         margin-bottom: 10px;
         padding-left: 10px; 
-        border-left: 2px solid rgb(236, 154, 2);
+        border-left: 3px solid $primary;
     }
+
     ul{
         list-style: none;
         margin: 0;
@@ -116,6 +125,10 @@
             border-bottom: 1px solid #ddd;
             padding-bottom: 10px;
         }
+    }
+
+    .certificacoes {
+        margin-top: 1rem;
     }
 }
 .fr_mdl_data3{

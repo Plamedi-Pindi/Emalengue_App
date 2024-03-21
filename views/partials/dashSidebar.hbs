@@ -14,34 +14,37 @@
             </li>
         </ul>
 
-        <h3 class="sd-title">Freelancer</h3>
 
-        <ul>
-            {{#ifIqual authUser.role "admin" }}
-            <li> 
-                <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
-                    <span class="sb-content">Freelancers</span>
-                </a>
+        {{#ifIqual user.role "admin" }}
+            <h3 class="sd-title">Freelancer</h3>
+            <ul>
+                <li> 
+                    <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
+                        <span class="sb-content">Freelancers</span>
+                    </a>
 
-            </li>
-            <li>
-                <a href="/dashboard/freelancer/cadastrar"><i class="bi bi-person-fill-add"></i>
-                    <span class="sb-content">Cadastrar Freelancer</span>
-                </a>
-            </li>
-            {{/ifIqual }}
+                </li>
+                <li>
+                    <a href="/dashboard/freelancer/cadastrar"><i class="bi bi-person-fill-add"></i>
+                        <span class="sb-content">Cadastrar Freelancer</span>
+                    </a>
+                </li>
+            </ul>
+        {{/ifIqual }}
 
-            {{#ifIqual authUser.role "freelancer" }}
-            <li>
-                <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
-                    <span class="sb-content">Freelancers</span>
-                </a>
+        {{!-- {{#ifIqual user.role "freelancer" }}
+            <h3 class="sd-title">Freelancer</h3>
+            <ul>
+                <li>
+                    <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
+                        <span class="sb-content">Freelancers</span>
+                    </a>
 
-            </li>
-            {{/ifIqual }}
-        </ul>
+                </li>
+            </ul>
+        {{/ifIqual }} --}}
         <!-- CURSOS ===========================================================  -->
-        <h3 class="sd-title">Curso</h3>
+        <h3 class="sd-title">Cursos</h3>
         <ul>
             <li>
                 <a href="/dashboard/cursos"><i class="bi bi-grid-fill"></i>
@@ -78,7 +81,7 @@
         <ul>
             <li>
                 <a href="#"><i class="bi bi-person-fill"></i>
-                    <span class="sb-content"> {{ authUser.nome }} </span>
+                    <span class="sb-content"> {{ user.nome }} </span>
                 </a>
             </li>
             

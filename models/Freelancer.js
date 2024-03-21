@@ -21,9 +21,6 @@ const Freelancer = db.sequelize.define('freelancers', {
     provincia: {
         type: db.Sequelize.STRING
     },
-    habilidades: {
-        type: db.Sequelize.TEXT,
-    },
     certificacoes: {
         type: db.Sequelize.TEXT
     },

@@ -1,8 +1,12 @@
 const Freelancer = require('./Freelancer')
 const Projeto = require('./Projeto')
 const User = require('./User')
+const Habilidade = require('./Habilidade')
+const Categoria = require('./Categoria')
+const ProjetoHabilidade = require('./ProjetoHabilidade')
+ 
 
-
+// Many-To-May between Projeto and Freelancer Tables =========================================
 Projeto.belongsToMany(Freelancer, {
     through: 'Freelancerprojetos',
     onDelete: 'CASCADE',
@@ -22,7 +26,44 @@ Freelancer.belongsToMany(Projeto, {
     }
 })
 
-// =========================
+// Many-To-May between Projeto and Habilidade Tables =========================
+Projeto.belongsToMany(Habilidade, {
+    as: 'habilidades',
+    through: 'projetohabilidades',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    foreignKey: {
+        name: 'projetoId',
+        allowNull: false
+    }
+})
+ 
+Habilidade.belongsToMany(Projeto, { 
+    as: 'projetos',
+    through: 'projetohabilidades',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE', 
+    foreignKey: {
+        name: 'habilidadeId',
+        allowNull: false
+    }
+})
+
+// // Many-To-One between Projeto and Categoria Tables =====================================================
+
+Projeto.belongsTo(Categoria, { foreignKey: 'categoriaId'});
+ 
+Categoria.hasMany(Projeto, { 
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE', 
+    foreignKey: {
+        name: 'categoriaId',
+        allowNull: false
+    }
+})
+
+
+// ===========================================================================
 
 // Association With Freelancer
 User.hasOne(Freelancer, {
@@ -45,6 +86,34 @@ User.hasMany(Projeto, {
     }
 })
 Projeto.belongsTo(User, { foreignKey: 'user_id'});
+
+// Many-To-May between Freelancer and Habilidade Tables =========================
+Freelancer.belongsToMany(Habilidade, {
+    as: 'habilidades',
+    through: 'freelancerhabilidades',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    foreignKey: {
+        name: 'freelancerId',
+        allowNull: false
+    }
+})
+ 
+Habilidade.belongsToMany(Freelancer, { 
+    as: 'freelancer',
+    through: 'freelancerhabilidades',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE', 
+    foreignKey: {
+        name: 'habilidadeId',
+        allowNull: false
+    }
+})
+
+
+
+
+
 
 module.exports = {
     User,

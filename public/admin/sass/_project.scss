@@ -28,11 +28,6 @@
 
     }
 
-    .pj_searc_form_btn {
-        // padding: 0px 5px;
-
-    }
-
     .pj_searc_form {
         // width: 40%;
         display: flex;
@@ -107,6 +102,23 @@
         border-radius: 4px;
     }
 
+}
+
+.nonProject {
+    margin: 20px;
+    background-color: rgba(253, 4, 4, 0.295);
+    padding: 40px;
+    border-radius: 10px;
+    font-family: $roboto;
+    
+    h2 {
+        border-left: red solid 5px;
+        padding-left: 10px;
+    }
+    h5 {
+        border-left: solid red 3px;
+        padding-left: 5px;
+    }
 }
 
 @media(min-width: 720px) {

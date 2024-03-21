@@ -62,7 +62,14 @@
 
                         <!-- Habiliteis -->
                         <label for="skills">Principais Habilidades <span>*</span></label>
-                        <input type="text" placeholder="HTML, JS, CSS..." class="form-control" name="skills" required>
+                        <select name="skills" id="skills" class="form-control" multiple required>
+                            {{#each habilidades}}
+                                <option value="{{ id }}"> {{ name }} </option>
+                            {{/each}}
+                            
+                        </select>
+                        
+                        
 
                         <!-- Cetification -->
                         <label for="certification">Certificações <span>*</span></label>

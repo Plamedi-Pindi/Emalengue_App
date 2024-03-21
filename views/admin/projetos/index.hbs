@@ -12,67 +12,84 @@
             </div>
         </div>
         <div class="pj_container">
-            <!-- Seach form ===================================================-->
-            <div class="pj_search">
-                <a href="/dashboard/projeto/novo_projeto" class="btn btn-primary pj_search_btn">Novo Projeto</a>
+            {{#if projetos }}
+                <!-- Seach form ===================================================-->
+                <div class="pj_search">
+                    <a href="/dashboard/projeto/novo_projeto" class="btn btn-primary pj_search_btn">Novo Projeto</a>
 
-                <form id="pj_searc_form" class="pj_searc_form">
-                    <input type="text" name="search" class="form-control pj_searc_form_input" placeholder="Pesquisar..." id="pj_searc_form_input">
-                    <button class="btn btn-outline-dark pj_searc_form_btn" type="submit"><i class="bi bi-search"></i>
-                    </button>
-                </form>
+                    <form id="pj_searc_form" class="pj_searc_form">
+                        <input type="text" name="search" class="form-control pj_searc_form_input" placeholder="Pesquisar..."
+                            id="pj_searc_form_input">
+                        {{!-- <button class="btn btn-outline-dark pj_searc_form_btn" type="submit"><i class="bi bi-search"></i>
+                        </button> --}}
+                    </form>
+                </div>
+                <!--Projects Table ===================================================-->
+                <section class="table_container">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Imagem</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Visionário</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="searchResult">
+
+                            {{#each projetos }}
+                            <tr class="pj_rows">
+                                {{!-- id --}}
+                                <td><span class="pj_id">{{ id }}</span></td>
+                                {{!-- image --}}
+                                <td>
+                                    <img src="/admin/img/projetos/{{ image }}" alt="Imagem do Projeto" class="pj_img">
+                                </td>
+                                {{!-- Name --}}
+                                <td>
+                                    <h5 class="pj_name"> {{ nome }} </h5>
+                                </td>
+                                {{!-- Visionário --}}
+                                <td><span class="pj_user text-primary"> {{ user.nome }} </span></td>
+                                {{!-- Data --}}
+                                <td><span class="pj_prazo"> {{ prazo }} </span></td>
+                                {{!-- Ações --}}
+                                <td>
+                                    {{#ifIqual ../user.id user.id }}
+                                        <a href="/dashboard/projeto/meuprojeto/update/{{ ../id }}" class="pj_edit" title="Editar"><i class="bi bi-pencil-square"></i></a>
+
+                                    {{/ifIqual }}
+
+                                        <a href="/dashboard/freelancer/eliminar/{{ id }}" class="pj_delete" title="Deletar"><i
+                                                class="bi bi-trash3"></i></i></a>
+                                        <a href="/dashboard/projeto/detalhes/{{ id }}" class="pj_view" title="Mais detalhes"> <i
+                                            class="bi bi-eye"></i></a>
+                                </td>
+                            </tr>
+                            {{/each }}
+
+                        </tbody>
+                    </table>
+                </section>
+            {{else }}
+            <div class="nonProject">
+                <h2>Sem Projetos Publicados!</h2>
+
+                <p>Você ainda não publicou nenhum projeto.</p>
+
+                <h5>Por que publicar um projeto? </h5>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil tenetur sed culpa itaque aut magni vel ullam corporis velit rem, ipsa voluptate nam porro consequatur magnam maxime sequi est incidunt!</p>
+
+                <h5>Como publicar um projeto</h5>
+                <p>Clicqui no botão a seguir:</p>
+
+                <a href="/dashboard/projeto/novo_projeto" class="btn btn-primary">Bulicar projeto</a>
+              
             </div>
-            <!--Projects Table ===================================================-->
-            <section class="table_container">
-                <table class="table table-hover">
-                    <thead class="table-light">
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Imagem</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Visionário</th>
-                            <th scope="col">Data</th>
-                            <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="searchResult">
-                        {{#each projetos }}
-                        <tr class="pj_rows">
-                            {{!-- id --}}
-                            <td><span class="pj_id">{{ id }}</span></td>
-                            {{!-- image --}}
-                            <td>
-                                <img src="/admin/img/projetos/{{ image }}" alt="Imagem do Projeto" class="pj_img">
-                            </td>
-                            {{!-- Name --}}
-                            <td>
-                                <h5 class="pj_name"> {{ nome }} </h5>
-                            </td>
-                            {{!-- Visionário --}}
-                            <td><span class="pj_user text-primary"> {{ user.nome }} </span></td>
-                            {{!-- Data --}}
-                            <td><span class="pj_prazo"> {{ prazo }} </span></td>
-                            {{!-- Ações --}}
-                            <td>
-                                {{#ifIqual ../authUser.id user.id }}
-                                     <span class="pj_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
-
-                                {{/ifIqual  }}
-                        
-                                <a href="/dashboard/freelancer/eliminar/{{ id }}" class="pj_delete" title="Deletar"><i
-                                        class="bi bi-trash3"></i></i></a>
-                                <a href="/dashboard/projeto/detalhes/{{ id }}" class="pj_view" title="Mais detalhes" > <i class="bi bi-eye"></i></a>
-                            </td>
-                        </tr>
-                        {{/each }}
-                        
-                        
-
-                        
-                    
-                    </tbody>
-                </table>
-            </section>
+            {{/if }}
         </div>
     </div>
 </main>
@@ -84,13 +101,13 @@
 
     load_data()
 
-    function load_data(query = ''){
+    function load_data(query = '') {
         // Create XMLHttpRequest
         const request = new XMLHttpRequest()
         // Send data to de server
         request.open('GET', `/dashboard/projeto?q=${query}`)
         // Handle with the response
-        request.onload =() => {
+        request.onload = () => {
             const results = JSON.parse(request.responseText)
             console.log(result)
 
@@ -138,15 +155,14 @@
         request.send()
     }
 
-    searchInput.addEventListener('input', ()=> {
+    searchInput.addEventListener('input', () => {
         const query = searchInput.value
         load_data(query)
-        console.log( 'Teste esta funcionando muito bem: ' + query)
-    }) 
+        console.log('Teste esta funcionando muito bem: ' + query)
+    })
 
-    
 
-    
+
+
 </script>
 {{> dashFooter }}
- 

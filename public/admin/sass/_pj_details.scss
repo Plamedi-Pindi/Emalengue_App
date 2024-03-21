@@ -70,6 +70,15 @@
         display: block;
     }
 
+    .ltl_category{
+        color: #666;
+        margin-top: 10px; 
+        i {
+            color: $primary;
+            padding-right: 5px;
+        }
+    }
+
     h2 {
         color: $secundary;
         margin-top: 2rem;
@@ -114,12 +123,15 @@
         
     }
 
+    
+
 
 
 }
 
 //================
 .project_apply {
+    position: relative;
     // margin-top: 2rem;
     background: #fff;
     border-radius: 5px;
@@ -131,7 +143,7 @@
         color: $secundary;
         margin-bottom: 1rem;
         font-size: 20px;
-        border-left: solid 3px $primary;
+        border-left: solid 5px $primary;
         padding-left: 5px;
     }
 
@@ -171,12 +183,14 @@
         border-bottom: none;
     }
 
+    .skill {
+        list-style: circle !important;
+    }
     .skill li {
         border-bottom: none;
-        display: flex;
-        justify-content: flex-start;
-        list-style-type: circle;
-        padding-left: 2.5rem !important;
+        // display: flex;
+        // justify-content: flex-start;
+        margin-left: 2rem !important;
         padding-bottom: 0px;
         font-size: 15px;
     }
@@ -189,6 +203,11 @@
         font-size: 16px;
         border-radius: 5px;
         float: right;
+        position: absolute;
+        right: 1rem;
+        bottom: 2rem;
+        
+        
     }
     .sbsb_insc{
         background-color: rgb(55, 55, 255) !important;
@@ -198,9 +217,20 @@
 
 // Tabel ================
 .project_table {
-    margin-top: 1rem;
+    margin-top: 2rem;
     overflow-x: auto;
     background-color: #fff;
+    width: 96%;
+    padding-top: 1.5rem;
+
+    h4 {
+        color: $secundary;
+        margin-bottom: 1rem;
+        font-size: 20px;
+        border-left: solid 5px $primary;
+        padding-left: 5px;
+        margin-left: 10px;
+    }
 
 }
 
@@ -234,31 +264,18 @@ tr {
     height: 40px;
     border-radius: 10px;
 }
-.sf_email {
-
-}
-.sf_phone {
-
-}
 
 .sf_area {
     color: #888;
     font-size: 13px;
 }
-.pj_edit {
-    background-color: rgba(2, 119, 228, 0.322);
-    color: rgb(0, 60, 255);
-}
 
-.pj_delete {
-    background-color: rgba(255, 0, 0, 0.233);
-    color: red;
-}
-
-.pj_view {
+.sf_view {
     background-color: rgba(0, 128, 0, 0.301);
     color: green;
     border: none;
+    padding: 4px;
+    border-radius: 4px;
 }
 
 
