@@ -202,7 +202,7 @@ const store = async (req, res) => {
     } //End Main If
 }
 
-//Destroy
+//Destroy ========================================================
 const destroy = (req, res) => {
     Freelancer.destroy({ where: { 'id': req.params.id } }).then(() => {
         res.redirect('/dashboard/freelancer')
@@ -211,7 +211,7 @@ const destroy = (req, res) => {
     })
 }
 
-//Download
+//Download  ===========================================================
 const downloadBI = (req, res) => {
     const id = req.params.id
     Freelancer.findOne({ row: true, where: { id: id } }).then(posts => {
@@ -224,7 +224,7 @@ const downloadBI = (req, res) => {
         // res.send('Ola esta funcionando') 
     })
 }
-//Download
+//Download  ==================================================================================
 const downloadCV = (req, res) => {
     const id = req.params.id
     Freelancer.findOne({ row: true, where: { id: id } }).then(posts => {
@@ -238,8 +238,70 @@ const downloadCV = (req, res) => {
     })
 }
 
+// UPDATE =================================================================
+const updateView = async (req, res) => {
+    const freeId = req.params.id
+    
+    await Freelancer.findOne({ 
+        where: { id: freeId }, 
+        include: [
+            { model: User}
+        ] 
+    }).then( result => {
+
+        res.render('admin/freelancer/updates/update', {
+            title: 'eMALENGUE | Atualizar Freelancer',
+            layout: 'main2',
+            freelancer: result
+        })
+    })
+}
+
+const update = async (req, res) => {
+    const name = req.body.name
+    const especialidade = req.body.especialidade
+    const freeId = req.params.id 
+    // console.log(especialidade);
+    
+    if (name) {
+        await Freelancer.findOne({
+            where: {id: freeId},
+            include: [
+                {model: User}
+            ]
+        }).then(async post => {
+            const user = post.user
+            await user.update({ nome: name})
+            const message = {
+                id: 1, 
+                message: 'O nome foi Atualizado com Sucesso!'
+            }
+            res.json(message)
+        })
+        
+    } else if (especialidade) {
+        await Freelancer.findOne({
+            where: {id: freeId},
+            include: [
+                {model: User}
+            ]
+        }).then(async post => {
+            const freelancer = post
+            await freelancer.update({ especialidade: especialidade})
+            console.log(freelancer.especialidade);
+            const message = {
+                id: 1, 
+                message: 'A especialidade foi Atualizado com Sucesso!'
+            }
+            res.json(message)
+        })
+    }
+}
+
 /**EXPORT ================================================================= */
 module.exports = {
+    update,
+    updateView,
     index,
     store,
     create,

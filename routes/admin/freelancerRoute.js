@@ -10,6 +10,8 @@ freelancer.post('/enviar_cadastro', freelancerController.coletionUpload, freelan
 freelancer.get('/eliminar/:id', freelancerController.destroy)
 freelancer.get('/baixar_bi/:id', freelancerController.downloadBI)
 freelancer.get('/baixar_cv/:id', freelancerController.downloadCV)
+freelancer.get('/atualizar/:id', freelancerController.updateView)
+freelancer.put('/update/:id', freelancerController.update) 
 
 /**EXPORT =========================================================== */
 module.exports = freelancer

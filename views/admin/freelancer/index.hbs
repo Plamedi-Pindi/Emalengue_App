@@ -34,10 +34,10 @@
                         {{!-- Email --}}
                         <td><span class="fr_email text-primary"> {{ user.email }} </span></td>
                         
-                        {{!-- Email --}}
+                        {{!-- phonenumber --}}
                         <td><span class="fr_email text-primary"> {{ phone }} </span></td>
                         <td>
-                            <span class="fr_edit" title="Editar"><i class="bi bi-pencil-square"></i></span>
+                            <a href="/dashboard/freelancer/atualizar/{{ id }}" class="fr_edit" title="Editar"><i class="bi bi-pencil-square"></i></a>
                             <a href="/dashboard/freelancer/eliminar/{{ id }}" class="fr_delete" title="Deletar"><i class="bi bi-trash3"></i></i></a>
                             <span class="fr_view" title="Mais detalhes" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop{{ id }}"> <i class="bi bi-eye"></i></span>

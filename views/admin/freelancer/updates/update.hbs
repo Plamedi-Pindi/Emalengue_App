@@ -1,0 +1,151 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        <div class="pj_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/projeto">Meus projetos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container ">
+            <div class="fr_up_container">
+                <h2>Editar freelancer</h2>
+
+                <div id="AlertMessage">
+                    <img src="/admin/img/icons/icons8-success.gif" alt="">
+                    <p id="alertText"></p>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-6 container-fluid first">
+                        {{!-- Name --}}
+                        <form id="fr_ch_name" class="container-fluid ">
+                            <label for="name">Nome:</label>
+                            <input type="text" name="name" id="name" value="{{ freelancer.user.nome }}">
+                            <input type="submit" value="Editar" class="edit_btn">
+                        </form>
+                        {{!-- Email --}}
+                        <form id="fr_ch_email" class="container-fluid ">
+                            <label for="emial">Email:</label>
+                            <input type="email" class="" name="email" id="email" value="{{ freelancer.user.email }}">
+                            <input type="submit" value="Editar" class="edit_btn">
+                        </form>
+                        {{!-- Especialidade --}}
+                        <form id="fr_ch_especialidade" class="container-fluid ">
+                            <label for="especialidade">Especialidade:</label>
+                            <input type="text" class="" name="especialidade" id="especialidade"
+                                value="{{ freelancer.especialidade }}">
+                            <input type="submit" value="Editar" class="edit_btn">
+                        </form>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-6 container-fluid secon">
+                        {{!-- Telephone --}}
+                        <form id="fr_ch_telephone" class="container-fluid ">
+                            <label for="telephone">Telefone:</label>
+                            <input class="" name="telephone" id="telephone" value="{{ freelancer.phone }}">
+                            <input type="submit" value="Editar" class="edit_btn">
+                        </form>
+                        {{!-- Certification --}}
+                        <form id="fr_ch_certificacao" class="container-fluid ">
+                            <label for="certificacao">Certificação:</label>
+                            <input class="" name="certificacao" id="certificacao"
+                                value="{{ freelancer.certificacoes }}">
+                            <input type="submit" value="Editar" class="edit_btn">
+                        </form>
+                        {{!-- Pais --}}
+                        <form id="fr_ch_pais" class="container-fluid ">
+                            <label for="pais">Pais:</label>
+                            <select class="" name="pais" id="pais" value="{{ freelancer.pais }}">
+                                <option value="" selected>{{ freelancer.pais }}</option>
+                            </select>
+                            <input type="submit" value="Editar" class="edit_btn">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>
+<!-- MAIN END -->
+
+{{!-- SCRIPPT --}}
+<script>
+    const nameForm = document.getElementById('fr_ch_name') // Name form
+    const especialidadeForm = document.getElementById('fr_ch_especialidade') // Especialidade For
+    const AlertMessage = document.getElementById('AlertMessage')
+    const alertText = document.getElementById('alertText')
+    AlertMessage.style.display = 'none'
+
+    // Atualizar o nome
+    nameForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = { name: nameForm.name.value }
+        try {
+            const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result)
+            if (result) {
+
+                const timer = setInterval(() => {
+                    AlertMessage.style.display = 'flex'
+                    alertText.innerHTML = result.message
+                }, 2000)
+
+                setTimeout(() => {
+                    AlertMessage.style.display = 'none'
+                    clearInterval(timer)
+                }, 5000)
+            }
+
+        } catch (err) {
+            console.log('Error on loading the Fetch: ' + err)
+        }
+
+    })
+
+    // Atualizar a Especialidade =====================================================
+    especialidadeForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = { especialidade: especialidadeForm.especialidade.value }
+        try {
+            const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result)
+            if (result) {
+
+                const timer = setInterval(() => {
+                    AlertMessage.style.display = 'flex'
+                    alertText.innerHTML = result.message
+                }, 2000)
+
+                setTimeout(() => {
+                    AlertMessage.style.display = 'none'
+                    clearInterval(timer)
+                }, 5000)
+            }
+
+        } catch (err) {
+            console.log('Error on loading the Fetch: ' + err)
+        }
+
+    })
+</script>
+{{> dashFooter }}

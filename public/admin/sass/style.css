@@ -878,6 +878,121 @@ tr {
   color: #888;
 }
 
+.fr_up_container {
+  background-color: #fff;
+  padding: 10px;
+  padding-bottom: 2rem;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 1px 2px 5px #ddd;
+  border-radius: 4px;
+}
+.fr_up_container h2 {
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 10px;
+  text-transform: capitalize;
+  border-left: 5px solid #f7aa00;
+  margin-top: 1rem;
+  margin-left: 10px;
+  margin-bottom: 1.5rem;
+}
+.fr_up_container .first {
+  margin-bottom: 2rem;
+}
+
+#fr_ch_name,
+#fr_ch_email,
+#fr_ch_especialidade,
+#fr_ch_telephone,
+#fr_ch_certificacao,
+#fr_ch_pais {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+#fr_ch_name input, #fr_ch_name label,
+#fr_ch_email input,
+#fr_ch_email label,
+#fr_ch_especialidade input,
+#fr_ch_especialidade label,
+#fr_ch_telephone input,
+#fr_ch_telephone label,
+#fr_ch_certificacao input,
+#fr_ch_certificacao label,
+#fr_ch_pais input,
+#fr_ch_pais label {
+  display: block;
+}
+#fr_ch_name input,
+#fr_ch_email input,
+#fr_ch_especialidade input,
+#fr_ch_telephone input,
+#fr_ch_certificacao input,
+#fr_ch_pais input {
+  width: auto;
+  border: none;
+  outline: none;
+  border-bottom: 1.5px solid #1a1931;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  color: #555;
+}
+#fr_ch_name .edit_btn,
+#fr_ch_email .edit_btn,
+#fr_ch_especialidade .edit_btn,
+#fr_ch_telephone .edit_btn,
+#fr_ch_certificacao .edit_btn,
+#fr_ch_pais .edit_btn {
+  border-bottom: none;
+  background: rgb(2, 118, 250);
+  color: #fff;
+  padding: 4px;
+  border-radius: 5px;
+}
+#fr_ch_name select,
+#fr_ch_email select,
+#fr_ch_especialidade select,
+#fr_ch_telephone select,
+#fr_ch_certificacao select,
+#fr_ch_pais select {
+  width: 200px;
+  border: none;
+  border-bottom: 1.5px solid #1a1931;
+  outline: none;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+#fr_ch_name select:focus,
+#fr_ch_email select:focus,
+#fr_ch_especialidade select:focus,
+#fr_ch_telephone select:focus,
+#fr_ch_certificacao select:focus,
+#fr_ch_pais select:focus {
+  border: none;
+  border-bottom: 1.5px solid #1a1931;
+  outline: none;
+}
+
+#AlertMessage {
+  width: 100%;
+  background: rgba(1, 172, 1, 0.678);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+#AlertMessage p {
+  padding: 0;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+#AlertMessage img {
+  width: 50px;
+  height: 50px;
+}
+
 /***** IMPORTING FILE END *****/
 /* MEDIA CONFIG START ===========================================*/
 @media (min-width: 500px) {
