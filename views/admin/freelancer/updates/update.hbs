@@ -21,6 +21,17 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-12 col-md-8 col-lg-8 container-fluid first">
+                        {{!-- img --}}
+                        <div class="img_container">
+                            <img src="/admin/img/freelancers/{{ freelancer.imagem }}" alt="">
+                            <form id="fr_ch_img" class="container-fluid " enctype="multipart/form-data">
+                                <input type="file" name="img" id="img" accept="image/*">
+                                <input type="submit" value="Editar" class="edit_btn">
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="col-12 col-md-6 col-lg-6 container-fluid first">
                         {{!-- Name --}}
                         <form id="fr_ch_name" class="container-fluid ">
@@ -39,6 +50,15 @@
                             <label for="especialidade">Especialidade:</label>
                             <input type="text" class="" name="especialidade" id="especialidade"
                                 value="{{ freelancer.especialidade }}">
+                            <input type="submit" value="Editar" class="edit_btn">
+                        </form>
+                        <form enctype="multipart/form-data" id="fr_ch_nw_habilidades" class="container-fluid ">
+                            <label for="habilidades">Novas Habilidades:</label>
+                            <select name="habilidade" id="habilidade" multiple>
+                                {{#each habilidades}}
+                                <option value="{{ id }}"> {{ name }} </option>
+                                {{/each}}
+                            </select>
                             <input type="submit" value="Editar" class="edit_btn">
                         </form>
                     </div>
@@ -61,8 +81,42 @@
                         <form id="fr_ch_pais" class="container-fluid ">
                             <label for="pais">Pais:</label>
                             <select class="" name="pais" id="pais" value="{{ freelancer.pais }}">
-                                <option value="" selected>{{ freelancer.pais }}</option>
+                                <option value="{{ freelancer.pais }}" selected>{{ freelancer.pais }}</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="EUA">EUA</option>
+                                <option value="Inglaterra">Inglaterra</option>
                             </select>
+                            <input type="submit" value="Editar" class="edit_btn">
+                        </form>
+                        {{!-- CV --}}
+                        <form id="fr_ch_cv" class="container-fluid " enctype="multipart/form-data">
+                            <label for="cv">CV:</label>
+                            <input type="file" name="cv" id="cv" accept=".pdf">
+                            <input type="submit" value="Editar" class="edit_btn" accept=".pdf">
+                        </form>
+                        {{!-- BI --}}
+                        <form id="fr_ch_bi" class="container-fluid " enctype="multipart/form-data">
+                            <label for="bi">BI:</label>
+                            <input type="file" name="bi" id="bi">
+                            <input type="submit" value="Editar" class="edit_btn">
+                        </form>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-6 container-fluid secon">
+                        {{!-- Habilidades --}}
+                        <h6 class="habilidades_ttl">Remover Habilidades</h6>
+                        {{#each freelancer.habilidades}}
+                        <form id="fr_ch_habilidades" class="container-fluid fr_ch_habilidades">
+                            <input type="text" value="{{ name }}" readonly name="remover">
+                            <button type="submit"><i class="bi bi-x-lg"></i></button>
+                        </form>
+                        {{/each}}
+
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 container-fluid secon">
+                        <form id="fr_ch_sobre" class="container-fluid ">
+                            <label for="sobre">Sobre:</label>
+                            <textarea name="sobre" id="sobre" cols="30" rows="10">  {{ freelancer.sobre }} </textarea>
                             <input type="submit" value="Editar" class="edit_btn">
                         </form>
                     </div>
@@ -75,8 +129,16 @@
 {{!-- SCRIPPT --}}
 <script>
     const nameForm = document.getElementById('fr_ch_name') // Name form
-    const especialidadeForm = document.getElementById('fr_ch_especialidade') // Especialidade For
-    const AlertMessage = document.getElementById('AlertMessage')
+    const especialidadeForm = document.getElementById('fr_ch_especialidade') // Especialidade Form
+    const telephoneForm = document.getElementById('fr_ch_telephone') // Telephone Form
+    const certificacaoForm = document.getElementById('fr_ch_certificacao') // Certificacao Form
+    const paisForm = document.getElementById('fr_ch_pais') // Pais Form
+    const sobreForm = document.getElementById('fr_ch_sobre') // Sobre Form
+    const removHabForm = document.getElementsByClassName('fr_ch_habilidades') // Remover habilidades Form
+    const habilidadeForm = document.getElementById('fr_ch_nw_habilidades') // habilidades Form
+    const imgForm = document.getElementById('fr_ch_img') // Img Form
+    const cvForm = document.getElementById('fr_ch_cv') // CV Form
+    const AlertMessage = document.getElementById('AlertMessage') // Alert Message
     const alertText = document.getElementById('alertText')
     AlertMessage.style.display = 'none'
 
@@ -147,5 +209,226 @@
         }
 
     })
+
+
+    // Atualizar o Telefone =====================================================
+    telephoneForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = { telephone: telephoneForm.telephone.value }
+
+        try {
+            const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result)
+            if (result) {
+
+                const timer = setInterval(() => {
+                    AlertMessage.style.display = 'flex' // Abilit the message-box
+                    alertText.innerHTML = result.message // Assign the text message recieved form back-End 
+                }, 2000)
+
+                setTimeout(() => {
+                    AlertMessage.style.display = 'none' // Disabilit the message-box
+                    clearInterval(timer) // Clear the setTimeout
+                }, 5000)
+            }
+
+        } catch (err) {
+            console.log('Error on loading the Fetch: ' + err)
+        }
+    })
+
+    // Atualizar A Certificaçao =====================================================
+    certificacaoForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = { certificacao: certificacaoForm.certificacao.value }
+
+        try {
+            const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result)
+            if (result) {
+
+                const timer = setInterval(() => {
+                    AlertMessage.style.display = 'flex' // Abilit the message-box
+                    alertText.innerHTML = result.message // Assign the text message recieved form back-End 
+                }, 2000)
+
+                setTimeout(() => {
+                    AlertMessage.style.display = 'none' // Disabilit the message-box
+                    clearInterval(timer) // Clear the setTimeout
+                }, 5000)
+            }
+
+        } catch (err) {
+            console.log('Error on loading the Fetch: ' + err)
+        }
+
+    })
+
+
+    // Atualizar O Pais =====================================================
+    paisForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = { pais: paisForm.pais.value }
+
+        try {
+            const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result)
+            if (result) {
+
+                const timer = setInterval(() => {
+                    AlertMessage.style.display = 'flex' // Abilit the message-box
+                    alertText.innerHTML = result.message // Assign the text message recieved form back-End 
+                }, 2000)
+
+                setTimeout(() => {
+                    AlertMessage.style.display = 'none' // Disabilit the message-box
+                    clearInterval(timer) // Clear the setTimeout
+                }, 5000)
+            }
+
+        } catch (err) {
+            console.log('Error on loading the Fetch: ' + err)
+        }
+
+    })
+
+    // Atualizar O Sobre =====================================================
+    sobreForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const data = { sobre: sobreForm.sobre.value }
+
+        try {
+            const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": 'application/json',
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log(result)
+            if (result) {
+
+                const timer = setInterval(() => {
+                    AlertMessage.style.display = 'flex' // Abilit the message-box
+                    alertText.innerHTML = result.message // Assign the text message recieved form back-End 
+                }, 2000)
+
+                setTimeout(() => {
+                    AlertMessage.style.display = 'none' // Disabilit the message-box
+                    clearInterval(timer) // Clear the setTimeout
+                }, 5000)
+            }
+
+        } catch (err) {
+            console.log('Error on loading the Fetch: ' + err)
+        }
+
+    })
+
+    // Atualizar Removendo habilidades =====================================================
+    for (let i = 0; i < removHabForm.length; i++) {
+
+        removHabForm[i].addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const data = { remover: removHabForm[i].remover.value }
+
+
+            try {
+                const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
+                    method: 'PUT',
+                    headers: {
+                        "Content-Type": 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                console.log(result)
+                if (result) {
+
+                    const timer = setInterval(() => {
+                        AlertMessage.style.display = 'flex' // Abilit the message-box
+                        alertText.innerHTML = result.message // Assign the text message recieved form back-End 
+                    }, 2000)
+
+                    setTimeout(() => {
+                        AlertMessage.style.display = 'none' // Disabilit the message-box
+                        clearInterval(timer) // Clear the setTimeout
+                    }, 5000)
+
+                }
+
+            } catch (err) {
+                console.log('Error on loading the Fetch: ' + err)
+            }
+
+
+        })
+    }
+
+    // Atualizar A Imagen =====================================================
+    imgForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        const img = document.getElementById('img')
+        const data = new FormData(imgForm)
+
+        if (img.files.length !== 0) {
+            try {
+                const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
+                    method: 'PUT',
+                    body: data
+                });
+
+                const result = await response.json();
+                console.log(result)
+                if (result) {
+
+                    const timer = setInterval(() => {
+                        AlertMessage.style.display = 'flex' // Abilit the message-box
+                        alertText.innerHTML = result.message // Assign the text message recieved form back-End 
+                    }, 2000)
+
+                    setTimeout(() => {
+                        AlertMessage.style.display = 'none' // Disabilit the message-box
+                        clearInterval(timer) // Clear the setTimeout
+                    }, 5000)
+
+                }
+
+            } catch (err) {
+                console.log('Error on loading the Fetch: ' + err)
+            }
+        }
+
+    })
+
+    
+
 </script>
 {{> dashFooter }}

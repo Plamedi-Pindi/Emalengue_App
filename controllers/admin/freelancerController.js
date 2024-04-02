@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 const { name } = require('body-parser')
 const Habilidade = require('../../models/Habilidade')
 const Freelancerhabilidade = require('../../models/freelancerhabilidades')
-// const freelancer = require('../../routes/admin/freelancerRoute')
+const fs =  require('fs').promises;
 
 
 
@@ -28,9 +28,8 @@ const index = async (req, res) => {
                 as: 'habilidades',
             }
         ]
-    }).then( async (posts) => {
+    }).then(async (posts) => {
         const freelancer = posts
-        console.log(freelancer);
         res.render('admin/freelancer/index', {
             freelancers: posts,
             layout: 'main2',
@@ -241,60 +240,226 @@ const downloadCV = (req, res) => {
 // UPDATE =================================================================
 const updateView = async (req, res) => {
     const freeId = req.params.id
-    
-    await Freelancer.findOne({ 
-        where: { id: freeId }, 
-        include: [
-            { model: User}
-        ] 
-    }).then( result => {
 
+    await Freelancer.findOne({
+        where: { id: freeId },
+        include: [
+            { model: User },
+            {
+                model: Habilidade,
+                as: 'habilidades'
+            }
+        ]
+    }).then( async result => {
+        const habilidade = await Habilidade.findAll()
         res.render('admin/freelancer/updates/update', {
             title: 'eMALENGUE | Atualizar Freelancer',
             layout: 'main2',
-            freelancer: result
+            freelancer: result,
+            habilidades: habilidade
         })
     })
 }
 
+//Multer Update  Image =====================================================
+const updatesStorage = multer.diskStorage({
+    destination: (req, file, cd) => {
+        cd(null, 'public/admin/img/freelancers')
+    },
+    filename: (req, file, cd) => {
+        cd(null, `${Date.now()}-${file.originalname}`)
+    }
+})
+const imgUpload = multer({ storage: updatesStorage })
+const imgUpRout = imgUpload.single('img')
+
+//Multer Update  Image =====================================================
+// const cvStorage = multer.diskStorage({
+//     destination: (req, file, cd) => {
+//         cd(null, 'public/admin/img/freelancers')
+//     },
+//     filename: (req, file, cd) => {
+//         cd(null, `${Date.now()}-${file.originalname}`)
+//     }
+// })
+// const cvUpload = multer({ storage: cvStorage })
+// const cvUpRout = cvUpload.single('cv')
+
+// DELETE A FILE FUNCTION =====================================
+ async function deleteFile(filePath) {
+    try {
+        await fs.unlink(filePath)
+        console.log('File deleted successly!');
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            console.log('File not found or wrong path entered');
+        } else {
+            console.log('Error occored: ' + error.message);
+        }
+    }
+ }
+
 const update = async (req, res) => {
     const name = req.body.name
     const especialidade = req.body.especialidade
-    const freeId = req.params.id 
-    // console.log(especialidade);
-    
-    if (name) {
+    const telephone = req.body.telephone
+    const certificacoes = req.body.certificacao
+    const pais = req.body.pais
+    const sobre = req.body.sobre
+    const remover = req.body.remover
+    const habilidades = req.body.habilidades
+    const freeId = req.params.id
+
+    console.log(req.file);
+
+    if (name) {  // Update name
         await Freelancer.findOne({
-            where: {id: freeId},
+            where: { id: freeId },
             include: [
-                {model: User}
+                { model: User }
             ]
         }).then(async post => {
             const user = post.user
-            await user.update({ nome: name})
+            await user.update({ nome: name })
             const message = {
-                id: 1, 
+                id: 1,
                 message: 'O nome foi Atualizado com Sucesso!'
             }
             res.json(message)
         })
-        
-    } else if (especialidade) {
+
+    } else if (especialidade) {  // Update Especialidade
         await Freelancer.findOne({
-            where: {id: freeId},
+            where: { id: freeId },
             include: [
-                {model: User}
+                { model: User }
             ]
         }).then(async post => {
             const freelancer = post
-            await freelancer.update({ especialidade: especialidade})
+            await freelancer.update({ especialidade: especialidade })
             console.log(freelancer.especialidade);
             const message = {
-                id: 1, 
-                message: 'A especialidade foi Atualizado com Sucesso!'
+                id: 2,
+                message: 'A especialidade foi Atualizada com Sucesso!'
             }
             res.json(message)
         })
+    } else if (telephone) {    // Update Telephone number
+        await Freelancer.findOne({
+            where: { id: freeId },
+            include: [
+                { model: User }
+            ]
+        }).then(async post => {
+            const freelancer = post
+            await freelancer.update({ phone: telephone })
+            // Handle the result message
+            const message = {
+                id: 3,
+                message: 'O número de telefone foi Atualizado com Sucesso!'
+            }
+            // Send the result message to front-End
+            res.json(message)
+        })
+    } else if (certificacoes) {  // Update Certificacoes
+        await Freelancer.findOne({
+            where: { id: freeId },
+            include: [
+                { model: User }
+            ]
+        }).then(async post => {
+            const freelancer = post
+            await freelancer.update({ certificacoes: certificacoes })
+            // Handle the result message
+            const message = {
+                id: 4,
+                message: 'A certificação foi Atualizada com Sucesso!'
+            }
+            // Send the result message to front-End
+            res.json(message)
+        })
+    } else if (pais) {  // Update Pais
+        await Freelancer.findOne({
+            where: { id: freeId },
+            include: [
+                { model: User }
+            ]
+        }).then(async post => {
+            const freelancer = post
+            await freelancer.update({ pais: pais })
+            // Handle the result message
+            const message = {
+                id: 5,
+                message: 'O pais foi Atualizado com Sucesso!'
+            }
+            // Send the result message to front-End
+            res.json(message)
+        })
+    } else if (sobre) {
+        await Freelancer.findOne({
+            where: { id: freeId },
+            include: [
+                { model: User }
+            ]
+        }).then(async post => {
+            const freelancer = post
+            await freelancer.update({ sobre: sobre })
+            // Handle the result message
+            const message = {
+                id: 5,
+                message: 'As informações sobre o freelancer foram Atualizado com Sucesso!'
+            }
+            // Send the result message to front-End
+            res.json(message)
+        })
+    } else if (remover){
+        await Freelancer.findOne({
+            where: { id: freeId },
+            include: [
+                { model: User },
+                {
+                    model: Habilidade,
+                    as: 'habilidades',
+                    where: { name: remover}
+                }
+            ]
+        }).then(async post => {
+            const freelancer = post
+            const habilidadeId = freelancer.habilidades[0].id
+            const freelancerhabilidades = freelancer.habilidades[0].freelancerhabilidades
+
+            
+
+            await freelancerhabilidades.destroy({ where: { habilidadeId: habilidadeId } })
+            // Handle the result message
+            const message = {
+                id: 6,
+                message: `A habilidade ${remover} foi Removida com Sucesso!`
+            }
+            // Send the result message to front-End
+            res.json(message)
+        })
+    } else if (req.file.filename ) {
+        const img = req.file.filename
+        await Freelancer.findOne({
+            where: { id: freeId }
+        }).then(async post => {
+            const freelancer = post
+
+            let path = 'public/admin/img/freelancers' // File path
+            deleteFile(`${path}/${freelancer.imagem}`) // Delete olde file
+            
+            await freelancer.update({ imagem: img }) // Update new file
+            // Handle the result message
+            const message = {    
+                id: 7,
+                message: 'A imagem foi Atualizada com Sucesso!'
+            }
+            // Send the result message to front-End
+            res.json(message)
+        })
+    } else {
+        res.redirect('back')
     }
 }
 
@@ -309,4 +474,6 @@ module.exports = {
     destroy,
     downloadBI,
     downloadCV,
+    imgUpRout,
+    // cvUpRout,
 }

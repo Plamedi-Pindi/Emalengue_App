@@ -29,7 +29,6 @@ main {
   height: 89vh;
   grid-column: 2/span 3;
   grid-row: 2/span 2;
-  overflow-y: auto;
 }
 
 footer {
@@ -61,6 +60,9 @@ footer {
   text-decoration: none;
 }
 
+#sidebar {
+  overflow-y: scroll;
+}
 #sidebar ul {
   list-style: none;
   padding: 0;
@@ -879,6 +881,7 @@ tr {
 }
 
 .fr_up_container {
+  position: relative;
   background-color: #fff;
   padding: 10px;
   padding-bottom: 2rem;
@@ -902,6 +905,183 @@ tr {
   margin-bottom: 2rem;
 }
 
+.habilidades_ttl {
+  margin-left: 10px;
+  padding-left: 5px;
+  border-left: 3px solid #f7aa00;
+  margin-bottom: 10px;
+}
+
+#fr_ch_habilidades input {
+  width: auto;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  color: #555;
+}
+#fr_ch_habilidades button {
+  border: none;
+  padding: 3px;
+  background: transparent;
+}
+#fr_ch_habilidades button:hover {
+  border-radius: 5px;
+  background: rgba(255, 0, 0, 0.466);
+}
+
+#fr_ch_sobre {
+  display: flex;
+  flex-direction: column;
+}
+#fr_ch_sobre textarea,
+#fr_ch_sobre input {
+  display: block;
+}
+#fr_ch_sobre textarea {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  color: #444;
+  outline: none;
+}
+#fr_ch_sobre .edit_btn {
+  border: none;
+  background: rgb(2, 118, 250);
+  color: #fff;
+  padding: 4px;
+  border-radius: 5px;
+}
+#fr_ch_sobre .edit_btn:hover {
+  background: rgb(1, 88, 187);
+  transition: ease-in-out 0.4s;
+}
+
+#fr_ch_nw_habilidades {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+#fr_ch_nw_habilidades .edit_btn {
+  border: none;
+  background: rgb(2, 118, 250);
+  color: #fff;
+  padding: 4px;
+  border-radius: 5px;
+  display: block;
+  width: 50px;
+}
+#fr_ch_nw_habilidades .edit_btn:hover {
+  background: rgb(1, 88, 187);
+  transition: ease-in-out 0.4s;
+}
+#fr_ch_nw_habilidades select {
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  border: 1.5px solid #ddd;
+  outline: none;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  color: #555;
+  margin-top: 10px;
+  padding: 10px;
+  height: 200px;
+}
+
+#fr_ch_cv {
+  margin-top: 2.5rem;
+}
+
+#fr_ch_cv,
+#fr_ch_bi {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+#fr_ch_cv input,
+#fr_ch_cv label,
+#fr_ch_bi input,
+#fr_ch_bi label {
+  display: block;
+}
+#fr_ch_cv input,
+#fr_ch_bi input {
+  width: auto;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  color: #555;
+}
+#fr_ch_cv input[type=file],
+#fr_ch_bi input[type=file] {
+  border: 1.5px dashed #555;
+  padding: 10px;
+  border-radius: 5px;
+}
+#fr_ch_cv .edit_btn,
+#fr_ch_bi .edit_btn {
+  border-bottom: none;
+  background: rgb(2, 118, 250);
+  color: #fff;
+  padding: 4px;
+  border-radius: 5px;
+}
+#fr_ch_cv .edit_btn:hover,
+#fr_ch_bi .edit_btn:hover {
+  background: rgb(1, 88, 187);
+  transition: ease-in-out 0.4s;
+}
+
+.img_container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #888;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 2rem;
+}
+.img_container img {
+  width: 100px;
+  height: 110px;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.img_container #fr_ch_img {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  margin: 0;
+  padding: 0;
+}
+.img_container #fr_ch_img input {
+  width: auto;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  color: #555;
+}
+.img_container #fr_ch_img .edit_btn {
+  border-bottom: none;
+  background: rgb(2, 118, 250);
+  color: #fff;
+  padding: 4px;
+  border-radius: 5px;
+  width: 50px;
+  height: 35px;
+}
+.img_container #fr_ch_img .edit_btn:hover {
+  background: rgb(1, 88, 187);
+  transition: ease-in-out 0.4s;
+}
+
 #fr_ch_name,
 #fr_ch_email,
 #fr_ch_especialidade,
@@ -912,7 +1092,8 @@ tr {
   flex-wrap: wrap;
   margin-bottom: 15px;
 }
-#fr_ch_name input, #fr_ch_name label,
+#fr_ch_name input,
+#fr_ch_name label,
 #fr_ch_email input,
 #fr_ch_email label,
 #fr_ch_especialidade input,
@@ -951,6 +1132,15 @@ tr {
   padding: 4px;
   border-radius: 5px;
 }
+#fr_ch_name .edit_btn:hover,
+#fr_ch_email .edit_btn:hover,
+#fr_ch_especialidade .edit_btn:hover,
+#fr_ch_telephone .edit_btn:hover,
+#fr_ch_certificacao .edit_btn:hover,
+#fr_ch_pais .edit_btn:hover {
+  background: rgb(1, 88, 187);
+  transition: ease-in-out 0.4s;
+}
 #fr_ch_name select,
 #fr_ch_email select,
 #fr_ch_especialidade select,
@@ -963,6 +1153,7 @@ tr {
   outline: none;
   margin-left: 10px;
   margin-bottom: 10px;
+  color: #555;
 }
 #fr_ch_name select:focus,
 #fr_ch_email select:focus,
@@ -976,23 +1167,40 @@ tr {
 }
 
 #AlertMessage {
-  width: 100%;
-  background: rgba(1, 172, 1, 0.678);
+  width: auto;
+  background: rgba(2, 110, 2, 0.822);
   border-radius: 10px;
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+  position: fixed;
+  top: 4rem;
 }
 #AlertMessage p {
   padding: 0;
   margin-left: 10px;
   margin-bottom: 0;
+  padding-right: 15px;
+  color: rgb(124, 252, 124);
 }
 #AlertMessage img {
   width: 50px;
   height: 50px;
 }
 
+@media (min-width: 768px) {
+  .img_container #fr_ch_img {
+    width: 70%;
+  }
+  .img_container #fr_ch_img input {
+    width: auto;
+    border: none;
+    outline: none;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+}
 /***** IMPORTING FILE END *****/
 /* MEDIA CONFIG START ===========================================*/
 @media (min-width: 500px) {

@@ -1,134 +1,138 @@
-
 <!-- HEADER START -->
-    <header>
-        <!-- NAVBAR START-->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <!-- Login and Register -->
-            <div class="nav-add">
-                <!-- MIDIA -->
-                <div class="midia1">
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-whatsapp"></i></a>
-                    <a href="#"> <i class="bi bi-instagram"></i></a>
-                </div>
-                 {{#if user}}
-                    <a href="/dashboard" class="nav-login1"><i class="bi bi-grid-fill"></i></i>Painel</a>
-                    <a href="/logout" class="nav-login1"><i class="bi bi-box-arrow-left"></i></i>Logout</a>
-
-                 {{else}}
-                    <a href="/login" class="nav-login1"><i class="bi bi-person-circle"></i>Login</a>
-                    <a href="/cadastrar" class="nav-cadastrar1">Cadastrar-se</a>
-                 {{/if }}
+<header>
+    <!-- NAVBAR START-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <!-- Login and Register -->
+        <div class="nav-add">
+            <!-- MIDIA -->
+            <div class="midia1">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-whatsapp"></i></a>
+                <a href="#"> <i class="bi bi-instagram"></i></a>
             </div>
-            <div class="container-fluid navbar-content ">
-                <!-- ***** LOGO ***** -->
-                <a class="navbar-brand" href="/">eMaLENGUE</a>
+            {{#if user}}
+            <a href="/dashboard" class="nav-login1"><i class="bi bi-grid-fill"></i></i>Painel</a>
+            <a href="/logout" class="nav-login1"><i class="bi bi-box-arrow-left"></i></i>Logout</a>
 
-                <!-- **** MOBILE BUTTON START **** -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- **** MOBILE BUTTON START **** -->
+            {{else}}
+            <a href="/login" class="nav-login1"><i class="bi bi-person-circle"></i>Login</a>
+            <a href="/cadastrar" class="nav-cadastrar1">Cadastrar-se</a>
+            {{/if }}
+        </div>
+        <div class="container-fluid navbar-content ">
+            <!-- ***** LOGO ***** -->
+            <a class="navbar-brand" href="/">eMaLENGUE</a>
 
-                <!-- **** MENU ITEMS STRAT*** -->
-                <div class="collapse navbar-collapse" id="navbarScroll">
-                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll menu-items "
-                        style="--bs-scroll-height: 100px;">
-                        <!-- home -->
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Home</a>
-                        </li>
-                        <!-- about -->
-                        <!-- <li class="nav-item ">
+            <!-- **** MOBILE BUTTON START **** -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- **** MOBILE BUTTON START **** -->
+
+            <!-- **** MENU ITEMS STRAT*** -->
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll menu-items "
+                    style="--bs-scroll-height: 100px;">
+                    <!-- home -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <!-- about -->
+                    <!-- <li class="nav-item ">
                             <a class="nav-link" href="#">Sobre</a>
                         </li> -->
-                         <!-- freelancers -->
-                         <li class="nav-item freelance-menu">
-                            <a class="nav-link" href="/freelancer">Freelancers</a>
-                            <div class="freelance-menu-container">
-                                <ul>
-                                    <!-- <li class="fr-designer"><a class="nav-link" href="freelancer.html">Freelancer</a>
+                    <!-- freelancers -->
+                    <li class="nav-item freelance-menu">
+                        <a class="nav-link" href="/freelancer">Freelancers</a>
+                        <div class="freelance-menu-container">
+                            <ul>
+                                <!-- <li class="fr-designer"><a class="nav-link" href="freelancer.html">Freelancer</a>
                                     </li> -->
-                                    <li class="fr-designer"><a class="nav-link" href="#">Design e Media</a></li>
-                                    <li class="fr-finaca"><a class="nav-link" href="#">Finanças e Contabilidade</a></li>
-                                    <li class="fr-beleza"><a class="nav-link" href="#">Beleza</a></li>
-                                    <li class="fr-artes"><a class="nav-link" href="#">Artes e Música</a></li>
-                                    <li class="fr-educacao"><a class="nav-link" href="#">Educação</a></li>
-                                </ul>
-                                <ul>
-                                    <li class="fr-saude"><a class="nav-link" href="#">Saúde</a></li>
-                                    <li class="fr-transporte"><a class="nav-link" href="#">Transporte</a></li>
-                                    <li class="fr-const"><a class="nav-link" href="#">Construção Civil</a></li>
-                                    <li class="fr-mecanic"><a class="nav-link" href="#">Mecânica</a></li>
-                                    <li class="fr-corte"><a class="nav-link" href="#">Corte e Costura</a></li>
-                                    <li class="fr-culinaria"><a class="nav-link" href="#">Culinária</a></li>
-                                    <li class="fr-imob"><a class="nav-link" href="#">Imobiliáriio</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- courses -->
-                        <li class="nav-item menu-cursos">
-                            <a class="nav-link" href="/cursos">Cursos</a>
-                            <!-- *** DROPDAOWN MENU ITEM *** -->
-                            <div class="menu-curso-container">
-                                <ul>
-                                    <!-- <li class="ti-software"><a class="nav-link" href="cursos.html">Cursos</a> </li> -->
-                                    <li class="ti-software"><a class="nav-link" href="#">TI & Software</a> </li>
-                                    <li class="dev"><a class="nav-link" href="#">Desenvolvimento</a></li>
-                                    <li class="negocio"><a class="nav-link" href="#">Negócios</a></li>
-                                    <li class="fin-cont"><a class="nav-link" href="#">Finanças & Contabilidade</a></li>
-                                    <li class="prod-esc"><a class="nav-link" href="#">Produtividade & Escritório</a>
-                                    </li>
-                                    <li class="design"><a class="nav-link" href="#">Design</a></li>
-                                    <li class="marketing"><a class="nav-link" href="#">Marketing</a></li>
-                                </ul>
-                                <ul>
-                                    <li class="est-vida"><a class="nav-link" href="#">Estilo de Vida</a></li>
-                                    <li class="Fot-vid"><a class="nav-link" href="#">Fotografia & Video</a></li>
-                                    <li class="saud-fit"><a class="nav-link" href="#">Saúde & Fitness</a></li>
-                                    <li class="ensino"><a class="nav-link" href="#">Ensino & Estudo Académico</a></li>
-                                    <li class="desnvol-pes"><a class="nav-link" href="#">Desenvolvimento Pessoal</a>
-                                    </li>
-                                    <li class="musica"><a class="nav-link" href="#">Música</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                       
-                        <li class="nav-item">
-                            <a class="nav-link" href="/contatos">Contatos</a>
-                        </li>
+                                <li class="fr-designer"><a class="nav-link" href="#">Design e Media</a></li>
+                                <li class="fr-finaca"><a class="nav-link" href="#">Finanças e Contabilidade</a></li>
+                                <li class="fr-beleza"><a class="nav-link" href="#">Beleza</a></li>
+                                <li class="fr-artes"><a class="nav-link" href="#">Artes e Música</a></li>
+                                <li class="fr-educacao"><a class="nav-link" href="#">Educação</a></li>
+                            </ul>
+                            <ul>
+                                <li class="fr-saude"><a class="nav-link" href="#">Saúde</a></li>
+                                <li class="fr-transporte"><a class="nav-link" href="#">Transporte</a></li>
+                                <li class="fr-const"><a class="nav-link" href="#">Construção Civil</a></li>
+                                <li class="fr-mecanic"><a class="nav-link" href="#">Mecânica</a></li>
+                                <li class="fr-corte"><a class="nav-link" href="#">Corte e Costura</a></li>
+                                <li class="fr-culinaria"><a class="nav-link" href="#">Culinária</a></li>
+                                <li class="fr-imob"><a class="nav-link" href="#">Imobiliáriio</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- courses -->
+                    <li class="nav-item menu-cursos">
+                        <a class="nav-link" href="/cursos">Cursos</a>
+                        <!-- *** DROPDAOWN MENU ITEM *** -->
+                        <div class="menu-curso-container">
+                            <ul>
+                                <!-- <li class="ti-software"><a class="nav-link" href="cursos.html">Cursos</a> </li> -->
+                                <li class="ti-software"><a class="nav-link" href="#">TI & Software</a> </li>
+                                <li class="dev"><a class="nav-link" href="#">Desenvolvimento</a></li>
+                                <li class="negocio"><a class="nav-link" href="#">Negócios</a></li>
+                                <li class="fin-cont"><a class="nav-link" href="#">Finanças & Contabilidade</a></li>
+                                <li class="prod-esc"><a class="nav-link" href="#">Produtividade & Escritório</a>
+                                </li>
+                                <li class="design"><a class="nav-link" href="#">Design</a></li>
+                                <li class="marketing"><a class="nav-link" href="#">Marketing</a></li>
+                            </ul>
+                            <ul>
+                                <li class="est-vida"><a class="nav-link" href="#">Estilo de Vida</a></li>
+                                <li class="Fot-vid"><a class="nav-link" href="#">Fotografia & Video</a></li>
+                                <li class="saud-fit"><a class="nav-link" href="#">Saúde & Fitness</a></li>
+                                <li class="ensino"><a class="nav-link" href="#">Ensino & Estudo Académico</a></li>
+                                <li class="desnvol-pes"><a class="nav-link" href="#">Desenvolvimento Pessoal</a>
+                                </li>
+                                <li class="musica"><a class="nav-link" href="#">Música</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Crowdfunder -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crowdfunder">Crowdfunder</a>
+                    </li>
 
-                    </ul>
-                    <!-- Mobile Ligin and Register -->
-                    <div class="login-reg">
-                        
-                        {{#if user}}
-                            <a href="/logout" class="nav-login"> <i class="bi bi-box-arrow-left"></i></i>Logout</a>
-                            <a href="/dashboard" class="nav-login"><i class="bi bi-grid-fill"></i></i></i>Meu Painel</a>
-                        {{else }}
-                            <a href="/login" class="nav-login"> <i class="bi bi-person-circle"></i>Login</a>
-                            <a href="/cadastrar" class="nav-cadastrar">Cadastrar-se</a>
-                        {{/if }}
-                    </div>
-                    <div class="midia">
-                        <a href="#"> <i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
+                    <!-- Contact -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contatos">Contatos</a>
+                    </li>
+
+                </ul>
+                <!-- Mobile Ligin and Register -->
+                <div class="login-reg">
+
+                    {{#if user}}
+                    <a href="/dashboard" class="nav-login"><i class="bi bi-grid-fill"></i></i></i>Meu Painel</a>
+                    <a href="/logout" class="nav-login"> <i class="bi bi-box-arrow-left"></i></i>Logout</a>
+                    {{else }}
+                    <a href="/login" class="nav-login"> <i class="bi bi-person-circle"></i>Login</a>
+                    <a href="/cadastrar" class="nav-cadastrar">Cadastrar-se</a>
+                    {{/if }}
+                </div>
+                <div class="midia">
+                    <a href="#"> <i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
 
 
-
-                    </div>
-                    <!-- Search From -->
-                    <form class="d-flex search-bar" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Pesquiar.." aria-label="Search">
-                        <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
-                    </form>
 
                 </div>
-                <!-- **** MENU ITEMS END*** -->
+                <!-- Search From -->
+                <form class="d-flex search-bar" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Pesquiar.." aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+
             </div>
-        </nav>
-        <!-- NAVBAR END-->
-    </header>
-    <!-- HEADER END -->
+            <!-- **** MENU ITEMS END*** -->
+        </div>
+    </nav>
+    <!-- NAVBAR END-->
+</header>
+<!-- HEADER END -->

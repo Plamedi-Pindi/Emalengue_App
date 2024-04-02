@@ -8,20 +8,20 @@ const ProjetoHabilidade = require('./ProjetoHabilidade')
 
 // Many-To-May between Projeto and Freelancer Tables =========================================
 Projeto.belongsToMany(Freelancer, {
-    through: 'Freelancerprojetos',
+    through: 'freelancerprojetos',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     foreignKey: {
-        name: 'projetoId',
+        name: 'projetId',
         allowNull: false
     }
 })
 Freelancer.belongsToMany(Projeto, { 
-    through: 'Freelancerprojetos',
+    through: 'freelancerprojetos',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE', 
     foreignKey: {
-        name: 'freelancerId',
+        name: 'freelancId',
         allowNull: false
     }
 })
@@ -51,13 +51,13 @@ Habilidade.belongsToMany(Projeto, {
 
 // // Many-To-One between Projeto and Categoria Tables =====================================================
 
-Projeto.belongsTo(Categoria, { foreignKey: 'categoriaId'});
+Projeto.belongsTo(Categoria, { foreignKey: 'categoria_Id'});
  
 Categoria.hasMany(Projeto, { 
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE', 
     foreignKey: {
-        name: 'categoriaId',
+        name: 'categoria_Id',
         allowNull: false
     }
 })

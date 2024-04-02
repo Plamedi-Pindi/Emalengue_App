@@ -1,6 +1,7 @@
 @import './color';
 
-.fr_up_container{
+.fr_up_container {
+    position: relative;
     background-color: #fff;
     padding: 10px;
     padding-bottom: 2rem;
@@ -11,7 +12,7 @@
     box-shadow: 1px 2px 5px #ddd;
     border-radius: 4px;
 
-    h2{
+    h2 {
         // text-align: center;
         font-size: 20px;
         font-weight: 600;
@@ -23,12 +24,203 @@
         margin-left: 10px;
         margin-bottom: 1.5rem;
     }
-    
+
     .first {
         margin-bottom: 2rem;
     }
-    
-    
+
+
+}
+
+.habilidades_ttl {
+    margin-left: 10px;
+    padding-left: 5px;
+    border-left: 3px solid $primary;
+    margin-bottom: 10px;
+}
+
+#fr_ch_habilidades {
+    input {
+        width: auto;
+        border: none;
+        outline: none;
+        // border-bottom: 1.5px dashed $secundary;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    button {
+        border: none;
+        padding: 3px;
+        background: transparent;
+    }
+
+    button:hover {
+        border-radius: 5px;
+        background: rgba(255, 0, 0, 0.466);
+    }
+}
+
+#fr_ch_sobre {
+    display: flex;
+    flex-direction: column;
+
+    textarea,
+    input {
+        display: block;
+    }
+
+    textarea {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        color: #444;
+        outline: none;
+    }
+
+    .edit_btn {
+        border: none;
+        background: rgb(2, 118, 250);
+        color: #fff;
+        padding: 4px;
+        border-radius: 5px;
+    }
+    .edit_btn:hover {
+        background: rgb(1, 88, 187); 
+        transition: ease-in-out .4s; 
+    }
+}
+
+#fr_ch_nw_habilidades {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    .edit_btn {
+        border: none;
+        background: rgb(2, 118, 250);
+        color: #fff;
+        padding: 4px;
+        border-radius: 5px;
+        display: block;
+        width: 50px;
+    }
+    .edit_btn:hover {
+        background: rgb(1, 88, 187); 
+        transition: ease-in-out .4s; 
+    }
+
+    select {
+        width: 200px;
+        border: none;
+        border-radius: 5px;
+        border: 1.5px solid #ddd;
+        outline: none;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        color: #555;
+        margin-top: 10px;
+        padding: 10px;
+        height: 200px;
+    }
+}
+
+#fr_ch_cv{
+    margin-top: 2.5rem;
+}
+#fr_ch_cv,
+#fr_ch_bi {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+
+    input,
+    label {
+        display: block;
+    }
+
+    input {
+        width: auto;
+        border: none;
+        outline: none;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    input[type="file"] {
+        border: 1.5px dashed #555;
+        padding: 10px;
+        border-radius: 5px;
+
+    }
+
+    .edit_btn {
+        border-bottom: none;
+        background: rgb(2, 118, 250);
+        color: #fff;
+        padding: 4px;
+        border-radius: 5px;
+    }
+    .edit_btn:hover {
+        background: rgb(1, 88, 187); 
+        transition: ease-in-out .4s; 
+    }
+
+}
+
+.img_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #888;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 2rem;
+
+    img {
+        width: 100px;
+        height: 110px;
+        display: block;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+
+    #fr_ch_img {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+        // width: 70%;
+        margin: 0;
+        // background-color: #444;
+        padding: 0;
+        input {
+            width: auto;
+            border: none;
+            outline: none;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .edit_btn {
+            border-bottom: none;
+            background: rgb(2, 118, 250);
+            color: #fff;
+            padding: 4px;
+            border-radius: 5px;
+            width: 50px;
+            height: 35px;
+        }
+        .edit_btn:hover {
+            background: rgb(1, 88, 187); 
+            transition: ease-in-out .4s; 
+        }
+        
+    }
 }
 
 #fr_ch_name,
@@ -37,31 +229,25 @@
 #fr_ch_telephone,
 #fr_ch_certificacao,
 #fr_ch_pais {
-    // width: 100%;
     display: flex;
     flex-wrap: wrap;
-    // justify-content: center;
     margin-bottom: 15px;
-    // margin: 0 auto;
-    // background-color: #555;
 
-    input, label {
-        display: block;  
+    input,
+    label {
+        display: block;
     }
+
     input {
         width: auto;
-        border: none ;
+        border: none;
         outline: none;
         border-bottom: 1.5px solid $secundary;
         margin-left: 10px;
         margin-bottom: 10px;
         color: #555;
     }
-    // input:focus {
-        
-    //     border: none ;
-    //     outline: none;
-    // }
+
     .edit_btn {
         border-bottom: none;
         background: rgb(2, 118, 250);
@@ -69,7 +255,11 @@
         padding: 4px;
         border-radius: 5px;
     }
-
+    .edit_btn:hover {
+        background: rgb(1, 88, 187); 
+        transition: ease-in-out .4s; 
+    }
+    
     select {
         width: 200px;
         border: none;
@@ -77,7 +267,9 @@
         outline: none;
         margin-left: 10px;
         margin-bottom: 10px;
+        color: #555;
     }
+
     select:focus {
         border: none;
         border-bottom: 1.5px solid $secundary;
@@ -85,24 +277,47 @@
     }
 }
 
+
 #AlertMessage {
-    width: 100%;
-    // height: 50px;
-    background: rgba(1, 172, 1, 0.678);
+    width: auto;
+    background: rgba(2, 110, 2, 0.822);
     border-radius: 10px;
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    position: fixed;
+    // margin: 0 auto;
+    top: 4rem;
 
-    p{
+    p {
         padding: 0;
         margin-left: 10px;
         margin-bottom: 0;
+        padding-right: 15px;
+        color: rgb(124, 252, 124);
     }
+
     img {
         width: 50px;
         height: 50px;
     }
 }
 
- 
+@media(min-width: 768px) {
+    .img_container {
+       
+        #fr_ch_img {
+            width: 70%;
+            input {
+                width: auto;
+                border: none;
+                outline: none;
+                margin-left: 10px;
+                margin-bottom: 10px;
+                color: #555;
+            }
+            
+        }
+    }
+    
+}

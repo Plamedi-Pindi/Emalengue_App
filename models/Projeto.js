@@ -23,9 +23,6 @@ const Projeto = db.sequelize.define('projetos', {
         type: db.Sequelize.DATEONLY,
     },
     
-    // habilidade: {
-    //     type: db.Sequelize.INTEGER,
-    // },
     user_id: {
         type: db.Sequelize.INTEGER,
         references: {
@@ -33,7 +30,7 @@ const Projeto = db.sequelize.define('projetos', {
           key: 'id',
         }
     },
-    categoriaId: {
+    categoria_Id: {
         type: db.Sequelize.INTEGER,
         references: {
           model: 'categorias',
@@ -43,24 +40,6 @@ const Projeto = db.sequelize.define('projetos', {
 
 })
 
-// Projeto.belongsToMany(Freelancer, {
-//     through: 'Freelancerprojetos', 
-//     onDelete: 'CASCADE',
-//     onUpdate: 'CASCADE',
-//     foreignKey: {
-//         name: 'projetoId',
-//         allowNull: false
-//     }
-// })
-// Freelancer.belongsToMany(Projeto, { 
-//     through: 'Freelancerprojetos',
-//     onDelete: 'CASCADE',
-//     onUpdate: 'CASCADE', 
-//     foreignKey: {
-//         name: 'freelancerId',
-//         allowNull: false
-//     }
-// }) 
 
  
 Projeto.sync()

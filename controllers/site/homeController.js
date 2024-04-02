@@ -18,7 +18,7 @@ const index = (req, res) => {
         ],
 
     }).then(posts => {
-        console.log(user);
+
         res.render('site/home/index', {
             title: 'eMaLENGUE',
             freelancers: posts,

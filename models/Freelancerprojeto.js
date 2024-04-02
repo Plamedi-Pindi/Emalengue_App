@@ -7,16 +7,16 @@ const Freelancerprojetos = db.sequelize.define('freelancerprojetos', {
     id: {
         type: db.Sequelize.INTEGER,
         primaryKey: true,
-        autoIncrement: true,
+        autoIncrement: true, 
     },
-    freelancerId: {
+    freelancId: {
         type: db.Sequelize.INTEGER,
         references: {
             model: 'freelancers',
             key: 'id'
         }
     },
-    projetoId: {
+    projetId: {
         type: db.Sequelize.INTEGER,
         references: {
             model: 'projetos',

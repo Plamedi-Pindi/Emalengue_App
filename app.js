@@ -28,6 +28,7 @@ const registerRoute = require('./routes/auth/registerRoute')
 const { sequelize } = require('./models/db')
 const adminCursoRoute = require('./routes/admin/cursoRoute')
 const googleRoute = require('./routes/auth/googleRoute')
+const crowdfunderRoute = require('./routes/site/crowdfunderRoute')
 
 
 
@@ -134,6 +135,7 @@ app.use('/cursos', cursoRoute)
 app.use('/contatos', contactRoute)
 app.use('/perfildofreelancer', freeProfileRoute)
 app.use('/projetos', projetoRoute)
+app.use('/crowdfunder', crowdfunderRoute)
 // For Dashboard
 app.use('/dashboard', mainAdminRoute)
 app.use('/dashboard/freelancer', adminFreeRoute)

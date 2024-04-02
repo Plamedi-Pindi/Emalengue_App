@@ -3,21 +3,21 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-
+ 
     await queryInterface.createTable('freelancerprojetos', {
-      id: {
+      id: { 
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      freelancerId: {
+      freelancId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'freelancers',
           key: 'id'
         }
       },
-      projetoId: {
+      projetId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'projetos',

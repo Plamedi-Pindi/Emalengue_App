@@ -90,7 +90,7 @@ const index = async (req, res) => {
     }
 }
 
-
+  
 
 
 // Details ===================================================
@@ -183,7 +183,7 @@ const details = async (req, res) => {
     })
 }
 
-
+ 
 
 
 
@@ -336,7 +336,7 @@ const store = ((req, res) => {
 
             await Projeto.create({
                 nome: name,
-                categoriaId: categoria,
+                categoria_Id: categoria,
                 descricao: about,
                 prazo: date,
                 user_id: user.id,
@@ -347,7 +347,7 @@ const store = ((req, res) => {
                 habilidade.forEach(async element => {
                     await ProjetoHabilidade.create({
                         habilidadeId: element,
-                        projetoId: project.id
+                        projetId: project.id
                     })
                 });
 
@@ -480,7 +480,7 @@ const applayToProject = async (req, res) => {
         })
 
         // Check if this freelancer is alread subscribed
-        const existentFree = pr.freelancers.Freelancerprojetos.freelancerId
+        const existentFree = pr.freelancers.Freelancerprojetos.freelancId
         const freelancer = await Freelancer.findOne({ where: { user_id: authUser.id } })
 
         if (existentFree == freelancer.id) {
@@ -489,8 +489,8 @@ const applayToProject = async (req, res) => {
         } else {
             // Subscribe a freelancer to a project
             await Freelancerprojeto.create({
-                projetoId: projectId,
-                freelancerId: freelancer.id,
+                projetId: projectId,
+                freelancId: freelancer.id,
             })
             console.log('inscrito!');
             res.status(200).redirect('back')

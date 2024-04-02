@@ -10,7 +10,6 @@ const Freelancer = db.sequelize.define('freelancers', {
     },
     phone: {
         type: db.Sequelize.STRING,
-
     },
     especialidade: {
         type: db.Sequelize.STRING,
