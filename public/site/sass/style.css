@@ -1899,6 +1899,7 @@ main {
   background: #fff;
   border-radius: 0 0 5px 5px;
   margin-bottom: 1.5rem;
+  text-decoration: none;
 }
 #crowd_container .crowd_cart figure {
   width: 100%;
@@ -1929,6 +1930,7 @@ main {
   font-weight: 600;
   margin-top: 0.4rem;
   margin-bottom: 3px;
+  color: #222;
 }
 #crowd_container .crowd_cart .content span {
   font-size: 14px;
@@ -1962,6 +1964,7 @@ main {
 }
 #crowd_container .crowd_cart .detail ul li span {
   color: #777;
+  display: block;
 }
 #crowd_container .crowd_cart .detail ul .first {
   width: 20%;
@@ -1984,6 +1987,10 @@ main {
   font-size: 14px;
   margin: 0;
 }
+#crowd_container .crowd_cart:hover {
+  transform: scale(1.02);
+  transition: ease-in-out 0.5s;
+}
 
 @media (min-width: 992px) {
   .crowdfunder_banner {
@@ -2001,6 +2008,144 @@ main {
   .crowd_cart {
     width: 27%;
     margin-bottom: 2rem !important;
+  }
+}
+.detail_container {
+  margin-top: 5rem;
+}
+.detail_container h2 {
+  color: #222;
+  font-size: 24px;
+  font-weight: 600;
+  border-left: solid 5px #f7aa00;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+
+.row {
+  margin: 0;
+}
+
+.dt_content {
+  margin-bottom: 2rem;
+}
+.dt_content video {
+  width: 100%;
+  margin-top: 1rem;
+}
+.dt_content .dt_description {
+  margin-top: 1rem;
+}
+
+.dt_info {
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 3rem;
+}
+.dt_info .objetivo_container {
+  border: solid 2px #1a1931;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+.dt_info .objetivo_container .objetivo .obj {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.dt_info .objetivo_container .objetivo .obj h3 {
+  font-weight: 600;
+}
+.dt_info .objetivo_container .objetivo .obj span {
+  border: solid 1px #1a1931;
+  padding: 5px;
+  width: 160px;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 600;
+}
+.dt_info .objetivo_container .progress {
+  height: 30px;
+  border-radius: 0px;
+  margin-bottom: 1rem;
+}
+.dt_info .objetivo_container .progress .progress-bar {
+  background: #1a1931;
+}
+.dt_info .objetivo_container p {
+  border: 1px solid #1a1931;
+  padding: 5px;
+  width: 200px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+.dt_info .objetivo_container a {
+  text-decoration: none;
+  padding: 10px;
+  color: #eee;
+  background: #1a1931;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  width: 240px;
+  border-radius: 6px;
+  text-align: center;
+}
+.dt_info .objetivo_container a:hover {
+  transform: scale(1.02);
+  transition: ease-out 0.5s;
+}
+.dt_info .apoio_container h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+}
+.dt_info .apoio_container form {
+  border: 2px solid #1a1931;
+  padding: 10px;
+  border-radius: 5px;
+  padding-top: 2rem;
+}
+.dt_info .apoio_container form input {
+  border: solid 1px #1a1931;
+  outline: none;
+  padding: 4px;
+  width: 80%;
+  margin-bottom: 15px;
+}
+.dt_info .apoio_container form input[type=file] {
+  border: 1px dashed #1a1931;
+  border-radius: 5px;
+  padding: 10px;
+}
+.dt_info .apoio_container form input[type=submit] {
+  padding: 6px;
+  width: 200px;
+  background-color: #1a1931;
+  color: #eee;
+  border: none;
+  border-radius: 5px;
+}
+.dt_info .apoio_container form label {
+  color: #666;
+  font-size: 16px;
+  display: block;
+}
+.dt_info .apoio_container form textarea {
+  margin-bottom: 10px;
+  outline: none;
+  border: solid 1px #1a1931;
+}
+
+@media (min-width: 992px) {
+  .detail_container {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 8rem;
+  }
+  .detail_container h2 {
+    margin-left: 3rem;
+    margin-bottom: 1rem;
   }
 }
 /****** GENERAL SITTINGS START *******/

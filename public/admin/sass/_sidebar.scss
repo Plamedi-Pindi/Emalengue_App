@@ -1,7 +1,9 @@
+
+
 #sidebar {
 
     // Scroll
-    overflow-y: scroll;
+    overflow-y: auto;
 
     ul {
         list-style: none;
@@ -10,6 +12,7 @@
         // text-align: center;
         margin-bottom: 20px;
         border-bottom: 1px solid #777;
+       
 
         li a {
             color: #ccc;
@@ -29,13 +32,32 @@
         }
     }
 
+    .home {
+        margin-top: 1rem;
+    }
+
+    #sdb_container {
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+        position: absolute;
+        left: 0;
+        top: 2.9rem;
+        padding: 0px;
+        list-style: none;
+        height: 50pxpx;
+        width: 50px;
+        border-bottom: none;
+        z-index: 100;
+    }
     #sdb-slide {
         color: #fff;
         font-size: 25px;
         margin-top: 15px;
+        text-align: center;
+        margin: 0;
     }
 }
 
 .sd-title {
     display: none;
 }
+

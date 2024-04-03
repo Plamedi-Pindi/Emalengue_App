@@ -1,8 +1,13 @@
 
 let sdb_slide = document.getElementById('sdb-slide');
 let body = document.getElementsByTagName('body')[0];
+const sdb_container = document.getElementById('sdb_container');
+const main = document.getElementsByTagName('main')[0];
+const footer = document.getElementsByTagName('footer')[0];
+
 // Inicializa o valor da estilizacao padrao no css  
-body.style.gridTemplateColumns = '0.6fr 1fr 1fr 1fr';
+body.style.gridTemplateColumns = '0rem 1fr 1fr 1fr';
+sdb_container.style.left = '0rem'
 
 let sb_content = document.getElementsByClassName('sb-content');
 // inicializar o valor padrao
@@ -14,17 +19,26 @@ for (var i = 0; i < sb_content.length; i++) {
 // Evento para Espandeir o Sidebar
 sdb_slide.addEventListener('click', () => {
     let icon = document.getElementById('slide-icon');
-    let sidebar =document.getElementById('sidebar')
+    let sidebar = document.getElementById('sidebar')
 
-    if (body.style.gridTemplateColumns == '0.6fr 1fr 1fr 1fr') {
-        sidebar.style.zIndex = 2; 
+    if (body.style.gridTemplateColumns == '0rem 1fr 1fr 1fr') {
+        sidebar.style.zIndex = 2;
         body.style.transition = '0.5s';
-        body.style.gridTemplateColumns = '6fr 1fr 1fr 1fr';
+        body.style.gridTemplateColumns = '16rem 1fr 1fr 1fr';
+
+        setTimeout(() => {
+            sdb_container.style.transition = '0.4s'
+            sdb_container.style.left = '13rem'
+
+            footer.style.overflowX = 'auto'
+        }, 300);
     }
     else {
-       
+
         setTimeout(() => {
-            body.style.gridTemplateColumns = '0.6fr 1fr 1fr 1fr';
+            body.style.gridTemplateColumns = '0rem 1fr 1fr 1fr';
+            sdb_container.style.left = '0rem'
+            footer.style.overflowX = 'hidden'
         }, 300);
 
     }
@@ -49,5 +63,22 @@ sdb_slide.addEventListener('click', () => {
 
 });
 
+
+// Dropdow user dashboard
+const user_menu = document.getElementById('user-menu');
+const dash_dropdown = document.getElementById('dash_dropdown');
+dash_dropdown.style.display = 'none'
+
+user_menu.addEventListener('click', () => {
+
+    if (dash_dropdown.style.display == 'none') {
+        dash_dropdown.style.transition = '0.5s'
+
+        dash_dropdown.style.display = 'block'
+
+    } else {
+        dash_dropdown.style.display = 'none'
+    }
+})
 
 

@@ -7,13 +7,15 @@
 }
 
 body {
+  position: relative;
   display: grid;
-  grid-template-columns: 0.6fr 1fr 1fr 1fr;
+  grid-template-columns: 0rem 1fr 1fr 1fr;
 }
 
 header {
   background-color: rgb(11, 11, 49);
   height: 7vh;
+  width: 100%;
   grid-column: 1/sapn 4;
 }
 
@@ -29,6 +31,7 @@ main {
   height: 89vh;
   grid-column: 2/span 3;
   grid-row: 2/span 2;
+  overflow-y: auto;
 }
 
 footer {
@@ -49,6 +52,9 @@ footer {
   height: 100%;
 }
 
+.hd-container #user-menu {
+  position: relative;
+}
 .hd-container #user-menu img {
   z-index: 100;
   width: 35px;
@@ -60,8 +66,46 @@ footer {
   text-decoration: none;
 }
 
+#dash_dropdown {
+  position: absolute;
+  right: 15px;
+  top: 3rem;
+  list-style: none;
+  background: #fff;
+  margin: 0;
+  padding: 10px;
+  width: 160px;
+  height: 180px;
+  padding-top: 1rem;
+  display: none;
+  transition: 0.5s;
+  z-index: 50;
+}
+#dash_dropdown a {
+  text-decoration: none;
+  color: #555;
+  font-size: 17px;
+  padding: 2px;
+}
+#dash_dropdown a i {
+  margin-right: 10px;
+  margin-left: 4px;
+  color: #f7aa00;
+}
+#dash_dropdown li {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #ddd;
+}
+#dash_dropdown li:hover {
+  background: linear-gradient(rgba(255, 217, 2, 0.4), rgba(250, 173, 7, 0.4));
+}
+#dash_dropdown li:last-child {
+  border-bottom: none;
+}
+
 #sidebar {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 #sidebar ul {
   list-style: none;
@@ -83,10 +127,27 @@ footer {
   color: #ccc;
   margin-left: 20px;
 }
+#sidebar .home {
+  margin-top: 1rem;
+}
+#sidebar #sdb_container {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  position: absolute;
+  left: 0;
+  top: 2.9rem;
+  padding: 0px;
+  list-style: none;
+  height: 50pxpx;
+  width: 50px;
+  border-bottom: none;
+  z-index: 100;
+}
 #sidebar #sdb-slide {
   color: #fff;
   font-size: 25px;
   margin-top: 15px;
+  text-align: center;
+  margin: 0;
 }
 
 .sd-title {
@@ -1202,23 +1263,42 @@ tr {
   }
 }
 /***** IMPORTING FILE END *****/
+main::-webkit-scrollbar {
+  width: 8px;
+  margin: 0;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #f7aa00;
+  border-radius: 10px;
+}
+
+#sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background: rgb(5, 91, 250);
+  border-radius: 10px;
+}
+
 /* MEDIA CONFIG START ===========================================*/
 @media (min-width: 500px) {
   body {
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr;
+    grid-template-columns: 16rem 1fr 1fr 1fr;
   }
 }
 @media (min-width: 720px) {
   body {
     display: grid;
-    grid-template-columns: 0.4fr 1fr 1fr 1fr;
+    grid-template-columns: 16rem 1fr 1fr 1fr;
   }
 }
 @media (min-width: 992px) {
   body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+    grid-template-columns: 16rem 1fr 1fr 1fr !important;
   }
   #sdb-slide {
     display: none;
@@ -1233,6 +1313,7 @@ tr {
     text-transform: uppercase;
     margin-left: 15px;
     margin-bottom: 20px;
+    margin-top: 15px;
   }
   #sidebar .sb-content {
     margin-left: 10px !important;

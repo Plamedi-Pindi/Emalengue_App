@@ -53,14 +53,7 @@ app.engine('hbs', handlebars.engine({
       }
 
     },
-    ifDif: (v1, v2, options) => {
-      if (v1 !== v2) {
-        return options.fn(this)
-      } else {
-        return options.inverse(this)
-      }
-
-    },
+   
 
   }
   // partialsDir: 'views/partials',

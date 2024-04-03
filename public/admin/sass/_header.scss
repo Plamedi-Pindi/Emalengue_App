@@ -1,3 +1,6 @@
+@import './color';
+@import './fonts';
+
 
 .header-container{
     display: flex !important;
@@ -8,6 +11,7 @@
 }
 .hd-container{
     #user-menu{
+        position: relative;
         img{
             z-index: 100;
             width: 35px;
@@ -19,5 +23,44 @@
     a{
         color: #fff;
         text-decoration: none;
+    }
+}
+
+#dash_dropdown {
+    position: absolute;
+    right: 15px;
+    top: 3rem;
+    list-style: none;
+    background: #fff;
+    margin: 0;
+    padding: 10px;
+    width: 160px;
+    height: 180px;
+    padding-top: 1rem;
+    display: none;
+    transition: 0.5s;
+    z-index: 50;
+
+    a{
+        text-decoration: none;
+        color: #555;
+        font-size: 17px;
+        padding: 2px;
+        i{ 
+            margin-right: 10px;
+            margin-left: 4px;
+            color: $primary;
+        }
+    }
+    li {
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        border-bottom: solid 1px #ddd;
+    }
+    li:hover {
+        background: linear-gradient(rgba(255, 217, 2, 0.4), rgba(250, 173, 7, 0.4));
+    }
+    li:last-child {
+        border-bottom: none;
     }
 }

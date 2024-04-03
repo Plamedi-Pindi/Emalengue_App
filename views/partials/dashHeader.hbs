@@ -1,15 +1,25 @@
-
-    <!-- HEADER START -->
-    <header>
-        <div class="header-container ">
-            <div class="logo">
-                <a href="/">eMALENGUE</a>
-            </div>
-            <div class="hd-container">
-                <div id="user-menu">
-                    <img src="/admin/img/user.jpg" alt="" id="hd-user-img"></img>
-                </div>
-            </div>
+<!-- HEADER START -->
+<header>
+    <div class="header-container ">
+        <div class="logo">
+            <a href="/">eMALENGUE</a>
         </div>
-    </header>
-    <!-- HEADER END -->
+        <div class="hd-container">
+            <div id="user-menu">
+                {{#ifIqual user.role 'freelancer'}}
+                <img src="/admin/img/freelancers/{{ ../freelancer.imagem }}" alt="" id="hd-user-img"></img>
+                {{else }}
+                <img src="/admin/img/profile.jpg" alt="" id="hd-user-img"></img>
+                {{/ifIqual}}
+
+            </div>
+            <ul id="dash_dropdown">
+                <li><a href="#"> <i class="bi bi-bell-fill"></i> Notificações</a></li>
+                <li><a href="#"> <i class="bi bi-person-fill"></i> Meu perfil</a></li>
+                <li><a href="/"> <i class="bi bi-globe-europe-africa"></i> Site</a></li>
+                <li><a href="/logout"> <i class="bi bi-box-arrow-left"></i> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+<!-- HEADER END -->

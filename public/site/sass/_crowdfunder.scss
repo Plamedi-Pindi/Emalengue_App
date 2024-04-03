@@ -79,6 +79,7 @@
         background: #fff;
         border-radius: 0 0 5px 5px;
         margin-bottom: 1.5rem;
+        text-decoration: none;
 
         figure {
             width: 100%;
@@ -109,6 +110,7 @@
                 font-weight: 600;
                 margin-top: 0.4rem;
                 margin-bottom: 3px;
+                color: #222;
             }
             span {
                 font-size: 14px;
@@ -143,6 +145,7 @@
                     color: #555;
                     span {
                         color: #777;
+                        display: block;
                     }
                 }
                 .first {
@@ -170,6 +173,12 @@
                 margin: 0;
             }
         }
+    }
+    
+    
+    .crowd_cart:hover{
+        transform: scale(1.02);
+        transition: ease-in-out .5s;
     }
 }
 
