@@ -1,0 +1,259 @@
+@import './fonts';
+@import './main';
+@import './color';
+
+
+.profile_breadcrumbs {
+    @include container;
+    padding-bottom: 0
+}
+
+.profile_container {
+    @include container;
+    padding: 10px;
+    position: relative;
+
+    .profile_card {
+        width: 400px;
+        height: 350px;
+        border-radius: 5px;
+        padding: 0;
+        position: relative;
+        box-shadow: 1px 5px 10px #888;
+        margin-bottom: 2.5rem;
+        overflow-x: hidden;
+        transition: ease-in-out .5s;
+
+
+        h3 {
+            text-align: center;
+            margin-top: 4rem;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        p {
+            text-align: center;
+            color: #777;
+            font-size: 16px;
+        }
+
+        #pf_edit_call {
+            color: #eee;
+            background: rgb(5, 5, 161);
+            margin: 0 auto;
+            display: block;
+            width: 150px;
+            text-align: center;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+
+        #pf_edit_call:hover {
+            background: rgb(3, 3, 117);
+            transition: ease-in-out .5s;
+        }
+    }
+
+    .pf_banner {
+        width: 100%;
+
+        img {
+            width: inherit;
+            border-radius: 5px 5px 0px 0;
+        }
+    }
+
+    .pf_img {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 40px;
+        margin-left: auto;
+        margin-right: auto;
+
+        border-radius: 100%;
+    }
+
+}
+
+.profile_activity {
+    border-radius: 5px;
+    box-shadow: 1px 5px 10px #888;
+    padding: 10px;
+
+    margin-bottom: 3rem;
+
+    h2 {
+        border-left: 4px solid $primary;
+        padding-left: 10px;
+        font-size: 21px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            font-size: 17px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        span {
+            color: #555;
+            font-weight: bold;
+            margin-left: 15px;
+        }
+    }
+}
+
+
+
+//=======================================
+
+
+
+.profile_edit {
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 1px 5px 10px #888;
+    width: 0px;
+    height: 510px;
+    margin-bottom: 3rem;
+    overflow-x: hidden;
+    display: none;
+    transition: ease-in-out .5s;
+    
+    #edit_back {
+        border: none;
+        background: rgba(0, 0, 255, 0.212);
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        padding: 5px;
+
+        i {
+            font-size: 28px;
+            font-weight: bold;
+            color: $secundary;
+        }
+    }
+
+    input {
+        border: none;
+        color: #777;
+        border-bottom: 1px solid $secundary;
+        padding-left: 10px;
+    }
+
+    .submit_btn {
+        border: none;
+        background: rgb(3, 3, 148);
+        color: #eee;
+        padding: 5px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    form {
+        margin-bottom: 15px;
+    }
+
+    #imgForm {
+        width: 100%;
+
+        input[type="file"] {
+            width: 100%;
+            border: dashed 1px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+
+
+    #nameForm {
+        width: 100%;
+
+        input[name="name"] {
+            width: 100%;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+    }
+
+    #emailForm {
+        width: 100%;
+
+        input[name="email"] {
+            width: 100%;
+        }
+
+        label {
+            margin-bottom: 10px;
+        }
+    }
+
+
+    
+    
+    #aleter_psw {
+        border: none;
+        margin-top: 10px;
+        background: rgba(255, 0, 0, 0.384);
+        padding: 7px;
+        border-radius: 5px;
+    }
+
+    #newpswForm {
+        padding: 20px;
+        width: 100%;
+        display: none;
+       
+        input[type="password"] {
+            width: 100%;
+            outline: none;
+            padding-left: 10px;
+            font-size: 17px;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        #new_psw {
+            margin-bottom: 10px;
+        }
+    }
+
+    #pswForm {
+        padding: 20px;
+        width: 100%;
+
+        input[type="password"] {
+            width: 100%;
+            outline: none;
+            padding-left: 10px;
+            font-size: 17px;
+        }
+        label {
+            margin-bottom: 10px;
+            color: #333;
+        }
+    }
+}
+
+#pw_msg {
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255, 0, 0, 0.377);
+    margin-bottom: 10px;
+    display: none;
+}

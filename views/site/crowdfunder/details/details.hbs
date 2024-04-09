@@ -6,12 +6,15 @@
         <h2>Mais Detalhes</h2>
         <div class="row">
             <div class="col-11 col-md-8 col-lg-6 col-xl-6 container-fluid dt_content">
-                <video src="/site/videos/vid1.mp4" controls muted></video>
-                <div class="dt_description">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ad enim, debitis nihil voluptate
-                        corporis labore eum impedit porro cum, quo tenetur ut molestias velit sed nemo, non tempora
-                        laboriosam. Cumque est voluptas blanditiis cum consequuntur alias ab praesentium temporibus
-                        excepturi numquam distinctio ratione fuga ipsa omnis iste, eos magni.</p>
+                <div class="dt_content_container">
+                    <video src="/site/videos/vid1.mp4" controls muted></video>
+                    <div class="dt_description">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ad enim, debitis nihil
+                            voluptate
+                            corporis labore eum impedit porro cum, quo tenetur ut molestias velit sed nemo, non tempora
+                            laboriosam. Cumque est voluptas blanditiis cum consequuntur alias ab praesentium temporibus
+                            excepturi numquam distinctio ratione fuga ipsa omnis iste, eos magni.</p>
+                    </div>
                 </div>
             </div>
             <div class="col-11 col-md-6 col-lg-4 col-xl-4 container-fluid dt_info">
@@ -31,27 +34,48 @@
                         <p>10 dias Restantes</p>
                         <p>30 Pessoas Apoiaram</p>
 
-                        <a href="#">Apoiar Esta Campanha </a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">Apoiar Esta Campanha </button>
                     </div>
                 </div>
 
-                <div class="apoio_container">
-                    <h3>Formuário de Apoio</h3>
-                    <form action="">
-                        <input type="text" placeholder="Nome">
-                        <input type="email" placeholder="Email">
-                        <input type="tel" placeholder="Telefone">
-                        <input type="text" placeholder="IBAM">
-                        <input type="number" placeholder="Valor da Contribuição">
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Formuário de Apoio</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="apoio_container">
 
-                        <textarea name="" id="" cols="30" rows="7" placeholder="Mensgem"></textarea>
-                        
-                        <label for="comprovativo">Anexar Comprovativo</label>
-                        <input type="file" accept=".pdf" >
+                                    <form action="">
+                                        <input type="text" placeholder="Nome">
+                                        <input type="email" placeholder="Email">
+                                        <input type="tel" placeholder="Telefone">
+                                        <input type="text" placeholder="IBAM">
+                                        <input type="number" placeholder="Valor da Contribuição">
 
-                        <input type="submit" value="Enviar" class="sub_btn">
-                    </form>
+                                        <textarea name="" id="" cols="30" rows="7" placeholder="Mensgem"></textarea>
+
+                                        <label for="comprovativo">Anexar Comprovativo</label>
+                                        <input type="file" accept=".pdf">
+
+                                        <input type="submit" value="Enviar" class="sub_btn">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
         </div>
     </div>

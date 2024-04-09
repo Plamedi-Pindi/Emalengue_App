@@ -1262,6 +1262,228 @@ tr {
     color: #555;
   }
 }
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.profile_breadcrumbs {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding-bottom: 1.5rem;
+  padding-bottom: 0;
+}
+
+.profile_container {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding-bottom: 1.5rem;
+  padding: 10px;
+  position: relative;
+}
+.profile_container .profile_card {
+  width: 400px;
+  height: 350px;
+  border-radius: 5px;
+  padding: 0;
+  position: relative;
+  box-shadow: 1px 5px 10px #888;
+  margin-bottom: 2.5rem;
+  overflow-x: hidden;
+  transition: ease-in-out 0.5s;
+}
+.profile_container .profile_card h3 {
+  text-align: center;
+  margin-top: 4rem;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+}
+.profile_container .profile_card p {
+  text-align: center;
+  color: #777;
+  font-size: 16px;
+}
+.profile_container .profile_card #pf_edit_call {
+  color: #eee;
+  background: rgb(5, 5, 161);
+  margin: 0 auto;
+  display: block;
+  width: 150px;
+  text-align: center;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+.profile_container .profile_card #pf_edit_call:hover {
+  background: rgb(3, 3, 117);
+  transition: ease-in-out 0.5s;
+}
+.profile_container .pf_banner {
+  width: 100%;
+}
+.profile_container .pf_banner img {
+  width: inherit;
+  border-radius: 5px 5px 0px 0;
+}
+.profile_container .pf_img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100%;
+}
+
+.profile_activity {
+  border-radius: 5px;
+  box-shadow: 1px 5px 10px #888;
+  padding: 10px;
+  margin-bottom: 3rem;
+}
+.profile_activity h2 {
+  border-left: 4px solid #f7aa00;
+  padding-left: 10px;
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.profile_activity ul {
+  list-style: none;
+  padding: 0;
+}
+.profile_activity ul li {
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: #666;
+}
+.profile_activity ul span {
+  color: #555;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.profile_edit {
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 1px 5px 10px #888;
+  width: 0px;
+  height: 510px;
+  margin-bottom: 3rem;
+  overflow-x: hidden;
+  display: none;
+  transition: ease-in-out 0.5s;
+}
+.profile_edit #edit_back {
+  border: none;
+  background: rgba(0, 0, 255, 0.212);
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  padding: 5px;
+}
+.profile_edit #edit_back i {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1a1931;
+}
+.profile_edit input {
+  border: none;
+  color: #777;
+  border-bottom: 1px solid #1a1931;
+  padding-left: 10px;
+}
+.profile_edit .submit_btn {
+  border: none;
+  background: rgb(3, 3, 148);
+  color: #eee;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.profile_edit form {
+  margin-bottom: 15px;
+}
+.profile_edit #imgForm {
+  width: 100%;
+}
+.profile_edit #imgForm input[type=file] {
+  width: 100%;
+  border: dashed 1px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.profile_edit #nameForm {
+  width: 100%;
+}
+.profile_edit #nameForm input[name=name] {
+  width: 100%;
+}
+.profile_edit #nameForm label {
+  margin-bottom: 10px;
+}
+.profile_edit #emailForm {
+  width: 100%;
+}
+.profile_edit #emailForm input[name=email] {
+  width: 100%;
+}
+.profile_edit #emailForm label {
+  margin-bottom: 10px;
+}
+.profile_edit #aleter_psw {
+  border: none;
+  margin-top: 10px;
+  background: rgba(255, 0, 0, 0.384);
+  padding: 7px;
+  border-radius: 5px;
+}
+.profile_edit #newpswForm {
+  padding: 20px;
+  width: 100%;
+  display: none;
+}
+.profile_edit #newpswForm input[type=password] {
+  width: 100%;
+  outline: none;
+  padding-left: 10px;
+  font-size: 17px;
+}
+.profile_edit #newpswForm label {
+  margin-bottom: 10px;
+  color: #666;
+}
+.profile_edit #newpswForm #new_psw {
+  margin-bottom: 10px;
+}
+.profile_edit #pswForm {
+  padding: 20px;
+  width: 100%;
+}
+.profile_edit #pswForm input[type=password] {
+  width: 100%;
+  outline: none;
+  padding-left: 10px;
+  font-size: 17px;
+}
+.profile_edit #pswForm label {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+#pw_msg {
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 0, 0, 0.377);
+  margin-bottom: 10px;
+  display: none;
+}
+
 /***** IMPORTING FILE END *****/
 main::-webkit-scrollbar {
   width: 8px;

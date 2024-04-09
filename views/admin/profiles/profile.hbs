@@ -1,0 +1,183 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="profile_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="#">Meu Perfil</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="profile_container">
+            <div class="row">
+                {{!-- First page --}}
+                <div class="profile_card col-11 col-md-8 col-lg-4 container-fluid">
+                    <div class="profile">
+                        <div class="pf_banner">
+                            <img src="/admin/img/profile/bn2.jpg" alt="Banner do perfil do usário">
+                        </div>
+                        <img src="/admin/img/user.jpg" alt="Fotografia do perfil do usário" class="pf_img">
+                        <h3> {{ profile.nome }} </h3>
+                        <p> {{ profile.email }} </p>
+                        <button id="pf_edit_call">Editar perfil</button>
+                    </div>
+                </div>
+                {{!-- Second page --}}
+                <div class="profile_edit col-11 col-md-8 col-lg-4 container-fluid">
+                    {{!-- Back buttom --}}
+                    <button id="edit_back"><i class="bi bi-arrow-left"></i></button>
+
+                    <form id="imgForm">
+                        <label for="img">Alterar a foto do perfil:</label>
+                        <input type="file" name="img" id="img" accept="image/*">
+                        <input type="submit" value="salvar" class="submit_btn">
+                    </form>
+                    <form id="nameForm">
+                        <label for="name">Nome:</label>
+                        <input type="text" name="name" id="name" value="{{ profile.nome }}">
+                        <input type="submit" value="salvar" class="submit_btn">
+                    </form>
+                    <form id="emailForm">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" value="{{ profile.email }}">
+                        <input type="submit" value="salvar" class="submit_btn">
+                    </form>
+                    {{!-- Alter PSW button --}}
+
+
+
+                    <button id="aleter_psw" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Alterar a
+                        senha</button>
+
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Alterar a senha</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{!-- Old PSW --}}
+                                    <form id="pswForm">
+                                        <div id="pw_msg"> </div>
+                                        <label for="hold_psw">Senha antiga:</label>
+                                        <input type="password" name="hold_psw" id="hold_psw" placeholder="Senha...">
+                                        <input type="submit" value="salvar" class="submit_btn">
+                                    </form>
+                                    {{!-- New PSW --}}
+                                    <form id="newpswForm">
+                                        <label for="new_psw">Nova senha:</label>
+                                        <input type="password" name="new_psw" id="new_psw" placeholder="Senha...">
+                                        <label for="confirm">Confirmar Senha:</label>
+                                        <input type="password" name="confirm" id="confirm" placeholder="Senha...">
+                                        <input type="submit" value="salvar" class="submit_btn">
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="profile_info col-11 col-md-11 col-lg-6 container-fluid">
+                    <div class="profile_activity">
+                        <h2>Atividades</h2>
+                        <ul>
+                            <li>Projetos publicados: <span>0</span></li>
+                            <li>Projetos participados: <span>0</span></li>
+                            <li>Cursos publicados: <span>0</span></li>
+                            <li>Cursos participados: <span>0</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- MAIN END -->
+
+<script>
+    // Settings =======================================
+    const pf_edit_call = document.getElementById('pf_edit_call');
+    const profile_card = document.getElementsByClassName('profile_card')[0];
+    const profile_edit = document.getElementsByClassName('profile_edit')[0];
+    const edit_back = document.getElementById('edit_back');
+    const aleter_psw = document.getElementById('aleter_psw');
+    const pswForm = document.getElementById('pswForm');
+    const pw_msg = document.getElementById('pw_msg')
+    const newpswForm = document.getElementById('newpswForm')
+    pw_msg.style.display = 'none'
+    newpswForm.style.display = 'none'
+
+    // Editng Profile Logics ===========================================
+    pf_edit_call.addEventListener('click', () => {
+
+        profile_card.style.width = '0px'
+        setTimeout(() => {
+            profile_card.style.display = 'none'
+            profile_edit.style.display = 'block'
+        }, 400)
+        profile_edit.style.width = '400px'
+
+
+    })
+    edit_back.addEventListener('click', () => {
+
+        profile_edit.style.width = '0px'
+        setTimeout(() => {
+            profile_edit.style.display = 'none'
+            profile_card.style.display = 'block'
+        }, 400)
+        profile_card.style.width = '400px'
+    })
+
+    //Chanhe password
+
+    pswForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        try {
+            const psw = pswForm.hold_psw.value;
+            const data = { password: psw }
+            const path = '/dashboard/user/profile/update_profile/{{ profile.id }}'
+            const response = await fetch(path, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            const result = await response.json();
+
+            if (result.id == 1) {
+                console.log(result);
+                pswForm.style.display = 'none'
+                newpswForm.style.display = 'block'
+                
+            } else {
+                console.log(result.message)
+                pw_msg.style.display ='block';
+                pw_msg.innerText =  result.message
+            }
+
+
+        } catch (err) {
+            console.error(err.message)
+        }
+    })
+
+
+</script>
+
+{{> dashFooter }}

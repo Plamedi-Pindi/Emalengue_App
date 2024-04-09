@@ -32,7 +32,7 @@ const login = async (req, res) => {
 
             if (auth) {
                 //Token
-                const token = createToken(user.id)
+                const token = createToken(user.id) 
                 // cookie
                 res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
                 // res.redirect('/')

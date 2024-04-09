@@ -5,6 +5,7 @@ const cursoRoute = require('../../controllers/site/cursoController')
 
 //Routs
 curso.get('/', cursoRoute.index)
+curso.get('/detalhes', cursoRoute.detail)
 
 
 /**EXPORT CONFIG ============================================== */

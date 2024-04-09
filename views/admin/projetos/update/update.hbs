@@ -82,10 +82,6 @@
         try {
             const response = await fetch('/dashboard/projeto/meuprojeto/update/{{ projeto.id }}', {
                 method: "PUT",
-               // headers: {
-                //    "Content-Type": "application/json",
-               // },
-                //body: JSON.stringify(teste) ,
                 body: formData,
             })
 

@@ -1,4 +1,5 @@
 @import "./fonts";
+@import "./color";
 
 // SUBTITLES FUNCTION
 @mixin subtitle() {
@@ -18,6 +19,14 @@
     color: #888;
 }
 
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: $primary;
+    border-radius: 5px;
+}
 
 main {
     flex: 1 0 auto;
@@ -657,3 +666,4 @@ main {
 }
 
 /***********tESTEMUNHOS END *****************/
+

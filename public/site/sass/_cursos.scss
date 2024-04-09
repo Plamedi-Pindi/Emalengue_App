@@ -67,6 +67,7 @@
         .cs_dis_card {
             background-color: #fff;
             position: relative;
+            text-decoration: none;
 
             margin-bottom: 2rem;
 
@@ -76,6 +77,11 @@
                 height: 200px;
                 border-radius: 10px;
             }
+        }
+
+        .cs_dis_card:hover {
+            transform: scale(1.01);
+            transition: ease-in-out .4s;
         }
 
         .cs_dis_card_contente {
@@ -96,6 +102,7 @@
                 h5 {
                     font-size: 15px;
                     padding-top: 8px;
+                    color: #222;
                 }
             }
         }
@@ -110,9 +117,11 @@
         .cs_rate {
             margin-bottom: 20px;
 
-            p {
+            p,
+            i {
                 display: inline;
                 margin-left: 5px;
+                color: #333;
             }
 
             span {

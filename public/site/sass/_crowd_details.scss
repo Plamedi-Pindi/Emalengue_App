@@ -1,9 +1,7 @@
 @import './color';
 @import './fonts';
 
-.detail {
 
-}
 .detail_container {
     margin-top: 5rem;
 
@@ -35,15 +33,25 @@
     }
 }
 
+.dt_content_container {
+    box-shadow: 1px 5px 10px #888;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+}
+
 .dt_info {
     font-family: $roboto;
     margin-bottom: 3rem;
 
     .objetivo_container {
-        border: solid 2px $secundary;
+        box-shadow: 1px 5px 10px #888;
         padding: 10px;
         border-radius: 5px;
         margin-bottom: 2rem;
+        padding-top: 1.5rem;
+        padding-bottom: 2rem;
+        background-color: #fff;
 
         .objetivo {
             .obj {
@@ -85,8 +93,7 @@
             text-align: center;
         }
 
-        a {
-            text-decoration: none;
+        button {
             padding: 10px;
             color: #eee;
             background: $secundary;
@@ -98,7 +105,7 @@
             text-align: center;
         }
 
-        a:hover {
+        button:hover {
             transform: scale(1.02);
             transition: ease-out .5s;
         }
@@ -113,7 +120,8 @@
             font-weight: 600;
         }
         form {
-            border: 2px solid $secundary;
+            // border: 2px solid $secundary;
+            box-shadow: 1px 5px 10px #888;
             padding: 10px;
             border-radius: 5px;
             padding-top: 2rem;
@@ -124,6 +132,7 @@
                 padding: 4px;
                 width: 80%;
                 margin-bottom: 15px;
+                padding-left: 10px;
             }
 
             input[type="file"] {
@@ -139,8 +148,7 @@
                 color: #eee;
                 border: none;
                 border-radius: 5px;
-                // display: block;
-                // margin: 0 auto;
+                margin-top: 1rem;
             }
             label {
                 color: #666;
@@ -151,12 +159,24 @@
                 margin-bottom: 10px;
                 outline: none;
                 border: solid 1px $secundary;
+                padding: 10px;
+                width: 85%;
             }
           
         }
     }
 }
 
+// MODAL ===================
+
+.modal::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background: $primary;
+    border-radius: 5px;
+}
 
 @media(min-width: 992px) {
 .detail_container { 

@@ -1,0 +1,88 @@
+
+@import './color';
+@import './fonts';
+
+.dt {
+    flex-wrap: wrap-reverse; 
+}
+.cr_detail_container {
+    margin-top: 5rem;
+    font-family: $roboto;
+
+    .cr_dt_content {
+        width: 100%;
+
+        video {
+            width: 100%;
+        }
+
+        .dt_content {
+            h3{
+                font-weight: bold;
+                font-size: 20px;
+                margin-top: 10px;
+            }
+            a {
+                padding: 7px;
+                text-decoration: none;
+                color: #eee;
+                background-color: $secundary;
+                display: block;
+                width: 100%;
+                text-align: center;
+
+            }
+            a:hover {
+                transform: scale(1.02);
+                transition: ease-out 0.5s;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+        }
+    }
+
+    .cr_dt_info {
+        margin-bottom: 3rem;
+        p {
+            color: #777;
+
+            span {
+                color: #333;
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+
+        .rate {
+            font-weight: bold;
+            margin-bottom: 2rem;
+            i {
+                color: rgb(230, 151, 6);
+            }
+            span {
+                color: #666;
+            }
+        }
+
+        h3 {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        h4 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+}
+
+.tt {
+    padding: 0px;
+}
+
+@media (min-width: 992px) {
+    .cr_detail_container { 
+        margin-top: 9rem;
+    }
+}

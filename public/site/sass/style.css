@@ -265,6 +265,15 @@ footer .ftr-content .ftr-sobre p {
   text-align: center;
 }
 
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #f7aa00;
+  border-radius: 5px;
+}
+
 main {
   flex: 1 0 auto;
   margin-top: -6px !important;
@@ -1048,6 +1057,7 @@ main {
 #cursos_display .cs_dis_container .cs_dis_card {
   background-color: #fff;
   position: relative;
+  text-decoration: none;
   margin-bottom: 2rem;
 }
 #cursos_display .cs_dis_container .cs_dis_card img {
@@ -1055,6 +1065,10 @@ main {
   width: 100%;
   height: 200px;
   border-radius: 10px;
+}
+#cursos_display .cs_dis_container .cs_dis_card:hover {
+  transform: scale(1.01);
+  transition: ease-in-out 0.4s;
 }
 #cursos_display .cs_dis_container .cs_dis_card_contente {
   margin-top: 15px;
@@ -1073,6 +1087,7 @@ main {
 #cursos_display .cs_dis_container .cs_dis_card_contente .cs_dis_user h5 {
   font-size: 15px;
   padding-top: 8px;
+  color: #222;
 }
 #cursos_display .cs_dis_container .cs_dis_descriptio {
   margin-top: 10px;
@@ -1083,9 +1098,11 @@ main {
 #cursos_display .cs_dis_container .cs_rate {
   margin-bottom: 20px;
 }
-#cursos_display .cs_dis_container .cs_rate p {
+#cursos_display .cs_dis_container .cs_rate p,
+#cursos_display .cs_dis_container .cs_rate i {
   display: inline;
   margin-left: 5px;
+  color: #333;
 }
 #cursos_display .cs_dis_container .cs_rate span {
   color: #888;
@@ -1598,7 +1615,7 @@ main {
   padding-top: 30px;
   margin-top: 2rem;
   background-color: #fff;
-  height: 470px;
+  height: 500px;
 }
 .contact_container .cont_end h3 {
   font-size: 20px;
@@ -1621,6 +1638,7 @@ main {
 }
 .contact_container .cont_end li {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 1rem;
   padding-bottom: 10px;
   align-items: center;
@@ -1640,6 +1658,9 @@ main {
   margin-left: 12px;
   margin-bottom: 0;
   font-weight: 400;
+}
+.contact_container .cont_end li .last-email {
+  width: auto;
 }
 .contact_container .cont_end li:first-child {
   border-top: #ddd 1px solid;
@@ -2037,15 +2058,25 @@ main {
   margin-top: 1rem;
 }
 
+.dt_content_container {
+  box-shadow: 1px 5px 10px #888;
+  padding: 10px;
+  border-radius: 5px;
+  background: #fff;
+}
+
 .dt_info {
   font-family: "Roboto", sans-serif;
   margin-bottom: 3rem;
 }
 .dt_info .objetivo_container {
-  border: solid 2px #1a1931;
+  box-shadow: 1px 5px 10px #888;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+  background-color: #fff;
 }
 .dt_info .objetivo_container .objetivo .obj {
   display: flex;
@@ -2079,8 +2110,7 @@ main {
   font-weight: 500;
   text-align: center;
 }
-.dt_info .objetivo_container a {
-  text-decoration: none;
+.dt_info .objetivo_container button {
   padding: 10px;
   color: #eee;
   background: #1a1931;
@@ -2091,7 +2121,7 @@ main {
   border-radius: 6px;
   text-align: center;
 }
-.dt_info .objetivo_container a:hover {
+.dt_info .objetivo_container button:hover {
   transform: scale(1.02);
   transition: ease-out 0.5s;
 }
@@ -2101,7 +2131,7 @@ main {
   font-weight: 600;
 }
 .dt_info .apoio_container form {
-  border: 2px solid #1a1931;
+  box-shadow: 1px 5px 10px #888;
   padding: 10px;
   border-radius: 5px;
   padding-top: 2rem;
@@ -2112,6 +2142,7 @@ main {
   padding: 4px;
   width: 80%;
   margin-bottom: 15px;
+  padding-left: 10px;
 }
 .dt_info .apoio_container form input[type=file] {
   border: 1px dashed #1a1931;
@@ -2125,6 +2156,7 @@ main {
   color: #eee;
   border: none;
   border-radius: 5px;
+  margin-top: 1rem;
 }
 .dt_info .apoio_container form label {
   color: #666;
@@ -2135,6 +2167,17 @@ main {
   margin-bottom: 10px;
   outline: none;
   border: solid 1px #1a1931;
+  padding: 10px;
+  width: 85%;
+}
+
+.modal::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: #f7aa00;
+  border-radius: 5px;
 }
 
 @media (min-width: 992px) {
@@ -2146,6 +2189,81 @@ main {
   .detail_container h2 {
     margin-left: 3rem;
     margin-bottom: 1rem;
+  }
+}
+.dt {
+  flex-wrap: wrap-reverse;
+}
+
+.cr_detail_container {
+  margin-top: 5rem;
+  font-family: "Roboto", sans-serif;
+}
+.cr_detail_container .cr_dt_content {
+  width: 100%;
+}
+.cr_detail_container .cr_dt_content video {
+  width: 100%;
+}
+.cr_detail_container .cr_dt_content .dt_content h3 {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+}
+.cr_detail_container .cr_dt_content .dt_content a {
+  padding: 7px;
+  text-decoration: none;
+  color: #eee;
+  background-color: #1a1931;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.cr_detail_container .cr_dt_content .dt_content a:hover {
+  transform: scale(1.02);
+  transition: ease-out 0.5s;
+}
+.cr_detail_container .cr_dt_content .dt_content ul {
+  list-style: none;
+  padding: 0;
+}
+.cr_detail_container .cr_dt_info {
+  margin-bottom: 3rem;
+}
+.cr_detail_container .cr_dt_info p {
+  color: #777;
+}
+.cr_detail_container .cr_dt_info p span {
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+}
+.cr_detail_container .cr_dt_info .rate {
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+.cr_detail_container .cr_dt_info .rate i {
+  color: rgb(230, 151, 6);
+}
+.cr_detail_container .cr_dt_info .rate span {
+  color: #666;
+}
+.cr_detail_container .cr_dt_info h3 {
+  font-weight: bold;
+  font-size: 20px;
+}
+.cr_detail_container .cr_dt_info h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.tt {
+  padding: 0px;
+}
+
+@media (min-width: 992px) {
+  .cr_detail_container {
+    margin-top: 9rem;
   }
 }
 /****** GENERAL SITTINGS START *******/
