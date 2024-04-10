@@ -1036,6 +1036,9 @@ tr {
   background: rgb(1, 88, 187);
   transition: ease-in-out 0.4s;
 }
+#fr_ch_nw_habilidades .addH {
+  width: 80px;
+}
 #fr_ch_nw_habilidades select {
   width: 200px;
   border: none;
@@ -1247,6 +1250,14 @@ tr {
 #AlertMessage img {
   width: 50px;
   height: 50px;
+}
+
+#emailerror {
+  background: rgba(255, 0, 0, 0.315);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: none;
 }
 
 @media (min-width: 768px) {
