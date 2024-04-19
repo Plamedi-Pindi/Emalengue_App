@@ -304,6 +304,7 @@ footer {
 .fr_container table .fr_delete {
   background-color: rgba(255, 0, 0, 0.233);
   color: red;
+  border: none;
 }
 .fr_container table .fr_view {
   background-color: rgba(0, 128, 0, 0.301);
@@ -398,6 +399,11 @@ footer {
 .fr_mdl_data3 .ft_mdl_dwl i {
   font-size: 20px;
   margin-right: 10px;
+}
+
+.fr_delete_alert {
+  background: rgb(231, 146, 146);
+  border-radius: 10px;
 }
 
 /** MEDIA ======================================= */
@@ -1408,6 +1414,7 @@ tr {
   color: #777;
   border-bottom: 1px solid #1a1931;
   padding-left: 10px;
+  outline: none;
 }
 .profile_edit .submit_btn {
   border: none;
@@ -1487,12 +1494,119 @@ tr {
   color: #333;
 }
 
+#pw_msg1,
 #pw_msg {
   padding: 10px;
   border-radius: 10px;
   background: rgba(255, 0, 0, 0.377);
   margin-bottom: 10px;
   display: none;
+}
+
+#alertMessage {
+  background-color: green;
+  border: 1px solid green;
+  padding: 10px;
+  color: #eee;
+  font-family: "Roboto", sans-serif;
+  border-radius: 10px;
+  margin-bottom: 0.9rem;
+  display: none;
+}
+
+#pwUpdated {
+  background: green;
+  border-radius: 10px;
+  color: #eee;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  padding: 10px;
+  display: none;
+}
+
+#alertVerification2 {
+  border: 1px solid rgb(250, 21, 21);
+  border-radius: 5px;
+  background: rgb(245, 122, 122);
+  padding: 10px;
+  margin-bottom: 2rem;
+  margin: 10px;
+  display: none;
+}
+
+#emailConfirm2 {
+  background: #fff;
+  box-shadow: 1px 5px 10px #888;
+  padding: 10px;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  display: none;
+  margin-top: 6rem;
+  transition: ease-in-out 0.5s;
+}
+#emailConfirm2 h2 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 22px;
+}
+#emailConfirm2 p {
+  color: #555;
+  margin-bottom: 5px;
+}
+#emailConfirm2 a {
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+#emailConfirm2 form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+#emailConfirm2 form input {
+  padding: 5px;
+  max-width: 300px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  margin-bottom: 10px;
+  border: 1px solid #888;
+  outline: none;
+  font-size: 19px;
+  border-radius: 5px;
+}
+#emailConfirm2 form button {
+  display: block;
+  background-color: rgb(37, 37, 245);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  padding: 8px;
+  max-width: 300px;
+  font-weight: bolde;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#back2 {
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 255, 0.336);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.edit_conf_email {
+  margin-top: 0px !important;
 }
 
 /***** IMPORTING FILE END *****/

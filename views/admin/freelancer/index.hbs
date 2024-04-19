@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     {{#each freelancers }}
                     <tr class="fr_rows">
                         {{!-- id --}}
@@ -30,23 +30,30 @@
                             <h5 class="fr_name"> {{ user.nome }} </h5>
                             <span class="fr_profissao"> {{ especialidade }} </span>
                         </td>
-                    
+
                         {{!-- Email --}}
                         <td><span class="fr_email text-primary"> {{ user.email }} </span></td>
-                        
+
                         {{!-- phonenumber --}}
                         <td><span class="fr_email text-primary"> {{ phone }} </span></td>
                         <td>
-                            <a href="/dashboard/freelancer/atualizar/{{ id }}" class="fr_edit" title="Editar"><i class="bi bi-pencil-square"></i></a>
-                            <a href="/dashboard/freelancer/eliminar/{{ id }}" class="fr_delete" title="Deletar"><i class="bi bi-trash3"></i></i></a>
+                            {{!-- edit --}}
+                            <a href="/dashboard/freelancer/atualizar/{{ id }}" class="fr_edit" title="Editar"><i
+                                    class="bi bi-pencil-square"></i></a>
+                            {{!-- delete --}}
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                class="fr_delete" title="Deletar"><i class="bi bi-trash3"></i></i></button>
+                            {{!-- details --}}
                             <span class="fr_view" title="Mais detalhes" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop{{ id }}"> <i class="bi bi-eye"></i></span>
                         </td>
                     </tr>
 
+                    <!-- MODALS ================================================= -->
+
                     <!--Freelancer Modal View -->
-                    <div class="modal fade " id="staticBackdrop{{ id }}" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade " id="staticBackdrop{{ id }}" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable ">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -69,7 +76,7 @@
                                                     <i class="bi bi-telephone-fill"></i> (+244) {{ phone }}
                                                 </li>
                                                 <li>
-                                                    <i class="bi bi-envelope-at-fill"></i> 
+                                                    <i class="bi bi-envelope-at-fill"></i>
                                                     {{ user.email }}
                                                 </li>
                                                 <li>
@@ -81,22 +88,22 @@
                                         <div class="fr_mdl_data2 col-10 col-md-5 container-fluid">
                                             <h3>Habilidades</h3>
                                             <ul>
-                                                {{#each habilidades}}   
-                                                 <li> {{ name }}</li>
+                                                {{#each habilidades}}
+                                                <li> {{ name }}</li>
                                                 {{/each}}
                                             </ul>
-                                            {{!--  --}}
+                                            {{!-- --}}
                                             <h3 class="certificacoes"> Certificações</h3>
-                                            <ul>   
-                                                 <li> {{ certificacoes }}</li>
+                                            <ul>
+                                                <li> {{ certificacoes }}</li>
                                             </ul>
                                         </div>
-        
+
                                         <hr class="col-10 container-fluid">
                                         <div class="col-10 container-fluid fr_mdl_data3">
                                             <h3>Sobre o Freelancer</h3>
                                             <div>
-                                               {{ sobre }}
+                                                {{ sobre }}
                                             </div>
                                         </div>
                                     </div>
@@ -104,22 +111,47 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Fechar</button>
-                                    <a href="/dashboard/freelancer/baixar_cv/{{ id }}" type="button" class="btn btn-primary ft_mdl_dwl"> <i
-                                            class="bi bi-cloud-arrow-down-fill"></i> Baixar CV</a>
-                                    <a href="/dashboard/freelancer/baixar_bi/{{ id }}" type="button" class="btn btn-success ft_mdl_dwl"> <i
-                                            class="bi bi-cloud-arrow-down-fill"></i> Baixar BI</a>
+                                    <a href="/dashboard/freelancer/baixar_cv/{{ id }}" type="button"
+                                        class="btn btn-primary ft_mdl_dwl"> <i class="bi bi-cloud-arrow-down-fill"></i>
+                                        Baixar CV</a>
+                                    <a href="/dashboard/freelancer/baixar_bi/{{ id }}" type="button"
+                                        class="btn btn-success ft_mdl_dwl"> <i class="bi bi-cloud-arrow-down-fill"></i>
+                                        Baixar BI</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MODALS ================================================= -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered ">
+                            <div class="modal-content ">
+                                <div class="modal-body fr_delete_alert">
+                                    <h5> <i class="bi bi-exclamation-triangle-fill"></i> Tem certeza que pretende
+                                        deletar este freelancer?</h5>
+                                    <p>Ao deletar a sua função como freelancer apenas poderá usar o seu email como
+                                        usuário normal ou se cadastrar outra vez como freelancer, mas não poderá
+                                        recuperar os dados eliminados.</p>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <a href="/dashboard/freelancer/eliminar/{{ id }}"
+                                        class="btn btn-primary">continuar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     {{/each }}
-                    
+
 
                 </tbody>
             </table>
         </div>
 
-        <!-- MODALS ================================================= -->
+
 
 
     </div>

@@ -6,19 +6,20 @@
     <div class="container ">
         <div class="fr_rg_container">
             <!-- <a href="index.html" class="logo">eMaLENGUE</a> -->
-            <h2>Cadastra freelancer</h2>
+            <h2>Cadastrar freelancer</h2>
             <!-- Form start -->
             <form enctype="multipart/form-data" id="new_freelancer_form">
                 <div class="row">
                     <!-- update profile photo -->
-                    <div class="col-10  fr_rg_photo container-fluid"> 
-                        <img src="/admin/img/profile.jpg" alt="" id="fr_rg_photo_img" >
-                        <input type="file" class="form-control" id="fr_rg_photo_input" name="img" required>
+                    <div class="col-10  fr_rg_photo container-fluid">
+                        <img src="/admin/img/profile.jpg" alt="" id="fr_rg_photo_img">
+                        <input type="file" accept="image/*" class="form-control" id="fr_rg_photo_input" name="img"
+                            required>
                     </div>
 
                     <!-- Checkbox -->
                     <div class="col-10  container-fluid" style="background-color:;">
-                        <span >Já sou um usuário</sp> <input type="checkbox" id="fr_checkbox" name="fr_checkbox">
+                        <span>Já sou um usuário</sp> <input type="checkbox" id="fr_checkbox" name="fr_checkbox">
                     </div>
 
                     <!-- Personal Information -->
@@ -64,16 +65,17 @@
                         <label for="skills">Principais Habilidades <span>*</span></label>
                         <select name="skills" id="skills" class="form-control" multiple required>
                             {{#each habilidades}}
-                                <option value="{{ id }}"> {{ name }} </option>
+                            <option value="{{ id }}"> {{ name }} </option>
                             {{/each}}
-                            
+
                         </select>
-                        
-                        
+
+
 
                         <!-- Cetification -->
                         <label for="certification">Certificações <span>*</span></label>
-                        <input type="text" placeholder="Certificações" class="form-control" name="certification" required>
+                        <input type="text" placeholder="Certificações" class="form-control" name="certification"
+                            required>
 
                         <!-- About User -->
                         <label for="about">Sobre mim <span>*</span></label>
@@ -84,11 +86,12 @@
                     <!-- update Docs -->
                     <div class="col-10 col-md-5 container-fluid">
                         <label for="identification">Anexar Bilhete de Identidade <span>*</span></label>
-                        <input type="file" placeholder="" name="identification" class="form-control" required>
+                        <input type="file" accept=".pdf" placeholder="" name="identification" class="form-control"
+                            required>
                     </div>
                     <div class="col-10 col-md-5 fr_rg_doc container-fluid">
                         <label for="cv">Anexar CV <span>*</span></label>
-                        <input type="file" name="cv" class="form-control" required>
+                        <input type="file" accept=".pdf" name="cv" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
@@ -96,6 +99,27 @@
             </form>
             <!-- Form end -->
         </div>
+
+        {{!-- Email confirmation --}}
+        <div class="row">
+            <div id="emailConfirm2" class="col-12 col-md-7 col-lg-5 container-fluid">
+                <button id="back2"><i class="bi bi-arrow-left"></i></button>
+                <h2>Verificação de Email</h2>
+                <div class="row">
+                    <div id="alertVerification2"></div>
+                    <div class=" container-fluid">
+                        <p>Enviamos um codigo de Verificação no seu email. Introduza o codigo enviado:</p>
+
+                        <form id="verifyForm2">
+                            <input type="number" name="code2" id="code2">
+                            <button type="submit">Enviar</button>
+                        </form>
+                        {{!-- <a href="#">Reenviar o codigo de Verificação.</a> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </main>
 <!-- MAIN END -->
@@ -109,6 +133,19 @@
     const label_pw = document.getElementById('label_pw')
     emailMessage.style.display = 'none'
 
+    const back2 = document.getElementById('back2')
+    const emailConfirm2 = document.getElementById('emailConfirm2')
+    const code2 = document.getElementById('code2')
+    const verifyForm2 = document.getElementById('verifyForm2')
+    const alertVerification2 = document.getElementById('alertVerification2')
+    const fr_rg_container = document.getElementsByClassName('fr_rg_container')[0]
+
+    // Intial sttings
+    emailConfirm2.style.display = "none"
+    alertVerification2.style.display = 'none'
+
+
+
     //Handle with Checkbox to analise if the user have been alread registed
     fr_checkbox.addEventListener('click', () => {
         const name = form.name
@@ -117,45 +154,87 @@
         emailMessage.innerHTML = ""
         emailMessage.style.display = "none"
 
-        if(fr_checkbox.checked == true){
-            name.setAttribute('type', 'hidden')              
+        if (fr_checkbox.checked == true) {
+            name.setAttribute('type', 'hidden')
             password.setAttribute('type', 'hidden')
             label_name.style.display = "none"
-            label_pw.style.display = "none"   
-        } else{
-            name.setAttribute('type', 'text')               
-            password.setAttribute('type', 'password')  
+            label_pw.style.display = "none"
+        } else {
+            name.setAttribute('type', 'text')
+            password.setAttribute('type', 'password')
             label_name.style.display = "block"
-            label_pw.style.display = "block"        
+            label_pw.style.display = "block"
         }
     })
     //Send data from the  front-end to the back-end
     form.addEventListener('submit', async (e) => {
         e.preventDefault()
+        code2.value = 0
+
+        // Initial settings
+        window.scrollTo(0, 0)
+        setTimeout(() => {
+            fr_rg_container.style.display = 'none';
+            emailConfirm2.style.display = "block"
+        }, 600)
+        alertVerification2.style.display = 'none'
+
         const formData = new FormData(form)
         try {
-            const response = await fetch('/dashboard/freelancer/enviar_cadastro', {
+             const response = await fetch('/dashboard/freelancer/verificar_email', {
                 method: 'POST',
                 body: formData
             })
             const result = await response.json()
+          //  console.log(result)
 
-            //Handle With Existent User Massage
-            if(result.code == 1) {
-                console.log(result.desc)
-                emailMessage.style.display = "block"
-                emailMessage.innerHTML = result.desc
-            }
+            const codeSent = result.verificationCode
 
-            if(result.fr){
-                location.assign('/dashboard/freelancer') 
-            }
+            // Check if the verification code mach
+            verifyForm2.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (codeSent == code2.value) {
+                   // console.log(code2.value, codeSent)
+                    const sendData = await fetch('/dashboard/freelancer/enviar_cadastro', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    const getData = await sendData.json()
+
+                    //Handle With Existent User Massage
+                    if (getData.code == 1) {
+                       // console.log(getData.desc)
+                        emailMessage.style.display = "block"
+                        emailMessage.innerHTML = getData.desc
+
+                        emailConfirm2.style.display = "none"
+                        fr_rg_container.style.display = 'block'
+                    }
+
+                    if (getData.fr) {
+                        location.assign('/dashboard/freelancer')
+                    }
+
+                } else {
+                    alertVerification2.style.display = 'block';
+                    alertVerification2.innerHTML = 'O código está errado ou espirou!'
+                }
+            })
         } catch (err) {
             console.log("Ocorreu um erro com o Fetch(): " + err)
         }
 
     })
-    
+
+    back2.addEventListener('click', () => {
+        window.scrollTo(0, 0)
+        setInterval(() => {
+            emailConfirm2.style.display = "none"
+            fr_rg_container.style.display = 'block'
+            
+        }, 600)
+    })
+
 </script>
 
 {{> dashFooter }}

@@ -1,7 +1,16 @@
 
+@import './fonts';
+@import './color';
+
+
+
+
 .form_container{
     margin-top: 5rem;
     margin-bottom: 5rem;
+    box-shadow: 1px 5px 10px #888;
+    padding: 5px;
+    padding-bottom: 2rem;
 
     h2{
         text-align: center;
@@ -41,6 +50,7 @@
     display: none;
 }
 
+
 @media(min-width:720px){
     .form_container{
         box-shadow: 2px 3px 8px #aaa;
@@ -59,6 +69,9 @@
     .cadastro_form{
         background-color: #eee;
     }
+    #emailConfirm {
+        margin-top: 10rem;
+    }
 }
 @media(min-width:1200px){
     .form_container{
@@ -72,4 +85,5 @@
     .cadastro_form{
         background-color: #eee;
     }
+    
 }

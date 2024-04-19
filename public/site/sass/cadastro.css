@@ -1,6 +1,9 @@
 .form_container {
   margin-top: 5rem;
   margin-bottom: 5rem;
+  box-shadow: 1px 5px 10px #888;
+  padding: 5px;
+  padding-bottom: 2rem;
 }
 .form_container h2 {
   text-align: center;
@@ -51,6 +54,9 @@
   }
   .cadastro_form {
     background-color: #eee;
+  }
+  #emailConfirm {
+    margin-top: 10rem;
   }
 }
 @media (min-width: 1200px) {

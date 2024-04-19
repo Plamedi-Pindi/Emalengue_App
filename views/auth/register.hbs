@@ -2,59 +2,81 @@
 <!-- MAIN START -->
 <main class="cadastro_form">
     <div class="container">
-        <div class="form_container">
-            <h2>Cadastro</h2>
-            <form class="row" id="register_form">
-                <div class="col-10 col-md-10 container-fluid">
-                    <label for="nome">Nome:</label>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Seu nome.." required>
+        <div class="row">
+            <div class="form_container col-md-8  container-fluid">
+                <h2>Cadastro</h2>
+                <form class="row" id="register_form">
+                    <div class="col-10 col-md-10 container-fluid">
+                        <label for="nome">Nome:</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Seu nome.." required>
 
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="...@gmail.com"
-                        required>
-                    <div id="email_warnig"></div>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="...@gmail.com"
+                            required>
+                        <div id="email_warnig"></div>
 
-                    <label for="password">Senha:</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Senha"
-                        required>
-                    <div id="password_warnig"></div>
+                        <label for="password">Senha:</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Senha"
+                            required>
+                        <div id="password_warnig"></div>
 
-                    <label for="confirmPassword">Confirmar Senha:</label>
-                    <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
-                        placeholder="Confirmar senha" required>
-                    <div id="confPw_warnig"></div>
+                        <label for="confirmPassword">Confirmar Senha:</label>
+                        <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
+                            placeholder="Confirmar senha" required>
+                        <div id="confPw_warnig"></div>
+                    </div>
+                    {{!-- <div class="col-10 col-md-5 container-fluid">
+                        <label for="">Pais:</label>
+                        <input type="text" name="" id="" class="form-control" required>
+
+                        <label for="">Telefone:</label>
+                        <input type="tel" class="form-control" placeholder="+244 9...." required>
+                    </div> --}}
+                    <input type="submit" class="btn btn-primary" value="Cadastrar-se">
+                </form>
+                {{!-- Google Auth button --}}
+                <a href="/auth/google" class=" google_btn">
+
+                    <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+                    <svg width="32px" height="32px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="google_svg">
+                        <path
+                            d="M30.0014 16.3109C30.0014 15.1598 29.9061 14.3198 29.6998 13.4487H16.2871V18.6442H24.1601C24.0014 19.9354 23.1442 21.8798 21.2394 23.1864L21.2127 23.3604L25.4536 26.58L25.7474 26.6087C28.4458 24.1665 30.0014 20.5731 30.0014 16.3109Z"
+                            fill="#4285F4" />
+                        <path
+                            d="M16.2863 29.9998C20.1434 29.9998 23.3814 28.7553 25.7466 26.6086L21.2386 23.1863C20.0323 24.0108 18.4132 24.5863 16.2863 24.5863C12.5086 24.5863 9.30225 22.1441 8.15929 18.7686L7.99176 18.7825L3.58208 22.127L3.52441 22.2841C5.87359 26.8574 10.699 29.9998 16.2863 29.9998Z"
+                            fill="#34A853" />
+                        <path
+                            d="M8.15964 18.769C7.85806 17.8979 7.68352 16.9645 7.68352 16.0001C7.68352 15.0356 7.85806 14.1023 8.14377 13.2312L8.13578 13.0456L3.67083 9.64746L3.52475 9.71556C2.55654 11.6134 2.00098 13.7445 2.00098 16.0001C2.00098 18.2556 2.55654 20.3867 3.52475 22.2845L8.15964 18.769Z"
+                            fill="#FBBC05" />
+                        <path
+                            d="M16.2864 7.4133C18.9689 7.4133 20.7784 8.54885 21.8102 9.4978L25.8419 5.64C23.3658 3.38445 20.1435 2 16.2864 2C10.699 2 5.8736 5.1422 3.52441 9.71549L8.14345 13.2311C9.30229 9.85555 12.5086 7.4133 16.2864 7.4133Z"
+                            fill="#EB4335" />
+                    </svg>
+
+                    Iniciar sessão com google
+                </a>
+            </div>
+        </div>
+
+        {{!-- Confirme password sectiom --}}
+        <div class="row">
+            <div id="emailConfirm" class="col-12 col-md-7 col-lg-5 container-fluid">
+                <button id="back"><i class="bi bi-arrow-left"></i></button>
+                <h2>Verificação de Email</h2>
+                <div class="row">
+                    <div id="alertVerification">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                    <div class=" container-fluid">
+                        <p>Enviamos um codigo de Verificação no seu email. Introduza o codigo enviado:</p>
+
+                        <form id="verifyForm">
+                            <input type="number" name="code" id="code">
+                            <button type="submit">Enviar</button>
+                        </form>
+                        {{!-- <a href="#">Reenviar o codigo de Verificação.</a> --}}
+                    </div>
                 </div>
-                {{!-- <div class="col-10 col-md-5 container-fluid">
-                    <label for="">Pais:</label>
-                    <input type="text" name="" id="" class="form-control"  required>
-
-                    <label for="">Telefone:</label>
-                    <input type="tel" class="form-control" placeholder="+244 9...." required>
-                </div> --}}
-                <input type="submit" class="btn btn-primary" value="Cadastrar-se">
-            </form>
-             {{!-- Google Auth button --}}
-            <a href="/auth/google" class=" google_btn">
-
-                <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                <svg width="32px" height="32px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="google_svg">
-                    <path
-                        d="M30.0014 16.3109C30.0014 15.1598 29.9061 14.3198 29.6998 13.4487H16.2871V18.6442H24.1601C24.0014 19.9354 23.1442 21.8798 21.2394 23.1864L21.2127 23.3604L25.4536 26.58L25.7474 26.6087C28.4458 24.1665 30.0014 20.5731 30.0014 16.3109Z"
-                        fill="#4285F4" />
-                    <path
-                        d="M16.2863 29.9998C20.1434 29.9998 23.3814 28.7553 25.7466 26.6086L21.2386 23.1863C20.0323 24.0108 18.4132 24.5863 16.2863 24.5863C12.5086 24.5863 9.30225 22.1441 8.15929 18.7686L7.99176 18.7825L3.58208 22.127L3.52441 22.2841C5.87359 26.8574 10.699 29.9998 16.2863 29.9998Z"
-                        fill="#34A853" />
-                    <path
-                        d="M8.15964 18.769C7.85806 17.8979 7.68352 16.9645 7.68352 16.0001C7.68352 15.0356 7.85806 14.1023 8.14377 13.2312L8.13578 13.0456L3.67083 9.64746L3.52475 9.71556C2.55654 11.6134 2.00098 13.7445 2.00098 16.0001C2.00098 18.2556 2.55654 20.3867 3.52475 22.2845L8.15964 18.769Z"
-                        fill="#FBBC05" />
-                    <path
-                        d="M16.2864 7.4133C18.9689 7.4133 20.7784 8.54885 21.8102 9.4978L25.8419 5.64C23.3658 3.38445 20.1435 2 16.2864 2C10.699 2 5.8736 5.1422 3.52441 9.71549L8.14345 13.2311C9.30229 9.85555 12.5086 7.4133 16.2864 7.4133Z"
-                        fill="#EB4335" />
-                </svg>
-
-                Iniciar sessão com google
-            </a>
+            </div>
         </div>
     </div>
 </main>
@@ -64,12 +86,20 @@
     const password_warnig = document.getElementById("password_warnig")
     const confPw_warnig = document.getElementById("confPw_warnig")
     const email_warnig = document.getElementById("email_warnig")
+    const back = document.getElementById('back');
+    const emailConfirm = document.getElementById('emailConfirm');
+    const form_container = document.getElementsByClassName('form_container')[0];
+    const verifyForm = document.getElementById('verifyForm')// Verificatio form DOM
+    const alertVerification = document.getElementById('alertVerification')// Verificatio Alert Message form DOM
 
+    emailConfirm.style.display = 'none';  //email confirm container
+    alertVerification.style.display = 'none'
 
     password_warnig.style.display = 'none'
     confPw_warnig.style.display = 'none'
     email_warnig.style.display = 'none'
 
+    // Sign up form DOM
     const form = document.querySelector('#register_form')
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -84,6 +114,7 @@
         password_warnig.style.display = 'none'
         confPw_warnig.style.display = 'none'
         email_warnig.style.display = 'none'
+         alertVerification.style.display = 'none';
 
 
         if (password.length < 6) {
@@ -104,7 +135,7 @@
 
             try {
 
-                const response = await fetch('/cadastrar/enviar_registro', {
+                const response = await fetch('/cadastrar/verificar_email', {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json"
@@ -113,13 +144,60 @@
                 })
 
                 const result = await response.json()
-                if (result[0] === 1) {
-                    email_warnig.style.display = 'block'
-                    email_warnig.innerHTML = result[1]
+    
+                
+                if (result) {
+                    form_container.style.display = 'none'
+                    emailConfirm.style.display = 'block';
+
+                    // Verification
+
+                    verifyForm.addEventListener('submit', async (e) => {
+                        e.preventDefault()
+
+                        const codeSent = verifyForm.code.value;
+
+
+                        if (codeSent == result.verificationCode) {
+
+                            try {
+                                const url = '/cadastrar/enviar_registro'
+                                const sendData = await fetch(url, {
+                                    method: 'POST',
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify({ name, email, password })
+                                })
+
+                                const recieve = await sendData.json();
+
+                                if (recieve[0] === 1) {
+                                    alertVerification.style.display = 'none'
+                                    emailConfirm.style.display = 'none';
+                                    form_container.style.display = 'block'
+
+                                    email_warnig.style.display = 'block'
+                                    email_warnig.innerHTML = recieve[1]
+                                    
+                                }
+                                else if (recieve.user) {
+                                    location.assign('/')
+                                }
+
+                            } catch (err) {
+                                console.log( err.message)
+                            }
+                        } else if (result.id == 1) {
+                            alertVerification.style.display = 'none';
+                            
+                        } else {
+                            alertVerification.style.display = 'block';
+                            alertVerification.innerHTML = 'O código está errado ou espirou!'
+                        }
+                    })
                 }
-                else if (result.user) {
-                    location.assign('/')
-                }
+
 
             } catch (err) {
                 console.log("Fetch error Front: " + err)
@@ -128,6 +206,13 @@
 
         }
 
+    })
+
+    // Back ==============
+
+    back.addEventListener('click', () => {
+        emailConfirm.style.display = 'none';
+        form_container.style.display = 'block';
     })
 
 

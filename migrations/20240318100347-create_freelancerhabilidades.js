@@ -14,7 +14,7 @@ module.exports = {
         references: {
             model: 'habilidades',
             key: 'id'
-        }
+        }  
     },
     freelancerId: {
         type: Sequelize.INTEGER,

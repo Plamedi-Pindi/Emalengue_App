@@ -14,7 +14,8 @@ const Freelancerhabilidade = db.sequelize.define('freelancerhabilidades', {
         references: {
             model: 'habilidades',
             key: 'id'
-        }
+        },
+        unique: false
     },
     freelancerId: {
         type: db.Sequelize.INTEGER,

@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.removeConstraint(
       'freelancerhabilidades',
       'freelancerhabilidades_ibfk_1' 
@@ -13,6 +13,7 @@ module.exports = {
       'freelancerhabilidades_ibfk_2' 
     );
 
+ 
     await queryInterface.addConstraint('freelancerhabilidades', {
       fields: ['freelancerId'],
       type: 'foreign key',
@@ -38,7 +39,7 @@ module.exports = {
     });
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('freelancerhabilidades');
   }
 };

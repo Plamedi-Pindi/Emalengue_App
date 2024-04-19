@@ -7,10 +7,18 @@ const bcrypt = require('bcrypt')
 const { name } = require('body-parser')
 const Habilidade = require('../../models/Habilidade')
 const Freelancerhabilidade = require('../../models/freelancerhabilidades')
+const { log } = require('console')
 const fs = require('fs').promises;
+require('dotenv').config()
+const nodemailer = require('nodemailer')
+const jwt = require('jsonwebtoken')
 
 
 
+
+
+
+/** ========================================================== */
 
 
 
@@ -68,6 +76,86 @@ const coletionUpload = upload.fields([
     { name: 'cv', maxCount: 1 }
 ])
 
+// Email verification sets ====================================================================
+
+// String create fot confirmation
+const randString = () => {
+    const len = 3;
+    let result = '';
+
+    for (let i = 0; i < len; i++) {
+        const ch = Math.floor(Math.random() * 100);
+        result += ch;
+    }
+    return result;
+
+}
+// transporter for nodemailer
+const transporter = nodemailer.createTransport({
+    // service: 'gmail',
+    host: process.env.SERVICE_DOMAIN,
+    port: 465,
+    secure: true,
+    auth: {
+        user: process.env.SERVICO_EMALENGUE_EMAIL,
+        pass: process.env.SERVICO_EMALENGUE_PW
+    }
+})
+// Send Email faunctioln for nodemailer
+async function sendMial(emailOption) {
+    await transporter.sendMail(emailOption, (err, info) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Email sent: ' + info.response)
+        }
+    })
+}
+
+
+// Email Verification =====
+const emailVerification = async (req, res) => {
+    const name = req.body.name;
+    const email = req.body.email
+    try {
+        const verificationCode = randString();
+        const mailOption = {
+            from: {
+                name: 'eMaLENGUE',
+                address: process.env.SERVICO_EMALENGUE_EMAIL
+            },
+            to: `${email}`,
+            subject: 'Verificação do Email',
+            text: `Olá, ${name}!`,
+            html: `<h1> Codigo de confirmação do email </h1>
+                    <p>Use este codigo para certificar que este email lhe pertence:</p>
+                   <h2> Codigo: ${verificationCode} </h2>
+                   <img src="cid:./Logo.png" >
+    
+            `,
+            attachments: [{
+                filename: 'Logo.png',
+                path: 'public/site/img/Logo.png',
+                cid: './Logo.png' //same cid value as in the html img src 
+            }]
+        }
+        sendMial(mailOption)
+
+        let regInfo = {
+            verificationCode: verificationCode
+        }
+        res.status(200).json(regInfo)
+    } catch (error) {
+        console.log('Erro ao verirficar o email: ' + error);
+    }
+}
+
+const maxAge = 3 * 24 * 120;
+const createToken = (id) => {
+    return jwt.sign({ id }, 'emalengue app', { expiresIn: maxAge })
+}
+
+
 //Store
 const store = async (req, res) => {
 
@@ -78,6 +166,7 @@ const store = async (req, res) => {
     const encryptdePw = await bcrypt.hash(password, 10) //Hashing password
     const email = req.body.email
     const checkbox = req.body.fr_checkbox
+    const authUser = req.user
 
     //Verify if there is alread a user with the email entered
     const user = await User.findOne({ row: true, where: { email: email } })
@@ -115,6 +204,12 @@ const store = async (req, res) => {
         else {
 
             const userId = user.id
+
+            if (authUser) {
+                console.log(authUser);
+                // const token = createToken(user.id)
+                // res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
+            }
 
             // Registra como freelancer
             await Freelancer.create({
@@ -164,6 +259,12 @@ const store = async (req, res) => {
         }).then(async () => {
             const user = await User.findOne({ row: true, where: { email } })
             const userId = user.id
+
+            if (authUser) {
+                console.log(authUser);
+                // const token = createToken(user.id)
+                // res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
+            }
             // Registra como freelancer
             await Freelancer.create({
                 pais: req.body.country,
@@ -201,10 +302,27 @@ const store = async (req, res) => {
     } //End Main If
 }
 
-//Destroy ========================================================
-const destroy = (req, res) => {
+//====================  Destroy ========================================================
+const destroy = async (req, res) => {
     console.log('Foi apertado!')
-    Freelancer.destroy({ where: { id: req.params.id } }).then(() => {
+    const freeId = req.params.id;
+    await Freelancer.findOne({
+        where: { id: freeId },
+        include: [
+            { model: User }
+        ]
+    }).then(async post => {
+        const user = post.user;
+        const freelancer = post;
+        await user.update({ role: 'user' })
+
+        let path = 'public/admin/img/freelancers' // File path
+        deleteFile(`${path}/${freelancer.imagem}`) // Delete olde file
+        deleteFile(`${path}/${freelancer.cv}`) // Delete olde file
+        deleteFile(`${path}/${freelancer.bi}`) // Delete olde file
+    })
+
+    await Freelancer.destroy({ where: { id: freeId } }).then(() => {
         res.redirect('/dashboard/freelancer')
     }).catch((err) => {
         console.log('erro: ' + err);
@@ -468,66 +586,66 @@ const update = async (req, res) => {
             res.json(message)
         })
     }
-    // else if (req.files['img'] ) {
-    //     const img = req.files['img'][0].filename
-    //     await Freelancer.findOne({
-    //         where: { id: freeId }
-    //     }).then(async post => {
-    //         const freelancer = post
+    else if (req.files['img']) {
+        const img = req.files['img'][0].filename
+        await Freelancer.findOne({
+            where: { id: freeId }
+        }).then(async post => {
+            const freelancer = post
 
-    //         let path = 'public/admin/img/freelancers' // File path
-    //         deleteFile(`${path}/${freelancer.imagem}`) // Delete olde file
+            let path = 'public/admin/img/freelancers' // File path
+            deleteFile(`${path}/${freelancer.imagem}`) // Delete olde file
 
-    //         await freelancer.update({ imagem: img }) // Update new file
-    //         // Handle the result message
-    //         const message = {    
-    //             id: 8,
-    //             message: 'A imagem foi Atualizada com Sucesso!'
-    //         }
-    //         // Send the result message to front-End
-    //         res.json(message) 
-    //     })
-    // } 
-    // else if (req.files['cvitae'] ) {
-    //     const cv = req.files['cvitae'][0].filename
-    //     await Freelancer.findOne({
-    //         where: { id: freeId }
-    //     }).then(async post => {
-    //         const freelancer = post
+            await freelancer.update({ imagem: img }) // Update new file
+            // Handle the result message
+            const message = {
+                id: 8,
+                message: 'A imagem foi Atualizada com Sucesso!'
+            }
+            // Send the result message to front-End
+            res.json(message)
+        })
+    }
+    else if (req.files['cvitae']) {
+        const cv = req.files['cvitae'][0].filename
+        await Freelancer.findOne({
+            where: { id: freeId }
+        }).then(async post => {
+            const freelancer = post
 
-    //         let path = 'public/admin/img/freelancers' // File path
-    //         deleteFile(`${path}/${freelancer.cv}`) // Delete olde file
+            let path = 'public/admin/img/freelancers' // File path
+            deleteFile(`${path}/${freelancer.cv}`) // Delete olde file
 
-    //         await freelancer.update({ cv: cv }) // Update new file
-    //         // Handle the result message
-    //         const message = {    
-    //             id: 9,
-    //             message: 'O CV foi Atualizada com Sucesso!'
-    //         }
-    //         // Send the result message to front-End
-    //         res.json(message) 
-    //     })
-    // } 
-    // else if (req.files['bilhete'] ) {
-    //     const bilhete = req.files['bilhete'][0].filename
-    //     await Freelancer.findOne({
-    //         where: { id: freeId }
-    //     }).then(async post => {
-    //         const freelancer = post
+            await freelancer.update({ cv: cv }) // Update new file
+            // Handle the result message
+            const message = {
+                id: 9,
+                message: 'O CV foi Atualizada com Sucesso!'
+            }
+            // Send the result message to front-End
+            res.json(message)
+        })
+    }
+    else if (req.files['bilhete']) {
+        const bilhete = req.files['bilhete'][0].filename
+        await Freelancer.findOne({
+            where: { id: freeId }
+        }).then(async post => {
+            const freelancer = post
 
-    //         let path = 'public/admin/img/freelancers' // File path
-    //         deleteFile(`${path}/${freelancer.bi}`) // Delete olde file
+            let path = 'public/admin/img/freelancers' // File path
+            deleteFile(`${path}/${freelancer.bi}`) // Delete olde file
 
-    //         await freelancer.update({ bi: bilhete }) // Update new file
-    //         // Handle the result message
-    //         const message = {    
-    //             id: 10,
-    //             message: 'O BI foi Atualizada com Sucesso!'
-    //         }
-    //         // Send the result message to front-End
-    //         res.json(message) 
-    //     })
-    // }
+            await freelancer.update({ bi: bilhete }) // Update new file
+            // Handle the result message
+            const message = {
+                id: 10,
+                message: 'O BI foi Atualizada com Sucesso!'
+            }
+            // Send the result message to front-End
+            res.json(message)
+        })
+    }
     else if (habilidades) {
         await Freelancer.findOne({
             where: { id: freeId },
@@ -538,7 +656,7 @@ const update = async (req, res) => {
                     as: 'habilidades'
                 }
             ],
-            
+
         }).then(async post => {
             const freelancer = post
             // console.log(freelancer.habilidades.freelancerhabilidades );
@@ -552,7 +670,7 @@ const update = async (req, res) => {
                             habilidadeId: hab,
                             freelancerId: freeId
                         })
-                        
+
                     } else {
                         console.log('alread');
                     }
@@ -568,7 +686,7 @@ const update = async (req, res) => {
                 console.log(err);
             }
 
- 
+
         })
     } else {
         res.redirect('back')
@@ -587,5 +705,6 @@ module.exports = {
     downloadBI,
     downloadCV,
     imgUpRout,
+    emailVerification,
 
 }

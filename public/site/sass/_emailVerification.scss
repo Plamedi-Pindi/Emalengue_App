@@ -1,0 +1,102 @@
+@import './fonts';
+@import './color';
+
+#alertVerification,
+#alertVerification2 {
+    border: 1px solid rgb(250, 21, 21);
+    border-radius: 5px;
+    background: rgb(245, 122, 122);
+    padding: 10px;
+    margin-bottom: 2rem;
+    display: none;
+}
+
+#emailConfirm,
+#emailConfirm2 {
+    background: #fff;
+    box-shadow: 1px 5px 10px #888;
+    padding: 10px;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    // display: none;
+    margin-top: 6rem;
+    transition: ease-in-out .5s;
+
+    h2 {
+        text-align: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-family: $roboto;
+        font-size: 22px;
+    }
+
+    p {
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    a {
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+    }
+
+    form {
+        // background-color: aquamarine;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 400px;
+        margin: 0 auto;
+        margin-bottom: 2rem;
+
+        input {
+            padding: 5px;
+            max-width: 300px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 1.5rem;
+            margin-bottom: 10px;
+            border: 1px solid #888;
+            outline: none;
+            font-size: 19px;
+            border-radius: 5px;
+        }
+
+        button {
+            display: block;
+            background-color: rgb(37, 37, 245);
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            padding: 8px;
+            max-width: 300px;
+            font-weight: bolde;
+            margin: 0 auto;
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+        }
+    }
+}
+
+#back,
+#back2 {
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    // color: ;
+    background-color: rgba(0, 0, 255, 0.336);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@media(min-width:992px) {
+
+    #emailConfirm,
+    #emailConfirm2 {
+        margin-top: 10rem;
+    }
+}

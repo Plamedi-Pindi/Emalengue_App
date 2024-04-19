@@ -1,5 +1,5 @@
 /** Import Config =================================================*/
-const nodemailer = require('nodemailer') 
+const nodemailer = require('nodemailer')
 
 const transporter = nodemailer.createTransport({
     // service: 'gmail',
@@ -7,26 +7,27 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: true,
     auth: {
-        user: 'williamspaindi72@gmail.com', 
+        user: 'williamspaindi72@gmail.com',
         pass: 'nktb pifo jspz dswg'
     }
-}) 
+})
 
+module.exports = async function emailService() {
 
- const sendMial = async function sendMial(emailOption) {
-    await transporter.sendMial(emailOption, (err, info)=>{
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('Email sent: ' + info.response)
-        }
-    })
+    async function sendMial(emailOption) {
+        await transporter.sendMial(emailOption, (err, info) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Email sent: ' + info.response)
+            }
+        })
+    }
+
 }
 
-module.exports = {
-    sendMial,
-    transporter,
-}
+
+// module.exports = sendMial
 
 
 

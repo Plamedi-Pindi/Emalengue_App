@@ -49,6 +49,7 @@
         .fr_delete{
             background-color: rgba(255, 0, 0, 0.233);
             color: red;
+            border: none;
         }
         .fr_view{
             background-color: rgba(0, 128, 0, 0.301);
@@ -153,6 +154,22 @@
     }
 
 }
+
+
+// DELETE CONFIG =========================================================================
+.fr_delete_alert {
+    background: rgb(231, 146, 146);
+    border-radius: 10px;
+
+   
+}
+
+
+
+
+
+
+
 
 /** MEDIA ======================================= */
 @media(min-width:320px){
