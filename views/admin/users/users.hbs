@@ -1,0 +1,180 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        <div class="users_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/users">Usarios</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="users_container">
+            <table class="table table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Imagem</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Pais</th>
+                        <th scope="col">Papel</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {{#each users }}
+                    <tr class="us_rows">
+
+                        {{!-- image --}}
+                        <td>
+                            {{#if imagem}}
+                            <img src="/admin/img/freelancers/{{ imagem }}" alt="Imagem do Freelancer" class="us_img">
+
+                            {{else}}
+
+                            <img src="/admin/img/profile.jpg" alt="Imagem do Freelancer" class="us_img">
+                            {{/if}}
+                        </td>
+                        {{!-- Name --}}
+                        <td>
+                            <h5 class="us_name"> {{ nome }} </h5>
+                        </td>
+
+                        {{!-- Email --}}
+                        <td><span class="us_email text-primary"> {{ email }} </span></td>
+
+                        {{!-- Country --}}
+                        <td><span class="us_email text-primary"> {{ pais }} </span></td>
+
+                        {{!--Rule --}}
+                        <td><span class="us_email text-primary"> {{ role }} </span></td>
+
+
+                        <td>
+
+                            {{!-- delete --}}
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ id }}"
+                                class="us_delete" title="Deletar"><i class="bi bi-trash3"></i></i></button>
+                            {{!-- details --}}
+                            <span class="us_view" title="Alterar papel" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop{{ id }}"><i class="bi bi-pencil-square"></i></span>
+                        </td>
+                        <!-- MODALS ================================================= -->
+
+                        <!-- Modal View -->
+                        <div class="modal fade " id="staticBackdrop{{ id }}" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Aterar o papel
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <p class="status"> Estado atual: <span class="setStatus"> {{ role }} </span></p>
+
+                                        <form class="roleForm">
+                                            <input type="text" hidden name="id" id="id" value="{{ id }}">
+                                            <select name="role" id="role">
+                                                <option value="{{ role }}" selected>Escolher o papel</option>
+                                                <option value="admin">Admin</option>
+                                                <option value="user">User</option>
+                                                <option value="freelancer">Freelancer</option>
+                                            </select>
+
+                                            <input type="submit" value="Salvar">
+                                        </form>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    
+                    </tr>
+
+
+                    <!-- MODALS ================================================= -->
+                    <div class="modal fade" id="exampleModal{{ id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered ">
+                            <div class="modal-content ">
+                                <div class="modal-body us_delete_alert">
+                                    <h5> <i class="bi bi-exclamation-triangle-fill"></i> Tem certeza que pretende
+                                        deletar este usário?</h5>
+                                    <p>Ao deletar este usário, já não será possivel recuperar os dados eliminados.</p>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <a href="/dashboard/users/remover/{{ id }}" class="btn btn-primary">continuar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each }}
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</main>
+
+<script>
+    const setStatus = document.getElementsByClassName('setStatus')
+    const roleForm = document.getElementsByClassName('roleForm')
+
+    for (let i = 0; i < roleForm.length; i++) {
+
+        roleForm[i].role.addEventListener('change', () => {
+            const status = setStatus[i]
+            status.innerHTML = roleForm[i].role.value
+
+        })
+
+        //Set Admin
+        const id = roleForm[i].id.value
+        roleForm[i].addEventListener('submit', async (e) => {
+            //e.preventDefault()
+            const role = roleForm[i].role.value
+
+            try {
+                const data = { role: role }
+                const url = `/dashboard/users/alterar_papel/${id}`
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                })
+
+                const result = await response.json()
+                console.log(result)
+
+            } catch (err) {
+                console.log(err)
+            }
+        })
+    }
+
+
+</script>
+<!-- MAIN END -->
+{{> dashFooter }}

@@ -16,6 +16,19 @@
 
 
         {{#ifIqual user.role "admin" }}
+            <h3 class="sd-title"></h3>
+            <ul>
+                <li> 
+                    <a href="/dashboard/users"><i class="bi bi-people-fill"></i>
+                        <span class="sb-content">Usuários</span>
+                    </a>
+
+                </li>
+              
+            </ul>
+        {{/ifIqual }}
+
+        {{#ifIqual user.role "admin" }}
             <h3 class="sd-title">Freelancer</h3>
             <ul>
                 <li> 

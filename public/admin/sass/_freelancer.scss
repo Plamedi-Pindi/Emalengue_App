@@ -3,7 +3,7 @@
 @import './color';
 
 .fr_container {
-    @include container();
+    @include container(); 
     
 
     table {
@@ -47,11 +47,13 @@
             color: rgb(0, 60, 255);
         }
         .fr_delete{
+            margin-left: 10px;
             background-color: rgba(255, 0, 0, 0.233);
             color: red;
             border: none;
         }
         .fr_view{
+            margin-left: 10px;
             background-color: rgba(0, 128, 0, 0.301);
             color: green;
             border: none;

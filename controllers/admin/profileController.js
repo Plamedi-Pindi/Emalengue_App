@@ -83,7 +83,7 @@ const emailVerification = async (req, res) => {
                 cid: './Logo.png' //same cid value as in the html img src 
             }]
         }
-        // sendMial(mailOption)
+        sendMial(mailOption)
 
         let regInfo = {
             verificationCode: verificationCode

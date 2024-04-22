@@ -302,11 +302,13 @@ footer {
   color: rgb(0, 60, 255);
 }
 .fr_container table .fr_delete {
+  margin-left: 10px;
   background-color: rgba(255, 0, 0, 0.233);
   color: red;
   border: none;
 }
 .fr_container table .fr_view {
+  margin-left: 10px;
   background-color: rgba(0, 128, 0, 0.301);
   color: green;
   border: none;
@@ -1607,6 +1609,103 @@ tr {
 
 .edit_conf_email {
   margin-top: 0px !important;
+}
+
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.users_breadcrumbs {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding-bottom: 1.5rem;
+  padding-bottom: 0;
+}
+
+.users_container {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding-bottom: 1.5rem;
+  overflow-x: auto;
+}
+.users_container table .us_name {
+  font-size: 15px;
+  margin: 0;
+  color: #222;
+  font-family: "Roboto", sans-serif;
+}
+.users_container table .us_profissao {
+  font-size: 13px;
+  color: #888;
+}
+.users_container table .us_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+.users_container table .us_skills {
+  font-size: 13px;
+  color: #888;
+}
+.users_container table .us_email {
+  font-size: 14px;
+  color: #888;
+}
+.users_container table .us_id {
+  font-size: 16px;
+  color: #888;
+  display: block;
+}
+.users_container table .us_delete {
+  background-color: rgba(255, 0, 0, 0.233);
+  color: red;
+  border: none;
+}
+.users_container table .us_view {
+  margin-left: 10px;
+  background-color: rgba(2, 119, 228, 0.322);
+  color: rgb(0, 60, 255);
+  border: none;
+}
+.users_container table .us_edit,
+.users_container table .us_delete,
+.users_container table .us_view {
+  padding: 4px;
+  border-radius: 4px;
+}
+.users_container .status {
+  font-size: 18px;
+  margin-bottom: 2rem;
+}
+.users_container .status span {
+  background-color: rgba(0, 128, 0, 0.301);
+  color: green;
+  margin-left: 10px;
+  padding: 10px;
+}
+.users_container #role {
+  padding: 8px;
+  font-size: 17px;
+  width: 200px;
+  outline: none;
+  border-radius: 5px;
+}
+.users_container input[type=submit] {
+  display: block;
+  background-color: rgb(0, 89, 255);
+  color: #eee;
+  padding: 6px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+}
+
+.us_delete_alert {
+  background: rgb(231, 146, 146);
+  border-radius: 10px;
 }
 
 /***** IMPORTING FILE END *****/

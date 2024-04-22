@@ -21,6 +21,18 @@ const User = db.sequelize.define('users', {
     password: {
         type: db.Sequelize.STRING
     },
+    imagem: {
+        type: db.Sequelize.STRING,
+        allowNull: true
+    },
+    pais: {
+        type: db.Sequelize.STRING,
+        allowNull: true
+    },
+    provincia: {
+        type: db.Sequelize.STRING,
+        allowNull: true
+    },
     role: {
         type: db.Sequelize.STRING,
         enum: db.Sequelize.ENUM('admin', 'gerente', 'user', 'freelancer'),
