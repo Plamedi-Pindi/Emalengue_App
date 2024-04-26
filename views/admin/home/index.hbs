@@ -1,10 +1,55 @@
-
-
 {{> dashHeader }}
 {{> dashSidebar }}
 <!-- MAIN START -->
 <main>
+    <div class="container">
+        <div class="statistic_cards">
+            <div class=" row disp_flex">
+                {{!-- Fist card --}}
+                <div class="free_card col-11 col-md-5 col-lg-5 col-xl-3  container-fluid  card ">
+                    <div>
+                        <h3>Freelacers</h3>
+                        <span class="fr_count"> {{ freelancerNum }} </span>
+                        <span class="fr_hit">Últimas atualizações </span>
+                    </div>
+                    <div class="icon fr_icon">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                </div>
 
+                {{!-- Second card --}}
+                <div class="curso_card col-11 col-md-5 col-lg-5 col-xl-3  container-fluid  card ">
+                    <div>
+                        <h3>Cursos</h3>
+                        <span class="cr_count">5000</span>
+                        <span class="cr_hit">Últimas atualizações </span>
+                    </div>
+                    <div class="icon cr_icon">
+                       <i class="bi bi-box-seam-fill"></i>
+                    </div>
+                </div>
+
+                {{!-- Third card --}}
+                <div class="proj_card col-11 col-md-5 col-lg-5 col-xl-3  container-fluid  card ">
+                    <div>
+                        <h3>Projetos</h3>
+                        <span class="pr_count"> {{ projetoNum }} </span>
+                        <span class="pr_hit">Últimas atualizações </span>
+                    </div>
+                    <div class="icon pr_icon">
+                       <i class="bi bi-bar-chart-line-fill"></i>
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+
+        <div class="home_container">
+
+        </div>
+    </div>
 </main>
 <!-- MAIN END -->
 {{> dashFooter }}

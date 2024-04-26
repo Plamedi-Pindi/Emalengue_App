@@ -22,10 +22,12 @@
                         <div class="pf_banner">
                             <img src="/admin/img/profile/bn2.jpg" alt="Banner do perfil do usário">
                         </div>
-                        <img src="/admin/img/profile.jpg" alt="Fotografia do perfil do usário" class="pf_img">
+                        <img src="/admin/img/freelancers/{{ profile.imagem }}" alt="Fotografia do perfil do usário"
+                            class="pf_img">
                         <h3> {{ profile.nome }} </h3>
                         <p> {{ profile.email }} </p>
                         <button id="pf_edit_call">Editar perfil</button>
+
                     </div>
                 </div>
                 {{!-- Second page --}}
@@ -33,7 +35,7 @@
                     {{!-- Back buttom --}}
                     <button id="edit_back"><i class="bi bi-arrow-left"></i></button>
 
-                    <form id="imgForm">
+                    <form id="imgForm" enctype="multipart/form-data">
                         <label for="img">Alterar a foto do perfil:</label>
                         <input type="file" name="img" id="img" accept="image/*">
                         <input type="submit" value="salvar" class="submit_btn">
@@ -143,6 +145,7 @@
     const pw_msg1 = document.getElementById('pw_msg1')
     const newpswForm = document.getElementById('newpswForm')
     const pwUpdated = document.getElementById('pwUpdated')
+    const imgForm = document.getElementById('imgForm')
     pw_msg.style.display = 'none'
     pw_msg1.style.display = 'none'
     newpswForm.style.display = 'none'
@@ -390,6 +393,39 @@
         profile_edit.style.display = 'block'
 
     })
+
+    imgForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const data = new FormData(imgForm)
+        const img = document.getElementById('img');
+
+        if (img.files.length !== 0) {
+
+            try {
+
+                const path = '/dashboard/user/profile/update_profile/{{ profile.id }}'
+                const response = await fetch(path, {
+                    method: 'PUT',
+                    body: data,
+                })
+                const result = await response.json();
+
+                if (result) {
+                    alertMessage.style.display = 'block'
+                    alertMessage.innerHTML = result.message
+
+                    setTimeout(() => {
+                        alertMessage.style.display = 'none'
+                    }, 3000)
+                }
+
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    })
+
 
 </script>
 

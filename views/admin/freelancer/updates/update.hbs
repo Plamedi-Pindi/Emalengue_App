@@ -8,7 +8,7 @@
                 <ul>
                     <li><a href="/dashboard">Home</a></li>
                     <li><a href="/dashboard/freelancer">Freelancer</a></li>
-                    <li><a >Editar Freelancer</a></li>
+                    <li><a>Editar Freelancer</a></li>
                 </ul>
             </div>
         </div>
@@ -25,7 +25,7 @@
                     <div class="col-12 col-md-8 col-lg-8 container-fluid first">
                         {{!-- img --}}
                         <div class="img_container">
-                            <img src="/admin/img/freelancers/{{ freelancer.imagem }}" alt="">
+                            <img src="/admin/img/freelancers/{{ freelancer.user.imagem }}" alt="">
                             <form id="fr_ch_img" class="container-fluid " enctype="multipart/form-data">
                                 <input type="file" name="img" id="img" accept="image/*">
                                 <input type="submit" value="Editar" class="edit_btn">
@@ -85,10 +85,10 @@
                         <form id="fr_ch_pais" class="container-fluid ">
                             <label for="pais">Pais:</label>
                             <select class="" name="pais" id="pais" value="{{ freelancer.pais }}">
-                                <option value="{{ freelancer.pais }}" selected>{{ freelancer.pais }}</option>
-                                <option value="Brazil">Brazil</option>
-                                <option value="EUA">EUA</option>
-                                <option value="Inglaterra">Inglaterra</option>
+                                <option value="{{ freelancer.user.pais }}" selected>{{ freelancer.pais }}</option>
+                                {{#each country}}
+                                <option value="{{ name }}"> {{ flag }} {{ name }} </option>
+                                {{/each}}
                             </select>
                             <input type="submit" value="Editar" class="edit_btn">
                         </form>
@@ -181,12 +181,12 @@
         }
 
     })
-    
+
     // Atualizar Habilidades
     habilidadeForm.addEventListener('submit', async (e) => {
         e.preventDefault()
         emailerror.style.display = 'none';
-        
+
         const data = new FormData(habilidadeForm);
         try {
             const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
@@ -457,7 +457,7 @@
         const cvitae = document.getElementById('cvitae')
         const data = new FormData(cvForm)
         if (cvitae.files.length !== 0) {
-        console.log(cvitae.files)
+            console.log(cvitae.files)
             try {
                 const response = await fetch('/dashboard/freelancer/update/{{ freelancer.id }}', {
                     method: 'PUT',
@@ -516,7 +516,7 @@
 
     })
 
-// Atualizar Email ========================================================
+    // Atualizar Email ========================================================
     fr_ch_email.addEventListener('submit', async (e) => {
         e.preventDefault()
         emailerror.style.display = 'none';

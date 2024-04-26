@@ -1708,6 +1708,120 @@ tr {
   border-radius: 10px;
 }
 
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.statistic_cards {
+  margin-top: 2rem;
+}
+
+.home_container {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding-bottom: 1.5rem;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+
+.disp_flex {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card {
+  background-color: #fff;
+  padding: 15px;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px !important;
+  box-shadow: 1px 5px 10px #aaa;
+  margin-bottom: 1rem;
+}
+.card h3 {
+  color: #777;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.free_card {
+  border-left: solid 8px rgb(42, 186, 243);
+}
+.free_card span {
+  display: block;
+}
+.free_card .fr_count {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(5, 121, 199);
+}
+.free_card .fr_hit {
+  color: #888;
+}
+.free_card .fr_icon {
+  background: linear-gradient(90deg, rgb(42, 186, 243), rgb(1, 144, 240), rgb(1, 75, 187));
+  text-align: center;
+}
+.free_card .fr_icon i {
+  font-size: 40px;
+  color: #eee;
+}
+
+.curso_card {
+  border-left: solid 8px rgb(250, 162, 0);
+}
+.curso_card span {
+  display: block;
+}
+.curso_card .cr_count {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(250, 162, 0);
+}
+.curso_card .cr_hit {
+  color: #888;
+}
+.curso_card .cr_icon {
+  background: linear-gradient(45deg, orange, rgb(250, 162, 0), rgb(255, 116, 2));
+  text-align: center;
+}
+.curso_card .cr_icon i {
+  font-size: 40px;
+  color: #eee;
+}
+
+.proj_card {
+  border-left: solid 8px rgb(1, 192, 1);
+}
+.proj_card span {
+  display: block;
+}
+.proj_card .pr_count {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(1, 192, 1);
+}
+.proj_card .pr_hit {
+  color: #888;
+}
+.proj_card .pr_icon {
+  background: linear-gradient(rgb(5, 223, 5), rgb(1, 192, 1), rgb(0, 112, 0));
+  text-align: center;
+}
+.proj_card .pr_icon i {
+  font-size: 40px;
+  color: #eee;
+}
+
 /***** IMPORTING FILE END *****/
 main::-webkit-scrollbar {
   width: 8px;

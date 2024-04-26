@@ -6,11 +6,11 @@
         </div>
         <div class="hd-container">
             <div id="user-menu">
-                {{#ifIqual user.role 'freelancer'}}
-                <img src="/admin/img/freelancers/{{ ../freelancer.imagem }}" alt="" id="hd-user-img"></img>
+                {{#if user.imagem }}
+                <img src="/admin/img/freelancers/{{ ./user.imagem }}" alt="Imagem do {{ user.nome }}" id="hd-user-img"></img>
                 {{else }}
-                <img src="/admin/img/profile.jpg" alt="" id="hd-user-img"></img>
-                {{/ifIqual}}
+                <img src="/admin/img/profile.jpg" alt="Imagem do usuário" id="hd-user-img"></img>
+                {{/if}}
 
             </div>
             <ul id="dash_dropdown">

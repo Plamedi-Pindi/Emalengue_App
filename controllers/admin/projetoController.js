@@ -11,6 +11,7 @@ const freelancer = require('../../routes/site/freelancerRoute')
 const Habilidade = require('../../models/Habilidade')
 const Categoria = require('../../models/Categoria')
 const ProjetoHabilidade = require('../../models/ProjetoHabilidade')
+require('dotenv').config()
 
 
 
@@ -90,7 +91,7 @@ const index = async (req, res) => {
     }
 }
 
-  
+
 
 
 // Details ===================================================
@@ -108,7 +109,7 @@ const details = async (req, res) => {
             },
             { model: Categoria }
         ],
-    
+
     }).then(async (result) => {
 
         const projeto = result.toJSON()
@@ -135,9 +136,9 @@ const details = async (req, res) => {
                     { model: User },
                     {
                         model: Projeto,
-                        where: { id: projeto.id}
+                        where: { id: projeto.id }
                     },
-                    { 
+                    {
                         model: Habilidade,
                         as: 'habilidades'
                     }
@@ -145,10 +146,10 @@ const details = async (req, res) => {
                 // raw: true,
                 nest: true
             })
-            
+
             console.log(allFreelancer)
             // Check if the corrent user is subscribed into this project or not
-            if (correntFree){
+            if (correntFree) {
                 res.render('admin/projetos/details/detail', {
                     title: 'eMaLENGUE | Detalhe do Projetos',
                     layout: 'main2',
@@ -167,7 +168,7 @@ const details = async (req, res) => {
                     subFreelancer: allFreelancer,
                 })
             }
-           
+
         } else {
 
             // console.log(habilidade);
@@ -176,14 +177,14 @@ const details = async (req, res) => {
                 layout: 'main2',
                 projeto: projeto,
                 freeNumber: freelancer.length,
-                
+
             })
 
         }
     })
 }
 
- 
+
 
 
 
@@ -249,12 +250,12 @@ const search = (req, res) => {
 
 const transporter = nodemailer.createTransport({
     // service: 'gmail',
-    host: 'smtp.gmail.com',
+    host: process.env.SERVICE_DOMAIN,
     port: 465,
     secure: true,
     auth: {
-        user: 'williamspaindi72@gmail.com',
-        pass: 'nktb pifo jspz dswg'
+        user: process.env.SERVICO_EMALENGUE_EMAIL,
+        pass: process.env.SERVICO_EMALENGUE_PW
     }
 })
 async function sendMial(emailOption) {
@@ -343,29 +344,32 @@ const store = ((req, res) => {
                 image: img
 
             }).then(async (project) => {
-
+                // console.log(project.id);
                 habilidade.forEach(async element => {
                     await ProjetoHabilidade.create({
                         habilidadeId: element,
-                        projetId: project.id
+                        projetoId: project.id
                     })
                 });
 
                 //Sending mail ========================
                 const mailOption = {
-                    from: 'williamspaindi72@gmail.com',
+                    from: {
+                        name: 'eMaLENGUE',
+                        address: process.env.SERVICO_EMALENGUE_EMAIL
+                    },
                     to: 'plamedipindi77@gmail.com',
                     subject: 'Um novo projeto foi publicado',
-                    text: 'Esta tudo calmo!',
-                    html: `<h1> ${name} </h1>
-                           <h4> Categoria: ${categoria} </h4>
-                           <h4> Prazo: ${date} </h4>
-                           <h4> Publicado por: ${user.nome} </h4>
-                           <h4> Sobre o projeto: </h4>
-                           <p>${about}</p>
-                           <img src="public/admin/img/projetos/1707842892001-ERP.png" >
-
-                    `
+                    text: `Olá, ${name}!`,
+                    html: `<h1> ${project.nome} </h1>
+                            <h2> Categoria: ${project.categoria}</h2>
+            
+                    `,
+                    // attachments: [{
+                    //     filename: 'Logo.png',
+                    //     path: 'public/site/img/Logo.png',
+                    //     cid: './Logo.png' //same cid value as in the html img src
+                    // }]
                 }
                 sendMial(mailOption)
 
@@ -415,39 +419,39 @@ const updateProject = (req, res) => {
 
             console.log(req.body);
 
-            // const name = req.body.nome;
-            // const categoria = req.body.categoria;
-            // const about = req.body.descricao;
-            // const date = req.body.prazo;
+            const name = req.body.nome;
+            const categoria = req.body.categoria;
+            const about = req.body.descricao;
+            const date = req.body.prazo;
 
-            // const updates = {
-            //     name,
-            //     categoria,
-            //     about,
-            //     date,
-            // }
-            // if (req.file) {
-            //     const image = req.file.filename;
-            //     updates.image = image;
-            // }
+            const updates = {
+                name,
+                categoria,
+                about,
+                date,
+            }
+            if (req.file) {
+                const image = req.file.filename;
+                updates.image = image;
+            }
 
-            // const condition = { where: { id: req.params.id } }
-            // const value = {
-            //     nome: updates.name,
-            //     categoria: updates.categoria,
-            //     descricao: updates.about,
-            //     // habilidade: updates.req.body.habilidades,
-            //     prazo: updates.date,
-            //     // user_id: correntUser.id,
-            //     image: updates.img
-            // }
+            const condition = { where: { id: req.params.id } }
+            const value = {
+                nome: updates.name,
+                categoria: updates.categoria,
+                descricao: updates.about,
+                // habilidade: updates.req.body.habilidades,
+                prazo: updates.date,
+                // user_id: correntUser.id,
+                image: updates.img
+            }
 
-            // await Projeto.update(value, condition).then(async (project) => {
+            await Projeto.update(value, condition).then(async (project) => {
 
-            //     res.status(200).json(req.body)
-            // }).catch((err) => {
-            //     console.log('Erro ao criar Projeto!' + err);
-            // })
+                res.status(200).json(req.body)
+            }).catch((err) => {
+                console.log('Erro ao criar Projeto!' + err);
+            })
 
 
         }

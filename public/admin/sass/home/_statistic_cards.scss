@@ -1,0 +1,144 @@
+@import '../color';
+@import '../fonts';
+@import '../main';
+
+@mixin disp_flex() {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center
+}
+
+.statistic_cards {
+    margin-top: 2rem;
+}
+
+.home_container {
+    @include container();
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+
+}
+
+
+
+.disp_flex {
+    @include disp_flex();
+}
+
+.card {
+    // margin: 0;
+    background-color: #fff;
+    padding: 15px;
+    font-family: $roboto;
+    @include disp_flex();
+    border-radius: 10px !important;
+    box-shadow: 1px 5px 10px #aaa;
+    margin-bottom: 1rem;
+    h3 {
+        color: #777;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+}
+
+// Firs card
+.free_card {
+    border-left: solid 8px rgb(42, 186, 243);
+
+    
+    span {
+        display: block;
+    }
+
+    .fr_count {
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(5, 121, 199);
+    }
+
+    .fr_hit {
+        color: #888;
+    }
+
+    .fr_icon {
+        background: linear-gradient(90deg, rgb(42, 186, 243), rgb(1, 144, 240), rgb(1, 75, 187));
+        text-align: center;
+        
+        i {
+            font-size: 40px;
+            color: #eee;
+        }
+    }
+
+}
+
+
+// Second card
+.curso_card {
+    border-left: solid 8px rgb(250, 162, 0);
+
+
+    span {
+        display: block;
+    }
+
+    .cr_count {
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(250, 162, 0);
+    }
+
+    .cr_hit {
+        color: #888;
+    }
+
+    .cr_icon {
+        background: linear-gradient(45deg,  orange, rgb(250, 162, 0), rgb(255, 116, 2));
+        text-align: center;
+        
+        i {
+            font-size: 40px;
+            color: #eee;
+        }
+    }
+
+}
+
+// Third card
+.proj_card {
+    border-left: solid 8px rgb(1, 192, 1);
+
+   
+
+    span {
+        display: block;
+    }
+
+    .pr_count {
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(1, 192, 1);
+    }
+
+    .pr_hit {
+        color: #888;
+    }
+
+    .pr_icon {
+        background: linear-gradient( rgb(5, 223, 5), rgb(1, 192, 1), rgb(0, 112, 0));
+        text-align: center;
+        
+        i {
+            font-size: 40px;
+            color: #eee;
+        }
+    }
+
+}
+

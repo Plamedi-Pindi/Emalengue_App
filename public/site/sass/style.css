@@ -1728,9 +1728,12 @@ main {
   padding-bottom: 2rem;
 }
 
-.login_btn {
+input[type=submit] {
+  width: 90% !important;
   display: block;
   margin: 0 auto;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
 }
 
 #email_warnig1,
@@ -1845,7 +1848,7 @@ main {
   display: block;
   margin: 0 auto;
   padding: 5px;
-  width: 300px;
+  width: 90%;
   text-align: center;
   margin-bottom: 1rem;
   margin-top: -10px;

@@ -11,6 +11,7 @@ const passport = require('passport')
 const session = require('express-session')
 require('./models/associations')
 require('./controllers/auth/googleAuth2')
+require('./controllers/admin/mainController')
 require('dotenv').config()
 
 //Routes imports

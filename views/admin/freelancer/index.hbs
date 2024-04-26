@@ -23,7 +23,7 @@
                         <td><span class="fr_id">{{ id }}</span></td>
                         {{!-- image --}}
                         <td>
-                            <img src="/admin/img/freelancers/{{ imagem }}" alt="Imagem do Freelancer" class="fr_img">
+                            <img src="/admin/img/freelancers/{{ user.imagem }}" alt="Imagem do Freelancer" class="fr_img">
                         </td>
                         {{!-- Name --}}
                         <td>
@@ -66,7 +66,7 @@
                                     <div class="row">
                                         <div class="col-10 col-md-6 container-fluid   fr_mdl_data1">
                                             {{!-- Image --}}
-                                            <img src="/admin/img/freelancers/{{ imagem }}" alt="">
+                                            <img src="/admin/img/freelancers/{{ user.imagem }}" alt="">
                                             {{!-- Name --}}
                                             <h3> {{ user.nome }} </h3>
                                             <span>Engenheiro de Software</span>
@@ -80,7 +80,7 @@
                                                     {{ user.email }}
                                                 </li>
                                                 <li>
-                                                    <i class="bi bi-globe-americas"></i> {{ pais }}
+                                                    <i class="bi bi-globe-americas"></i> {{ user.pais }}
                                                 </li>
 
                                             </ul>

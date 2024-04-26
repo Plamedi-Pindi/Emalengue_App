@@ -3,6 +3,8 @@ const User = require('../../models/User')
 const Freelancer = require('../../models/Freelancer')
 const bcrypt = require('bcrypt')
 const nodemailer = require('nodemailer')
+const multer = require('multer')
+const fs = require('fs').promises;
 
 // INDEX PAGE ======================================================
 const index = async (req, res) => {
@@ -60,7 +62,7 @@ async function sendMial(emailOption) {
 // Email Verification =====
 const emailVerification = async (req, res) => {
     const email = req.body.email
-    
+
     try {
         const verificationCode = randString();
         const mailOption = {
@@ -95,6 +97,34 @@ const emailVerification = async (req, res) => {
 }
 
 
+// Multer config ===================
+const storage = multer.diskStorage({
+    destination: (req, file, cd) => {
+        cd(null, 'public/admin/img/freelancers')
+    },
+    filename: (req, file, cd) => {
+        cd(null, `${Date.now()}-${file.originalname}`)
+    }
+})
+const upload = multer({ storage })
+const imageUpload = upload.single('img')
+
+// Delete file ======================
+async function deleteFile(filePath) {
+    try {
+        await fs.unlink(filePath)
+        console.log('File deleted successly!');
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            console.log('File not found or wrong path entered');
+        } else {
+            console.log('Error occored: ' + error.message);
+        }
+    }
+}
+
+
+// Update ==========================
 const update = async (req, res) => {
     // Config
     const oldpsw = req.body.password
@@ -102,12 +132,14 @@ const update = async (req, res) => {
     const name = req.body.name
     const email = req.body.email
     const password = req.body.newPassword
-    console.log(password);
-    const user = await User.findOne({ where: { id: userId}})
+    const img = req.file
+
+    console.log(req.file); 
+    const user = await User.findOne({ where: { id: userId } })
 
     if (oldpsw) { // Changes pw
         const auth = await bcrypt.compare(oldpsw, user.password)
-        if(auth) {
+        if (auth) {
 
             const alert = {
                 id: 1
@@ -122,24 +154,35 @@ const update = async (req, res) => {
             res.status(400).json(alert)
         }
 
-    } else if (password){
+    } else if (password) {
         console.log(password);
         const encrypted = await bcrypt.hash(password, 10) // Hashed Password
-        await user.update({password: encrypted})
+        await user.update({ password: encrypted })
 
-        res.status(200).json({message: 'A senha foi atualizada com sucesso'})
+        res.status(200).json({ message: 'A senha foi atualizada com sucesso' })
 
-    } else if(name) {
+    } else if (name) {
         await user.update({
             nome: name
-        }).then(()=>{
-            const result = {message: 'O nome foi alterado com sucesso!'}
+        }).then(() => {
+            const result = { message: 'O nome foi alterado com sucesso!' }
             res.status(200).json(result)
         })
-    } else if(email) {
+    } else if (img) {
+
+        let path = 'public/admin/img/freelancers' // File path
+        deleteFile(`${path}/${user.imagem}`) // Delete olde file
+
+        await user.update({
+            imagem: img.filename
+        }).then(() => {
+            const result = { message: 'A Imagem do perfil foi alterado com sucesso!' }
+            res.status(200).json(result)
+        })
+    } else if (email) {
         console.log(email);
         // Check if there is alread someone with this email
-        const CheckUser = await User.findOne({ where: {email: email}})
+        const CheckUser = await User.findOne({ where: { email: email } })
         if (CheckUser) {
 
             const result = {
@@ -152,7 +195,7 @@ const update = async (req, res) => {
 
             await user.update({
                 email: email
-            }).then(()=>{
+            }).then(() => {
                 const result = {
                     message: 'O email foi alterado com sucesso!',
                     status: 'sucess'
@@ -160,7 +203,7 @@ const update = async (req, res) => {
                 res.status(200).json(result)
             })
         }
-    } 
+    }
 
 
 }
@@ -170,5 +213,6 @@ module.exports = {
     index,
     update,
     emailVerification,
-    
+    imageUpload,
+
 }

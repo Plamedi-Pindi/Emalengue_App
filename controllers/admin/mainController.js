@@ -1,18 +1,22 @@
 /**IMPORTS CONFIG ===========================================================*/
 const Freelancer = require('../../models/Freelancer')
-
+const Projects = require('../../models/Projeto')
 
 //Index
 const index = async (req, res) => {
     const id = req.user.id
 
     try {
-        await Freelancer.findOne({ where: {user_id: id}}).then(post => {
-            res.render('admin/home/index', {
-                layout: 'main2',
-                title: 'eMaLENGUE | Painel de Controlo',
-                freelancer: post,
-            })
+        
+        const freelancer = await Freelancer.findAll();
+        const projeto = await Projects.findAll();
+
+        res.render('admin/home/index', {
+            layout: 'main2',
+            title: 'eMaLENGUE | Painel de Controlo',
+            freelancerNum: freelancer.length,
+            projetoNum: projeto.length,
+
         })
 
     } catch (error) {

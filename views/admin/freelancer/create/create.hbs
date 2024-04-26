@@ -38,20 +38,24 @@
                         <!-- Country -->
                         <label for="country">Pais <span>*</span></label>
                         <select name="country" id="fr_seletor" class="form-select" required>
-                            <option value="Angola" selected>Angola</option>
-                            <option value="Amerca">Amerca</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Brazil">Brazil</option>
-                            <option value="Canada">Canada</option>
+
+                            {{#each country}}
+                            <option value="{{ name }}"> {{ flag }} {{ name }} </option>
+                            {{/each}}
                         </select>
 
                         <!-- Telefone -->
-                        <label for="province">Telefone <span>*</span></label>
-                        <input type="tel" placeholder="Provincia" class="form-control" name="phone" required>
+                        <label for="Telefone">Telefone <span>*</span></label>
+                        <input type="tel" placeholder="Telefone" class="form-control" id="Telefone" name="phone" required>
 
                         <!-- Province -->
                         <label for="province">Provincia <span>*</span></label>
-                        <input type="text" placeholder="Provincia" class="form-control" name="province" required>
+                        <select name="province" id="province" class="form-select" required>
+                            {{#each province }}
+                                <option value="{{ name }}"> {{ name }} </option>
+                            {{/each}}
+                        </select>
+                        {{!-- <input type="text" placeholder="Provincia" class="form-control" name="province" required> --}}
                     </div>
 
                     <!-- Proffssional Information -->
@@ -169,7 +173,7 @@
     //Send data from the  front-end to the back-end
     form.addEventListener('submit', async (e) => {
         e.preventDefault()
-        code2.value = 0
+
 
         // Initial settings
         window.scrollTo(0, 0)
@@ -181,20 +185,21 @@
 
         const formData = new FormData(form)
         try {
-             const response = await fetch('/dashboard/freelancer/verificar_email', {
+            const response = await fetch('/dashboard/freelancer/verificar_email', {
                 method: 'POST',
                 body: formData
             })
             const result = await response.json()
-          //  console.log(result)
+            //  console.log(result)
 
             const codeSent = result.verificationCode
 
             // Check if the verification code mach
+            verifyForm2.reset()
             verifyForm2.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 if (codeSent == code2.value) {
-                   // console.log(code2.value, codeSent)
+                    // console.log(code2.value, codeSent)
                     const sendData = await fetch('/dashboard/freelancer/enviar_cadastro', {
                         method: 'POST',
                         body: formData
@@ -203,7 +208,7 @@
 
                     //Handle With Existent User Massage
                     if (getData.code == 1) {
-                       // console.log(getData.desc)
+                        // console.log(getData.desc)
                         emailMessage.style.display = "block"
                         emailMessage.innerHTML = getData.desc
 
@@ -231,10 +236,21 @@
         setInterval(() => {
             emailConfirm2.style.display = "none"
             fr_rg_container.style.display = 'block'
-            
+
         }, 600)
     })
+    // ======================================================================================================
+
+    const fr_seletor = document.getElementById('fr_seletor')
+
+    fr_seletor.addEventListener('change', () => {
+
+    })
+
+
 
 </script>
+
+
 
 {{> dashFooter }}
