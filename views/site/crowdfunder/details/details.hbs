@@ -7,13 +7,16 @@
         <div class="row">
             <div class="col-11 col-md-8 col-lg-6 col-xl-6 container-fluid dt_content">
                 <div class="dt_content_container">
-                    <video src="/site/videos/vid1.mp4" controls muted></video>
+
+                    <iframe src="{{ crowdfunding.link }}" frameborder="0" height="300px"
+                        allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"
+                        msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen"
+                        webkitallowfullscreen="webkitallowfullscreen">
+                    </iframe>
+
+                    <h3> {{ crowdfunding.titulo }} </h3>
                     <div class="dt_description">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae ad enim, debitis nihil
-                            voluptate
-                            corporis labore eum impedit porro cum, quo tenetur ut molestias velit sed nemo, non tempora
-                            laboriosam. Cumque est voluptas blanditiis cum consequuntur alias ab praesentium temporibus
-                            excepturi numquam distinctio ratione fuga ipsa omnis iste, eos magni.</p>
+                        <p> {{ crowdfunding.descricao }} </p>
                     </div>
                 </div>
             </div>
@@ -22,7 +25,7 @@
                     <div class="objetivo">
                         <div class="obj">
                             <h3>Objetivo</h3>
-                            <span>300.0000</span>
+                            <span> {{ crowdfunding.valor_meta }} </span>
                         </div>
 
                         <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50"
@@ -45,24 +48,25 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Formuário de Apoio</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Formulário de Apoio</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="apoio_container">
 
-                                    <form action="">
-                                        <input type="text" placeholder="Nome">
-                                        <input type="email" placeholder="Email">
-                                        <input type="tel" placeholder="Telefone">
-                                        <input type="text" placeholder="IBAM">
-                                        <input type="number" placeholder="Valor da Contribuição">
+                                    <form id="form" enctype="multipart/form-data">
+                                        <input type="text" placeholder="Nome" name="name">
+                                        <input type="email" placeholder="Email" name="email">
+                                        <input type="tel" placeholder="Telefone" name="phone">
+                                        <input type="text" placeholder="IBAM" name="ibam">
+                                        <input type="number" placeholder="Valor da Contribuição" name="value">
 
-                                        <textarea name="" id="" cols="30" rows="7" placeholder="Mensgem"></textarea>
+                                        <textarea name="descrition" id="" cols="30" rows="7"
+                                            placeholder="Mensgem"></textarea>
 
                                         <label for="comprovativo">Anexar Comprovativo</label>
-                                        <input type="file" accept=".pdf">
+                                        <input type="file" accept=".pdf" name="comprovativo">
 
                                         <input type="submit" value="Enviar" class="sub_btn">
                                     </form>
@@ -81,5 +85,32 @@
     </div>
 </main>
 <!-- MAIN END -->
+
+<script>
+    const form = document.getElementById('form')
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const data = new FormData(form);
+        console.log('ola')
+
+        try {
+            const path = '/crowdfunder/apoiar/{{ crowdfunding.id }}'
+            const response = await fetch(path, {
+                method: "POST",
+                body: data,
+            })
+            const result = await response.json()
+
+            if (result) {
+                location.assign('/crowdfunder/detalhes/{{ crowdfunding.id}}')
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
+
+</script>
 
 {{> footer }}

@@ -1,0 +1,66 @@
+
+@import '../main';
+
+
+.crowd_breadcrumbs {
+    @include container();
+    padding-bottom: 0;
+}
+
+.crowd_container {
+    @include container();
+    padding: 15px;
+
+    h2{
+        border-left: 3px solid $primary;
+        padding-left: 10px;
+        font-size: 23px;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    label{
+        display: block;
+        color: hsl(0, 0%, 27%);
+        font-size: 16px;
+        span{
+            color: red;
+            margin-left: 3px;
+        }
+
+    }
+    
+    form {
+        // width: 100%; 
+        
+        
+        input {
+            width: 100%;
+            padding: 5px;
+            color: #444;
+            font-size: 16px;
+            margin-bottom: 10px;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid #888;
+            padding-left: 10px;
+        }
+
+        textarea{
+            width: 100%;
+            outline: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #submit_btn {
+            display: block;
+            margin: 0 auto;
+            margin-top: 1rem;
+            width: 200px;
+            margin-bottom: 1rem;
+            
+        }
+    }
+    
+}

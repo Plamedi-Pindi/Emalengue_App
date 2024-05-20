@@ -1,26 +1,31 @@
-{{> header }}
-
+{{> dashHeader }}
+{{> dashSidebar }}
 <!-- MAIN START -->
 <main>
-    {{!-- BANNER --}}
-    <div class="crowdfunder_banner">
-        <h2>Crowdfunder</h2>
-        <span class="cont_line"></span>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/crowdfunder">Crowdfunder</a></li>
-        </ul>
-    </div>
-    {{!-- MAIN CONTAIER --}}
-    <div id="crowd_container">
-        <section class="campanha">
-            <h2>Campanha em Destque</h2>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="crowd_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="#">Crowdfunding</a></li>
+                </ul>
+            </div>
+        </div>
 
-            <div class="row">
-                {{#each crowdfunding}}
+        {{!-- MAIN CONTAINER --}}
+        <div class="crf_container">
+            {{!-- Title --}}
+            <h2>Campanhas Publicadas</h2>
+
+            <div class="row d-flex flex-row ">
+
+                {{#each crowdfundig}}
 
                 {{!-- Crowdfunding Card --}}
-                <a href="/crowdfunder/detalhes/{{id}}" class="col-10 col-md-7 col-lg-4 crowd_cart container-fluid">
+                <a href="/dashboard/crowdfunding/detalhes/{{id}}"
+                    class="col-10 col-md-5 col-lg-5 crowd_cart container-fluid">
+                    
                     <figure>
                         <img src="/admin/img/crowdfunding/{{ img }}" alt="">
                         <figcaption>projeto de destaque</figcaption>
@@ -54,14 +59,15 @@
                     </div>
 
                 </a>
+
                 {{/each}}
 
 
+
+
+
             </div>
-        </section>
+        </div>
     </div>
-
 </main>
-<!-- MAIN END -->
-
-{{> footer }}
+{{> dashFooter }}

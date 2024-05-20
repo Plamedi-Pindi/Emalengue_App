@@ -2055,17 +2055,26 @@ input[type=submit] {
 
 .row {
   margin: 0;
+  margin-top: 2rem;
 }
 
 .dt_content {
   margin-bottom: 2rem;
 }
-.dt_content video {
+.dt_content iframe {
   width: 100%;
   margin-top: 1rem;
 }
+.dt_content h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+}
 .dt_content .dt_description {
   margin-top: 1rem;
+  font-size: 16px;
+  color: #666;
 }
 
 .dt_content_container {
@@ -2098,10 +2107,10 @@ input[type=submit] {
 }
 .dt_info .objetivo_container .objetivo .obj span {
   border: solid 1px #1a1931;
-  padding: 5px;
+  padding: 4px;
   width: 160px;
   text-align: center;
-  font-size: 19px;
+  font-size: 23px;
   font-weight: 600;
 }
 .dt_info .objetivo_container .progress {

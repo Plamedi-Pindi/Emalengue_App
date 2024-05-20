@@ -32,7 +32,7 @@ const googleRoute = require('./routes/auth/googleRoute')
 const crowdfunderRoute = require('./routes/site/crowdfunderRoute')
 const profileRoute = require('./routes/admin/profileRoute')
 const userRoute = require('./routes/admin/usersRoute')
-
+const crowdAdminRoute = require('./routes/admin/crowdfundingRoute')
 
 
 
@@ -49,7 +49,7 @@ app.engine('hbs', handlebars.engine({
   helpers: {
 
     ifIqual: (v1, v2, options) => {
-      if (v1 === v2) {
+      if (v1 === v2) { 
         return options.fn(this)
       } else {
         return options.inverse(this)
@@ -139,6 +139,7 @@ app.use('/dashboard/projeto', adminProjetRoute)
 app.use('/dashboard/cursos', adminCursoRoute)
 app.use('/dashboard/user/profile', profileRoute)
 app.use('/dashboard/users', userRoute)
+app.use('/dashboard/crowdfunding', crowdAdminRoute);
 // For Auth
 app.use('/cadastrar', registerRoute)
 app.use('/', loginRoute)

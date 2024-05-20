@@ -1,0 +1,120 @@
+
+
+.crowd_cart {
+    padding: 0;
+    border: solid 1px #ccc;
+    background: #fff;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    margin-top: 2rem;
+
+    figure {
+        width: 100%;
+        position: relative;
+        img {
+            width: 100%;
+            height: 200px;
+        }
+        figcaption {
+            background: #eee;
+            width: 140px;
+            padding: 2px;
+            font-size: 14px;
+            text-align: center;
+            border: 1px solid #ccc;
+            color: #777;
+            position: absolute;
+            bottom: -15px;
+            left: 15px;
+        }
+    }
+
+    .content {
+        padding: 12px;
+        h4 {
+            font-family: $roboto;
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 0.4rem;
+            margin-bottom: 3px;
+            color: #222;
+        }
+        span {
+            font-size: 14px;
+            color:  #777;
+        }
+        p {
+            font-size: 16px;
+            color: #777;
+            margin-top: 1rem;
+        }
+    }
+
+    .detail {
+        padding: 15px;
+
+        .progress-bar {
+            background-color: rgb(3, 167, 3);
+        }
+        .progress {
+            height: 10px;
+        }
+        ul {
+            width: 100%;
+            list-style: none;
+            display:flex;
+            justify-content: space-between ;
+            padding: 0;
+            margin-top: 5px;
+
+            li {
+                font-size: 14px;
+                color: #555;
+                span {
+                    color: #777;
+                    display: block;
+                }
+            }
+            .first {
+                width: 20%;
+            }
+            .second {
+                text-align: center;
+                width: 50%;
+            }
+            .third {
+                text-align: end;
+                width: 30%;
+            }
+            
+        }
+            
+    }
+    .local {
+        background-color: #ddd;
+        padding: 5px;
+        span {
+            display: block;
+            color: #777;
+            font-size: 14px;
+            margin: 0;
+        }
+    }
+}
+
+@media(min-width:992px){
+    
+    .crowd_cart {
+        // width: 30%;
+    }
+
+}
+
+@media(min-width:1200px){
+    
+    .crowd_cart {
+        width: 30%;
+        margin-bottom: 2rem !important;
+    }
+}

@@ -62,24 +62,23 @@ const checkUsser = (req, res, next) => {
                 console.log(err.message);
                 res.locals.user = null
                 next()
-            } else {
+            } else { 
                 console.log(decodedToken);
-                const user = await User.findByPk(decodedToken.id, {
-                    include: {
-                        model: Freelancer
-                    }
-                })
-                req.user = user
+                const user = await User.findByPk(decodedToken.id)
+                req.user = user 
                 res.locals.user = user
-
+                
                 next()
             }
+            
         })
     } else if (req.user) {
         res.locals.user = req.user
+        req.user = req.user 
         next()
     } else {
         res.locals.user = null
+        
         next()
     }
 }

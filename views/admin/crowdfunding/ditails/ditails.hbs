@@ -1,0 +1,263 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="crowd_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/crowdfunding">Crowdfunding</a></li>
+                    <li><a href="#">Detalhes</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="crf_dtails_container">
+
+            <div class="crf_details">
+                <div class="row crf_details_contente">
+                    {{!-- --}}
+                    <div class="col-11 col-md-8 col-lg-6 container-fluid">
+                        <div class="crf_video">
+                            <iframe src="{{ crowdfundig.link }}" frameborder="0" height="300px"
+                                allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen"
+                                msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen"
+                                webkitallowfullscreen="webkitallowfullscreen"> </iframe>
+
+                            <div class="dt_description">
+                                <h3> {{ crowdfundig.titulo }} </h3>
+                                <p> {{ crowdfundig.descricao }} </p>
+                            </div>
+                        </div>
+                    </div>
+                    {{!-- --}}
+                    <div class="col-11 col-md-8 col-lg-5 container-fluid">
+                        <div class="more_detail">
+                            <h3>Mais Detalhes</h3>
+                            {{!-- --}}
+                            <ul class="crf_avaluetion">
+                                <li>
+                                    <div>
+                                        <div class="crf_icon"><i class="bi bi-currency-exchange"></i></div>
+                                        Objetivo:
+                                    </div>
+                                    <span> {{ crowdfundig.valor_meta }} </span>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="crf_icon"><i class="bi bi-piggy-bank-fill"></i></div>
+                                        Arrecadado:
+                                    </div>
+                                    <span> 000000 </span>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="crf_icon"><i class="bi bi-graph-up-arrow"></i></div>
+                                        Apoios realisados:
+                                    </div>
+                                    <span> {{ apoios }} </span>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="crf_icon"><i class="bi bi-calendar2-check-fill"></i></div>
+                                        Data Publicado:
+                                    </div>
+                                    <span> {{ crowdfundig.data }} </span>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="crf_icon"><i class="bi bi-calendar-x-fill"></i></div>
+                                        Data Limite:
+                                    </div>
+                                    <span> {{ crowdfundig.duracao }} </span>
+                                </li>
+                                <li>
+                                    <div>
+                                        <div class="crf_icon"><i class="bi bi-heart-pulse-fill"></i></div>
+                                        Estado:
+                                    </div>
+                                    <span class="crf_state"> {{ crowdfundig.estado }} </span>
+                                </li>
+                            </ul>
+
+                            {{!-- commands --}}
+                            <ul class="crf_action">
+                                <li>
+                                    <a href="#"><i class="bi bi-pencil-square"></i> Editar</a>
+                                </li>
+                                <li> <button class="crf_delete" data-bs-toggle="modal" data-bs-target="#deleteCrowdfunding"> <i class="bi bi-trash3-fill"></i> Eliminar </button>
+                                </li>
+                                <li> <button class="crf_disable"> <i class="bi bi-heartbreak-fill"></i> Desativar
+                                    </button> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll_area">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+
+                            <th scope="col">Apoiante</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Realisado</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Comprovativo</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {{#each transacoes}}
+
+                        <tr class="crf_rows">
+
+                            {{!-- Apoiante --}}
+                            <td>
+                                <div class="tr_helper">
+                                    <img src="/admin/img/freelancers/{{ user.imagem }}" alt="Imagem do Freelancer"
+                                        class="crf_img">
+                                    <h5 class="crf_name"> {{ user.nome }} </h5>
+                                </div>
+                            </td>
+
+                            {{!-- Valor --}}
+                            <td><span class="crf_valor text-primary"> {{ valor }} kz </span></td>
+
+                            {{!-- Data e Hora --}}
+                            <td>
+                                <div class="dataHora">
+                                    <span> {{ data }} </span>
+                                    <span> {{ hora }}</span>
+
+                                </div>
+                            </td>
+
+                            {{!-- State --}}
+                            <td>
+                                <span class="tr_state"> {{ estado }} </span>
+                            </td>
+                            {{!-- Comprovativo --}}
+                            <td>
+                                <button class="tr_comp">Visualizar</button>
+                            </td>
+                            {{!-- Acoes --}}
+                            <td>
+                                <button class="tr_more">Mais</button>
+                            </td>
+                        </tr>
+                        {{/each}}
+
+                        <!-- MODALS ================================================= -->
+
+                        <!--Freelancer Modal View -->
+                        <div class="modal fade " id="staticBackdrop{{ id }}" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Mais Detalhes sobre
+                                            Freelancer
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-10 col-md-6 container-fluid   crf_mdl_data1">
+                                                {{!-- Image --}}
+                                                <img src="/admin/img/freelancers/{{ user.imagem }}" alt="">
+                                                {{!-- Name --}}
+                                                <h3> {{ user.nome }} </h3>
+                                                <span>Engenheiro de Software</span>
+
+                                                <ul>
+                                                    <li>
+                                                        <i class="bi bi-telephone-fill"></i> (+244) {{ phone }}
+                                                    </li>
+                                                    <li>
+                                                        <i class="bi bi-envelope-at-fill"></i>
+                                                        {{ user.email }}
+                                                    </li>
+                                                    <li>
+                                                        <i class="bi bi-globe-americas"></i> {{ user.pais }}
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                            <div class="crf_mdl_data2 col-10 col-md-5 container-fluid">
+                                                <h3>Habilidades</h3>
+                                                <ul>
+                                                    {{#each habilidades}}
+                                                    <li> {{ name }}</li>
+                                                    {{/each}}
+                                                </ul>
+                                                {{!-- --}}
+                                                <h3 class="certificacoes"> Certificações</h3>
+                                                <ul>
+                                                    <li> {{ certificacoes }}</li>
+                                                </ul>
+                                            </div>
+
+                                            <hr class="col-10 container-fluid">
+                                            <div class="col-10 container-fluid crf_mdl_data3">
+                                                <h3>Sobre o Freelancer</h3>
+                                                <div>
+                                                    {{ sobre }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Fechar</button>
+                                        <a href="/dashboard/freelancer/baixar_cv/{{ id }}" type="button"
+                                            class="btn btn-primary ft_mdl_dwl"> <i
+                                                class="bi bi-cloud-arrow-down-fill"></i>
+                                            Baixar CV</a>
+                                        <a href="/dashboard/freelancer/baixar_bi/{{ id }}" type="button"
+                                            class="btn btn-success ft_mdl_dwl"> <i
+                                                class="bi bi-cloud-arrow-down-fill"></i>
+                                            Baixar BI</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MODALS ================================================= -->
+                        <div class="modal fade" id="deleteCrowdfunding" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered ">
+                                <div class="modal-content ">
+                                    <div class="modal-body crf_delete_alert">
+                                        <h5> <i class="bi bi-exclamation-triangle-fill"></i> Tem certeza que pretende
+                                            deletar esta campanha?</h5>
+                                        <p>Ao deletar esta campanha já não poderá recuperar os dados eliminados.</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <a href="/dashboard/crowdfunding/deleteCrowdfundig/{{ crowdfundig.id }}"
+                                            class="btn btn-primary">continuar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</main>
+{{> dashFooter }}

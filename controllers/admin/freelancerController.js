@@ -306,8 +306,9 @@ const store = async (req, res) => {
 
 //====================  Destroy ========================================================
 const destroy = async (req, res) => {
-    console.log('Foi apertado!')
+    //Getting params
     const freeId = req.params.id;
+    //Finding the selected freelancer 
     await Freelancer.findOne({
         where: { id: freeId },
         include: [

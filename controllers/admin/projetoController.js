@@ -497,7 +497,7 @@ const applayToProject = async (req, res) => {
                 freelancId: freelancer.id,
             })
             console.log('inscrito!');
-            res.status(200).redirect('back')
+            res.status(200).redirect('back') 
         }
     } else {
         res.redirect('/dashboard/projeto/detalhes/projectId')

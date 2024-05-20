@@ -1,0 +1,217 @@
+@import '../main';
+@import "../fonts";
+@import '../color';
+
+
+
+
+.crf_details {
+
+    padding: 10px;
+    margin-bottom: 2rem;
+
+    .crf_details_contente {
+
+        .crf_video {
+            box-shadow: 1px 5px 10px #aaa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+        }
+
+        iframe {
+            width: 100%;
+        }
+
+        .dt_description {
+            h3 {
+                color: #333;
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            p {
+                color: #777;
+            }
+        }
+
+    }
+
+
+    .more_detail {
+        box-shadow: 1px 5px 10px #aaa;
+        padding: 10px;
+        border-radius: 5px;
+        padding-top: 1rem;
+
+        h3 {
+            border-left: 3px solid $primary;
+            padding-left: 10px;
+            margin-bottom: 2rem;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            font-size: 16px;
+
+        }
+
+        .crf_avaluetion {
+
+            span {
+                display: block;
+                color: rgb(182, 121, 8);
+            }
+
+            .crf_state {
+                background: rgb(3, 194, 3);
+                padding: 7px;
+                color: #eee;
+                border-radius: 4px;
+            }
+
+            .crf_icon {
+                display: inline;
+                background: linear-gradient(rgb(10, 108, 255), rgb(8, 8, 216), rgb(1, 1, 160));
+                padding: 10px;
+                border-radius: 100%;
+                margin-right: 6px;
+            }
+
+            i {
+                color: #fff;
+            }
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 15px;
+                border-bottom: dashed 1px #888;
+                padding-bottom: 15px;
+                font-weight: bold;
+            }
+        }
+
+        .crf_action {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+
+            button {
+                border: none;
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 4px;
+            }
+
+            i {
+                margin-right: 2px;
+            }
+
+            .crf_delete {
+                background-color: rgb(255, 0, 34);
+                color: #fff;
+            }
+
+            .crf_disable {
+                background-color: rgb(255, 136, 0);
+                color: #fff;
+            }
+
+            a {
+                text-decoration: none;
+                color: #fff;
+                padding: 12.5px;
+                background: rgb(0, 132, 255);
+                border: none;
+                border-radius: 4px
+            }
+        }
+    }
+}
+
+// Details side
+.crf_dtails_container {
+    @include container();
+    padding-top: 2rem;
+
+    .scroll_area {
+        overflow-x: auto;
+    }
+
+    table {
+
+        .crf_name {
+            font-size: 15px;
+            margin: 0;
+            color: #222;
+            font-family: $roboto;
+        }
+
+        .crf_img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .tr_helper {
+            display: flex;
+            align-items: center;
+
+            h5 {
+                margin-left: 10px;
+                color: #777;
+                font-size: 16px;
+            }
+        }
+
+        .crf_valor {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .dataHora {
+            font-size: 16px;
+            color: #888;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            // align-items: center;
+            span {
+                display: block;
+            }
+        }
+
+        .tr_state {
+            padding: 8px;
+            background: rgb(255, 166, 0);
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        .tr_comp,
+        .tr_more{
+            border: none;
+            padding: 6px;
+            border-radius: 4px;
+            font-size: 16px;
+            margin: 0;
+            color: #fff;
+        }
+        .tr_comp{
+            background: rgb(0, 132, 255);
+        }
+
+        .tr_more {
+            background: rgb(0, 4, 255);
+        }
+
+    }
+}

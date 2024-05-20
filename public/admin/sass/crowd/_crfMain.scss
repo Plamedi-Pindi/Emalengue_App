@@ -1,0 +1,28 @@
+@import '../main';
+@import "../fonts";
+@import '../color';
+
+
+
+
+
+
+
+// Main
+
+.crf_container {
+    @include container();
+    padding: 15px;
+    padding-top: 2rem;
+  
+
+    h2 {
+        border-left: 5px solid $primary;
+        font-weight: bold;
+        font-size: 23px;
+        padding-left: 10px;
+
+
+    }
+}
+

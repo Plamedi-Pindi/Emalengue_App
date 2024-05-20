@@ -4,7 +4,11 @@ const User = require('./User')
 const Habilidade = require('./Habilidade')
 const Categoria = require('./Categoria')
 const ProjetoHabilidade = require('./ProjetoHabilidade')
- 
+const Curso = require('./Curso')
+const Aula = require('./Aula')
+const Transacao = require('./Transacao')
+const Crowdfunding = require('./Crowdfundig')
+
 
 // Many-To-May between Projeto and Freelancer Tables =========================================
 Projeto.belongsToMany(Freelancer, {
@@ -16,10 +20,10 @@ Projeto.belongsToMany(Freelancer, {
         allowNull: false
     }
 })
-Freelancer.belongsToMany(Projeto, { 
+Freelancer.belongsToMany(Projeto, {
     through: 'freelancerprojetos',
     onDelete: 'CASCADE',
-    onUpdate: 'CASCADE', 
+    onUpdate: 'CASCADE',
     foreignKey: {
         name: 'freelancId',
         allowNull: false
@@ -37,12 +41,12 @@ Projeto.belongsToMany(Habilidade, {
         allowNull: false
     }
 })
- 
-Habilidade.belongsToMany(Projeto, { 
+
+Habilidade.belongsToMany(Projeto, {
     as: 'projetos',
     through: 'projetohabilidades',
     onDelete: 'CASCADE',
-    onUpdate: 'CASCADE', 
+    onUpdate: 'CASCADE',
     foreignKey: {
         name: 'habilidadeId',
         allowNull: false
@@ -51,16 +55,120 @@ Habilidade.belongsToMany(Projeto, {
 
 // // Many-To-One between Projeto and Categoria Tables =====================================================
 
-Projeto.belongsTo(Categoria, { foreignKey: 'categoria_Id'});
- 
-Categoria.hasMany(Projeto, { 
+Projeto.belongsTo(Categoria, { foreignKey: 'categoria_Id' });
+
+Categoria.hasMany(Projeto, {
     onDelete: 'CASCADE',
-    onUpdate: 'CASCADE', 
+    onUpdate: 'CASCADE',
     foreignKey: {
         name: 'categoria_Id',
         allowNull: false
     }
 })
+
+// Many-To-One between Cursos and Categoria Tables =====================================================
+Curso.belongsTo(Categoria, { foreignKey: 'categoria_Id' });
+
+Categoria.hasMany(Projeto, {
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE',
+    foreignKey: {
+        name: 'categoria_Id',
+    }
+})
+
+// // Many-To-One between Cursos and User Tables =====================================================
+Curso.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+});
+
+User.hasMany(Curso, {
+    foreignKey: {
+        name: 'categoria_Id',
+    }
+})
+
+// Many-To-One between Cursos and Aula Tables =====================================================
+
+Aula.belongsTo(Curso, {
+    foreignKey: { name: 'curso_id', as: 'curso_id' },
+
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+
+Curso.hasMany(Aula, {
+
+    foreignKey: {
+        name: 'curso_id',
+    }
+})
+
+// Many-To-One between Cursos and Transacoes Tables =====================================================
+
+Transacao.belongsTo(Curso, {
+    foreignKey: { name: 'curso_id' },
+
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE'
+});
+
+Curso.hasMany(Transacao, {
+
+    foreignKey: {
+        name: 'curso_id',
+    }
+})
+
+
+// Many-To-One between Transacao and User Tables =====================================================
+
+Transacao.belongsTo(User, {
+    foreignKey: { name: 'user_id' },
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE'
+});
+
+User.hasMany(Transacao, {
+    foreignKey: {
+        name: 'user_id',
+    }
+})
+
+// Many-To-One between Crowdfunding and Transacoes Tables =====================================================
+
+Transacao.belongsTo(Crowdfunding, {
+    foreignKey: { name: 'crowd_id' },
+
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE'
+});
+
+Crowdfunding.hasMany(Transacao, {
+
+    foreignKey: {
+        name: 'crowd_id',
+    }
+})
+
+// Many-To-One between Crowdfunding and User Tables =====================================================
+
+Crowdfunding.belongsTo(User, {
+    foreignKey: { name: 'user_id' },
+
+    onDelete: 'SET NULL',
+    onUpdate: 'CASCADE'
+});
+
+User.hasMany(Crowdfunding, {
+
+    foreignKey: {
+        name: 'user_id',
+    }
+})
+
 
 
 // ===========================================================================
@@ -70,11 +178,11 @@ User.hasOne(Freelancer, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     foreignKey: {
-        name: 'user_id', 
-         allowNull: false
+        name: 'user_id',
+        allowNull: false
     },
 })
-Freelancer.belongsTo(User, {foreignKey: 'user_id'});
+Freelancer.belongsTo(User, { foreignKey: 'user_id' });
 
 //Association With Projeto
 User.hasMany(Projeto, {
@@ -85,7 +193,7 @@ User.hasMany(Projeto, {
         allowNull: false
     }
 })
-Projeto.belongsTo(User, { foreignKey: 'user_id'});
+Projeto.belongsTo(User, { foreignKey: 'user_id' });
 
 // Many-To-May between Freelancer and Habilidade Tables =========================
 Freelancer.belongsToMany(Habilidade, {
@@ -98,12 +206,12 @@ Freelancer.belongsToMany(Habilidade, {
         allowNull: false
     }
 })
- 
-Habilidade.belongsToMany(Freelancer, { 
+
+Habilidade.belongsToMany(Freelancer, {
     as: 'freelancer',
     through: 'freelancerhabilidades',
     onDelete: 'CASCADE',
-    onUpdate: 'CASCADE', 
+    onUpdate: 'CASCADE',
     foreignKey: {
         name: 'habilidadeId',
         allowNull: false

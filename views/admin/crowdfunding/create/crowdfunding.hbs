@@ -1,0 +1,109 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="crowd_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="#">Crowdfunding</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="crowd_container">
+            <h2>Crowdfunding</h2>
+
+            <form id="form" class="row" enctype="multipart/form-data">
+                {{!-- Imagem para o crowdfuding --}}
+                <div class="col-11 col-md-8 col-lg-8 container-fluid">
+                    <label for="img">Escolha uma imagem <span>*</span></label>
+                    <div class="img_container">
+                        <input type="file" name="img" id="img">
+                    </div>
+                </div>
+                {{!-- GROUP 1 --}}
+                <div class="col-11 col-md-8 col-lg-5 container-fluid">
+                    <div>
+                        <label for="title">Título <span>*</span> </label>
+                        <input type="text" name="title" id="title">
+                    </div>
+
+                    <div>
+                        <label for="link">Link do Vídeo <span>*</span> </label>
+                        <input type="text" name="link" id="link" value="https:///www.youtube.com/embed/">
+                    </div>
+
+                    <div>
+                        <label for="place">Local <span>*</span> </label>
+                        <input type="text" name="place" id="place" placeholder="São Paulo">
+                    </div>
+                </div>
+                {{!-- GROUP 2 --}}
+                <div class="col-11 col-md-8 col-lg-5 container-fluid">
+                    <div>
+                        <label for="valor">Valor a atingir <span>*</span> </label>
+                        <input type="number" name="valor" id="valor">
+                    </div>
+
+                    <div>
+                        <label for="dateNow">Data atual <span>*</span> </label>
+                        <input type="date" name="dateNow" id="dateNow">
+                    </div>
+
+                    <div>
+                        <label for="date">Data limite <span>*</span> </label>
+                        <input type="date" name="date" id="date">
+                    </div>
+                </div>
+                {{!-- GROUP 3 --}}
+                <div class="col-11 col-md-10 col-lg-9 container-fluid">
+                    <div>
+                        <label for="descrition">Descrição <span>*</span> </label>
+                        <textarea name="descrition" id="descrition" rows="6"></textarea>
+                    </div>
+                    <button id="submit_btn" class="btn btn-primary">Publicar</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</main>
+<!-- MAIN END -->
+
+<script>
+    const form = document.getElementById('form')
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        // Variable to get all form data 
+        const data = new FormData(form);
+
+        try {
+            // The "creat" route is bing assigned to "path" variable
+            const path = '/dashboard/crowdfunding/criar/{{ user.id }}'
+            //Using "Fetch" API to send data to back-end
+            const response = await fetch(path, {
+                method: "POST",
+                body: data,
+            })
+
+            // "result" variable will receive the "response" from server or bazck-end
+            const result = await response.json()
+            // This conditional stacture redirect the home page after a crowdfunding is created
+            if (result) {
+                location.assign('/dashboard/crowdfunding')
+            }
+
+        } catch (err) {
+            console.log(err)
+        }
+    })
+</script>
+{{> dashFooter }}

@@ -6,6 +6,7 @@ const curso = express.Router()
 
 //Routes ===========================
 curso.get('/', cursoController.index);
+curso.post('/publicar', cursoController.publicarCurso )
 
 
 
