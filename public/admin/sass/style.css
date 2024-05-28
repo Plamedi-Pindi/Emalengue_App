@@ -1238,28 +1238,6 @@ tr {
   outline: none;
 }
 
-#AlertMessage {
-  width: auto;
-  background: rgba(2, 110, 2, 0.822);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  position: fixed;
-  top: 4rem;
-}
-#AlertMessage p {
-  padding: 0;
-  margin-left: 10px;
-  margin-bottom: 0;
-  padding-right: 15px;
-  color: rgb(124, 252, 124);
-}
-#AlertMessage img {
-  width: 50px;
-  height: 50px;
-}
-
 #emailerror {
   background: rgba(255, 0, 0, 0.315);
   padding: 10px;
@@ -1841,6 +1819,8 @@ tr {
   box-shadow: 1px 2px 5px #ddd;
   padding-bottom: 1.5rem;
   padding: 15px;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
 }
 .crowd_container h2 {
   border-left: 3px solid #f7aa00;
@@ -1852,7 +1832,6 @@ tr {
 .crowd_container label {
   display: block;
   color: hsl(0, 0%, 27%);
-  font-size: 16px;
 }
 .crowd_container label span {
   color: red;
@@ -1862,7 +1841,6 @@ tr {
   width: 100%;
   padding: 5px;
   color: #444;
-  font-size: 16px;
   margin-bottom: 10px;
   outline: none;
   border-radius: 5px;
@@ -1874,6 +1852,7 @@ tr {
   outline: none;
   padding: 10px;
   border-radius: 5px;
+  color: #444;
 }
 .crowd_container form #submit_btn {
   display: block;
@@ -1893,6 +1872,7 @@ tr {
   padding-bottom: 1.5rem;
   padding: 15px;
   padding-top: 2rem;
+  font-family: "Roboto", sans-serif;
 }
 .crf_container h2 {
   border-left: 5px solid #f7aa00;
@@ -2005,6 +1985,7 @@ tr {
 }
 /* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
 .crf_details {
+  font-size: 15px;
   padding: 10px;
   margin-bottom: 2rem;
 }
@@ -2020,7 +2001,7 @@ tr {
 .crf_details .crf_details_contente .dt_description h3 {
   color: #333;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
 }
 .crf_details .crf_details_contente .dt_description p {
   color: #777;
@@ -2030,6 +2011,7 @@ tr {
   padding: 10px;
   border-radius: 5px;
   padding-top: 1rem;
+  font-size: 15px;
 }
 .crf_details .more_detail h3 {
   border-left: 3px solid #f7aa00;
@@ -2041,7 +2023,6 @@ tr {
 .crf_details .more_detail ul {
   list-style: none;
   padding: 0;
-  font-size: 16px;
 }
 .crf_details .more_detail .crf_avaluetion span {
   display: block;
@@ -2078,11 +2059,11 @@ tr {
   align-items: center;
   flex-wrap: wrap;
   margin-top: 3rem;
+  font-size: 15px;
 }
 .crf_details .more_detail .crf_action button {
   border: none;
   padding: 10px;
-  font-size: 16px;
   border-radius: 4px;
 }
 .crf_details .more_detail .crf_action i {
@@ -2171,6 +2152,31 @@ tr {
 }
 .crf_dtails_container table .tr_more {
   background: rgb(0, 4, 255);
+}
+
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+#AlertMessage {
+  width: auto;
+  background: rgba(2, 110, 2, 0.822);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  position: fixed;
+  top: 4rem;
+  border: green solid 1px;
+}
+#AlertMessage p {
+  padding: 0;
+  margin-left: 10px;
+  margin-bottom: 0;
+  padding-right: 15px;
+  color: #eee;
+  font-size: 15px;
+}
+#AlertMessage img {
+  width: 50px;
+  height: 50px;
 }
 
 /***** IMPORTING FILE END *****/

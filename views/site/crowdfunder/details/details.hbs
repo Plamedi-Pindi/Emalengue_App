@@ -28,14 +28,14 @@
                             <span> {{ crowdfunding.valor_meta }} </span>
                         </div>
 
-                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50"
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
                             aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar w-50"></div>
+                            <div class="progress-bar" style="width: {{ vg_purcent }}%"></div>
                         </div>
 
-                        <p>50% da Meta</p>
-                        <p>10 dias Restantes</p>
-                        <p>30 Pessoas Apoiaram</p>
+                        <p> {{ vg_purcent }}% da Meta</p>
+                        <p> {{ restDay }} dias Restantes</p>
+                        <p> {{ apoios }} Pessoas Apoiaram</p>
 
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">Apoiar Esta Campanha </button>
@@ -89,6 +89,7 @@
 <script>
     const form = document.getElementById('form')
 
+    // Form for transation for help
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 

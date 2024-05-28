@@ -39,7 +39,9 @@
                         <ul>
                             <li class="first">83%</li>
                             <li class="second">
-                                66.430,00 AO
+                                {{#forEach transacoes}}
+                                    {{ valor }} <P>AO</P>
+                                {{/forEach}} 
                                 <span>Levantados</span>
                             </li>
                             <li class="third">

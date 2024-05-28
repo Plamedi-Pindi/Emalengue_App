@@ -1,0 +1,131 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="crowd_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/crowdfunding">Crowdfunding</a></li>
+                    <li><a href="#">Atualização</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="crowd_container">
+            <h2> Ataulizar campanha</h2>
+
+            {{!-- Alert fired when an update is realized --}}
+            <div id="AlertMessage">
+                <img src="/admin/img/icons/icons8-success.gif" alt="">
+                <p id="alertText"></p>
+            </div>
+
+            <form id="form" class="row" enctype="multipart/form-data">
+                {{!-- Imagem para o crowdfuding --}}
+                <div class="col-11 col-md-8 col-lg-8 container-fluid">
+                    <label for="img">Escolha uma imagem </label>
+                    <div class="img_container">
+                        <input type="file" name="img" id="img">
+                    </div>
+                </div>
+                {{!-- GROUP 1 --}}
+                <div class="col-11 col-md-8 col-lg-5 container-fluid">
+                    <div>
+                        <label for="title">Título</label>
+                        <input type="text" name="title" id="title" value="{{ crowdfunding.titulo }}">
+                    </div>
+
+                    <div>
+                        <label for="link">Link do Vídeo </label>
+                        <input type="text" name="link" id="link" value="{{ crowdfunding.link }}">
+                    </div>
+
+                    <div>
+                        <label for="place">Local </label>
+                        <input type="text" name="place" id="place" value="{{ crowdfunding.local }}">
+                    </div>
+                </div>
+                {{!-- GROUP 2 --}}
+                <div class="col-11 col-md-8 col-lg-5 container-fluid">
+                    <div>
+                        <label for="valor">Valor a atingir </label>
+                        <input type="number" name="valor" id="valor" value="{{ crowdfunding.valor_meta }}">
+                    </div>
+
+                    <div>
+                        <label for="dateNow">Data atual </label>
+                        <input type="date" name="dateNow" id="dateNow" value="{{ crowdfunding.data }}">
+                    </div>
+
+                    <div>
+                        <label for="date">Data limite </label>
+                        <input type="date" name="date" id="date" value="{{ crowdfunding.duracao }}">
+                    </div>
+                </div>
+                {{!-- GROUP 3 --}}
+                <div class="col-11 col-md-10 col-lg-9 container-fluid">
+                    <div>
+                        <label for="descrition">Descrição </label>
+                        <textarea name="descrition" id="descrition" rows="6"> {{ crowdfunding.descricao }} </textarea>
+                    </div>
+                    <button id="submit_btn" class="btn btn-primary">Publicar</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</main>
+{{!-- --}}
+
+{{!-- Script --}}
+<script>
+    //Getting form element through JS DOM
+    const form = document.getElementById('form');
+    const AlertMessage = document.getElementById('AlertMessage');
+    const alertText = document.getElementById('alertText');
+
+    //Default Settings
+    AlertMessage.style.display = 'none';
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const data = new FormData(form);
+
+        try {
+            // The "update" route is bing assigned to "path" variable
+            const path = '/dashboard/crowdfunding/atualizar/{{ crowdfunding.id }}'
+            //Using "Fetch" API to send data to server
+            const response = await fetch(path, {
+                method: "POST",
+                body: data,
+            })
+
+            // "result" variable will receive the "response" from server or bazck-end
+            const result = await response.json()
+            // This conditional stacture redirect the home page after a crowdfunding is created
+            if (result) {
+
+                AlertMessage.style.display = 'flex'; // Turn visible the alert box
+                alertText.innerHTML = result.message; // Asign the message to alert box
+
+                setTimeout(() => {
+                    AlertMessage.style.display = 'none'; // turn invisible the alert box after the time set
+                    location.assign('/dashboard/crowdfunding/detalhes/{{ crowdfunding.id }}')
+                }, 3000)
+
+            }
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    });
+
+</script>
+{{> dashFooter }}

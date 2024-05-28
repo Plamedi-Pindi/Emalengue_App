@@ -2043,10 +2043,11 @@ input[type=submit] {
 }
 .detail_container {
   margin-top: 5rem;
+  font-family: "Roboto", sans-serif;
 }
 .detail_container h2 {
   color: #222;
-  font-size: 24px;
+  font-size: 23px;
   font-weight: 600;
   border-left: solid 5px #f7aa00;
   margin-left: 10px;
@@ -2067,13 +2068,13 @@ input[type=submit] {
 }
 .dt_content h3 {
   font-family: "Roboto", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   color: #333;
   font-weight: bold;
 }
 .dt_content .dt_description {
   margin-top: 1rem;
-  font-size: 16px;
+  font-size: 15px;
   color: #666;
 }
 
@@ -2104,13 +2105,14 @@ input[type=submit] {
 }
 .dt_info .objetivo_container .objetivo .obj h3 {
   font-weight: 600;
+  font-size: 20px;
 }
 .dt_info .objetivo_container .objetivo .obj span {
   border: solid 1px #1a1931;
   padding: 4px;
   width: 160px;
   text-align: center;
-  font-size: 23px;
+  font-size: 20px;
   font-weight: 600;
 }
 .dt_info .objetivo_container .progress {
@@ -2125,7 +2127,7 @@ input[type=submit] {
   border: 1px solid #1a1931;
   padding: 5px;
   width: 200px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   text-align: center;
 }
@@ -2139,21 +2141,18 @@ input[type=submit] {
   width: 240px;
   border-radius: 6px;
   text-align: center;
+  font-size: 16px;
 }
 .dt_info .objetivo_container button:hover {
   transform: scale(1.02);
   transition: ease-out 0.5s;
-}
-.dt_info .apoio_container h3 {
-  font-family: "Roboto", sans-serif;
-  font-size: 23px;
-  font-weight: 600;
 }
 .dt_info .apoio_container form {
   box-shadow: 1px 5px 10px #888;
   padding: 10px;
   border-radius: 5px;
   padding-top: 2rem;
+  font-size: 15px;
 }
 .dt_info .apoio_container form input {
   border: solid 1px #1a1931;

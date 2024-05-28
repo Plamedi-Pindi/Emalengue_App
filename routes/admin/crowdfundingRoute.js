@@ -12,6 +12,10 @@ crowdfundig.post('/criar/:id', crowdfundigController.imageUpload, crowdfundigCon
 crowdfundig.get('/detalhes/:id', crowdfundigController.details);
 // Route to Delete a crowdfuding
 crowdfundig.get('/deleteCrowdfundig/:id', crowdfundigController.deleteCrowfunding);
+// Route to Update a crowdfuding
+crowdfundig.get('/atualizacao/:id', crowdfundigController.updateView);
+// Route to send Update data to server
+crowdfundig.post('/atualizar/:id',crowdfundigController.imageUpdata, crowdfundigController.updateData);
 
 
 module.exports = crowdfundig;

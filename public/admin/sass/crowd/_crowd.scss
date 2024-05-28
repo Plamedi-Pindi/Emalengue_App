@@ -10,6 +10,8 @@
 .crowd_container {
     @include container();
     padding: 15px;
+    font-family: $roboto;
+    font-size: 15px;
 
     h2{
         border-left: 3px solid $primary;
@@ -22,7 +24,6 @@
     label{
         display: block;
         color: hsl(0, 0%, 27%);
-        font-size: 16px;
         span{
             color: red;
             margin-left: 3px;
@@ -31,14 +32,11 @@
     }
     
     form {
-        // width: 100%; 
-        
         
         input {
             width: 100%;
             padding: 5px;
             color: #444;
-            font-size: 16px;
             margin-bottom: 10px;
             outline: none;
             border-radius: 5px;
@@ -51,6 +49,7 @@
             outline: none;
             padding: 10px;
             border-radius: 5px;
+            color: #444;
         }
 
         #submit_btn {

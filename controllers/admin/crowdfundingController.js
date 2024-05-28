@@ -13,9 +13,14 @@ const index = async (req, res) => {
     await Crowdfunding.findAll({
         include: [
             { model: User },
-        ]
+            { model: Transacao }
+        ],
+        // raw: true,
+        // nest: true 
     }).then(post => {
-
+        console.log(post[2].transacoes);
+        const coun = 0;
+        
         res.render('admin/crowdfunding/home/index', {
             layout: 'main2',
             title: 'eMaLENGUE | Crowdfunding',
@@ -27,32 +32,46 @@ const index = async (req, res) => {
 
 // DETAILS ====================================================
 const details = async (req, res) => {
+    // Get id of selected element
     const crfId = req.params.id;
 
+    // Find the specific crowdfunding by it id and join it Transation
     await Crowdfunding.findOne({
         where: { id: crfId },
         include: [
             { model: User },
             { model: Transacao }
-        ]
+        ],
+
     }).then(async post => {
+        
+        // "transacoes" get all transation associeted and it users
         const transacoes = await Transacao.findAll({
             where: { crowd_id: post.id },
             include: [
                 { model: User }
             ],
-            raw:true,
-            nest:true
+            raw: true,
+            nest: true
         });
-        const apoios = transacoes.length;
-        // console.log(transacoes.user);
 
+        // "apoios" Get the length of the transation
+        const apoios = transacoes.length;
+
+        let arrecadado = 0; // Will get the sum of all transation value
+        // Method to perform the sum of value of each transation and asign the result into "arrecadado" variable
+        transacoes.forEach(element => {
+            arrecadado += element.valor
+        });
+
+        // render the page
         res.render('admin/crowdfunding/ditails/ditails', {
             layout: 'main2',
             title: 'eMaLENGUE |Detalhes do Crowdfunding',
             crowdfundig: post,
             apoios: apoios,
             transacoes: transacoes,
+            arrecadado: arrecadado
         });
 
     })
@@ -74,7 +93,7 @@ const createView = (req, res) => {
  * This configuration allow the sistem to upload file from
  *  front-end to back-end using Multer depedence 
  * 
- * **/ 
+ * **/
 
 const storage = multer.diskStorage({
     destination: (req, file, cd) => {
@@ -146,10 +165,10 @@ async function deleteFile(filePath) {
     }
 }
 //Delete Methods
-const deleteCrowfunding = async (req, res)=> {
+const deleteCrowfunding = async (req, res) => {
     // Getting the id of selected crowdfuding from client
     const item = req.params.id;
-    const cf = await Crowdfunding.findOne({ where: {id: item}})
+    const cf = await Crowdfunding.findOne({ where: { id: item } })
 
 
     //deleting the crowdfunding associeted file from the folder where it is stored 
@@ -157,9 +176,102 @@ const deleteCrowfunding = async (req, res)=> {
     deleteFile(`${path}/${cf.img}`) // Delete file
 
     // Now this line going to remove the seleted crowdfunding
-    await Crowdfunding.destroy({ where: {id: item}}).then(
+    await Crowdfunding.destroy({ where: { id: item } }).then(
         res.redirect('/dashboard/crowdfunding')
     )
+}
+
+/** UPDATE ============================================================== */
+// update view
+const updateView = async (req, res) => {
+    //get selected crowdfunding id
+    const item = req.params.id;
+
+    //Finding the selected crowdfunding in the server
+    await Crowdfunding.findOne({ where: { id: item } }).then(result => {
+        res.render('admin/crowdfunding/update/update', {
+            layout: 'main2',
+            title: 'eMaLENGUE | Atualizar crowdfunding',
+            crowdfunding: result,
+        });
+    })
+}
+
+//Multer config =======================================
+/** 
+ * This configuration allow the sistem to upload file from
+ * front-end to back-end using Multer depedence.
+ * Here will be used to update file
+ * 
+ **/
+
+const storageUpdate = multer.diskStorage({
+    destination: (req, file, cd) => {
+        cd(null, 'public/admin/img/crowdfunding')
+    },
+    filename: (req, file, cd) => {
+        cd(null, `${Date.now()}-${file.originalname}`)
+    }
+})
+const uploadUpdate = multer({ storage: storageUpdate })
+const imageUpdata = uploadUpdate.single('img')
+
+// Updata data
+const updateData = async (req, res) => {
+    const item = req.params.id;
+
+    //Getting data from fornt-end
+    const title = req.body.title;
+    const link = req.body.link;
+    const place = req.body.place;
+    const valor = req.body.valor;
+    const date = req.body.date;
+    const dateNow = req.body.dateNow;
+    const descrition = req.body.descrition;
+    const authUser = req.params.id;
+
+    await Crowdfunding.findOne({ where: { id: item } }).then(result => {
+        const cf = result;
+        /**
+         * Check if there is a file to be update, if not, it update other data
+        */
+        if (req.file) {
+            const img = req.file.filename;
+            cf.update({
+                titulo: title,
+                link: link,
+                local: place,
+                valor_meta: valor,
+                duracao: date,
+                descricao: descrition,
+                data: dateNow,
+                img: img
+            });
+            // Rend the result to client as a json
+            const alert = {
+                message: 'A campanha foi atualizada com sucesso!'
+            }
+            res.status(200).json(alert)
+        } else {
+            const img = cf.img
+            cf.update({
+                titulo: title,
+                link: link,
+                local: place,
+                valor_meta: valor,
+                duracao: date,
+                descricao: descrition,
+                data: dateNow,
+                img: img
+            });
+            // Rend the result to client as a json
+            const alert = {
+                message: 'A campanha foi atualizada com sucesso!'
+            }
+            res.status(200).json(alert)
+        }
+    })
+
 }
 
 
@@ -172,5 +284,8 @@ module.exports = {
     createView,
     details,
     imageUpload,
-    deleteCrowfunding
+    deleteCrowfunding,
+    updateView,
+    updateData,
+    imageUpdata,
 }

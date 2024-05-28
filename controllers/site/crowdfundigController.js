@@ -1,4 +1,5 @@
 // Import config ===================================================================
+const { raw } = require('body-parser');
 const Crowdfunding = require('../../models/Crowdfundig');
 const Transacao = require('../../models/Transacao');
 const User = require('../../models/User');
@@ -13,9 +14,21 @@ const index = async (req, res) => {
         include: [
             {
                 model: User
-            }
-        ]
+            },
+            {
+                model: Transacao
+            }, 
+        ],
+        // raw:  true,
+        // nest: true,
     }).then(result => {
+
+        const crwodfunding = result;
+        const transacoes = crwodfunding.transacoes;
+        let totalValue = 0;
+        let purcent_value = 0;
+
+      
         res.render('site/crowdfunder/index', {
             title: 'eMaLENGUE | Crowdfunding',
             crowdfunding: result
@@ -31,13 +44,57 @@ const details = async (req, res) => {
         include: [
             {
                 model: User
-            }
+            },
+            {
+                model: Transacao
+            },
         ]
     }).then(result => {
 
+        // Declaring datas
+        const crowdfunding = result;           
+        const valueGoal = crowdfunding.valor_meta;
+        const transacoes = crowdfunding.transacoes;
+        let totalValue = 0;
+        let vg_purcent = 0;
+
+        // Methode to assign to "totalValue" variable will get the su of all crwodfunding "valor"
+        transacoes.forEach(element => {
+            totalValue += element.valor;
+        });
+
+        //Condition to calculete the purcent of the gotten "valor" 
+        if (totalValue <= valueGoal) {
+            vg_purcent = (totalValue * 100) / valueGoal;
+        } else {
+            vg_purcent = 100;
+        }
+
+        // Definig start date and end date
+        const startDate = new Date(crowdfunding.data );
+        const endtDate = new Date(crowdfunding.duracao );
+        const toDay = new Date();
+
+        // Calculete the difference in milleiseconds
+        const differenceInMilliseconds = endtDate - startDate;
+        const consumedTimeMilliseconds = toDay - startDate;
+
+        // Convert millisencods per day
+        const millisecondsPerDay = 24 * 60 * 60 * 1000;
+        const differnceInDay = Math.round(differenceInMilliseconds / millisecondsPerDay);
+        const consumedTimeInDay = Math.round(consumedTimeMilliseconds / millisecondsPerDay);
+        const restDay = differnceInDay - consumedTimeInDay;
+
+        console.log(restDay);
+
+        
+
         res.render('site/crowdfunder/details/details', {
             title: 'eMaLENGUE | Detalhes',
-            crowdfunding: result
+            crowdfunding: result,
+            vg_purcent: vg_purcent,
+            apoios: transacoes.length,
+            restDay: restDay,
         })
     })
 }
@@ -89,11 +146,11 @@ const credateApoio = async (req, res) => {
     const mes = date.getMonth();
     const ano = date.getFullYear();
 
-    
+
     try {
         // This first condition takes logged user
-        const user = await User.findOne({ where: { email: email }})
-        if(user) {
+        const user = await User.findOne({ where: { email: email } })
+        if (user) {
 
             await Transacao.create({
                 valor: value,

@@ -4,10 +4,11 @@
 
 .detail_container {
     margin-top: 5rem;
+    font-family: $roboto;
 
     h2 {
         color: #222;
-        font-size: 24px;
+        font-size: 23px;
         font-weight: 600;
         border-left: solid 5px $primary;
         margin-left: 10px;
@@ -32,14 +33,14 @@
 
     h3 {
         font-family: $roboto;
-        font-size: 20px;
+        font-size: 18px;
         color: #333;
         font-weight: bold;
     }
 
     .dt_description {
         margin-top: 1rem;
-        font-size: 16px;
+        font-size: 15px;
         color: #666;
     }
 }
@@ -72,6 +73,7 @@
 
                 h3 {
                     font-weight: 600;
+                    font-size: 20px;
                 }
 
                 span {
@@ -79,7 +81,7 @@
                     padding: 4px;
                     width: 160px;
                     text-align: center;
-                    font-size: 23px;
+                    font-size: 20px;
                     font-weight: 600;
                 }
             }
@@ -99,7 +101,7 @@
             border: 1px solid $secundary;
             padding: 5px;
             width: 200px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
             text-align: center;
         }
@@ -114,6 +116,7 @@
             width: 240px;
             border-radius: 6px;
             text-align: center;
+            font-size: 16px;
         }
 
         button:hover {
@@ -125,17 +128,14 @@
 
 
     .apoio_container {
-        h3 {
-            font-family: $roboto;
-            font-size: 23px;
-            font-weight: 600;
-        }
+
         form {
             // border: 2px solid $secundary;
             box-shadow: 1px 5px 10px #888;
             padding: 10px;
             border-radius: 5px;
             padding-top: 2rem;
+            font-size: 15px;
             
             input {
                 border: solid 1px $secundary;

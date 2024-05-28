@@ -43,14 +43,14 @@
                                         <div class="crf_icon"><i class="bi bi-currency-exchange"></i></div>
                                         Objetivo:
                                     </div>
-                                    <span> {{ crowdfundig.valor_meta }} </span>
+                                    <span> {{ crowdfundig.valor_meta }} kz </span>
                                 </li>
                                 <li>
                                     <div>
                                         <div class="crf_icon"><i class="bi bi-piggy-bank-fill"></i></div>
                                         Arrecadado:
                                     </div>
-                                    <span> 000000 </span>
+                                    <span> {{ arrecadado }} kz</span>
                                 </li>
                                 <li>
                                     <div>
@@ -85,7 +85,7 @@
                             {{!-- commands --}}
                             <ul class="crf_action">
                                 <li>
-                                    <a href="#"><i class="bi bi-pencil-square"></i> Editar</a>
+                                    <a href="/dashboard/crowdfunding/atualizacao/{{ crowdfundig.id }}"><i class="bi bi-pencil-square"></i> Editar</a>
                                 </li>
                                 <li> <button class="crf_delete" data-bs-toggle="modal" data-bs-target="#deleteCrowdfunding"> <i class="bi bi-trash3-fill"></i> Eliminar </button>
                                 </li>

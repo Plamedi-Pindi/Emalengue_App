@@ -282,30 +282,7 @@
 }
 
 
-#AlertMessage {
-    width: auto;
-    background: rgba(2, 110, 2, 0.822);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    position: fixed;
-    // margin: 0 auto;
-    top: 4rem;
 
-    p {
-        padding: 0;
-        margin-left: 10px;
-        margin-bottom: 0;
-        padding-right: 15px;
-        color: rgb(124, 252, 124);
-    }
-
-    img {
-        width: 50px;
-        height: 50px;
-    }
-}
 
 #emailerror {
     background: rgba(255, 0, 0, 0.315);

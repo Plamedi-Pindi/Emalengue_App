@@ -13,6 +13,7 @@ require('./models/associations')
 require('./controllers/auth/googleAuth2')
 require('./controllers/admin/mainController')
 require('dotenv').config()
+const helpers = require('./helpers');
 
 //Routes imports
 const homeRoute = require('./routes/site/homeRoute')
@@ -46,19 +47,8 @@ app.engine('hbs', handlebars.engine({
     allowProtoPropertiesByDefault: true,
     allowProtoMethodsByDefault: true,
   },
-  helpers: {
-
-    ifIqual: (v1, v2, options) => {
-      if (v1 === v2) { 
-        return options.fn(this)
-      } else {
-        return options.inverse(this)
-      }
-
-    },
-   
-
-  }
+  // Handlebars Helpers
+  helpers: helpers
   // partialsDir: 'views/partials',
 }))
 app.set('view engine', 'hbs')
@@ -66,7 +56,7 @@ app.set('view engine', 'hbs')
 
 
 // GOOGLE AUTH =======================================================
-const maxAge = 60000*60*3
+const maxAge = 60000 * 60 * 3
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -74,7 +64,7 @@ app.use(session({
   cookie: { secure: false, maxAge: maxAge }
 }))
 
-app.use(passport.initialize()) 
+app.use(passport.initialize())
 app.use(passport.session())
 
 
@@ -82,7 +72,7 @@ app.get('/auth/google',
   passport.authenticate('google', {
     scope:
       [
-        'email',  
+        'email',
         'profile',
         // 'https://www.googleapis.com/auth/user.phonenumbers.read',
         // 'https://www.googleapis.com/auth/user.addresses.read',
@@ -97,9 +87,9 @@ app.get('/auth/google/callback',
   }));
 
 app.get('/sair', (req, res) => {
-  req.logout( function(err) {
+  req.logout(function (err) {
     res.send('Good bay')
-    req.session.destroy( function (err) {})
+    req.session.destroy(function (err) { })
 
   })
 })
@@ -148,4 +138,3 @@ app.use('/auth', googleRoute)
 
 
 
-        
