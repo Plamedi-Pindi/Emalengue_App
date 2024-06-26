@@ -1,0 +1,149 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="curso_breadcrumbs cr_sub">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/cursos">Cursos</a></li>
+                    <li><a href="/dashboard/cursos/detalhes">Detalhes</a></li>
+                    <li><a href="/dashboard/cursos/detalhes/alunos">Inscritos</a></li>
+                </ul>
+            </div>
+            <form>
+                <input type="search" name="search" id="seach" placeholder="Pesquisar...">
+            </form>
+        </div>
+
+        <div class="cr_alunos_container">
+            <div class="scroll_area">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+
+                            <th scope="col">Apoiante</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Realisado</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Comprovativo</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {{#each transacoes}}
+
+                        <tr class="crf_rows">
+
+                            {{!-- Apoiante --}}
+                            <td>
+                                <div class="tr_helper">
+                                    <img src="/admin/img/freelancers/{{ user.imagem }}" alt="Imagem do Freelancer"
+                                        class="crf_img">
+                                    <h5 class="crf_name"> {{ user.nome }} </h5>
+                                </div>
+                            </td>
+
+                            {{!-- Valor --}}
+                            <td><span class="crf_valor text-primary"> {{#NumberFormat valor }} {{/NumberFormat }}
+                                </span></td>
+
+                            {{!-- Data e Hora --}}
+                            <td>
+                                <div class="dataHora">
+                                    <span> {{ data }} </span>
+                                    <span> {{ hora }}</span>
+
+                                </div>
+                            </td>
+
+                            {{!-- State --}}
+                            <td>
+                                <span class="tr_state"> {{ estado }} </span>
+                            </td>
+                            {{!-- Comprovativo --}}
+                            <td>
+                                <a href="{{#readPDF id }}{{/readPDF }}" class="tr_comp" id="tr_comp">Visualizar</a>
+                            </td>
+                            {{!-- Acoes --}}
+                            <td>
+                                <button class="tr_more" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop{{ id }}">Mais</button>
+                            </td>
+                        </tr>
+
+                        <!-- Modal FOR MORE ACTIONS -->
+                        <div class="modal fade " id="staticBackdrop{{ id }}" data-bs-backdrop="static"
+                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Alterar o estado da
+                                            transação
+                                        </h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="tr_flex">
+                                            {{!-- Form to aprove transation made --}}
+                                            <form id="aprovar">
+                                                <input type="text" hidden value="Confirmado" name="aprovar"
+                                                    id="{{ id }}">
+                                                <button type="submit" class="btn btn-success ft_mdl_dwl"> Aprovar
+                                                </button>
+                                            </form>
+
+                                            {{!-- Form to reject a transation made --}}
+                                            <form id="rejeitar">
+                                                <input type="text" hidden value="Rejeitado" name="rejeitar"
+                                                    id="{{ id }}">
+                                                <button type="submit" class="btn btn-danger ft_mdl_dwl"> Rejeitar
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{/each}}
+
+                        <!-- MODALS TO DELETE A TRANSATION ================================================= -->
+                        <div class="modal fade" id="deleteCrowdfunding" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered ">
+                                <div class="modal-content ">
+                                    <div class="modal-body crf_delete_alert">
+                                        <h5> <i class="bi bi-exclamation-triangle-fill"></i> Tem certeza que pretende
+                                            deletar esta campanha?</h5>
+                                        <p>Ao deletar esta campanha já não poderá recuperar os dados eliminados.</p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <a href="/dashboard/crowdfunding/deleteCrowdfundig/{{ crowdfundig.id }}"
+                                            class="btn btn-primary">continuar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</main>
+<!-- MAIN END -->
+{{> dashFooter }}

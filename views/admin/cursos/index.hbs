@@ -2,7 +2,106 @@
 {{> dashSidebar }}
 <!-- MAIN START -->
 <main>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="curso_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/cursos">Cursos</a></li>
+                </ul>
+            </div>
+        </div>
 
+        {{!-- Curso --}}
+        <div class="allCourse_container">
+
+            {{!-- BAR START --}}
+            <div class="allCourse_bar">
+                <ul class="bar_box">
+                    {{!-- New course --}}
+                    <li><a href="/dashboard/cursos/novocurso" class="btn btn-primary"> <i class="bi bi-plus-square-dotted"></i> Novo</a></li>
+                    {{!-- All Course --}}
+                    <li><button id="all_c_btn"> <i class="bi bi-grid"></i> Todos</button></li>
+                    {{!-- Dropdown Category --}}
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle dropdown_category" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Organizar por categoria
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    {{!-- SEARCH BAR --}}
+                    <li>
+                        <form>
+                            <input type="text" placeholder="Pesquise...">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+            {{!-- BAR END --}}
+            
+            {{!-- CONTENT  START --}}
+            <div class="allcourse_content">
+                <div class="row">
+                    {{!-- CARD --}}
+                    <div class="allCourse_card col-11 col-md-4 container-fluid">
+                        <img src="/admin/img/1.webp" alt="" class="acl_img">
+                        <div class="acl_card_content">
+                            <h5>Titulo llllllllllllll</h5>
+                            <ul>
+                                <li><span><i class="bi bi-calendar-week"></i> 2024-06-2</span></li>
+                                <li><span class="acl_inscritos"> <i class="bi bi-mortarboard"></i> 1,2k Inscritos</span></li>
+                            </ul>
+                            <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, repellendus! </p>
+                            
+                            <a href="/dashboard/cursos/detalhes" class="btn btn-primary">Saber Mais</a>
+                        </div>
+
+                    </div>
+                    {{!-- CARD --}}
+                    <div class="allCourse_card col-11 col-md-4 container-fluid">
+                        <img src="/admin/img/1.webp" alt="" class="acl_img">
+                        <div class="acl_card_content">
+                            <h5>Titulo</h5>
+                            <ul>
+                                <li><span><i class="bi bi-calendar-week"></i> 2024-06-2</span></li>
+                                <li><span class="acl_inscritos"> <i class="bi bi-mortarboard"></i> 1,2k Inscritos</span></li>
+                            </ul>
+                            <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, repellendus! </p>
+                            
+                            <a href="#" class="btn btn-primary">Saber Mais</a>
+                        </div>
+
+                    </div>
+                    {{!-- CARD --}}
+                    <div class="allCourse_card col-11 col-md-4 container-fluid">
+                        <img src="/admin/img/1.webp" alt="" class="acl_img">
+                        <div class="acl_card_content">
+                            <h5>Titulo</h5>
+                            <ul>
+                                <li><span><i class="bi bi-calendar-week"></i> 2024-06-2 </span></li>
+                                <li><span class="acl_inscritos"> <i class="bi bi-mortarboard"></i> 1,2k Inscritos</span></li>
+                            </ul>
+                            <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, repellendus! </p>
+                            
+                            <a href="#" class="btn btn-primary">Saber Mais</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {{!-- CONTENT  END --}}
+
+        </div>
+
+    </div>
 </main>
 <!-- MAIN END -->
 {{> dashFooter }}

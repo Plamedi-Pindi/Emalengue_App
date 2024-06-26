@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING,
         enum: Sequelize.ENUM('normal', 'crowdfunding',),
         defaultValue: 'normal'
-    },
+      },
       categoria_id: {
         type: Sequelize.INTEGER,
         references: {

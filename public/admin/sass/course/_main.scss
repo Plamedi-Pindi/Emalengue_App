@@ -1,0 +1,143 @@
+@import '../main';
+@import '../fonts';
+@import '../color';
+
+.curso_breadcrumbs {
+    @include container();
+}
+
+.newCourse_container {
+    @include container();
+    padding: 20px;
+    font-size: 15px;
+    color: #555;
+
+    h2 {
+        font-size: 23px;
+        margin-bottom: 2rem;
+        margin-left: 30px;
+        font-weight: bold;
+        margin-top: 1.3rem;
+        border-left: 5px solid rgb(255, 145, 0);
+        padding-left: 10px;
+    }
+
+    form {
+
+        // background: greenyellow;
+        div {
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        label {
+            font-family: $roboto;
+            display: block;
+            margin-bottom: 3px;
+            
+        }
+
+        span {
+            color: red;
+        }
+
+        input {
+            width: 100%;
+            color: #444;
+            font-size: 15px;
+            font-family: $roboto;
+            background-color: #eee;
+            padding: 5px;
+            padding-left: 10px;
+
+            border: none;
+            border-bottom: 2px solid rgb(255, 145, 0);
+            outline: none;
+        }
+
+        input[type='file'] {
+            padding: 20px;
+            border: 2px dashed rgb(255, 145, 0);
+            border-radius: 10px;
+        }
+
+        select {
+            width: 100%;
+            color: #444;
+            font-size: 15px;
+            font-family: $roboto;
+            background-color: #eee;
+            padding: 5px;
+            
+            border: none;
+            border-bottom: 2px solid rgb(255, 145, 0);
+            outline: none;
+            
+            option {
+                font-size: 15px;
+                font-family: $roboto;
+                
+            }
+        }
+
+        textarea {
+            width: 100%;
+            margin: 0 auto;
+            color: #555;
+            padding: 10px;
+            outline: none;
+            margin-bottom: 1.5rem; 
+            border-radius: 5px;
+        }
+
+        #moduleAdd {
+            margin-top: 10px;
+
+            button {
+                padding: 5px;
+                color: rgb(255, 145, 0);
+                font-size: 15px;
+                background: transparent;
+                border: none;
+                float: right;
+                margin-right: 20px;
+
+                i {
+                    font-size: 15px;
+                    margin-right: 5px;
+                }
+            }
+
+            #moduleDelete {
+                display: none;
+            }
+        }
+
+        button[type='submit'] {
+            font-size: 15px;
+            background-color: rgb(0, 47, 255);
+            color: #eee;
+            padding: 7px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            width: 60%;
+            margin: 2rem auto;
+
+        }
+
+        // moduleContainer
+        #moduleContainer {
+            h5 {
+                font-size: 18px;
+                margin-left: 30px;
+                margin-bottom: 1rem;
+                font-weight: bold;
+            }
+        }
+    }
+}

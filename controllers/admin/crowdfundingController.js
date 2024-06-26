@@ -6,6 +6,8 @@ const Transacao = require('../../models/Transacao');
 const { raw } = require('body-parser');
 const multer = require('multer')
 const fs = require('fs').promises;
+const { PDFDocument } = require('pdf-lib');
+const FS = require('fs');
 
 
 // INDEX ====================================================
@@ -18,9 +20,8 @@ const index = async (req, res) => {
         // raw: true,
         // nest: true 
     }).then(post => {
-        console.log(post[2].transacoes);
         const coun = 0;
-        
+
         res.render('admin/crowdfunding/home/index', {
             layout: 'main2',
             title: 'eMaLENGUE | Crowdfunding',
@@ -44,7 +45,7 @@ const details = async (req, res) => {
         ],
 
     }).then(async post => {
-        
+
         // "transacoes" get all transation associeted and it users
         const transacoes = await Transacao.findAll({
             where: { crowd_id: post.id },
@@ -212,7 +213,7 @@ const storageUpdate = multer.diskStorage({
     filename: (req, file, cd) => {
         cd(null, `${Date.now()}-${file.originalname}`)
     }
-})
+});
 const uploadUpdate = multer({ storage: storageUpdate })
 const imageUpdata = uploadUpdate.single('img')
 
@@ -275,7 +276,29 @@ const updateData = async (req, res) => {
 }
 
 
+// READ PDF METHOD ==========================================================
+const readPDF = async (req, res) => {
+    // const id = req.params.id;
+    // const item = await Transacao.findOne({ where: { id:id } });
+    // const comprovativo = item.comprovativo;
+    // const pdfPath = `public/site/pdfs/comprovativos/${comprovativo}`;
+    // const pdfBytes = FS.readFileSync(pdfPath);
 
+    // const pdfDoc = await PDFDocument.load(pdfBytes);
+    // const pdfDataUri = await pdfDoc.saveAsBase64({ dataUri: true })
+
+    // res.send("Ola esta tudo mais calmo agora" + `<a href="${pdfDataUri}" target="_blank" rel="noopener noreferrer">Clica aqui </a>`)   
+} // readPDF End ============================================================
+
+
+
+// ALTER TRANSATION STATUS METHOD ==========================================================
+const transationStatus = async (req, res) => {
+    const id = req.params.id;
+    const aprovar = req.body.aprovar;
+    const rejeitar = req.body.rejeitar;
+    console.log(req.body);
+} // transationStatus End ============================================================
 
 
 module.exports = {
@@ -288,4 +311,6 @@ module.exports = {
     updateView,
     updateData,
     imageUpdata,
+    readPDF,
+    transationStatus,
 }

@@ -43,14 +43,14 @@
                                         <div class="crf_icon"><i class="bi bi-currency-exchange"></i></div>
                                         Objetivo:
                                     </div>
-                                    <span> {{ crowdfundig.valor_meta }} kz </span>
+                                    <span> {{#NumberFormat crowdfundig.valor_meta }} {{/NumberFormat }} </span>
                                 </li>
                                 <li>
                                     <div>
                                         <div class="crf_icon"><i class="bi bi-piggy-bank-fill"></i></div>
                                         Arrecadado:
                                     </div>
-                                    <span> {{ arrecadado }} kz</span>
+                                    <span> {{#NumberFormat arrecadado }} {{/NumberFormat }}</span>
                                 </li>
                                 <li>
                                     <div>
@@ -85,9 +85,12 @@
                             {{!-- commands --}}
                             <ul class="crf_action">
                                 <li>
-                                    <a href="/dashboard/crowdfunding/atualizacao/{{ crowdfundig.id }}"><i class="bi bi-pencil-square"></i> Editar</a>
+                                    <a href="/dashboard/crowdfunding/atualizacao/{{ crowdfundig.id }}"><i
+                                            class="bi bi-pencil-square"></i> Editar</a>
                                 </li>
-                                <li> <button class="crf_delete" data-bs-toggle="modal" data-bs-target="#deleteCrowdfunding"> <i class="bi bi-trash3-fill"></i> Eliminar </button>
+                                <li> <button class="crf_delete" data-bs-toggle="modal"
+                                        data-bs-target="#deleteCrowdfunding"> <i class="bi bi-trash3-fill"></i> Eliminar
+                                    </button>
                                 </li>
                                 <li> <button class="crf_disable"> <i class="bi bi-heartbreak-fill"></i> Desativar
                                     </button> </li>
@@ -126,7 +129,8 @@
                             </td>
 
                             {{!-- Valor --}}
-                            <td><span class="crf_valor text-primary"> {{ valor }} kz </span></td>
+                            <td><span class="crf_valor text-primary"> {{#NumberFormat valor }} {{/NumberFormat }}
+                                </span></td>
 
                             {{!-- Data e Hora --}}
                             <td>
@@ -143,95 +147,59 @@
                             </td>
                             {{!-- Comprovativo --}}
                             <td>
-                                <button class="tr_comp">Visualizar</button>
+                                <a href="{{#readPDF id }}{{/readPDF }}" class="tr_comp" id="tr_comp">Visualizar</a>
                             </td>
                             {{!-- Acoes --}}
                             <td>
-                                <button class="tr_more">Mais</button>
+                                <button class="tr_more" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop{{ id }}">Mais</button>
                             </td>
                         </tr>
-                        {{/each}}
 
-                        <!-- MODALS ================================================= -->
-
-                        <!--Freelancer Modal View -->
+                        <!-- Modal FOR MORE ACTIONS -->
                         <div class="modal fade " id="staticBackdrop{{ id }}" data-bs-backdrop="static"
                             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered ">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Mais Detalhes sobre
-                                            Freelancer
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Alterar o estado da
+                                            transação
                                         </h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-10 col-md-6 container-fluid   crf_mdl_data1">
-                                                {{!-- Image --}}
-                                                <img src="/admin/img/freelancers/{{ user.imagem }}" alt="">
-                                                {{!-- Name --}}
-                                                <h3> {{ user.nome }} </h3>
-                                                <span>Engenheiro de Software</span>
+                                        <div class="tr_flex">
+                                            {{!-- Form to aprove transation made --}}
+                                            <form id="aprovar">
+                                                <input type="text" hidden value="Confirmado" name="aprovar"
+                                                    id="{{ id }}">
+                                                <button type="submit" class="btn btn-success ft_mdl_dwl"> Aprovar
+                                                </button>
+                                            </form>
 
-                                                <ul>
-                                                    <li>
-                                                        <i class="bi bi-telephone-fill"></i> (+244) {{ phone }}
-                                                    </li>
-                                                    <li>
-                                                        <i class="bi bi-envelope-at-fill"></i>
-                                                        {{ user.email }}
-                                                    </li>
-                                                    <li>
-                                                        <i class="bi bi-globe-americas"></i> {{ user.pais }}
-                                                    </li>
-
-                                                </ul>
-                                            </div>
-                                            <div class="crf_mdl_data2 col-10 col-md-5 container-fluid">
-                                                <h3>Habilidades</h3>
-                                                <ul>
-                                                    {{#each habilidades}}
-                                                    <li> {{ name }}</li>
-                                                    {{/each}}
-                                                </ul>
-                                                {{!-- --}}
-                                                <h3 class="certificacoes"> Certificações</h3>
-                                                <ul>
-                                                    <li> {{ certificacoes }}</li>
-                                                </ul>
-                                            </div>
-
-                                            <hr class="col-10 container-fluid">
-                                            <div class="col-10 container-fluid crf_mdl_data3">
-                                                <h3>Sobre o Freelancer</h3>
-                                                <div>
-                                                    {{ sobre }}
-                                                </div>
-                                            </div>
+                                            {{!-- Form to reject a transation made --}}
+                                            <form id="rejeitar">
+                                                <input type="text" hidden value="Rejeitado" name="rejeitar"
+                                                    id="{{ id }}">
+                                                <button type="submit" class="btn btn-danger ft_mdl_dwl"> Rejeitar
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Fechar</button>
-                                        <a href="/dashboard/freelancer/baixar_cv/{{ id }}" type="button"
-                                            class="btn btn-primary ft_mdl_dwl"> <i
-                                                class="bi bi-cloud-arrow-down-fill"></i>
-                                            Baixar CV</a>
-                                        <a href="/dashboard/freelancer/baixar_bi/{{ id }}" type="button"
-                                            class="btn btn-success ft_mdl_dwl"> <i
-                                                class="bi bi-cloud-arrow-down-fill"></i>
-                                            Baixar BI</a>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- MODALS ================================================= -->
-                        <div class="modal fade" id="deleteCrowdfunding" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+                        {{/each}}
+
+                        <!-- MODALS TO DELETE A TRANSATION ================================================= -->
+                        <div class="modal fade" id="deleteCrowdfunding" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered ">
                                 <div class="modal-content ">
                                     <div class="modal-body crf_delete_alert">
@@ -250,8 +218,6 @@
                             </div>
                         </div>
 
-
-
                     </tbody>
                 </table>
 
@@ -260,4 +226,49 @@
         </div>
     </div>
 </main>
+<script>
+    // Asigning DOM element Form
+    const aprovarFom = document.getElementById('aprovar');
+    const rejeitarFom = document.getElementById('rejeitar');
+
+    // Add Eventlistener for aprovarFom element
+    aprovarFom.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const aprovar = aprovarFom.aprovar.value;
+        const transID = aprovarFom.aprovar.id;
+        const alterPath = '/dashboard/crowdfunding/detalhes/alterar/transID';
+        const data = { aprovar: aprovar };
+
+        try {
+            // Sending data to server process
+            const response = await fetch(alterPath, {
+                method: 'PUT',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            // Receiveing data from server process
+            const result = await response.json();
+            console.log(result)
+
+        } catch (err) {
+            console.error(err);
+        }
+    });
+
+    // Add Eventlistener for rejeitarFom element
+    rejeitarFom.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const rejeitar = rejeitarFom.rejeitar.value;
+        const path = '/dashboard/crowdfunding/detalhes/alterar/';
+        const data = { rejeitar: rejeitar };
+
+    });
+
+
+</script>
 {{> dashFooter }}

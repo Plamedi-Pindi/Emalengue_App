@@ -58,7 +58,7 @@ const details = async (req, res) => {
         let totalValue = 0;
         let vg_purcent = 0;
 
-        // Methode to assign to "totalValue" variable will get the su of all crwodfunding "valor"
+       // Method to assign to "totalValue" sum of all transation value
         transacoes.forEach(element => {
             totalValue += element.valor;
         });

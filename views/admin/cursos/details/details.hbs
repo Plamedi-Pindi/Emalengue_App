@@ -1,0 +1,125 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="curso_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/cursos">Cursos</a></li>
+                    <li><a href="/dashboard/cursos/detalhes">Detalhes</a></li>
+                </ul>
+            </div>
+        </div>
+
+        {{!-- Details Container --}}
+        <div class="details_container">
+
+            <div class="row">
+                <div class="col-11 col-md-7  cr_dt_content container-fluid">
+                    <h1>Titulo do curso</h1>
+                    <div class="cr_dt_cont">
+                        <img src="/admin/img/1.webp" ></img>
+                        <a href="/dashboard/cursos/detalhes/acompanhar">Começar Agora</a>
+
+                        {{!-- --}}
+                        <div id="dt_more_ingo">
+                            <ul class="dt_mr_btn">
+                                <li><button id="dt_modules">Modulos</button></li>
+                                <li><button id="dt_description">Descrição</button></li>
+                            </ul>
+                            <div id="dt_module_show">
+                                <ul>
+                                    <li>
+                                        <div>1</div> Modulo 1
+                                    </li>
+                                    <li>
+                                        <div>2</div> Modulo 2
+                                    </li>
+                                    <li>
+                                        <div>3</div> Modulo 3
+                                    </li>
+                                    <li>
+                                        <div>4</div> Modulo 4
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="dt_desc_show">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga nisi autem tempore
+                                dolore. Nam officiis quaerat quidem laboriosam fugiat sunt illum beatae. Nostrum tempore
+                                placeat temporibus officia sed adipisci commodi!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-11 col-md-4 cr_dt_info container-fluid">
+                    <div>
+                        <ul>
+                            <li>
+                                <span>Modulos:</span>
+                                <span class="last">3</span>
+                            </li>
+                            <li>
+                                <span>Nível:</span>
+                                <span class="last">Sem Classificação</span>
+                            </li>
+                            <li>
+                                <span>Custo:</span>
+                                <span class="last">40 000,00 kz</span>
+                            </li>
+                            <li>
+                                <span>Inscritos:</span>
+                                <span class="last">3 000</span>
+                            </li>
+                            <li>
+                                <span>Publicado em:</span>
+                                <span class="last">2024-02-02</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
+                        <a href="#" class="btn btn-danger"> <i class="bi bi-trash3"></i> Eliminar</a>
+                        <a href="/dashboard/cursos/detalhes/alunos" class="btn btn-warning"> <i class="bi bi-eye"></i> inscritos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- MAIN END -->
+<script>
+    const descShow = document.getElementById('dt_description');
+    const moduleShow = document.getElementById('dt_modules');
+    const dt_desc_show = document.getElementById('dt_desc_show');
+    const dt_module_show = document.getElementById('dt_module_show');
+
+    moduleShow.style.borderBottom = "3px solid rgb(2, 22, 90)";
+    moduleShow.style.background = "#ddd";
+
+    descShow.addEventListener("click", () => {
+        dt_desc_show.style.display = "block";
+        dt_module_show.style.display = "none";
+        //
+        descShow.style.background = "#ddd";
+        descShow.style.borderBottom = "3px solid rgb(2, 22, 90)";
+        //
+        moduleShow.style.background = "#eee";
+        moduleShow.style.borderBottom = "none";
+
+    })
+
+    moduleShow.addEventListener("click", () => {
+        dt_desc_show.style.display = "none";
+        dt_module_show.style.display = "block";
+
+        descShow.style.background = "#eee";
+        descShow.style.borderBottom = "none";
+
+        moduleShow.style.borderBottom = "3px solid rgb(2, 22, 90)";
+        moduleShow.style.background = "#ddd";
+    })
+
+
+</script>
+{{> dashFooter }}

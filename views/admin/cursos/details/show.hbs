@@ -1,0 +1,49 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="curso_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/cursos">Cursos</a></li>
+                    <li><a href="/dashboard/cursos/detalhes">Detalhes</a></li>
+                    <li><a href="/dashboard/cursos/detalhes/acompanhar">Acompanhar o curso</a></li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <div class="course_watch_container">
+            {{!-- BAR START --}}
+            <div class="cr_wt_bar">
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle dropdown_wt" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Titulo do modulo
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            {{!-- BAR END --}}
+
+            {{!-- --}}
+            <div class="row cr_wt_content" >
+                <h1>Titulo do curso</h1>
+                <div class="col-11 col-md-8 container-fluid">
+                    <iframe src="https://youtube.com" frameborder="0"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<!-- MAIN END -->
+{{> dashFooter }}

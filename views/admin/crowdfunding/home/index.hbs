@@ -34,25 +34,29 @@
                     <div class="content">
                         <h4> {{ titulo }} </h4>
                         <span> by {{ user.nome }} </span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, maxime.</p>
+                        <p>{{#TruncateText descricao 80 }} {{/TruncateText }}   </p>
                     </div>
                     <div class="detail">
                         <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="83"
                             aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-bar " style="width: 83%"></div>
+                            {{!-- Progress bar marcation --}}
+                            <div class="progress-bar " style="width: {{#transPurcetage transacoes ./valor_meta}}{{/transPurcetage }}% "></div>
                         </div>
                         <ul>
-                            <li class="first">83%</li>
+                            {{!-- Purcentagem para chegar a meta --}}
+                            <li class="first">
+                                {{#transPurcetage transacoes ./valor_meta}} {{/transPurcetage }}%
+                            </li>
+                            {{!-- Valo arrecadado --}}
                             <li class="second">
-                                {{#each transacoes}}
-                                   {{#add 1 2 }}
-                                   {{/add  }}
-                                {{/each}}
-                                66.430,00 AO
+                                {{#forCrfValueSum transacoes}}
+                                    {{ valor }}
+                                {{/forCrfValueSum }}
                                 <span>Levantados</span>
                             </li>
+                            {{!-- Dias restantes --}}
                             <li class="third">
-                                26 dias
+                                {{#crowdDuration data duracao}} {{/crowdDuration }} dias
                                 <span>restates</span>
                             </li>
                         </ul>

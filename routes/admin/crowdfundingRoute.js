@@ -16,6 +16,10 @@ crowdfundig.get('/deleteCrowdfundig/:id', crowdfundigController.deleteCrowfundin
 crowdfundig.get('/atualizacao/:id', crowdfundigController.updateView);
 // Route to send Update data to server
 crowdfundig.post('/atualizar/:id',crowdfundigController.imageUpdata, crowdfundigController.updateData);
+// Route to read PDF Document
+crowdfundig.get('/lercomprovativo/:id', crowdfundigController.readPDF);
+// Route to alter Transation Status
+crowdfundig.put('/detalhes/alterar/:id', crowdfundigController.transationStatus);
 
 
 module.exports = crowdfundig;

@@ -117,7 +117,8 @@
                     email_warnig1.innerHTML = result[1]
                 }
                 else if (result.user) {
-                    location.assign('/')
+                    //location.assign('/');
+                    history.back();
                 }
 
             } catch (err) {

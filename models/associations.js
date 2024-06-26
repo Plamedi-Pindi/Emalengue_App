@@ -8,6 +8,61 @@ const Curso = require('./Curso')
 const Aula = require('./Aula')
 const Transacao = require('./Transacao')
 const Crowdfunding = require('./Crowdfundig')
+const Modulo = require('./Modulo');
+const Telefone = require('./Telefone');
+const Aluno = require('./Aluno');
+
+
+
+// Many-To-May between Curso and Alunos Tables =========================
+Aluno.belongsToMany(Curso, {
+    as: 'cursos',
+    through: 'inscricoes',
+    onDelete: 'NOT NULL',
+    onUpdate: 'CASCADE',
+    foreignKey: {
+        name: 'aluno_id',
+        allowNull: false
+    }
+})
+
+Curso.belongsToMany(Aluno, {
+    as: 'alunos',
+    through: 'inscricoes',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    foreignKey: {
+        name: 'curso_id',
+        allowNull: false
+    }
+})
+
+
+// Many-To-One between USER and TELEFONE Tables =====================================================
+
+Telefone.belongsTo(User, { foreignKey: 'user_id' });
+
+User.hasMany(Telefone, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    foreignKey: {
+        name: 'user_id',
+        allowNull: false
+    },
+});
+
+// // Many-To-One between Cursos and Modulo Tables =====================================================
+
+Modulo.belongsTo(Curso, { foreignKey: 'curso_id' });
+
+Curso.hasMany(Modulo, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    foreignKey: {
+        name: 'curso_id',
+        allowNull: false
+    },
+});
 
 
 // Many-To-May between Projeto and Freelancer Tables =========================================

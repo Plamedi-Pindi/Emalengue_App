@@ -1,0 +1,140 @@
+@import '../main';
+@import '../fonts';
+@import '../color';
+
+.curso_breadcrumbs {
+    @include container();
+}
+
+.allCourse_container {
+    @include container();
+
+    // BAR START ============
+    .allCourse_bar {
+        border-radius: 5px;
+        box-shadow: 1px 5px 10px #ddd;
+        font-size: 15px;
+
+        .bar_box {
+            list-style: none;
+            padding: 0 10px;
+            padding-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+
+            li {
+                margin-right: 10px;
+                margin-bottom: 1rem;
+            }
+
+            li:last-child {
+                margin-right: 0px;
+            }
+        }
+
+        #all_c_btn {
+            padding: 10px;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            font-family: $roboto;
+
+        }
+
+        .dropdown_category {
+            background: #eee;
+            color: #333;
+            font-size: 15px;
+            padding: 8px;
+            font-family: $roboto;
+        }
+
+        .dropdown_category:focus {
+            border: none;
+            outline: none;
+        }
+
+        // FORM ================
+        form {
+            input {
+                width: 270px;
+                padding: 6px;
+                padding-left: 10px;
+                color: #555;
+                font-size: 15px;
+                font-family: $roboto;
+
+                border: solid 1px #ddd;
+                border-radius: 5px;
+                outline: none;
+            }
+        }
+    }
+
+    // BAR END ==============
+
+    // CONTENT START ==============
+    .allcourse_content {
+        border-radius: 5px;
+        font-size: 15px;
+    }
+
+    // CONTENT END ================
+    .allcourse_content {
+        padding: 20px;
+        
+        .allCourse_card {
+            box-shadow: 1px 5px 10px #ddd;
+            padding: 0;
+            width: 280px;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            // margin-left: 2px;
+            
+
+            img {
+                width: 100%;
+            }
+
+            .acl_card_content{
+                padding: 10px;
+                padding-bottom: 1rem;
+
+                h5 {
+                    font-size: 17px;
+                    color: #333;
+                    font-weight: 600;
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                    font-family: $roboto;
+
+                }
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 13px;
+                    color: #888;
+                    font-family: $roboto;
+
+
+                    i {
+                        margin-right: 3px;
+                    }
+                }
+                p {
+                    font-size: 14px;
+                    color: #777;
+                    font-family: $roboto;
+                }
+
+               
+            }
+        }
+    }
+
+}  //End

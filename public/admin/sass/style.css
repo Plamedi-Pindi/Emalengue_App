@@ -43,7 +43,7 @@ footer {
 }
 
 /***** GENERAL CONFIG END *****/
-/***** IMPORTING FILE START *****/
+/* ======================**** IMPORTING FILE START =============================*****/
 .header-container {
   display: flex !important;
   justify-content: space-between;
@@ -217,7 +217,8 @@ footer {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding-bottom: 0;
 }
 
@@ -267,7 +268,8 @@ footer {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
 }
 .fr_container table .fr_name {
   font-size: 15px;
@@ -432,7 +434,8 @@ footer {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding-bottom: 0;
 }
 
@@ -442,7 +445,8 @@ footer {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   font-family: "Roboto", sans-serif;
 }
 .pj_container .pj_search {
@@ -553,7 +557,8 @@ footer {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding: 6px;
   padding-top: 0.5rem;
   display: flex;
@@ -575,7 +580,8 @@ footer {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding: 10px;
   font-family: "Roboto", sans-serif;
 }
@@ -682,7 +688,8 @@ footer {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding-bottom: 0;
 }
 
@@ -692,7 +699,8 @@ footer {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding: 20px;
   font-family: "Roboto", sans-serif;
   background: #eee !important;
@@ -918,7 +926,6 @@ tr {
 
 .breadcrumbs {
   font-family: "Roboto", sans-serif;
-  padding: 10px;
 }
 .breadcrumbs ul {
   margin: 0;
@@ -1266,7 +1273,8 @@ tr {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding-bottom: 0;
 }
 
@@ -1276,7 +1284,8 @@ tr {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding: 10px;
   position: relative;
 }
@@ -1596,7 +1605,8 @@ tr {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding-bottom: 0;
 }
 
@@ -1606,7 +1616,8 @@ tr {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   overflow-x: auto;
 }
 .users_container table .us_name {
@@ -1697,7 +1708,8 @@ tr {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
 }
 
 .icon {
@@ -1807,7 +1819,8 @@ tr {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding-bottom: 0;
 }
 
@@ -1817,7 +1830,8 @@ tr {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding: 15px;
   font-family: "Roboto", sans-serif;
   font-size: 15px;
@@ -1869,7 +1883,8 @@ tr {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding: 15px;
   padding-top: 2rem;
   font-family: "Roboto", sans-serif;
@@ -2092,7 +2107,8 @@ tr {
   margin-bottom: 1.5rem;
   border-radius: 4px;
   box-shadow: 1px 2px 5px #ddd;
-  padding-bottom: 1.5rem;
+  padding: 10px;
+  font-size: 15px;
   padding-top: 2rem;
 }
 .crf_dtails_container .scroll_area {
@@ -2137,6 +2153,8 @@ tr {
   background: rgb(255, 166, 0);
   border-radius: 4px;
   color: #fff;
+  cursor: pointer;
+  font-size: 15px;
 }
 .crf_dtails_container table .tr_comp,
 .crf_dtails_container table .tr_more {
@@ -2146,12 +2164,28 @@ tr {
   font-size: 16px;
   margin: 0;
   color: #fff;
+  font-size: 15px;
 }
 .crf_dtails_container table .tr_comp {
   background: rgb(0, 132, 255);
+  text-decoration: none;
 }
 .crf_dtails_container table .tr_more {
   background: rgb(0, 4, 255);
+}
+
+.crf_delete_alert {
+  background-color: rgb(248, 135, 135);
+  border-radius: 5px;
+}
+
+.tr_flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tr_flex form {
+  margin-right: 10px;
 }
 
 /* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
@@ -2179,6 +2213,482 @@ tr {
   height: 50px;
 }
 
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.curso_breadcrumbs {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.newCourse_container {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding: 10px;
+  font-size: 15px;
+  padding: 20px;
+  font-size: 15px;
+  color: #555;
+}
+.newCourse_container h2 {
+  font-size: 23px;
+  margin-bottom: 2rem;
+  margin-left: 30px;
+  font-weight: bold;
+  margin-top: 1.3rem;
+  border-left: 5px solid rgb(255, 145, 0);
+  padding-left: 10px;
+}
+.newCourse_container form div {
+  margin-bottom: 15px;
+}
+.newCourse_container form p {
+  margin: 0;
+  font-size: 14px;
+}
+.newCourse_container form label {
+  font-family: "Roboto", sans-serif;
+  display: block;
+  margin-bottom: 3px;
+}
+.newCourse_container form span {
+  color: red;
+}
+.newCourse_container form input {
+  width: 100%;
+  color: #444;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  background-color: #eee;
+  padding: 5px;
+  padding-left: 10px;
+  border: none;
+  border-bottom: 2px solid rgb(255, 145, 0);
+  outline: none;
+}
+.newCourse_container form input[type=file] {
+  padding: 20px;
+  border: 2px dashed rgb(255, 145, 0);
+  border-radius: 10px;
+}
+.newCourse_container form select {
+  width: 100%;
+  color: #444;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  background-color: #eee;
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid rgb(255, 145, 0);
+  outline: none;
+}
+.newCourse_container form select option {
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+}
+.newCourse_container form textarea {
+  width: 100%;
+  margin: 0 auto;
+  color: #555;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+}
+.newCourse_container form #moduleAdd {
+  margin-top: 10px;
+}
+.newCourse_container form #moduleAdd button {
+  padding: 5px;
+  color: rgb(255, 145, 0);
+  font-size: 15px;
+  background: transparent;
+  border: none;
+  float: right;
+  margin-right: 20px;
+}
+.newCourse_container form #moduleAdd button i {
+  font-size: 15px;
+  margin-right: 5px;
+}
+.newCourse_container form #moduleAdd #moduleDelete {
+  display: none;
+}
+.newCourse_container form button[type=submit] {
+  font-size: 15px;
+  background-color: rgb(0, 47, 255);
+  color: #eee;
+  padding: 7px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 60%;
+  margin: 2rem auto;
+}
+.newCourse_container form #moduleContainer h5 {
+  font-size: 18px;
+  margin-left: 30px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.curso_breadcrumbs {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.allCourse_container {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding: 10px;
+  font-size: 15px;
+}
+.allCourse_container .allCourse_bar {
+  border-radius: 5px;
+  box-shadow: 1px 5px 10px #ddd;
+  font-size: 15px;
+}
+.allCourse_container .allCourse_bar .bar_box {
+  list-style: none;
+  padding: 0 10px;
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.allCourse_container .allCourse_bar .bar_box li {
+  margin-right: 10px;
+  margin-bottom: 1rem;
+}
+.allCourse_container .allCourse_bar .bar_box li:last-child {
+  margin-right: 0px;
+}
+.allCourse_container .allCourse_bar #all_c_btn {
+  padding: 10px;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+}
+.allCourse_container .allCourse_bar .dropdown_category {
+  background: #eee;
+  color: #333;
+  font-size: 15px;
+  padding: 8px;
+  font-family: "Roboto", sans-serif;
+}
+.allCourse_container .allCourse_bar .dropdown_category:focus {
+  border: none;
+  outline: none;
+}
+.allCourse_container .allCourse_bar form input {
+  width: 270px;
+  padding: 6px;
+  padding-left: 10px;
+  color: #555;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  border: solid 1px #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+.allCourse_container .allcourse_content {
+  border-radius: 5px;
+  font-size: 15px;
+}
+.allCourse_container .allcourse_content {
+  padding: 20px;
+}
+.allCourse_container .allcourse_content .allCourse_card {
+  box-shadow: 1px 5px 10px #ddd;
+  padding: 0;
+  width: 280px;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+.allCourse_container .allcourse_content .allCourse_card img {
+  width: 100%;
+}
+.allCourse_container .allcourse_content .allCourse_card .acl_card_content {
+  padding: 10px;
+  padding-bottom: 1rem;
+}
+.allCourse_container .allcourse_content .allCourse_card .acl_card_content h5 {
+  font-size: 17px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+}
+.allCourse_container .allcourse_content .allCourse_card .acl_card_content ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #888;
+  font-family: "Roboto", sans-serif;
+}
+.allCourse_container .allcourse_content .allCourse_card .acl_card_content ul i {
+  margin-right: 3px;
+}
+.allCourse_container .allcourse_content .allCourse_card .acl_card_content p {
+  font-size: 14px;
+  color: #777;
+  font-family: "Roboto", sans-serif;
+}
+
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.details_container {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding: 10px;
+  font-size: 15px;
+}
+.details_container h1 {
+  font-size: 23px;
+  font-family: "Roboto", sans-serif;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.details_container .cr_dt_content .cr_dt_cont {
+  box-shadow: 1px 5px 10px #eee;
+  padding: 10px;
+}
+.details_container .cr_dt_content img {
+  margin: 0 auto;
+  width: 100%;
+  display: block;
+  height: 300px;
+  margin: 0 auto;
+}
+.details_container .cr_dt_content a {
+  display: block;
+  max-width: 300px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  color: #eee;
+  text-align: center;
+  padding: 6px;
+  margin: 1rem auto;
+  background-color: rgb(2, 22, 90);
+}
+.details_container #dt_more_ingo {
+  border-radius: 0 0 5px 5px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.details_container #dt_more_ingo .dt_mr_btn {
+  list-style: none;
+  padding: 0;
+  background-color: #eee;
+  display: flex;
+}
+.details_container #dt_more_ingo .dt_mr_btn button {
+  padding: 10px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  border: none;
+  width: 110px;
+  background-color: #eee;
+}
+.details_container #dt_more_ingo,
+.details_container .dt_mr_btn {
+  border-radius: 10px 10px 0px 0px;
+}
+.details_container #dt_modules {
+  border-radius: 10px 0 0 0;
+  border-right: 1px solid #eee !important;
+}
+.details_container #dt_module_show {
+  padding: 10px;
+}
+.details_container #dt_module_show ul {
+  list-style: none;
+  padding: 0;
+}
+.details_container #dt_module_show ul li {
+  margin-bottom: 10px;
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+.details_container #dt_module_show ul li div {
+  border: 1px solid rgb(2, 44, 182);
+  padding: 10px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+.details_container #dt_module_show ul li:last-child {
+  border-bottom: none;
+}
+.details_container #dt_desc_show {
+  display: none;
+  padding: 20px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  color: #666;
+  text-transform: capitalize;
+  text-align: justify;
+}
+.details_container #dt_module_show {
+  display: block;
+}
+
+.cr_dt_info div {
+  box-shadow: 1px 5px 10px #ddd;
+  padding: 10px;
+  margin-top: 4rem;
+}
+.cr_dt_info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+.cr_dt_info ul li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: dashed 1px #888;
+  margin-bottom: 1rem;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  color: #555;
+}
+.cr_dt_info ul li .last {
+  color: rgb(199, 129, 0);
+}
+.cr_dt_info a {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.course_watch_container {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding: 10px;
+  font-size: 15px;
+}
+.course_watch_container .cr_wt_bar {
+  border-radius: 5px;
+  box-shadow: 1px 5px 10px #ddd;
+  font-size: 15px;
+  padding: 5px;
+}
+.course_watch_container .cr_wt_bar .dropdown_wt {
+  background: #eee;
+  color: #333;
+  font-size: 15px;
+  padding: 8px;
+  font-family: "Roboto", sans-serif;
+}
+.course_watch_container .cr_wt_bar .dropdown_wt:focus {
+  border: none;
+  outline: none;
+}
+.course_watch_container .cr_wt_content {
+  padding: 10px;
+}
+.course_watch_container iframe {
+  margin-top: 1rem;
+  width: 100%;
+  height: 250px;
+}
+.course_watch_container h1 {
+  font-size: 23px;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  margin-top: 1rem;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 720px) {
+  iframe {
+    height: 300px !important;
+  }
+}
+@media (min-width: 990px) {
+  iframe {
+    height: 350px !important;
+  }
+}
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+.cr_sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.cr_sub form input {
+  padding: 4px;
+  padding-left: 10px;
+  outline: none;
+  border: 1px solid #888;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  border-radius: 5px;
+  width: 250px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #333;
+}
+
+.cr_alunos_container {
+  background-color: #fff;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px #ddd;
+  padding: 10px;
+  font-size: 15px;
+}
+.cr_alunos_container .scroll_area {
+  overflow-x: auto;
+}
+
+@media (min-width: 320px) {
+  form input {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 769px) {
+  form input {
+    margin-top: 0;
+  }
+}
 /***** IMPORTING FILE END *****/
 main::-webkit-scrollbar {
   width: 8px;

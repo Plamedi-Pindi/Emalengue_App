@@ -12,6 +12,14 @@ const Curso = db.sequelize.define('cursos', {
         type: db.Sequelize.STRING,
         allowNull: false,
     },
+    playlist: {
+        type: db.Sequelize.STRING,
+        allowNull: true,
+    },
+    image: {
+        type: db.Sequelize.STRING,
+        allowNull: true,
+    },
     descricao: {
         type: db.Sequelize.TEXT,
         allowNull: true
