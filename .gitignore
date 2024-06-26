@@ -1,0 +1,11 @@
+# Ignore log files
+*.log
+
+# But don't ignore server.log
+!server.log
+
+# Ignore specific folder
+/node_modules
+
+# Ignore environment file
+.env
