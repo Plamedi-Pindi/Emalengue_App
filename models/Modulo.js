@@ -21,17 +21,19 @@ const Modulo = db.sequelize.define('modulos', {
         type: db.Sequelize.STRING,
         allowNull: true,
     },
-    cusro_id: {
+    cusro_mod_id: {
         type: db.Sequelize.INTEGER,
         references: {
             model: 'cursos',
             key: 'id',
         },
-        constraints:'curso_id_fk1',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
     }
+},
+{
+    timestamps: false
 });
 
-Modulo.sync()
+Modulo.sync();
 module.exports = Modulo;

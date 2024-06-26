@@ -18,13 +18,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
     },
-      cusro_id: {
+      cusro_mod_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'cursos',
           key: 'id',
         },
-        constraints: 'curso_id_fk1',
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       }

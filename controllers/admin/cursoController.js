@@ -83,15 +83,56 @@ const publicarCurso = async (req, res) => {
     if (req.body.nivel) {
         nivel = req.body.nivel;
     } else {
-        nivel = 'Não classificado';
+        nivel = 'sem Classificação';
     }
 
     const date = new Date();
     const hora = date.getTime();
-    console.log(req.body);
+ 
 
     if (req.body.moduleName) {
-        const name = req.body.moduleNmae
+        const moduleName = req.body.moduleName;
+        const order = req.body.order
+
+        await Curso.create({
+            name: name,
+            descricao: descricao,
+            categoria_id: categoria_id,
+            user_id: user_id,
+            custo: custo,
+            nivel: nivel,
+            data: data,
+            hora: hora,
+            image: image,
+        }).then( async result => {
+            // Check if the module is or not an array
+            if (Array.isArray(moduleName)) {
+
+                for (let i = 0; i < moduleName.length; i++) {
+                    
+                    const courseModule = await Modulo.create({
+                        nome: moduleName[i],
+                        playlist: playlist[i],
+                        cusro_mod_id: result.id,
+                        ordem: order[i],
+                    })
+                }
+                console.log('Dados enviados');
+            } else {
+                const courseModule = await Modulo.create({
+                    nome: moduleName,
+                    playlist: playlist,
+                    cusro_mod_id: result.id,
+                    ordem: order,
+                })
+                console.log(courseModule.toJSON())
+            }
+        }).catch(error => {
+            console.error('Algo está errado ao criar os modulos: ' + error);
+        });
+    } else {
+
+        // CREATING CURSO INSTANCE
         await Curso.create({
             name: name,
             descricao: descricao,
@@ -103,36 +144,11 @@ const publicarCurso = async (req, res) => {
             data: data,
             hora: hora,
             image: image,
-        }).then( async result => {
+        }).then( result => {
             console.log(result.toJSON())
-            await Modulo.create({
-                nome: '',
-                playlist: '',
-                curso_id: '',
-                order: '',
-            })
-        }).catch(error => {
+        }).catch( error => {
             console.error('Algo está errado: ' + error);
         });
-    } else {
-
-        // CREATING CURSO INSTANCE
-        // await Curso.create({
-        //     name: name,
-        //     descricao: descricao,
-        //     categoria_id: categoria_id,
-        //     user_id: user_id,
-        //     custo: custo,
-        //     nivel: nivel,
-        //     playlist: playlist,
-        //     data: data,
-        //     hora: hora,
-        //     image: image,
-        // }).then( result => {
-        //     console.log(result.toJSON())
-        // }).catch( error => {
-        //     console.error('Algo está errado: ' + error);
-        // });
     }
 
 }

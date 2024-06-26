@@ -118,7 +118,11 @@
                 }
                 else if (result.user) {
                     //location.assign('/');
+                    
                     history.back();
+                    setTimeout(()=>{
+                        window.location.reload();
+                    }, 1000);
                 }
 
             } catch (err) {
