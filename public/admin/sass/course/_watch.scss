@@ -45,6 +45,36 @@
 
 }
 
+.mod_dropdow_container {
+    
+    ul{
+        // width: 500px !important;
+        
+        li{ 
+
+            a {
+                display: flex;
+                div {
+                    border: 1px solid rgb(2, 44, 182);
+                    padding: 10px;
+                    font-size: 15px;
+                    font-family: $roboto;
+                    text-align: center;
+    
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 100%;
+    
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
 @media(min-width: 720px) {
     iframe {
         // margin-top: 1rem;

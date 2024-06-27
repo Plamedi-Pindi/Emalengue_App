@@ -9,11 +9,11 @@ curso.get('/', cursoController.index);
 // NEW COURSE ROUTE =============================================
 curso.get('/novocurso', cursoController.addCourseView);
 // COURSE DETAILS ROUTE =========================================
-curso.get('/detalhes', cursoController.courseDetails);
+curso.get('/detalhes/:id', cursoController.courseDetails);
 // COURSE DETAILS ROUTE =========================================
-curso.get('/detalhes/acompanhar', cursoController.courseWhatch);
+curso.get('/detalhes/acompanhar/:id', cursoController.courseWhatch);
 // COURSE DETAILS ROUTE =========================================
-curso.get('/detalhes/alunos', cursoController.alunos);
+curso.get('/detalhes/alunos/:id', cursoController.alunos);
 // PUBLISHING NEW COURSE ROUTE ==================================
 curso.post('/publicar/:id', cursoController.imgUpload, cursoController.publicarCurso);
 

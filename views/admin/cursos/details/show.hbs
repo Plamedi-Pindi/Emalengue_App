@@ -9,25 +9,30 @@
                 <ul>
                     <li><a href="/dashboard">Home</a></li>
                     <li><a href="/dashboard/cursos">Cursos</a></li>
-                    <li><a href="/dashboard/cursos/detalhes">Detalhes</a></li>
-                    <li><a href="/dashboard/cursos/detalhes/acompanhar">Acompanhar o curso</a></li>
+                    <li><a
+                            href="/dashboard/cursos/detalhes/{{curso.id}}">Detalhes</a></li>
+                    <li><a
+                            href="/dashboard/cursos/detalhes/acompanhar/{{curso.id}}">Acompanhar
+                            o curso</a></li>
                 </ul>
             </div>
-            
+
         </div>
 
         <div class="course_watch_container">
             {{!-- BAR START --}}
             <div class="cr_wt_bar">
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle dropdown_wt" type="button" data-bs-toggle="dropdown"
+                <div class="dropdown mod_dropdow_container" >
+                    <button class="btn dropdown-toggle dropdown_wt"
+                        type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         Titulo do modulo
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        {{#each curso.modulos}}
+                            <li><a class="dropdown-item" href="#"> <div> {{ordem}} </div> {{nome}}</a></li>
+                        {{/each}}
+                       
                     </ul>
                 </div>
 
@@ -35,10 +40,28 @@
             {{!-- BAR END --}}
 
             {{!-- --}}
-            <div class="row cr_wt_content" >
-                <h1>Titulo do curso</h1>
+            <div class="row cr_wt_content">
+             
+                <h1> {{curso.name}} </h1>
+
                 <div class="col-11 col-md-8 container-fluid">
-                    <iframe src="https://youtube.com" frameborder="0"></iframe>
+
+                    {{#if iqual}}
+                        <iframe src="{{curso.playlist}}" frameborder="0"
+                            allowfullscreen="allowfullscreen"
+                            mozallowfullscreen="mozallowfullscreen"
+                            msallowfullscreen="msallowfullscreen"
+                            oallowfullscreen="oallowfullscreen"
+                            weifbkitallowfullscreen="webkitallowfullscreen"></iframe>
+                    {{else}}
+                        <iframe src="{{curso.modulos.[0].playlist}}" frameborder="0"
+                        allowfullscreen="allowfullscreen"
+                        mozallowfullscreen="mozallowfullscreen"
+                        msallowfullscreen="msallowfullscreen"
+                        oallowfullscreen="oallowfullscreen"
+                        webkitallowfullscreen="webkitallowfullscreen"></iframe>
+                    {{/if}}
+
                 </div>
             </div>
 

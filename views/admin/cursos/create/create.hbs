@@ -254,14 +254,20 @@
 
         // FECTH ===============
         try {
-
             const url = "/dashboard/cursos/publicar/{{ user.id }}";
             const data = new FormData(form);
-
+            // Fectch
             const response = await fetch(url, {
                 method: "POST",
                 body: data,
             });
+
+            const result = await response.json();
+            console.log(result);
+
+            if(result.message) {
+                location.assign('/dashboard/cursos')
+            }
 
         } catch (err) {
             console.log(err);

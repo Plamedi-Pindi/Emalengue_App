@@ -50,51 +50,26 @@
             {{!-- CONTENT  START --}}
             <div class="allcourse_content">
                 <div class="row">
-                    {{!-- CARD --}}
-                    <div class="allCourse_card col-11 col-md-4 container-fluid">
-                        <img src="/admin/img/1.webp" alt="" class="acl_img">
-                        <div class="acl_card_content">
-                            <h5>Titulo llllllllllllll</h5>
-                            <ul>
-                                <li><span><i class="bi bi-calendar-week"></i> 2024-06-2</span></li>
-                                <li><span class="acl_inscritos"> <i class="bi bi-mortarboard"></i> 1,2k Inscritos</span></li>
-                            </ul>
-                            <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, repellendus! </p>
-                            
-                            <a href="/dashboard/cursos/detalhes" class="btn btn-primary">Saber Mais</a>
-                        </div>
+            
+                    {{#each cursos }}
+                        {{!-- CARD --}}
+                        <div class="allCourse_card col-11 col-md-4 container-fluid">
+                            <img src="/admin/img/cursos/{{image}}" alt="" class="acl_img">
+                            <div class="acl_card_content">
+                                <h5> {{name}} </h5>
+                                <ul>
+                                    <li><span><i class="bi bi-calendar-week"></i> {{data}} </span></li>
+                                    <li><span class="acl_inscritos"> <i class="bi bi-mortarboard"></i> 1,2k Inscritos</span></li>
+                                </ul>
+                                <p> {{#TruncateText descricao 80}} {{/TruncateText}} </p>
+                                
+                                <a href="/dashboard/cursos/detalhes/{{id}}" class="btn btn-primary">Saber Mais</a>
+                            </div>
 
-                    </div>
-                    {{!-- CARD --}}
-                    <div class="allCourse_card col-11 col-md-4 container-fluid">
-                        <img src="/admin/img/1.webp" alt="" class="acl_img">
-                        <div class="acl_card_content">
-                            <h5>Titulo</h5>
-                            <ul>
-                                <li><span><i class="bi bi-calendar-week"></i> 2024-06-2</span></li>
-                                <li><span class="acl_inscritos"> <i class="bi bi-mortarboard"></i> 1,2k Inscritos</span></li>
-                            </ul>
-                            <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, repellendus! </p>
-                            
-                            <a href="#" class="btn btn-primary">Saber Mais</a>
                         </div>
-
-                    </div>
-                    {{!-- CARD --}}
-                    <div class="allCourse_card col-11 col-md-4 container-fluid">
-                        <img src="/admin/img/1.webp" alt="" class="acl_img">
-                        <div class="acl_card_content">
-                            <h5>Titulo</h5>
-                            <ul>
-                                <li><span><i class="bi bi-calendar-week"></i> 2024-06-2 </span></li>
-                                <li><span class="acl_inscritos"> <i class="bi bi-mortarboard"></i> 1,2k Inscritos</span></li>
-                            </ul>
-                            <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, repellendus! </p>
-                            
-                            <a href="#" class="btn btn-primary">Saber Mais</a>
-                        </div>
-
-                    </div>
+                        {{!-- CARD --}}
+                    {{/each}}
+                    
                 </div>
             </div>
             {{!-- CONTENT  END --}}

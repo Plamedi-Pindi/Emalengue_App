@@ -9,7 +9,7 @@
                 <ul>
                     <li><a href="/dashboard">Home</a></li>
                     <li><a href="/dashboard/cursos">Cursos</a></li>
-                    <li><a href="/dashboard/cursos/detalhes">Detalhes</a></li>
+                    <li><a href="/dashboard/cursos/detalhes/{{curso.id}}">Detalhes</a></li>
                 </ul>
             </div>
         </div>
@@ -19,11 +19,11 @@
 
             <div class="row">
                 <div class="col-11 col-md-7  cr_dt_content container-fluid">
-                    <h1>Titulo do curso</h1>
+                    <h1> {{curso.name}} </h1>
                     <div class="cr_dt_cont">
-                        <img src="/admin/img/1.webp" ></img>
-                        <a href="/dashboard/cursos/detalhes/acompanhar">Começar Agora</a>
-
+                    <img src="/admin/img/cursos/{{curso.image}}" ></img>
+                    <a href="/dashboard/cursos/detalhes/acompanhar/{{curso.id}}">Começar Agora</a>
+                    
                         {{!-- --}}
                         <div id="dt_more_ingo">
                             <ul class="dt_mr_btn">
@@ -32,24 +32,16 @@
                             </ul>
                             <div id="dt_module_show">
                                 <ul>
-                                    <li>
-                                        <div>1</div> Modulo 1
-                                    </li>
-                                    <li>
-                                        <div>2</div> Modulo 2
-                                    </li>
-                                    <li>
-                                        <div>3</div> Modulo 3
-                                    </li>
-                                    <li>
-                                        <div>4</div> Modulo 4
-                                    </li>
+                                    {{#each curso.modulos }}
+                                        <li>
+                                            <div> {{ ordem }} </div> {{ nome }}
+                                        </li>
+                                    {{/each}}
+                                    
                                 </ul>
                             </div>
                             <div id="dt_desc_show">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga nisi autem tempore
-                                dolore. Nam officiis quaerat quidem laboriosam fugiat sunt illum beatae. Nostrum tempore
-                                placeat temporibus officia sed adipisci commodi!
+                               {{ curso.descricao }}
                             </div>
                         </div>
                     </div>
@@ -59,15 +51,15 @@
                         <ul>
                             <li>
                                 <span>Modulos:</span>
-                                <span class="last">3</span>
+                                <span class="last">{{ moduloLength }}</span>
                             </li>
                             <li>
                                 <span>Nível:</span>
-                                <span class="last">Sem Classificação</span>
+                                <span class="last"> {{curso.nivel}} </span>
                             </li>
                             <li>
                                 <span>Custo:</span>
-                                <span class="last">40 000,00 kz</span>
+                                <span class="last"> {{#NumberFormat curso.custo}} {{/NumberFormat}} </span>
                             </li>
                             <li>
                                 <span>Inscritos:</span>
@@ -75,12 +67,12 @@
                             </li>
                             <li>
                                 <span>Publicado em:</span>
-                                <span class="last">2024-02-02</span>
+                                <span class="last"> {{curso.data}} </span>
                             </li>
                         </ul>
                         <a href="#" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
                         <a href="#" class="btn btn-danger"> <i class="bi bi-trash3"></i> Eliminar</a>
-                        <a href="/dashboard/cursos/detalhes/alunos" class="btn btn-warning"> <i class="bi bi-eye"></i> inscritos</a>
+                        <a href="/dashboard/cursos/detalhes/alunos/{{curso.id}}" class="btn btn-warning"> <i class="bi bi-eye"></i> inscritos</a>
                     </div>
                 </div>
             </div>

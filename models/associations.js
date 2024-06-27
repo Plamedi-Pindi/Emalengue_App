@@ -14,6 +14,18 @@ const Aluno = require('./Aluno');
 
 
 
+// One to One between Cursos and Categoria ============================================================
+Categoria.hasOne(Curso, {
+    onDelete: 'Set Null',
+    onUpdate: 'CASCADE',
+    foreignKey: {
+        name: 'categoria_id',
+        allowNull: false 
+    },
+})
+Curso.belongsTo(Categoria, { foreignKey: 'categoria_id' });
+
+
 // Many-To-May between Curso and Alunos Tables =========================
 Aluno.belongsToMany(Curso, {
     as: 'cursos',
@@ -53,13 +65,13 @@ User.hasMany(Telefone, {
 
 // // Many-To-One between Cursos and Modulo Tables =====================================================
 
-Modulo.belongsTo(Curso, { foreignKey: 'curso_id' });
+Modulo.belongsTo(Curso, { foreignKey: 'cusro_mod_id' });
 
 Curso.hasMany(Modulo, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     foreignKey: {
-        name: 'curso_id',
+        name: 'cusro_mod_id',
         allowNull: false
     },
 });

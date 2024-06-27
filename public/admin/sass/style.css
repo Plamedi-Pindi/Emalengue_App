@@ -2590,6 +2590,8 @@ tr {
 .cr_dt_info a {
   margin-right: 10px;
   margin-bottom: 10px;
+  font-size: 13px !important;
+  font-family: "Roboto", sans-serif !important;
 }
 
 /* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
@@ -2633,6 +2635,24 @@ tr {
   color: #333;
   margin-top: 1rem;
   margin-bottom: 10px;
+}
+
+.mod_dropdow_container ul li a {
+  display: flex;
+}
+.mod_dropdow_container ul li a div {
+  border: 1px solid rgb(2, 44, 182);
+  padding: 10px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin-right: 10px;
 }
 
 @media (min-width: 720px) {
