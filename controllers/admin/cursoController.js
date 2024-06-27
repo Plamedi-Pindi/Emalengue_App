@@ -6,23 +6,61 @@ const body = require('body-parser');
 const Categoria = require('../../models/Categoria');
 const Modulo = require('../../models/Modulo');
 const curso = require("../../routes/admin/cursoRoute");
+const youtubeEmbed = require('youtube-embed');
+
 
 
 // Idenx ===============================================================
 const index = async (req, res) => {
+    const page = req.query.page || 1; // Página atual
+    const pageSize = 9; // Número de itens por página
+    try {
 
-    await Curso.findAll({
-        order:[ 
-            [ 'id', 'DESC'], 
-        ]
-    }).then(result => {
+        const { count, rows } = await Curso.findAndCountAll({
+            order: [
+                ['id', 'DESC'],
+            ],
+            limit: pageSize,
+            offset: (page - 1) * pageSize
+        });
+
+        const totalPages = Math.ceil(count / pageSize);
+
+        // Calcular as condições para exibir os links de página anterior e próxima
+        const showPrevious = page > 1;
+        const showNext = page < totalPages;
+
+        let proxima = parseInt(page) + 1;
+        let anterior = parseInt(page) - 1;
 
         res.render('admin/cursos/index', {
             title: 'eMaLENGUE | Cursos',
             layout: 'main2',
-            cursos: result,
+            cursos: rows,
+            currentPage: page,
+            totalPages,
+            showPrevious,
+            showNext,
+            proxima,
+            anterior
         })
-    });
+
+        // await Curso.findAll({
+        //     order: [
+        //         ['id', 'DESC'],
+        //     ]
+        // }).then(result => {
+
+        //     res.render('admin/cursos/index', {
+        //         title: 'eMaLENGUE | Cursos',
+        //         layout: 'main2',
+        //         cursos: result,
+        //     })
+        // });
+    } catch (err) {
+        console.error('Erro ao buscar cursos:', err);
+    }
+
 }
 
 
@@ -45,16 +83,16 @@ const courseDetails = async (req, res) => {
 
     const item = req.params.id;
 
-    await Curso.findOne({ 
+    await Curso.findOne({
         where: { id: item },
         include: [
-            { model: Modulo},
-            { model: Categoria},
+            { model: Modulo },
+            { model: Categoria },
         ],
         // raw: true,
         // nest: true
-    }).then( result => {
-        
+    }).then(result => {
+
         const moduloLengtth = result.modulos.length;
 
         res.render('admin/cursos/details/details', {
@@ -70,13 +108,13 @@ const courseDetails = async (req, res) => {
 const courseWhatch = async (req, res) => {
     const item = req.params.id;
 
-    await Curso.findOne({ 
+    await Curso.findOne({
         where: { id: item },
         include: [
-            { model: Modulo},
-            { model: Categoria},
+            { model: Modulo },
+            { model: Categoria },
         ],
-    }).then( result => {
+    }).then(result => {
 
         const moduloLength = result.modulos.length;
         let major = false;
@@ -92,7 +130,7 @@ const courseWhatch = async (req, res) => {
 
         res.render('admin/cursos/details/show', {
             title: 'eMaLENGUE | Curso',
-            layout: 'main2', 
+            layout: 'main2',
             curso: result,
             major: major,
             iqual: iqual,
@@ -109,8 +147,9 @@ const alunos = (req, res) => {
 }
 
 
-/** PUBLICAR CURSO  ======================== */
-// MULTER
+/** PUBLICAR CURSO  ========================0==============================*/
+
+// MULTER *************************
 const storage = multer.diskStorage({
     destination: (req, file, cd) => {
         cd(null, "public/admin/img/cursos");
@@ -122,7 +161,26 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 const imgUpload = upload.single('img');
 
-//MAIN METHOD
+
+// EMBAD FUNCTION ****************************
+function getEmbedUrl(url) {
+    const playlistRegex = /[?&]list=([^#\&\?]*)/;
+    const videoRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^#\&\?]*)/;
+
+    const playlistMatch = url.match(playlistRegex);
+    const videoMatch = url.match(videoRegex);
+
+    if (playlistMatch) {
+        return `https://www.youtube.com/embed/videoseries?list=${playlistMatch[1]}`;
+    } else if (videoMatch) {
+        return `https://www.youtube.com/embed/${videoMatch[1]}`;
+    } else {
+        return null;
+    }
+}
+
+
+//MAIN METHOD **********************
 const publicarCurso = async (req, res) => {
     //CURSO ATTBUITES
     const name = req.body.title;
@@ -131,7 +189,7 @@ const publicarCurso = async (req, res) => {
     const user_id = req.params.id;
     const custo = req.body.coust;
     let nivel = '';
-    const playlist = req.body.playlist;
+    const playlist = getEmbedUrl(req.body.playlist);
     const data = req.body.date;
     const image = req.file.filename;
 
@@ -145,7 +203,7 @@ const publicarCurso = async (req, res) => {
 
     const date = new Date();
     const hora = date.getTime();
- 
+
     // Check if the course to be buplished going to or not have modules
     if (req.body.moduleName) {
         const moduleName = req.body.moduleName;
@@ -162,7 +220,7 @@ const publicarCurso = async (req, res) => {
             data: data,
             hora: hora,
             image: image,
-        }).then( async result => {
+        }).then(async result => {
 
             // Check if the module is or not an array
             if (Array.isArray(moduleName)) {
@@ -190,7 +248,7 @@ const publicarCurso = async (req, res) => {
                     cusro_mod_id: result.id,
                     ordem: order,
                 })
-              
+
                 const alert = {
                     message: 'O curso foi publicado com sucesso!'
                 }
@@ -213,13 +271,13 @@ const publicarCurso = async (req, res) => {
             data: data,
             hora: hora,
             image: image,
-        }).then( result => {
-            
+        }).then(result => {
+
             const alert = {
                 message: 'O curso foi publicado com sucesso!'
             }
             res.status(200).json(alert)
-        }).catch( error => {
+        }).catch(error => {
             console.error('Algo está errado: ' + error);
         });
     }

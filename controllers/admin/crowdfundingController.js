@@ -8,6 +8,7 @@ const multer = require('multer')
 const fs = require('fs').promises;
 const { PDFDocument } = require('pdf-lib');
 const FS = require('fs');
+const youtubeEmbed = require('youtube-embed');
 
 
 // INDEX ====================================================
@@ -105,13 +106,31 @@ const storage = multer.diskStorage({
     }
 })
 const upload = multer({ storage })
-const imageUpload = upload.single('img')
+const imageUpload = upload.single('img');
+
+// EMBAD FUNCTION ****************************
+function getEmbedUrl(url) {
+    const playlistRegex = /[?&]list=([^#\&\?]*)/;
+    const videoRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^#\&\?]*)/;
+    
+    const playlistMatch = url.match(playlistRegex);
+    const videoMatch = url.match(videoRegex);
+  
+    if (playlistMatch) {
+      return `https://www.youtube.com/embed/videoseries?list=${playlistMatch[1]}`;
+    } else if (videoMatch) {
+      return `https://www.youtube.com/embed/${videoMatch[1]}`;
+    } else {
+      return null;
+    }
+  }
+
 
 /** METHODE TO CREATE A NEW CROWDFUNDING =========================================*/
 const create = async (req, res) => {
     //Getting data from fornt-end
     const title = req.body.title;
-    const link = req.body.link;
+    const link = getEmbedUrl(req.body.link);
     const place = req.body.place;
     const valor = req.body.valor;
     const date = req.body.date;

@@ -1,5 +1,6 @@
 // Import config ================================================
 const db = require('./db');
+const pagination = require('sequelize-paginate');
 
 const Curso = db.sequelize.define('cursos', {
     id: {
@@ -70,6 +71,8 @@ const Curso = db.sequelize.define('cursos', {
     })
 
   
+    pagination.paginate(Curso);
+
 Curso.sync()
 
 module.exports = Curso;

@@ -2361,7 +2361,11 @@ tr {
 .allCourse_container .allCourse_bar {
   border-radius: 5px;
   box-shadow: 1px 5px 10px #ddd;
-  font-size: 15px;
+  font-size: 14px;
+}
+.allCourse_container .allCourse_bar .new_btn_c {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
 }
 .allCourse_container .allCourse_bar .bar_box {
   list-style: none;
@@ -2371,6 +2375,7 @@ tr {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  font-family: "Roboto", sans-serif;
 }
 .allCourse_container .allCourse_bar .bar_box li {
   margin-right: 10px;
@@ -2389,7 +2394,7 @@ tr {
 .allCourse_container .allCourse_bar .dropdown_category {
   background: #eee;
   color: #333;
-  font-size: 15px;
+  font-size: 14px;
   padding: 8px;
   font-family: "Roboto", sans-serif;
 }
@@ -2429,6 +2434,10 @@ tr {
   padding: 10px;
   padding-bottom: 1rem;
 }
+.allCourse_container .allcourse_content .allCourse_card .acl_card_content a {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+}
 .allCourse_container .allcourse_content .allCourse_card .acl_card_content h5 {
   font-size: 17px;
   color: #333;
@@ -2453,6 +2462,53 @@ tr {
   font-size: 14px;
   color: #777;
   font-family: "Roboto", sans-serif;
+}
+
+.course_pagination {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+}
+.course_pagination .next,
+.course_pagination .previous {
+  padding: 10px;
+  box-shadow: 1px 3px 6px #ccc;
+  border-radius: 5px;
+}
+.course_pagination .next i,
+.course_pagination .previous i {
+  font-size: 15px;
+}
+.course_pagination .next:hover,
+.course_pagination .previous:hover {
+  background-color: rgb(0, 81, 255);
+  color: #fff;
+}
+.course_pagination span {
+  margin-right: 10px;
+  margin-left: 10px;
+  color: rgb(0, 81, 255);
+}
+.course_pagination span div {
+  box-shadow: 1px 3px 6px #ccc;
+  display: inline;
+  padding: 13px;
+  font-size: 15px;
+  color: #333;
+  border-radius: 5px;
+}
+.course_pagination span div:hover {
+  background-color: rgb(0, 81, 255);
+  color: #fff;
+}
+.course_pagination span .d1 {
+  margin-right: 10px;
+  background-color: rgb(0, 81, 255);
+  color: #fff;
+}
+.course_pagination span .d2 {
+  margin-left: 10px;
 }
 
 /* MAIN CONTAINER GENERAL CONFIG START ===========================================*/

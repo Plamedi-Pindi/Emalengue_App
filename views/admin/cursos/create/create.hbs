@@ -22,12 +22,12 @@
                     {{!-- TITLE --}}
                     <div class="col-11 col-md-5 container-fluid">
                         <label for="title">Título: <span>*</span></label>
-                        <input type="text" name="title" id="title" placeholder="Escolha um título...">
+                        <input type="text" name="title" id="title" placeholder="Escolha um título..." required>
                     </div>
                     {{!-- CATEGORY --}}
                     <div class="col-11 col-md-5 container-fluid">
                         <label for="category">Escolha uma Categoria: <span>*</span></label>
-                        <select name="category" id="category">
+                        <select name="category" id="category"  required>
                             <option selected >Escolha uma categoria</option>
                             {{#each categoria}}
                                 <option value="{{ id }}"> {{ name }} </option>
@@ -62,25 +62,25 @@
                     <div class="col-11 col-md-5 container-fluid">
                         <div id="playlistStatus">
                             <label for="playlist">Playlist: </label>
-                            <input type="text" name="playlist" id="playlist1" value="https://">
+                            <input type="text" name="playlist" id="playlist1" placeholder="https://" required>
                         </div>
                     </div>
                     {{!-- DATE --}}
                     <div class="col-11 col-md-5 container-fluid">
                         <label for="date">Publicado em: <span>*</span></label>
-                        <input type="date" name="date" id="date">
+                        <input type="date" name="date" id="date" required>
                     </div>
                     {{!-- DESCRIPTION --}}
                     <div class="col-11 col-md-8 container-fluid">
                         <label for="description">Descrição: <span>*</span> </label>
-                        <textarea name="description" id="description" rows="7"></textarea>
+                        <textarea name="description" id="description" rows="7" required></textarea>
 
                     </div>
 
                     {{!-- IMG --}}
                     <div class="col-11 col-md-8 container-fluid">
                         <label for="img"> Escolha uma imagem: <span>*</span></label>
-                        <input type="file" name="img" id="img">
+                        <input type="file" name="img" id="img" required>
                     </div>
 
                     {{!-- Submit --}}
@@ -198,7 +198,7 @@
         playlistInput.setAttribute("type", "text");
         playlistInput.setAttribute("name", "playlist");
         playlistInput.setAttribute("id", "modulePlaylist");
-        playlistInput.setAttribute("value", "https://");
+        playlistInput.setAttribute("placeholder", "https://");
         // Insert playlistInput into playlistContainer
         playlistContainer.append(playlistInput);
 
