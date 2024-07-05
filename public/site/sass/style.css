@@ -502,8 +502,9 @@ main {
   margin-bottom: 2px;
 }
 #cursos-recomendados .cursos-rec-container .cursos-erc-card .cursos-rec-content .c_r_teacher {
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
-  color: #bbb;
+  color: #777;
   margin: 0;
   cursor: pointer;
 }
@@ -511,6 +512,8 @@ main {
   margin-bottom: 2px;
   margin-top: -5px;
   cursor: pointer;
+  color: #777;
+  font-family: "Roboto", sans-serif;
 }
 #cursos-recomendados .cursos-rec-container .cursos-erc-card .cursos-rec-content .c_r_rate p {
   font-size: 13px;
@@ -524,7 +527,6 @@ main {
   font-size: 12px;
 }
 #cursos-recomendados .cursos-rec-container .cursos-erc-card .cursos-rec-content .c_r_rate span {
-  color: #bbb;
   font-size: 13px;
 }
 #cursos-recomendados .cursos-rec-container .cursos-erc-card .cursos-rec-content .c_r_price {
@@ -1734,6 +1736,12 @@ input[type=submit] {
   margin: 0 auto;
   margin-bottom: 2rem;
   margin-top: 3rem;
+  font-size: 15px;
+}
+
+label {
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
 }
 
 #email_warnig1,
@@ -1853,6 +1861,8 @@ input[type=submit] {
   margin-bottom: 1rem;
   margin-top: -10px;
   transition: ease-in-out 0.4s;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
 }
 
 .google_btn:hover {
@@ -2214,14 +2224,15 @@ input[type=submit] {
 }
 
 .cr_detail_container {
-  margin-top: 5rem;
+  margin-top: 2.5rem;
   font-family: "Roboto", sans-serif;
 }
 .cr_detail_container .cr_dt_content {
   width: 100%;
 }
-.cr_detail_container .cr_dt_content video {
+.cr_detail_container .cr_dt_content img {
   width: 100%;
+  height: 300px;
 }
 .cr_detail_container .cr_dt_content .dt_content h3 {
   font-weight: bold;
@@ -2248,17 +2259,25 @@ input[type=submit] {
 .cr_detail_container .cr_dt_info {
   margin-bottom: 3rem;
 }
-.cr_detail_container .cr_dt_info p {
-  color: #777;
-}
-.cr_detail_container .cr_dt_info p span {
-  color: #333;
+.cr_detail_container .cr_dt_info .title_c {
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
+}
+.cr_detail_container .cr_dt_info .title_c span {
+  font-weight: bold;
+}
+.cr_detail_container .cr_dt_info .course_desc {
+  color: #444;
+}
+.cr_detail_container .cr_dt_info .course_desc span {
+  color: #333;
+  font-size: 15px;
   font-weight: bold;
 }
 .cr_detail_container .cr_dt_info .rate {
   font-weight: bold;
   margin-bottom: 2rem;
+  font-size: 15px;
 }
 .cr_detail_container .cr_dt_info .rate i {
   color: rgb(230, 151, 6);
@@ -2269,10 +2288,18 @@ input[type=submit] {
 .cr_detail_container .cr_dt_info h3 {
   font-weight: bold;
   font-size: 20px;
+  font-size: 18px;
+  color: #444;
 }
 .cr_detail_container .cr_dt_info h4 {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
+  color: #444;
+}
+.cr_detail_container .cr_dt_info ul {
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  color: #666;
 }
 
 .tt {
@@ -2281,7 +2308,7 @@ input[type=submit] {
 
 @media (min-width: 992px) {
   .cr_detail_container {
-    margin-top: 9rem;
+    margin-top: 4rem;
   }
 }
 #alertVerification,
@@ -2378,6 +2405,86 @@ input[type=submit] {
     margin-top: 10rem;
   }
 }
+.curso_breadcrumbs {
+  box-shadow: 1px 4px 10px #ccc;
+}
+
+.breadcrumbs {
+  font-family: "Roboto", sans-serif;
+  margin-top: 5rem;
+  padding: 10px;
+}
+.breadcrumbs ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 25px;
+}
+.breadcrumbs li {
+  display: inline-block;
+}
+.breadcrumbs li::before {
+  content: " / ";
+  margin: 0 0;
+  color: rgb(55, 108, 252);
+}
+.breadcrumbs li:first-child::before {
+  content: " ";
+}
+.breadcrumbs li:last-child a {
+  color: #888;
+}
+.breadcrumbs a {
+  text-decoration: none;
+  color: rgba(55, 107, 252, 0.815);
+  font-size: 14px;
+  transition: ease-in-out 0.4s;
+}
+.breadcrumbs a:hover {
+  color: #888;
+}
+
+@media (min-width: 992px) {
+  .breadcrumbs {
+    margin-top: 9rem;
+  }
+}
+.title_c {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+.title_c span {
+  font-weight: bold;
+}
+
+.course_desc {
+  color: #444;
+}
+.course_desc span {
+  color: #333;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.rate {
+  font-weight: bold;
+  margin-bottom: 2rem;
+  font-size: 15px;
+}
+.rate i {
+  color: rgb(230, 151, 6);
+}
+.rate span {
+  color: #666;
+}
+
+.cr_dt_content {
+  margin-bottom: 3rem;
+}
+.cr_dt_content iframe {
+  width: 100%;
+  height: 350px;
+}
+
 /****** GENERAL SITTINGS START *******/
 * {
   margin: 0;

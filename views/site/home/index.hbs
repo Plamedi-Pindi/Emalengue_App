@@ -58,187 +58,32 @@
             <div class="cursos-recomendados-swiper">
                 <!-- container -->
                 <div class="cursos-rec-container swiper-wrapper">
-                    <!-- card start-->
-                    <div class="cursos-erc-card swiper-slide">
-                        <img src="site/img/course/1.jpg" alt="">
-                        <div class="cursos-rec-content">
-                            <!-- Title -->
-                            <h5>Java completo 2023 programação orientada a...</h5>
-                            <!-- owner -->
-                            <span class="c_r_teacher">Sergio Rodrigues</span>
-                            <!-- avaliacoes -->
-                            <div class="c_r_rate">
-                                <p>4,8 </p>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <span>(40.347)</span>
+                    {{#each cursos}}
+                        <!-- card start-->
+                        <div class="cursos-erc-card swiper-slide">
+                            <img src="admin/img/cursos/{{ image }}" alt="">
+                            <div class="cursos-rec-content">
+                                <!-- Title -->
+                                <h5> {{#TruncateText name 50}} {{/TruncateText }} </h5>
+                                <!-- owner -->
+                                <span class="c_r_teacher"> {{ user.nome }} </span>
+                                <!-- avaliacoes -->
+                                <div class="c_r_rate">
+                                    <p>4,8 </p>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <span>(40.347)</span>
+                                </div>
+                                <!-- Coust -->
+                                <p class="c_r_price"> {{#NumberFormat custo }} {{/NumberFormat }} </p>
+                                <span class="c_r_class1">Mais vendidos</span>
                             </div>
-                            <!-- Coust -->
-                            <p class="c_r_price">40.000,00 <span>kz</span></p>
-                            <span class="c_r_class1">Mais vendidos</span>
                         </div>
-                    </div>
-                    <!-- card end -->
-
-                    <!-- card start-->
-                    <div class="cursos-erc-card swiper-slide">
-                        <img src="site/img/course/3.jpg" alt="">
-                        <div class="cursos-rec-content">
-                            <!-- Title -->
-                            <h5>Java completo 2023 programação orientada a...</h5>
-                            <!-- owner -->
-                            <span class="c_r_teacher">Sergio Rodrigues</span>
-                            <!-- avaliacoes -->
-                            <div class="c_r_rate">
-                                <p>4,8 </p>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <span>(40.347)</span>
-                            </div>
-                            <!-- Coust -->
-                            <p class="c_r_price">40.000,00 <span>kz</span></p>
-                            <span class="c_r_class2">Classificação mais alta
-
-                            </span>
-                        </div>
-                    </div>
-                    <!-- card end -->
-
-                    <!-- card start-->
-                    <div class="cursos-erc-card swiper-slide">
-                        <img src="site/img/course/2.jpg" alt="">
-                        <div class="cursos-rec-content">
-                            <!-- Title -->
-                            <h5>Java completo 2023 programação orientada a...</h5>
-                            <!-- owner -->
-                            <span class="c_r_teacher">Sergio Rodrigues</span>
-                            <!-- avaliacoes -->
-                            <div class="c_r_rate">
-                                <p>4,8 </p>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <i class="bi bi-star"></i>
-                                <span>(40.347)</span>
-                            </div>
-                            <!-- Coust -->
-                            <p class="c_r_price">40.000,00 <span>kz</span></p>
-                            <span class="c_r_class1">Mais vendidos</span>
-                        </div>
-                    </div>
-                    <!-- card end -->
-
-                    <!-- card start-->
-                    <div class="cursos-erc-card swiper-slide">
-                        <img src="site/img/course/4.jpg" alt="">
-                        <div class="cursos-rec-content">
-                            <!-- Title -->
-                            <h5>Java completo 2023 programação orientada a...</h5>
-                            <!-- owner -->
-                            <span class="c_r_teacher">Sergio Rodrigues</span>
-                            <!-- avaliacoes -->
-                            <div class="c_r_rate">
-                                <p>4,8 </p>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <span>(40.347)</span>
-                            </div>
-                            <!-- Coust -->
-                            <p class="c_r_price">40.000,00 <span>kz</span></p>
-                            <span class="c_r_class2">Classificação mais alta
-
-                            </span>
-                        </div>
-                    </div>
-                    <!-- card end -->
-                    <!-- card start-->
-                    <div class="cursos-erc-card swiper-slide">
-                        <img src="site/img/course/5.jpg" alt="">
-                        <div class="cursos-rec-content">
-                            <!-- Title -->
-                            <h5>Java completo 2023 programação orientada a...</h5>
-                            <!-- owner -->
-                            <span class="c_r_teacher">Sergio Rodrigues</span>
-                            <!-- avaliacoes -->
-                            <div class="c_r_rate">
-                                <p>4,8 </p>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <span>(40.347)</span>
-                            </div>
-                            <!-- Coust -->
-                            <p class="c_r_price">40.000,00 <span>kz</span></p>
-                            <span class="c_r_class2">Classificação mais alta
-
-                            </span>
-                        </div>
-                    </div>
-                    <!-- card end -->
-                    <!-- card start-->
-                    <div class="cursos-erc-card swiper-slide">
-                        <img src="site/img/course/7.png" alt="">
-                        <div class="cursos-rec-content">
-                            <!-- Title -->
-                            <h5>Java completo 2023 programação orientada a...</h5>
-                            <!-- owner -->
-                            <span class="c_r_teacher">Sergio Rodrigues</span>
-                            <!-- avaliacoes -->
-                            <div class="c_r_rate">
-                                <p>4,8 </p>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <span>(40.347)</span>
-                            </div>
-                            <!-- Coust -->
-                            <p class="c_r_price">40.000,00 <span>kz</span></p>
-                            <span class="c_r_class2">Classificação mais alta
-
-                            </span>
-                        </div>
-                    </div>
-                    <!-- card end -->
-                    <!-- card start-->
-                    <div class="cursos-erc-card swiper-slide">
-                        <img src="site/img/course/6.jpg" alt="">
-                        <div class="cursos-rec-content">
-                            <!-- Title -->
-                            <h5>Java completo 2023 programação orientada a...</h5>
-                            <!-- owner -->
-                            <span class="c_r_teacher">Sergio Rodrigues</span>
-                            <!-- avaliacoes -->
-                            <div class="c_r_rate">
-                                <p>4,8 </p>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
-                                <span>(40.347)</span>
-                            </div>
-                            <!-- Coust -->
-                            <p class="c_r_price">40.000,00 <span>kz</span></p>
-                            <span class="c_r_class2">Classificação mais alta
-
-                            </span>
-                        </div>
-                    </div>
-                    <!-- card end -->
+                        <!-- card end -->
+                    {{/each}}
 
                 </div>
                 <div class="swiper-button-next"></div>

@@ -9,7 +9,7 @@
                 <ul>
                     <li><a href="/dashboard">Home</a></li>
                     <li><a href="/dashboard/cursos">Cursos</a></li>
-                    <li><a href="/dashboard/cursos/detalhes">Detalhes</a></li>
+                    <li><a href="/dashboard/cursos/detalhes/{{curso.id}}">Detalhes</a></li>
                     <li><a href="/dashboard/cursos/detalhes/alunos">Inscritos</a></li>
                 </ul>
             </div>
@@ -24,55 +24,67 @@
                     <thead class="table-light">
                         <tr>
 
-                            <th scope="col">Apoiante</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Realisado</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Comprovativo</th>
-                            <th scope="col">Ações</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Ocupação</th>
+                            <th scope="col">Pais</th>
+                            <th scope="col">Província</th>
+                            {{!-- <th scope="col">Ação</th> --}}
                         </tr>
                     </thead>
                     <tbody>
 
-                        {{#each transacoes}}
+                        {{#each alunos}}
 
-                        <tr class="crf_rows">
+                        <tr class="enrol_rows">
 
-                            {{!-- Apoiante --}}
+                            {{!-- Name --}}
                             <td>
-                                <div class="tr_helper">
+                                <div class="enrolled_info">
                                     <img src="/admin/img/freelancers/{{ user.imagem }}" alt="Imagem do Freelancer"
-                                        class="crf_img">
-                                    <h5 class="crf_name"> {{ user.nome }} </h5>
+                                        class="enrol_img">
+                                    <h5 class="enrol_name"> {{ user.nome }} </h5>
                                 </div>
                             </td>
 
-                            {{!-- Valor --}}
-                            <td><span class="crf_valor text-primary"> {{#NumberFormat valor }} {{/NumberFormat }}
-                                </span></td>
+                            {{!-- Email --}}
+                            <td><span class="enrol_email text-primary"> {{ user.email}} </span></td>
 
-                            {{!-- Data e Hora --}}
+                            {{!-- phone --}}
                             <td>
-                                <div class="dataHora">
-                                    <span> {{ data }} </span>
-                                    <span> {{ hora }}</span>
-
+                                <div class="enrol_phone text-primary">
+                                    <span> {{ user.telefones.[0].telefone }} </span>
                                 </div>
                             </td>
 
-                            {{!-- State --}}
+                            {{!-- Ocupation --}}
                             <td>
-                                <span class="tr_state"> {{ estado }} </span>
+                                <div class="enrol_ocupation">
+                                    <span>  {{ ocupacao }}  </span>
+                                </div>
                             </td>
-                            {{!-- Comprovativo --}}
+
+                            {{!-- Country --}}
                             <td>
-                                <a href="{{#readPDF id }}{{/readPDF }}" class="tr_comp" id="tr_comp">Visualizar</a>
+                                <div class="enrol_country">
+                                    <span>  {{ user.pais }}  </span>
+                                </div>
                             </td>
+
+                            {{!-- Address --}}
+                            <td>
+                                <div class="enrol_address">
+                                    <span>  {{ user.provincia }}  </span>
+                                </div>
+                            </td>
+
+                           
                             {{!-- Acoes --}}
-                            <td>
+                            {{!-- <td>
                                 <button class="tr_more" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop{{ id }}">Mais</button>
-                            </td>
+                            </td> --}}
                         </tr>
 
                         <!-- Modal FOR MORE ACTIONS -->
@@ -121,7 +133,7 @@
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered ">
                                 <div class="modal-content ">
-                                    <div class="modal-body crf_delete_alert">
+                                    <div class="modal-body enrol_delete_alert">
                                         <h5> <i class="bi bi-exclamation-triangle-fill"></i> Tem certeza que pretende
                                             deletar esta campanha?</h5>
                                         <p>Ao deletar esta campanha já não poderá recuperar os dados eliminados.</p>

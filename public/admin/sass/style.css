@@ -57,7 +57,8 @@ footer {
 }
 .hd-container #user-menu img {
   z-index: 100;
-  width: 35px;
+  width: 28px;
+  height: 28px;
   border-radius: 100px;
 }
 
@@ -84,7 +85,8 @@ footer {
 #dash_dropdown a {
   text-decoration: none;
   color: #555;
-  font-size: 17px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
   padding: 2px;
 }
 #dash_dropdown a i {
@@ -2363,6 +2365,21 @@ tr {
   box-shadow: 1px 5px 10px #ddd;
   font-size: 14px;
 }
+.allCourse_container .allCourse_bar .dropdown-menu {
+  height: 300px;
+  overflow-y: auto;
+}
+.allCourse_container .allCourse_bar .dropdown-menu li {
+  margin-bottom: 6px !important;
+  padding: 0;
+}
+.allCourse_container .allCourse_bar .dropdown-menu::-webkit-scrollbar {
+  width: 4px;
+}
+.allCourse_container .allCourse_bar .dropdown-menu::-webkit-scrollbar-thumb {
+  background: rgb(5, 91, 250);
+  border-radius: 10px;
+}
 .allCourse_container .allCourse_bar .new_btn_c {
   font-size: 14px;
   font-family: "Roboto", sans-serif;
@@ -2390,6 +2407,8 @@ tr {
   border: none;
   border-radius: 5px;
   font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  background-color: #ddd;
 }
 .allCourse_container .allCourse_bar .dropdown_category {
   background: #eee;
@@ -2417,6 +2436,16 @@ tr {
   border-radius: 5px;
   font-size: 15px;
 }
+.allCourse_container .allcourse_content h1 {
+  margin-bottom: 2rem;
+  font-size: 23px;
+  font-family: "Roboto", sans-serif;
+}
+.allCourse_container .allcourse_content h1 span {
+  font-weight: 600;
+  border-left: 5px solid #f7aa00;
+  padding-left: 10px;
+}
 .allCourse_container .allcourse_content {
   padding: 20px;
 }
@@ -2429,6 +2458,7 @@ tr {
 }
 .allCourse_container .allcourse_content .allCourse_card img {
   width: 100%;
+  height: 210px;
 }
 .allCourse_container .allcourse_content .allCourse_card .acl_card_content {
   padding: 10px;
@@ -2522,10 +2552,12 @@ tr {
   font-size: 15px;
 }
 .details_container h1 {
-  font-size: 23px;
+  font-size: 21px;
   font-family: "Roboto", sans-serif;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  border-left: solid 5px #f7aa00;
+  padding-left: 10px;
 }
 .details_container .cr_dt_content .cr_dt_cont {
   box-shadow: 1px 5px 10px #eee;
@@ -2534,21 +2566,33 @@ tr {
 .details_container .cr_dt_content img {
   margin: 0 auto;
   width: 100%;
+  height: 200px;
   display: block;
   height: 300px;
   margin: 0 auto;
 }
 .details_container .cr_dt_content a {
-  display: block;
-  max-width: 300px;
   text-decoration: none;
+  max-width: 300px;
+  background-color: rgb(2, 22, 90);
+  color: #eee;
+}
+.details_container .cr_dt_content .sbscribe_btn {
+  border: none;
+  width: 100%;
+  background-color: orange;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+}
+.details_container .cr_dt_content a,
+.details_container .cr_dt_content .sbscribe_btn {
+  display: block;
   font-size: 15px;
   font-family: "Roboto", sans-serif;
-  color: #eee;
   text-align: center;
   padding: 6px;
   margin: 1rem auto;
-  background-color: rgb(2, 22, 90);
 }
 .details_container #dt_more_ingo {
   border-radius: 0 0 5px 5px;
@@ -2643,13 +2687,74 @@ tr {
 .cr_dt_info ul li .last {
   color: rgb(199, 129, 0);
 }
-.cr_dt_info a {
+.cr_dt_info a,
+.cr_dt_info button {
   margin-right: 10px;
   margin-bottom: 10px;
   font-size: 13px !important;
   font-family: "Roboto", sans-serif !important;
 }
+.cr_dt_info .modal-dialog_dl {
+  box-shadow: none;
+  background: transparent;
+}
+.cr_dt_info .modal-dialog_dl .modal-content_dl {
+  box-shadow: none;
+  padding: 0;
+}
+.cr_dt_info .modal-dialog_dl .modal-body_dl {
+  box-shadow: none;
+  background-color: rgb(252, 127, 127);
+  margin-top: 0px;
+  border-radius: 5px 5px 0 0;
+}
+.cr_dt_info .modal-dialog_dl .modal-footer_dl {
+  box-shadow: none;
+  margin-top: 0px;
+  padding: 0;
+}
 
+#subsdcribeForm h2 {
+  border-left: 3px solid #f7aa00;
+  padding-left: 8px;
+  font-size: 22px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+#subsdcribeForm label {
+  display: block;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+#subsdcribeForm select,
+#subsdcribeForm input[type=tel],
+#subsdcribeForm input[type=email],
+#subsdcribeForm input[type=text] {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #f7aa00;
+  background-color: #eee;
+  outline: none;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  padding: 3px;
+  color: #444;
+}
+#subsdcribeForm .lab_op {
+  font-weight: 400;
+  margin-right: 10px;
+}
+
+@media (min-width: 405px) {
+  .sbscribe_btn {
+    border: none;
+    width: 300px !important;
+  }
+}
 /* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
 .course_watch_container {
   background-color: #fff;
@@ -2765,6 +2870,52 @@ tr {
     margin-top: 0;
   }
 }
+/* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
+table .enrol_name {
+  font-size: 15px;
+  margin: 0;
+  color: #222;
+  font-family: "Roboto", sans-serif;
+}
+table .enrol_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+table .enrolled_info {
+  display: flex;
+  align-items: center;
+}
+table .enrolled_info h5 {
+  margin-left: 10px;
+  color: #555;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+}
+table .enrol_email {
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+}
+table .enrol_address,
+table .enrol_phone,
+table .enrol_ocupation,
+table .enrol_country {
+  font-size: 15px;
+  color: #555;
+  font-family: "Roboto", sans-serif;
+}
+table .tr_more {
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  margin: 0;
+  color: #fff;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  background: rgb(0, 4, 255);
+}
+
 /***** IMPORTING FILE END *****/
 main::-webkit-scrollbar {
   width: 8px;

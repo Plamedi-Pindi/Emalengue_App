@@ -14,7 +14,8 @@
         position: relative;
         img{
             z-index: 100;
-            width: 35px;
+            width: 28px;
+            height: 28px;
             border-radius: 100px;;
         }
     }
@@ -44,7 +45,8 @@
     a{
         text-decoration: none;
         color: #555;
-        font-size: 17px;
+        font-size: 15px;
+        font-family: $roboto;
         padding: 2px;
         i{ 
             margin-right: 10px;

@@ -106,7 +106,7 @@ app.use(cookieParser())
 
 
 /**SERVER =================================================================== */
-// sequelize.sync()
+sequelize.sync()
 
 app.listen(8080, () => {
   console.log('Server up!');

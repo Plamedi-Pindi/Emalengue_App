@@ -23,6 +23,9 @@ const  Telefone = db.sequelize.define('telefones', {
         type: db.Sequelize.STRING,
         allowNull: false,
     },
+},
+{
+    timestamps: false,
 }) ;
 
 Telefone.sync();

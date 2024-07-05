@@ -1,64 +1,75 @@
-    {{> header }}
-    <!-- MAIN START -->
-    <main>
-        <div class="container">
-            <div class="cr_detail_container">
-                <div class="row dt">
-                    <div class="col-11 col-md-9 col-lg-5 container-fluid">
-                        <div class="cr_dt_info">
-                            <p>Título do Curso: <span>Curso de Design</span></p>
-                            <div class="rate">4,8 
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <a href="#">(42.264 classificações)</a>
-                                <span>146.505 Alunos</span>
-                            </div>
-                            <h3>O que você aprenderá</h3>
-                            <ul>
-                                <li>AAAAAAAAAAAAA</li>
-                                <li>AAAAAAAAAAAAA</li>
-                                <li>AAAAAAAAAAAAA</li>
-                            </ul>
-                            <h3>Conteúdo do Curso</h3>
-                            <h4>AAAAAAAAAAAA</h4>
-                            <ul>
-                                <li>AAAAAAAAAAAAA</li>
-                                <li>AAAAAAAAAAAAA</li>
-                                <li>AAAAAAAAAAAAA</li>
-                            </ul>
-                            <h4>AAAAAAAAAAAA</h4>
-                            <ul>
-                                <li>AAAAAAAAAAAAA</li>
-                                <li>AAAAAAAAAAAAA</li>
-                                <li>AAAAAAAAAAAAA</li>
-                            </ul>
-
-                            <h3>Descrição</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam perferendis hic autem dolore, omnis, animi veritatis ab iure eaque eveniet molestiae quidem, sint similique nobis in. Obcaecati maiores impedit tempora?</p>
-                        </div>
-                    </div>
-                    <div class="col-11 col-md-9 col-lg-6 container-fluid tt" >
-                        <div class="cr_dt_content">
-                            <video src="/site/videos/vid1.mp4" controls muted></video>
-                            <div class="dt_content">
-                                <h3>10.000kz</h3>
-                                <a href="#">Comprar agora</a>
-                                <h3>Este curso inclui:</h3>
-                                <ul>
-                                    <li>2Horas de Video</li>
-                                    <li>3 Artigos</li>
-                                    <li>Acesso Limitado por 1 ano</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+{{> header }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        <div class="curso_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/cursos">Cursos</a></li>
+                    <li><a href="/cursos/detalhes/{{curso.id}}">Detalhes</a></li>
+                </ul>
             </div>
         </div>
-    </main>
-       <!-- MAIN END -->
-   {{> footer }}
+        <div class="cr_detail_container">
+            <div class="row dt">
+                <div class="col-11 col-md-9 col-lg-5 container-fluid">
+                    <div class="cr_dt_info">
+                        <p class="title_c"> Título do Curso: <span> {{ curso.name }} </span></p>
+                        <div class="rate">4,8
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <a href="#">(42.264 classificações)</a>
+                            <span> {{#NumFormat enrolled }} {{/NumFormat }} Inscritos </span>
+                        </div>
+                        <h3>O que você aprenderá</h3>
+                        <ul>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                        </ul>
+                        <h3>Conteúdo do Curso</h3>
+                        <h4>AAAAAAAAAAAA</h4>
+                        <ul>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                        </ul>
+                        <h4>AAAAAAAAAAAA</h4>
+                        <ul>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                        </ul>
+
+                        <h3>Descrição</h3>
+                        <div class="course_desc"> {{ curso.descricao }} </div>
+                    </div>
+                </div>
+                <div class="col-11 col-md-9 col-lg-6 container-fluid tt">
+                    <div class="cr_dt_content">
+
+                        <img src="/admin/img/cursos/{{ curso.image }}" ></img>
+
+                        <div class="dt_content">
+                            <h3>{{#NumberFormat curso.custo }} {{/NumberFormat }}</h3>
+                            <a href="/cursos/detalhes/acompanhar/{{ curso.id }}">Comprar agora</a>
+                            <h3>Este curso inclui:</h3>
+                            <ul>
+                                <li>2Horas de Video</li>
+                                <li>3 Artigos</li>
+                                <li>Acesso Limitado por 1 ano</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<!-- MAIN END -->
+{{> footer }}

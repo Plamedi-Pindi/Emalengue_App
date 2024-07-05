@@ -21,9 +21,14 @@
                 <div class="col-11 col-md-7  cr_dt_content container-fluid">
                     <h1> {{curso.name}} </h1>
                     <div class="cr_dt_cont">
-                    <img src="/admin/img/cursos/{{curso.image}}" ></img>
-                    <a href="/dashboard/cursos/detalhes/acompanhar/{{curso.id}}">Começar Agora</a>
-                    
+                        <img src="/admin/img/cursos/{{curso.image}}"></img>
+                        {{#if isEnrolled}}
+                        <a href="/dashboard/cursos/detalhes/acompanhar/{{curso.id}}">Começar Agora</a>
+                        {{else}}
+                        <button data-bs-toggle="modal" data-bs-target="#subscriptionModal" class="sbscribe_btn">
+                            Inscrever-se</button>
+                        {{/if}}
+
                         {{!-- --}}
                         <div id="dt_more_ingo">
                             <ul class="dt_mr_btn">
@@ -33,20 +38,20 @@
                             <div id="dt_module_show">
                                 <ul>
                                     {{#each curso.modulos }}
-                                        <li>
-                                            <div> {{ ordem }} </div> {{ nome }}
-                                        </li>
+                                    <li>
+                                        <div> {{ ordem }} </div> {{ nome }}
+                                    </li>
                                     {{/each}}
-                                    
+
                                 </ul>
                             </div>
                             <div id="dt_desc_show">
-                               {{ curso.descricao }}
+                                {{ curso.descricao }}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-11 col-md-4 cr_dt_info container-fluid">
+                <div class="col-11 col-md-5 cr_dt_info container-fluid">
                     <div>
                         <ul>
                             <li>
@@ -63,55 +68,156 @@
                             </li>
                             <li>
                                 <span>Inscritos:</span>
-                                <span class="last">3 000</span>
+                                <span class="last"> {{enrolNumber}} </span>
                             </li>
                             <li>
                                 <span>Publicado em:</span>
                                 <span class="last"> {{curso.data}} </span>
                             </li>
                         </ul>
-                        <a href="#" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
-                        <a href="#" class="btn btn-danger"> <i class="bi bi-trash3"></i> Eliminar</a>
-                        <a href="/dashboard/cursos/detalhes/alunos/{{curso.id}}" class="btn btn-warning"> <i class="bi bi-eye"></i> inscritos</a>
+                        <a href="/dashboard/cursos/atualizar/{{ curso.id }}" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
+
+                        <button data-bs-toggle="modal" data-bs-target="#courseDelete" class="btn btn-danger"> <i
+                                class="bi bi-trash3"></i> Eliminar</button>
+
+                        <a href="/dashboard/cursos/detalhes/alunos/{{curso.id}}" class="btn btn-warning"> <i
+                                class="bi bi-eye"></i> inscritos</a>
+
+                        {{!-- DELETE MODAL =====================================================--}}
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="courseDelete" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog_dl">
+                                <div class="modal-content  modal-content_dl">
+                                    <div class="modal-body  modal-body_dl">
+                                        <h4>Tem certeza que pretende eliminar este curso?</h4>
+                                        <p>Ao eliminar este curso perderá todos os dados relacionados e já não será
+                                            possível recupera-los. por favor tenha certeza se é isto mesmo que pretende
+                                            fazer.</p>
+                                    </div>
+                                    <div class="modal-footer  modal-footer_dl">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <a href="/dashboard/cursos/deletar/{{curso.id}}"
+                                            class="btn btn-primary">Continuar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    {{!-- SUBSCRIPTION MODAL =====================================================--}}
+
+    <!-- Modal -->
+    <div class="modal fade" id="subscriptionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <form id="subsdcribeForm">
+                    <div class="modal-body  ">
+                        <h2>Inscrever-se</h2>
+                        <div class="row">
+                            <div class="col-11 col-md-6 container-fluid">
+                                <label for="name">Nome</label>
+                                <input type="text" name="name">
+
+                                <label for="email">Email</label>
+                                <input type="email" name="email">
+
+                                <label for="phone">Telefone</label>
+                                <input type="tel" name="phone">
+                            </div>
+
+                            <div class="col-11 col-md-6 container-fluid">
+                                <label for="country">Pais</label>
+                                <select name="country" id="">
+                                    <option selected> Selecionar pais</option>
+                                    {{#each countries }}
+                                        <option value="{{name}}"> {{flag}} {{name}} </option>
+                                    {{/each}}
+                                </select>
+
+                                <label for="province">Província</label>
+                                <input type="text" name="province">
+
+                                <label for="ocupation">Ocupação</label>
+                                <ul>
+                                    <li>
+                                        <label class="lab_op" for="student">
+                                            Estudante
+                                            <input type="radio" name="ocupation" value="Estudante">
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="lab_op" for="worker">
+                                            Trabalhador
+                                            <input type="radio" name="ocupation" value="Trabalhador">
+                                        </label>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 </main>
 <!-- MAIN END -->
+
+
+<!-- SCRIPT FOR MODULE AND DESCRIPTION SHOW -->
+<script src="/admin/js/cursos/detailModuleShow.js"> </script>
+
+<!-- SCRIPT FOR SEND DATA TO SERVER -->
 <script>
-    const descShow = document.getElementById('dt_description');
-    const moduleShow = document.getElementById('dt_modules');
-    const dt_desc_show = document.getElementById('dt_desc_show');
-    const dt_module_show = document.getElementById('dt_module_show');
+    const form = document.getElementById('subsdcribeForm');
 
-    moduleShow.style.borderBottom = "3px solid rgb(2, 22, 90)";
-    moduleShow.style.background = "#ddd";
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    descShow.addEventListener("click", () => {
-        dt_desc_show.style.display = "block";
-        dt_module_show.style.display = "none";
-        //
-        descShow.style.background = "#ddd";
-        descShow.style.borderBottom = "3px solid rgb(2, 22, 90)";
-        //
-        moduleShow.style.background = "#eee";
-        moduleShow.style.borderBottom = "none";
+        try {
+            const data = {
+                name: form.name.value,
+                emeil: form.email.value,
+                phone: form.phone.value,
+                country: form.country.value,
+                province: form.province.value,
+                ocupation: form.ocupation.value,
+            }
 
-    })
+            const url = "/dashboard/cursos/inscrever/{{user.id}}/{{curso.id}}";
 
-    moduleShow.addEventListener("click", () => {
-        dt_desc_show.style.display = "none";
-        dt_module_show.style.display = "block";
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
 
-        descShow.style.background = "#eee";
-        descShow.style.borderBottom = "none";
-
-        moduleShow.style.borderBottom = "3px solid rgb(2, 22, 90)";
-        moduleShow.style.background = "#ddd";
-    })
-
-
+            const result = await response.json();
+            if (result) {
+                console.log(result);
+                location.assign('/dashboard/cursos/detalhes/{{curso.id}}')
+            }
+        } catch (error) {
+            console.error("Ocorroreu um arro ao enviar os dados ao servidor: " + error);
+        }
+    });
 </script>
+
+
 {{> dashFooter }}

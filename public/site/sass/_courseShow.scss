@@ -1,0 +1,43 @@
+
+
+
+
+
+.title_c {
+    font-family: $roboto;
+    font-size: 18px;
+
+    span{
+        font-weight: bold;
+    }
+}
+.course_desc {
+    color: #444;
+
+    span {
+        color: #333;
+        font-size: 15px;
+        font-weight: bold;
+    }
+}
+
+.rate {
+    font-weight: bold;
+    margin-bottom: 2rem;
+    font-size: 15px;
+    i {
+        color: rgb(230, 151, 6);
+    }
+    span {
+        color: #666;
+    }
+}
+
+.cr_dt_content {
+    margin-bottom: 3rem;
+
+    iframe {
+        width: 100%;
+        height: 350px;
+    }
+}

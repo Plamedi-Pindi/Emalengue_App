@@ -3,8 +3,8 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    // await queryInterface.removeConstraint('cursos', 'cursos_ibfk_1');
-    // await queryInterface.removeConstraint('cursos', 'cursos_ibfk_2');
+    await queryInterface.removeConstraint('cursos', 'cursos_ibfk_1');
+    await queryInterface.removeConstraint('cursos', 'cursos_ibfk_2');
 
     await queryInterface.addConstraint('cursos', {
       fields: ['categoria_id'],

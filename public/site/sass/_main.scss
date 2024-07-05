@@ -308,8 +308,9 @@ main {
                 }
 
                 .c_r_teacher {
+                    font-family: $roboto;
                     font-size: 14px;
-                    color: #bbb;
+                    color: #777;
                     margin: 0;
                     cursor: pointer;
                 }
@@ -318,6 +319,8 @@ main {
                     margin-bottom: 2px;
                     margin-top: -5px;
                     cursor: pointer;
+                    color: #777;
+                    font-family: $roboto;
 
                     p {
                         font-size: 13px;
@@ -333,7 +336,7 @@ main {
                     }
 
                     span {
-                        color: #bbb;
+
                         font-size: 13px;
                     }
                 }

@@ -6,14 +6,15 @@
     flex-wrap: wrap-reverse; 
 }
 .cr_detail_container {
-    margin-top: 5rem;
+    margin-top: 2.5rem;
     font-family: $roboto;
 
     .cr_dt_content {
         width: 100%;
 
-        video {
+        img {
             width: 100%;
+            height: 300px;
         }
 
         .dt_content {
@@ -45,12 +46,21 @@
 
     .cr_dt_info {
         margin-bottom: 3rem;
-        p {
-            color: #777;
+        
+        .title_c {
+            font-family: $roboto;
+            font-size: 18px;
+
+            span{
+                font-weight: bold;
+            }
+        }
+        .course_desc {
+            color: #444;
 
             span {
                 color: #333;
-                font-size: 18px;
+                font-size: 15px;
                 font-weight: bold;
             }
         }
@@ -58,6 +68,7 @@
         .rate {
             font-weight: bold;
             margin-bottom: 2rem;
+            font-size: 15px;
             i {
                 color: rgb(230, 151, 6);
             }
@@ -69,10 +80,19 @@
         h3 {
             font-weight: bold;
             font-size: 20px;
+            font-size: 18px;
+            color: #444;
         }
         h4 {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: bold;
+            color: #444;
+        }
+
+        ul{
+            font-size: 15px;
+            font-family: $roboto;
+            color: #666;
         }
     }
 }
@@ -83,6 +103,6 @@
 
 @media (min-width: 992px) {
     .cr_detail_container { 
-        margin-top: 9rem;
+        margin-top: 4rem;
     }
 }

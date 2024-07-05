@@ -1,0 +1,79 @@
+{{> header }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        <div class="curso_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/cursos">Cursos</a></li>
+                    <li><a href="/cursos/detalhes/{{curso.id}}">Detalhes</a></li>
+                    <li><a href="/cursos/detalhes/acompanhar/{{curso.id}}">Acompanhar Curso</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="cr_detail_container">
+            <div class="row dt">
+                {{!-- <div class="col-11 col-md-9 col-lg-5 container-fluid">
+                    <div class="cr_dt_info">
+                        <p>Título do Curso: <span> {{ curso.name }} </span></p>
+                        <div class="rate">4,8
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <a href="#">(42.264 classificações)</a>
+                            <span>146.505 Alunos</span>
+                        </div>
+                        <h3>O que você aprenderá</h3>
+                        <ul>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                        </ul>
+                        <h3>Conteúdo do Curso</h3>
+                        <h4>AAAAAAAAAAAA</h4>
+                        <ul>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                        </ul>
+                        <h4>AAAAAAAAAAAA</h4>
+                        <ul>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                            <li>AAAAAAAAAAAAA</li>
+                        </ul>
+
+                        <h3>Descrição</h3>
+                        <div class="course_desc"> {{ curso.descricao }} </div>
+                    </div>
+                </div> --}}
+                <div class="col-11 col-md-9 col-lg-7 container-fluid tt">
+                    <div class="cr_dt_content">
+                         <p class="title_c">Título do Curso: <span> {{ curso.name }} </span></p>
+                        <div class="rate">4,8
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <a href="#">(42.264 classificações)</a>
+                            <span>{{#NumFormat enrolled }} {{/NumFormat }} Inscritos</span>
+                        </div>
+                        <iframe src="{{ curso.playlist }}" frameborder="0" allowfullscreen="allowfullscreen"
+                            mozallowfullscreen="mozallowfullscreen"
+                            msallowfullscreen="msallowfullscreen"
+                            oallowfullscreen="oallowfullscreen"
+                            weifbkitallowfullscreen="webkitallowfullscreen"></iframe>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<!-- MAIN END -->
+{{> footer }}

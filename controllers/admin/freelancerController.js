@@ -64,7 +64,7 @@ const create = (req, res) => {
 //Multer config
 const storage = multer.diskStorage({
     destination: (req, file, cd) => {
-        cd(null, 'public/admin/img/freelancers')
+        cd(null, 'public/admin/img/profile')
     },
     filename: (req, file, cd) => {
         cd(null, `${Date.now()}-${file.originalname}`)
@@ -319,7 +319,7 @@ const destroy = async (req, res) => {
         const freelancer = post;
         await user.update({ role: 'user' })
 
-        let path = 'public/admin/img/freelancers' // File path
+        let path = 'public/admin/img/profile' // File path
         deleteFile(`${path}/${freelancer.imagem}`) // Delete olde file
         deleteFile(`${path}/${freelancer.cv}`) // Delete olde file
         deleteFile(`${path}/${freelancer.bi}`) // Delete olde file

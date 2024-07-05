@@ -1,12 +1,23 @@
 /**IMPORTS CONGING ============================================*/
-const Freelancer = require('../../models/Freelancer')
-const User = require('../../models/User')
-const Habilidade = require('../../models/Habilidade')
+const Freelancer = require('../../models/Freelancer');
+const User = require('../../models/User');
+const Habilidade = require('../../models/Habilidade');
+const Curso = require('../../models/Curso');
 
 //Index
-const index = (req, res) => {
+const index = async (req, res) => {
+
+    const cursos = await Curso.findAll({
+
+        include: [
+            { model: User }
+        ],
+    });
+
+
     const user = req.user
-    Freelancer.findAll({
+
+    await Freelancer.findAll({
         include: [
             {
                 model: User,
@@ -22,13 +33,9 @@ const index = (req, res) => {
         res.render('site/home/index', {
             title: 'eMaLENGUE',
             freelancers: posts,
-
-            helpers: {
-                hello: () => {
-                    return "Ola"
-                }
-            }
-        })
+            cursos: cursos,
+            
+        });
     })
 }
 

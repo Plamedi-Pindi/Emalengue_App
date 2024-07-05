@@ -22,7 +22,10 @@ const Aluno = db.sequelize.define('alunos', {
         type: db.Sequelize.STRING,
         allowNull: false,
     },
-})
+}, {
+    timestamps: false
+}
+);
 
 Aluno.sync();
 module.exports = Aluno;

@@ -1,0 +1,53 @@
+
+@import './color';
+@import "./fonts";
+
+
+.curso_breadcrumbs{
+    box-shadow: 1px 4px 10px #ccc;
+}
+.breadcrumbs{
+    font-family: $roboto;
+    margin-top: 5rem;
+    padding: 10px;
+
+
+
+    ul {
+        margin: 0;
+        padding: 0;
+        padding-left: 25px;
+    }
+    li {
+        display: inline-block;
+    }
+    li::before {
+        content: " / ";
+        margin: 0 0;
+        color: rgb(55, 108, 252);
+    }
+    li:first-child::before{
+        content: " ";
+        
+    }
+    li:last-child{
+        a {
+            color: #888;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: rgba(55, 107, 252, 0.815);
+        font-size: 14px;
+        transition: ease-in-out .4s;
+    }
+    a:hover {
+        color: #888;
+    }
+}
+
+@media (min-width: 992px) {
+    .breadcrumbs{
+       margin-top: 9rem;
+    }
+}

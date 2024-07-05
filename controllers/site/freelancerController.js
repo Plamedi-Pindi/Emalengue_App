@@ -2,7 +2,11 @@
 const Freelancer = require('../../models/Freelancer')
 const User = require('../../models/User')
 const Habilidade = require('../../models/Habilidade')
-//index
+
+
+
+
+//index ==============================================================
 const index = (req, res) => {
     Freelancer.findAll({
         include: [
@@ -18,7 +22,7 @@ const index = (req, res) => {
     })
 }
 
-//Create
+//Create ==============================================================
 const  create = async (req, res) => {
     await Habilidade.findAll().then( habilidades => {
         res.render('site/freelancer/create/create', {

@@ -8,10 +8,12 @@
     // padding: 20px;
 
     h1 {
-        font-size: 23px;
+        font-size: 21px;
         font-family: $roboto;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        border-left: solid 5px $primary;
+        padding-left: 10px;
     }
 
     .cr_dt_content {
@@ -23,24 +25,35 @@
         img {
             margin: 0 auto;
             width: 100%;
+            height: 200px;
             display: block;
             height: 300px;
             margin: 0 auto;
         }
 
-
         a {
-            display: block;
-            max-width: 300px;
             text-decoration: none;
+            max-width: 300px;
+            background-color: rgb(2, 22, 90);
+            color: #eee;
+        }
+        .sbscribe_btn{
+            border: none;
+            width: 100%;
+            background-color: orange;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #fff;
+        }
+        a,
+        .sbscribe_btn {
+            display: block;
             font-size: 15px;
             font-family: $roboto;
-            color: #eee;
             text-align: center;
 
             padding: 6px;
             margin: 1rem auto;
-            background-color: rgb(2, 22, 90);
 
         }
     }
@@ -80,7 +93,7 @@
     #dt_modules {
         border-radius: 10px 0 0 0;
         border-right: 1px solid #eee !important;
-       
+
     }
 
 
@@ -144,6 +157,7 @@
         padding: 10px;
         margin-top: 4rem;
     }
+
     ul {
         list-style: none;
         padding: 0;
@@ -159,21 +173,91 @@
             font-family: $roboto;
             color: #555;
 
-            .last{
+            .last {
                 color: rgb(199, 129, 0);
             }
-            
+
         }
     }
 
-    a {
+    a,
+    button {
         margin-right: 10px;
         margin-bottom: 10px;
         font-size: 13px !important;
         font-family: $roboto !important;
     }
 
-   
+    .modal-dialog_dl {
+        box-shadow: none;
+        background: transparent;
+
+        .modal-content_dl {
+            box-shadow: none;
+            padding: 0;
+        }
+
+        .modal-body_dl {
+            box-shadow: none;
+            background-color: rgb(252, 127, 127);
+            margin-top: 0px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .modal-footer_dl {
+            box-shadow: none;
+            margin-top: 0px;
+            padding: 0;
+
+        }
+    }
+
+}
+
+#subsdcribeForm {
+    h2 {
+        border-left: 3px solid $primary;
+        padding-left: 8px;
+        font-size: 22px;
+        font-family: $roboto;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+    label{
+        display: block;
+        font-size: 15px;
+        font-family: $roboto;
+        font-weight: bold;
+    }
+    select,
+    input[type="tel"], 
+    input[type="email"], 
+    input[type="text"] {
+        width: 100%;
+        border:  none;
+        border-bottom: 2px solid $primary;
+        background-color: #eee;
+        outline: none;
+        padding-left: 10px;
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-family: $roboto;
+        padding: 3px;
+        color: #444;
+    }
+
+
+    .lab_op {
+        font-weight: 400;
+        margin-right: 10px;
+    }
 }
 
 // End Container
+
+@media (min-width:405px) {
+    .sbscribe_btn{
+        border: none;
+        width: 300px !important;
+    }
+}

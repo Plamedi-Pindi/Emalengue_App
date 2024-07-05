@@ -10,6 +10,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeColumn('order');
+    // await queryInterface.removeColumn('ordem');
   }
 };

@@ -1,18 +1,32 @@
-const Freelancer = require('./Freelancer')
-const Projeto = require('./Projeto')
-const User = require('./User')
-const Habilidade = require('./Habilidade')
-const Categoria = require('./Categoria')
-const ProjetoHabilidade = require('./ProjetoHabilidade')
-const Curso = require('./Curso')
-const Aula = require('./Aula')
-const Transacao = require('./Transacao')
-const Crowdfunding = require('./Crowdfundig')
+const Freelancer = require('./Freelancer');
+const Projeto = require('./Projeto');
+const User = require('./User');
+const Habilidade = require('./Habilidade');
+const Categoria = require('./Categoria');
+const ProjetoHabilidade = require('./ProjetoHabilidade');
+const Curso = require('./Curso');
+const Aula = require('./Aula');
+const Transacao = require('./Transacao');
+const Crowdfunding = require('./Crowdfundig');
 const Modulo = require('./Modulo');
 const Telefone = require('./Telefone');
 const Aluno = require('./Aluno');
+const Inscricao = require("./Inscricao");
 
 
+
+
+
+// One to One between User and Aluno ============================================================
+User.hasOne(Aluno, {
+    onDelete: 'Set Null',
+    onUpdate: 'CASCADE',
+    foreignKey: {
+        name: 'user_id',
+        allowNull: false 
+    },
+})
+Aluno.belongsTo(User, { foreignKey: 'user_id' });
 
 // One to One between Cursos and Categoria ============================================================
 Categoria.hasOne(Curso, {
@@ -36,7 +50,7 @@ Aluno.belongsToMany(Curso, {
         name: 'aluno_id',
         allowNull: false
     }
-})
+});
 
 Curso.belongsToMany(Aluno, {
     as: 'alunos',
@@ -47,7 +61,7 @@ Curso.belongsToMany(Aluno, {
         name: 'curso_id',
         allowNull: false
     }
-})
+});
 
 
 // Many-To-One between USER and TELEFONE Tables =====================================================

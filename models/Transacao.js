@@ -70,7 +70,7 @@ const Transacao = db.sequelize.define('transacoes', {
 },
 {
     timestamps: false,
-})
+});
 
 Transacao.sync()
 

@@ -32,7 +32,10 @@ const Inscricao = db.sequelize.define('inscricoes', {
     data: {
         type: db.Sequelize.DATEONLY,
     }
-})
+}, 
+{
+    timestamps: false
+});
 
 Inscricao.sync();
-module.sequelize = Inscricao;
+module.exports = Inscricao;
