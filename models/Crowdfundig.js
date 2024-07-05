@@ -68,7 +68,7 @@ const Crowdfunding = db.sequelize.define('crowdfundings', {
     }
 },
     {
-        timestamps: true,
+        timestamps: false,
     })
 
 Crowdfunding.sync()

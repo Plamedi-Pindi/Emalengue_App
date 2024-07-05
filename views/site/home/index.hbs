@@ -108,7 +108,7 @@
                     <!-- Card Start -->
                     <div class="c_f_card swiper-slide">
                         <div class="c_f_img">
-                            <img src="/admin/img/freelancers/{{ user.imagem }}" alt="">
+                            <img src="/admin/img/profile/{{ user.imagem }}" alt="">
                         </div>
                         <div class="c_f_content">
                             <h5> {{ user.nome }} </h5>
@@ -117,92 +117,16 @@
                         </div>
                         <div class="c_f_skill">
                             <p>Skills</p>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>Javascript</span>
-                            <span>Python</span>
+                            {{#each ../habilidades}}
+                                <span> {{ name }} </span>    
+                            {{/each}}
+                            
                         </div>
                     </div>
                     <!-- Card End -->
                        
                     {{/each}}
-                    <!-- Card Start -->
-                    {{!-- <div class="c_f_card swiper-slide">
-                        <div class="c_f_img">
-                            <img src="site/img/Freelancer/2.png" alt="">
-                        </div>
-                        <div class="c_f_content">
-                            <h5>Plamedi Pindi</h5>
-                            <p>Desenvolvedor de Software</p>
-                            <a href="/freelancer">Visualizar Perfil</a>
-                        </div>
-                        <div class="c_f_skill">
-                            <p>Skills</p>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>Javascript</span>
-                            <span>Python</span>
-                        </div>
-                    </div> --}}
-                    <!-- Card End -->
-                    <!-- Card Start -->
-                    {{!-- <div class="c_f_card swiper-slide">
-                        <div class="c_f_img">
-                            <img src="site/img/Freelancer/3.png" alt="">
-                        </div>
-                        <div class="c_f_content">
-                            <h5>Plamedi Pindi</h5>
-                            <p>Desenvolvedor de Software</p>
-                            <a href="/freelancer">Visualizar Perfil</a>
-                        </div>
-                        <div class="c_f_skill">
-                            <p>Skills</p>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>Javascript</span>
-                            <span>Python</span>
-                        </div>
-                    </div> --}}
-                    <!-- Card End -->
-                    <!-- Card Start -->
-                    {{!-- <div class="c_f_card swiper-slide">
-                        <div class="c_f_img">
-                            <img src="site/img/Freelancer/2.png" alt="">
-                        </div>
-                        <div class="c_f_content">
-                            <h5>Plamedi Pindi</h5>
-                            <p>Desenvolvedor de Software</p>
-                            <a href="/freelancer">Visualizar Perfil</a>
-                        </div>
-                        <div class="c_f_skill">
-                            <p>Skills</p>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>Javascript</span>
-                            <span>Python</span>
-                        </div>
-                    </div> --}}
-                    <!-- Card End -->
-                    
-                    <!-- Card Start -->
-                    {{!-- <div class="c_f_card swiper-slide">
-                        <div class="c_f_img">
-                            <img src="site/img/Freelancer/3.png" alt="">
-                        </div>
-                        <div class="c_f_content">
-                            <h5>Plamedi Pindi</h5>
-                            <p>Desenvolvedor de Software</p>
-                            <a href="/freelancer">Visualizar Perfil</a>
-                        </div>
-                        <div class="c_f_skill">
-                            <p>Skills</p>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>Javascript</span>
-                            <span>Python</span>
-                        </div>
-                    </div> --}}
-                    <!-- Card End -->
+                     
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
