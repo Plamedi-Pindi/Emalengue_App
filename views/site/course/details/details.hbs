@@ -52,17 +52,90 @@
                 <div class="col-11 col-md-9 col-lg-6 container-fluid tt">
                     <div class="cr_dt_content">
 
-                        <img src="/admin/img/cursos/{{ curso.image }}" ></img>
+                        <img src="/admin/img/cursos/{{ curso.image }}"></img>
 
                         <div class="dt_content">
                             <h3>{{#NumberFormat curso.custo }} {{/NumberFormat }}</h3>
-                            <a href="/cursos/detalhes/acompanhar/{{ curso.id }}">Comprar agora</a>
+                            <!-- Button trigger modal -->
+                            {{#if isEnrolled}}
+                                <a href="/dashboard/cursos/detalhes/acompanhar/{{curso.id}}">Continuar</a>
+                            {{else }} 
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop">Comprar agora</button>
+                            {{/if}}
                             <h3>Este curso inclui:</h3>
                             <ul>
                                 <li>2Horas de Video</li>
                                 <li>3 Artigos</li>
                                 <li>Acesso Limitado por 1 ano</li>
                             </ul>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Inscreva-se</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <form id="subsdcribeForm">
+                                    <div class="modal-body">
+
+                                        <div class="row">
+                                            <div class="col-11 col-md-6 container-fluid">
+                                                <label for="name">Nome</label>
+                                                <input type="text" name="name" value="{{ aluno.user.nome }}">
+
+                                                <label for="email">Email</label>
+                                                <input type="email" name="email" value="{{ aluno.user.email }}">
+
+                                                <label for="phone">Telefone</label>
+                                                <input type="tel" name="phone" value="{{ aluno.user.telefones.[0].telefone }}">
+                                            </div>
+
+                                            <div class="col-11 col-md-6 container-fluid">
+                                                <label for="country">Pais</label>
+                                                <select name="country" id="">
+                                                    <option> {{ aluno.user.pais }} </option>
+                                                    {{#each countries }}
+                                                    <option value="{{name}}"> {{flag}} {{name}} </option>
+                                                    {{/each}}
+                                                </select>
+
+                                                <label for="province">Província</label>
+                                                <input type="text" name="province" value="{{ aluno.user.provincia }}">
+
+                                                <label for="ocupation">Ocupação</label>
+                                                <ul>
+                                                    <li>
+                                                        <label class="lab_op" for="student">
+                                                            Estudante
+                                                            <input type="radio" name="ocupation" value="Estudante">
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="lab_op" for="worker">
+                                                            Trabalhador
+                                                            <input type="radio" name="ocupation" value="Trabalhador">
+                                                        </label>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-warning">Inscrever</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,4 +145,43 @@
     </div>
 </main>
 <!-- MAIN END -->
+
+<!-- SCRIPT FOR SEND DATA TO SERVER -->
+<script>
+    const form = document.getElementById('subsdcribeForm');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        try {
+            const data = {
+                name: form.name.value,
+                emeil: form.email.value,
+                phone: form.phone.value,
+                country: form.country.value,
+                province: form.province.value,
+                ocupation: form.ocupation.value,
+            }
+
+            const url = "/dashboard/cursos/inscrever/{{user.id}}/{{curso.id}}";
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            if (result) {
+                console.log(result);
+                location.assign('/dashboard/cursos/detalhes/acompanhar{{curso.id}}')
+            }
+        } catch (error) {
+            console.error("Ocorroreu um arro ao enviar os dados ao servidor: " + error);
+        }
+    });
+</script>
+
 {{> footer }}

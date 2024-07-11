@@ -100,7 +100,7 @@ const emailVerification = async (req, res) => {
 // Multer config ===================
 const storage = multer.diskStorage({
     destination: (req, file, cd) => {
-        cd(null, 'public/admin/img/freelancers')
+        cd(null, 'public/admin/img/profile')
     },
     filename: (req, file, cd) => {
         cd(null, `${Date.now()}-${file.originalname}`)
@@ -170,7 +170,7 @@ const update = async (req, res) => {
         })
     } else if (img) {
 
-        let path = 'public/admin/img/freelancers' // File path
+        let path = 'public/admin/img/profile' // File path
         deleteFile(`${path}/${user.imagem}`) // Delete olde file
 
         await user.update({

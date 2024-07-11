@@ -20,12 +20,18 @@
             <div class="allCourse_bar">
                 <ul class="bar_box">
                     {{!-- New course --}}
-                    <li><a href="/dashboard/cursos/novocurso" class="btn btn-primary new_btn_c"> <i
-                                class="bi bi-plus-square-dotted"></i>
-                            Novo</a></li>
+                    {{#if userRole}}
+                    <li>
+                        <a href="/dashboard/cursos/novocurso" class="btn btn-primary new_btn_c">
+                            <i class="bi bi-plus-square-dotted"></i>
+                            Novo
+                        </a>
+                    </li>
+                    {{/if}}
                     {{!-- All Course --}}
                     <li><a href="/dashboard/cursos" id="all_c_btn"> <i class="bi bi-grid"></i> Todos</a></li>
                     {{!-- Dropdown Category --}}
+                    {{#if userRole}}
                     <li>
                         <div class="dropdown">
                             <button class="btn dropdown-toggle dropdown_category" type="button"
@@ -37,9 +43,11 @@
                                 <li><a class="dropdown-item" href="/dashboard/cursos/pesquisa/{{id}}"> {{ name }} </a>
                                 </li>
                                 {{/each}}
+
                             </ul>
                         </div>
                     </li>
+                    {{/if}}
                     {{!-- SEARCH BAR --}}
                     <li>
                         <form>
@@ -71,6 +79,10 @@
                             </p>
 
                             <a href="/dashboard/cursos/detalhes/{{id}}" class="btn btn-primary">Saber Mais </a>
+                            {{#if isEnrolled}}
+                                <a href="/dashboard/cursos/detalhes/acompanhar/{{id}}" class="btn btn-warning">Continuar </a>
+                               
+                            {{/if}}
 
                         </div>
 
@@ -106,4 +118,3 @@
 </script>
 <!-- MAIN END -->
 {{> dashFooter }}
-

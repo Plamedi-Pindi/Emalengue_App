@@ -16,6 +16,11 @@
         </div>
 
         <div class="newCourse_container">
+             {{!-- Alert fired when an update is realized --}}
+                <div id="AlertMessage">
+                    <img src="/admin/img/icons/icons8-success.gif" alt="">
+                    <p id="alertText"></p>
+                </div>
             <h2>Publicar Curso</h2>
             {{!-- FORM --}}
             <form id="newCourseForm" enctype="multipart/form-data">
@@ -68,8 +73,7 @@
                     </div>
                     {{!-- DATE --}}
                     <div class="col-11 col-md-5 container-fluid">
-                        <label for="date">Publicado em: <span>*</span></label>
-                        <input type="date" name="date" id="date" value="{{ curso.data }}" required>
+                       
                     </div>
                     {{!-- DESCRIPTION --}}
                     <div class="col-11 col-md-8 container-fluid">
@@ -108,6 +112,12 @@
     const moduleDelete = document.getElementById('moduleDelete');
     const playlist1 = document.getElementById('playlist1');
 
+    const AlertMessage =  document.getElementById('AlertMessage');
+    const alertText =  document.getElementById('alertText');
+    AlertMessage.style.display = 'none';
+
+    let moduleCount =  {{ Sequencia }};
+
     // THIS BLOCK GOING TO FIRE ONLY IF THERE IS MODULES IN A COURSE 
     if({{ thereIsModule }}) {
 
@@ -116,7 +126,7 @@
         playlist1.setAttribute('name', 'nothing');
 
          // Module count
-        const moduleCount = parseInt(module.childElementCount) + 1;
+        //const moduleCount = parseInt(module.childElementCount) + 1;
 
         // STAP 2 ===========================================
             // Create module container div
@@ -125,11 +135,8 @@
             moduleContainer.setAttribute("class", "row");
             moduleContainer.setAttribute("id", "moduleContainer");
 
-            
-           
 
         {{#each curso.modulos}}
-            console.log('{{ nome }}');
 
             // Create subtitle for module
             const subtitle{{ ordem }} = document.createElement('h5');
@@ -207,7 +214,7 @@
         // Set Attribute to playlistInput
         playlistInput{{ ordem }}.setAttribute("type", "text");
         playlistInput{{ ordem }}.setAttribute("name", "playlist");
-        playlistInput{{ ordem }}.setAttribute("id", "modulePlaylist");
+        playlistInput{{ ordem }}.setAttribute("id", "modulePlaylist{{ ordem }}");
         playlistInput{{ ordem }}.setAttribute("value", "{{ playlist }}");
         // Insert playlistInput into playlistContainer
         playlistContainer{{ ordem }}.append(playlistInput{{ ordem }});
@@ -219,27 +226,104 @@
         // Insert the module container into moduleAdd div
         module.append(moduleContainer);
 
+        // Creating delete button for module
         const delMod{{ ordem }} = document.createElement('button');
         delMod{{ ordem }}.setAttribute("id", "deleteItem");
+        delMod{{ ordem }}.setAttribute("type", "button");
         const icon{{ ordem }} = document.createElement("i");
         icon{{ ordem }}.setAttribute("class", "bi bi-trash3");
         const delText{{ ordem }} = document.createTextNode("Eliminar");
         delMod{{ ordem }}.append(icon{{ ordem }});
         delMod{{ ordem }}.append(delText{{ ordem }});
 
+        // Creating update button for modules
+        const updateMod{{ ordem }} = document.createElement('button');
+        updateMod{{ ordem }}.setAttribute("id", "updateMod");
+        updateMod{{ ordem }}.setAttribute("type", "button");
+        const upicon{{ ordem }} = document.createElement("i");
+        upicon{{ ordem }}.setAttribute("class", "bi bi-pencil-square");
+        const upText{{ ordem }} = document.createTextNode("Atualizar");
+        updateMod{{ ordem }}.append(upicon{{ ordem }});
+        updateMod{{ ordem }}.append(upText{{ ordem }});
+
+        // Create a container for the created buttons
         const box{{ ordem }} = document.createElement("div");
         box{{ ordem }}.setAttribute("class", "box{{ ordem }} col-11 col-md-11 container-fluid");
         box{{ ordem }}.append(delMod{{ ordem }});    
+        box{{ ordem }}.append(updateMod{{ ordem }});    
 
-        moduleContainer.append(box{{ ordem }});                            
+        moduleContainer.append(box{{ ordem }});   
+
+        // Addd event to updateMod button ================================================
+        updateMod{{ ordem }}.addEventListener('click', async ()=>{
+            const playlist{{ ordem }} = document.getElementById('modulePlaylist{{ ordem }}');
+            
+            try{
+                const moduleId{{ ordem }} = {{ id }};
+                const url = '/dashboard/cursos/atualizar/parcial';
+                const config = {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        moduleId: moduleId{{ ordem }},
+                        playlist: playlist{{ ordem }}.value
+                    })
+                };
+
+                const response = await fetch(url, config);
+                const result = await response.json();
+                if (result) {
+                    alertText.innerHTML = result.message;
+                    AlertMessage.style.display = 'flex';
+
+                    setTimeout(() => {
+                        AlertMessage.style.display = 'none';
+                    }, 3000);
+                }
+
+            } catch(error){
+                console.error(error)
+            }
+        });                        
                  
-        // Delete item event
-       delMod{{ ordem }}.addEventListener("click", ()=> {
+        // Delete item event ================================================================
+       delMod{{ ordem }}.addEventListener("click", async ()=> {
             playlistContainer{{ ordem }}.style.display = "none";
             nomeContainer{{ ordem }}.style.display = "none";
             delMod{{ ordem }}.style.display = "none";
             subtitle{{ ordem }}.style.display = "none";
-       })
+             updateMod{{ ordem }}.style.display = 'none';
+
+
+            //DELETING A MADULE ============================
+            try{
+                const moduleId{{ ordem }} = {{ id }};
+                const url = '/dashboard/cursos/atualizar/parcial';
+                const config = {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({moduleId:  moduleId{{ ordem }} })
+                };
+
+                const response = await fetch(url, config);
+                const result = await response.json();
+                 if (result) {
+                    alertText.innerHTML = result.message;
+                    AlertMessage.style.display = 'flex';
+
+                    setTimeout(() => {
+                        AlertMessage.style.display = 'none';
+                    }, 3000);
+                }
+
+            } catch(error){
+                console.error(error)
+            }
+       });
 
         {{/each}}
     }
@@ -256,7 +340,7 @@
         playlist1.setAttribute('name', 'nothing');
 
         // Module count
-        const moduleCount = parseInt(module.childElementCount) + 1;
+        moduleCount += 1;
 
 
         // STAP 1 ===========================================
@@ -367,9 +451,8 @@
     // ADD EVENT TO moduleDelete ======================================================================
     moduleDelete.addEventListener('click', () => {
         const lastModule = module.lastElementChild;
-        const moduleCount = parseInt(module.childElementCount);
         playlist1.setAttribute('name', 'playlist');
-
+        moduleCount -= 1;
         // Remove the last Module
         lastModule.remove()
 
@@ -382,6 +465,7 @@
             moduleDelete.style.display = 'block';
         }
     })
+
 </script>
 <!-- SCRIPT END -->
 

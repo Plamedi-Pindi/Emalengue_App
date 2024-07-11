@@ -1,0 +1,63 @@
+{{> dashHeader }}
+{{> dashSidebar }}
+<!-- MAIN START -->
+<main>
+    <div class="container">
+        {{!-- Breadcrumbs --}}
+        <div class="curso_breadcrumbs">
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="/dashboard">Home</a></li>
+                    <li><a href="/dashboard/cursos">Cursos</a></li>
+                    <li><a href="/dashboard/cursos/detalhes/{{curso.id}}">Detalhes</a></li>
+                    <li><a href="/dashboard/cursos/detalhes/acompanhar/{{curso.id}}">Acompanhar
+                            o curso</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="course_watch_container">
+            {{!-- BAR START --}}
+            <div class="cr_wt_bar">
+                <div class="dropdown mod_dropdow_container">
+                    <button class="btn dropdown-toggle dropdown_wt" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        {{ modulo.nome }}
+                    </button>
+                    <ul class="dropdown-menu">
+                        {{#each curso.modulos}}
+                         <li><a class="dropdown-item" href="/dashboard/cursos/detalhes/acompanhar/modulo/{{ ../curso.id }}/{{ id }}"> <div> {{ordem}} </div> {{nome}}</a></li>
+                        {{/each}}
+
+                    </ul>
+                </div>
+
+            </div>
+            {{!-- BAR END --}}
+
+            {{!-- --}}
+            <div class="row cr_wt_content">
+
+                <h1> {{curso.name}} </h1>
+
+                <div class="col-11 col-md-8 container-fluid">
+
+                    {{!-- {{#if iqual}}
+                    <iframe src="{{curso.playlist}}" frameborder="0" allowfullscreen="allowfullscreen"
+                        mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen"
+                        oallowfullscreen="oallowfullscreen" weifbkitallowfullscreen="webkitallowfullscreen"></iframe>
+                    {{else}}
+                    {{/if}} --}}
+                    <iframe src="{{modulo.playlist}}" frameborder="0" allowfullscreen="allowfullscreen"
+                        mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen"
+                        oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<!-- MAIN END -->
+{{> dashFooter }}

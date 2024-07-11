@@ -389,7 +389,7 @@ const updateView = async (req, res) => {
 //Multer Update  Image =====================================================
 const updatesStorage = multer.diskStorage({
     destination: (req, file, cd) => {
-        cd(null, 'public/admin/img/freelancers')
+        cd(null, 'public/admin/img/profile')
     },
     filename: (req, file, cd) => {
         cd(null, `${Date.now()}-${file.originalname}`)
@@ -603,7 +603,7 @@ const update = async (req, res) => {
             const freelancer = post
             await User.findOne({ where: { id: freelancer.user_id } }).then(async user => {
 
-                let path = 'public/admin/img/freelancers' // File path
+                let path = 'public/admin/img/profile' // File path
                 deleteFile(`${path}/${user.imagem}`) // Delete olde file
 
                 await user.update({ imagem: img }) // Update new file
@@ -624,7 +624,7 @@ const update = async (req, res) => {
         }).then(async post => {
             const freelancer = post
 
-            let path = 'public/admin/img/freelancers' // File path
+            let path = 'public/admin/img/profile' // File path
             deleteFile(`${path}/${freelancer.cv}`) // Delete olde file
 
             await freelancer.update({ cv: cv }) // Update new file
@@ -644,7 +644,7 @@ const update = async (req, res) => {
         }).then(async post => {
             const freelancer = post
 
-            let path = 'public/admin/img/freelancers' // File path
+            let path = 'public/admin/img/profile' // File path
             deleteFile(`${path}/${freelancer.bi}`) // Delete olde file
 
             await freelancer.update({ bi: bilhete }) // Update new file

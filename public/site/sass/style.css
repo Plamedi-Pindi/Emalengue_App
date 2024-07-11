@@ -2239,7 +2239,7 @@ label {
   font-size: 20px;
   margin-top: 10px;
 }
-.cr_detail_container .cr_dt_content .dt_content a {
+.cr_detail_container .cr_dt_content .dt_content button, .cr_detail_container .cr_dt_content .dt_content a {
   padding: 7px;
   text-decoration: none;
   color: #eee;
@@ -2247,6 +2247,11 @@ label {
   display: block;
   width: 100%;
   text-align: center;
+  border: none;
+  outline: none;
+}
+.cr_detail_container .cr_dt_content .dt_content a {
+  background-color: #f7aa00;
 }
 .cr_detail_container .cr_dt_content .dt_content a:hover {
   transform: scale(1.02);
@@ -2304,6 +2309,41 @@ label {
 
 .tt {
   padding: 0px;
+}
+
+#subsdcribeForm h2 {
+  border-left: 3px solid #f7aa00;
+  padding-left: 8px;
+  font-size: 22px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+#subsdcribeForm label {
+  display: block;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+#subsdcribeForm select,
+#subsdcribeForm input[type=tel],
+#subsdcribeForm input[type=email],
+#subsdcribeForm input[type=text] {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #f7aa00;
+  background-color: #eee;
+  outline: none;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  padding: 3px;
+  color: #444;
+}
+#subsdcribeForm .lab_op {
+  font-weight: 400;
+  margin-right: 10px;
 }
 
 @media (min-width: 992px) {

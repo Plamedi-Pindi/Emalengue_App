@@ -23,7 +23,7 @@
                 font-size: 20px;
                 margin-top: 10px;
             }
-            a {
+            button, a {
                 padding: 7px;
                 text-decoration: none;
                 color: #eee;
@@ -31,7 +31,12 @@
                 display: block;
                 width: 100%;
                 text-align: center;
+                border: none;
+                outline: none;
 
+            }
+            a {
+                background-color: $primary;
             }
             a:hover {
                 transform: scale(1.02);
@@ -99,6 +104,45 @@
 
 .tt {
     padding: 0px;
+}
+
+#subsdcribeForm {
+    h2 {
+        border-left: 3px solid $primary;
+        padding-left: 8px;
+        font-size: 22px;
+        font-family: $roboto;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+    label{
+        display: block;
+        font-size: 15px;
+        font-family: $roboto;
+        font-weight: bold;
+    }
+    select,
+    input[type="tel"], 
+    input[type="email"], 
+    input[type="text"] {
+        width: 100%;
+        border:  none;
+        border-bottom: 2px solid $primary;
+        background-color: #eee;
+        outline: none;
+        padding-left: 10px;
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-family: $roboto;
+        padding: 3px;
+        color: #444;
+    }
+
+
+    .lab_op {
+        font-weight: 400;
+        margin-right: 10px;
+    }
 }
 
 @media (min-width: 992px) {

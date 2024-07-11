@@ -45,17 +45,6 @@
             </ul>
         {{/ifIqual }}
 
-        {{!-- {{#ifIqual user.role "freelancer" }}
-            <h3 class="sd-title">Freelancer</h3>
-            <ul>
-                <li>
-                    <a href="/dashboard/freelancer"><i class="bi bi-person-fill"></i>
-                        <span class="sb-content">Freelancers</span>
-                    </a>
-
-                </li>
-            </ul>
-        {{/ifIqual }} --}}
 
         <!-- CURSOS ===========================================================  -->
         <h3 class="sd-title">Cursos</h3>
@@ -65,11 +54,13 @@
                     <span class="sb-content">Cursos</span>
                 </a>
             </li>
-            <li>
-                <a href="/dashboard/cursos/novocurso"><i class="bi bi-file-earmark-plus-fill"></i>
-                    <span class="sb-content">Novo Curso</span>
-                </a>
-            </li>
+             {{#ifIqual user.role "admin" }} 
+                <li>
+                    <a href="/dashboard/cursos/novocurso"><i class="bi bi-file-earmark-plus-fill"></i>
+                        <span class="sb-content">Novo Curso</span>
+                    </a>
+                </li>
+             {{/ifIqual }}
         </ul>
         <!-- CROWDFUNDING ===========================================================  -->
         <h3 class="sd-title">Crowdfunding</h3>
@@ -79,11 +70,13 @@
                     <span class="sb-content">Crowdfunding</span>
                 </a>
             </li>
-            <li>
-                <a href="/dashboard/crowdfunding/novoCrowdfunding"><i class="bi bi-file-earmark-plus-fill"></i>
-                    <span class="sb-content">Novo Crowdfunding</span>
-                </a>
-            </li>
+             {{#ifIqual user.role "admin" }} 
+                <li>
+                    <a href="/dashboard/crowdfunding/novoCrowdfunding"><i class="bi bi-file-earmark-plus-fill"></i>
+                        <span class="sb-content">Novo Crowdfunding</span>
+                    </a>
+                </li>
+             {{/ifIqual }}
         </ul>
       
         <!-- PROJETOS ===========================================================  -->

@@ -29,28 +29,6 @@ const isLogged = (req, res, next) => {
     // req.user ? next() : res.sendStatus(401)
 }
 
-// requireAuth
-// const requireAuth = (req, res, next) => {
-//     const token = req.cookies.jwt;
-
-//     //check json web exixts and verified
-//     if(token){
-//         jwt.verify(token, 'emalengue app', (err, decodedToken) => {
-
-//             if(err) {
-//                 console.log(err.message);
-//                 res.redirect('/login')
-//             } else {
-//                 console.log(decodedToken);
-//                 next()
-//             }
-//         })
-
-//     } else {
-//         res.redirect('/login')
-//     }
-// }
-
 //Check Current Useer
 const checkUsser = (req, res, next) => {
     const token = req.cookies.jwt;
@@ -83,8 +61,19 @@ const checkUsser = (req, res, next) => {
     }
 }
 
+// MIDDLEWARE TO PROTECTE A ROUTE ============================================================ 
+const authorizeRole = (role) => {
+    return (req, res, next) => {
+        if (req.user.role !== role) {
+            return res.sendStatus(403);
+        }
+        next();
+    }
+}
+
 
 module.exports = {
     checkUsser,
-    isLogged
+    isLogged,
+    authorizeRole,
 }

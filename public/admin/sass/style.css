@@ -2193,7 +2193,7 @@ tr {
 /* MAIN CONTAINER GENERAL CONFIG START ===========================================*/
 #AlertMessage {
   width: auto;
-  background: rgba(2, 110, 2, 0.822);
+  background: rgba(1, 88, 1, 0.822);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -2321,6 +2321,9 @@ tr {
 }
 .newCourse_container form #moduleAdd #moduleDelete {
   display: none;
+}
+.newCourse_container form #updateMod {
+  outline: none;
 }
 .newCourse_container form button[type=submit] {
   font-size: 15px;
