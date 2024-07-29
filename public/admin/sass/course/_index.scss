@@ -88,20 +88,19 @@
         }
 
         // FORM ================
-        form {
-            input {
-                width: 270px;
-                padding: 6px;
-                padding-left: 10px;
-                color: #555;
-                font-size: 15px;
-                font-family: $roboto;
+        input {
+            width: 270px;
+            padding: 6px;
+            padding-left: 10px;
+            color: #555;
+            font-size: 15px;
+            font-family: $roboto;
 
-                border: solid 1px #ddd;
-                border-radius: 5px;
-                outline: none;
-            }
+            border: solid 1px #ddd;
+            border-radius: 5px;
+            outline: none;
         }
+        
     }
 
     // BAR END ==============
@@ -145,6 +144,7 @@
             .acl_card_content{
                 padding: 10px;
                 padding-bottom: 1rem;
+                overflow-x: hidden;
 
                 a {
                     font-size: 14px;

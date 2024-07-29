@@ -9,7 +9,12 @@
     .curso-search {
         input {
             margin-right: 10px;
+            outline: none !important;
         }
+        // input:focus {
+        //     outline: none !important;
+        //     border: none !important;
+        // }
     }
 
 }
@@ -103,6 +108,7 @@
                     font-size: 15px;
                     padding-top: 8px;
                     color: #222;
+                    font-weight: bold;
                 }
             }
         }
@@ -112,6 +118,7 @@
             margin-bottom: 10px;
             font-size: 15px;
             color: #888;
+            overflow-x: hidden;
         }
 
         .cs_rate {
@@ -132,12 +139,7 @@
 }
 
 // Pagination
-.cs_pagination_container {
-    padding-top: 10px;
-    padding-bottom: 3rem;
-    width: 80%;
-    margin: 0 auto;
-}
+
 
 .cs_pagination {
     display: flex;
@@ -158,8 +160,11 @@
     color: black;
     float: left;
     font-size: 15px;
-    color: #777;
+    color: #555;
     transition: .5s;
+}
+.of a {
+    color: #333;
 }
 
 .cs_pagination a:hover {
@@ -199,12 +204,17 @@
     }
 }
 
-
+.ctsearch {
+    margin-top: 0 !important;
+}
+.ctsearch2 {
+    padding-bottom: 4rem;
+}
 
 @media(min-width:720px) {
-    .cs_pagination_container{
-        width: 65%;
-    }
+    // .cs_pagination_container{
+    //     width: 65%;
+    // }
     .ins_content{
         margin-top: 3rem;
     }
@@ -213,9 +223,9 @@
 
 @media(min-width:992px) {
 
-    .cs_pagination_container{
-        width: 60%;
-    }
+    // .cs_pagination_container{
+    //     width: 60%;
+    // }
 
     #cursos_display {
         h2 {

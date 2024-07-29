@@ -12,6 +12,7 @@ const Aluno = require('../../models/Aluno');
 const User = require("../../models/User");
 const country = require('country-state-city').Country;
 const Telefone = require('../../models/Telefone');
+const { Sequelize } = require("../../models/db");
 
 
 
@@ -22,7 +23,7 @@ const index = async (req, res) => {
     if (userAuth.role === 'admin') {
         const page = req.query.page || 1; // Página atual
         const pageSize = 9; // Número de itens por página
-
+        
         try {
 
             const { count, rows } = await Curso.findAndCountAll({
@@ -34,7 +35,7 @@ const index = async (req, res) => {
             });
 
             const categoria = await Categoria.findAll();
-
+            
             const totalPages = Math.ceil(count / pageSize);
 
             // Calcular as condições para exibir os links de página anterior e próxima
@@ -130,7 +131,7 @@ const index = async (req, res) => {
                 isAluno = true;
             }
 
-           
+
             res.render('admin/cursos/index', {
                 title: 'eMaLENGUE | Cursos',
                 layout: 'main2',
@@ -154,7 +155,7 @@ const index = async (req, res) => {
 
 }
 
-// HEARCH METHOD ========================================================
+// HEARCH THROUGH CATEGORY METHOD ========================================================
 const searching = async (req, res) => {
     const userAuth = req.user;
     const item = req.params.id;
@@ -277,7 +278,21 @@ const searching = async (req, res) => {
         //     console.error('Erro ao buscar cursos:', err);
         // }
     }
+}
 
+// SEARCH GENERAL ======================================================
+const search = async (req, res) => {
+    const { query } = req.query;
+    let cursos = [];
+    cursos = await Curso.findAll({
+        where: {
+            name: {
+                [Sequelize.Op.like]: `%${query}%`
+            }
+        }
+    });
+    console.log(cursos);
+    res.json(cursos);
 
 }
 
@@ -305,7 +320,7 @@ const courseDelete = async (req, res) => {
 }
 
 
-// COURSE DETAILS =======================================================
+// COURSE DETAILS ======================================================= 
 const courseDetails = async (req, res) => {
     const userAuth = req.user
     const item = req.params.id;
@@ -323,7 +338,7 @@ const courseDetails = async (req, res) => {
 
         // Get logged user
         const authUser = req.user;
-        // Module length
+        // Module length 
         const moduloLengtth = result.modulos.length;
         // To list all Enrolled student
         const enrolled = result.alunos.length;
@@ -605,7 +620,7 @@ const enrol = async (req, res) => {
 
     const curso_id = req.params.course;
     const authUser_id = req.params.user;
-
+    console.log();
     const ocupation = req.body.ocupation;
     const phone = req.body.phone;
     const country = req.body.country;
@@ -616,76 +631,88 @@ const enrol = async (req, res) => {
     const manth = date.getMonth();
     const day = date.getDate();
 
-    const authUser = await User.findOne({ where: { id: authUser_id } });
-    const existPhone = await Telefone.findOne({ where: { telefone: phone } });
-
-    if (authUser.pais != country) {
-        await authUser.update({
-            pais: country
-        });
-    }
-    if (authUser.provincia != province) {
-        await authUser.update({
-            provincia: province
-        });
-    }
-    if (existPhone) {
-        console.log('Already');
-    } else {
-        await Telefone.create({
-            user_id: authUser_id,
-            telefone: phone
-        });
-
-    }
-
-    // Check if the user is already student
-    const isStudent = await Aluno.findOne({
-        where: { user_id: authUser_id }
-    })
-    if (isStudent) {
-
-        // Check if the student is already enrolled into the selected course
-        const isEnrolled = await Inscricao.findOne({
-            where: {
-                aluno_id: isStudent.id,
-                curso_id: curso_id
-            }
-        });
-
-        if (isEnrolled) {
-            const alert = {
-                id: 1,
-                message: "Já se encontra inscrito neste curso!"
-            }
-            res.status(200).json(alert);
-        } else {
-            await Inscricao.create({
-                aluno_id: isStudent.id,
-                curso_id: curso_id,
-                data: date
-            });
-        }
-
-    } else {
-        await Aluno.create({
-            user_id: authUser_id,
-            ocupacao: ocupation,
-        }).then(async post => {
-
-            await Inscricao.create({
-                aluno_id: post.id,
-                curso_id: curso_id,
-                data: date
-            });
-
-        });
+    if (authUser_id == null) {
+        console.log('Need to log');
         const alert = {
-            id: 2,
-            message: "A Inscrição foi realizada com sucesso!"
+            id: 1,
+            message: "Need to log!"
         }
         res.status(200).json(alert);
+    } else {
+
+        const authUser = await User.findOne({ where: { id: authUser_id } });
+        const existPhone = await Telefone.findOne({ where: { telefone: phone } });
+
+        if (authUser.pais != country) {
+            await authUser.update({
+                pais: country
+            });
+        }
+        if (authUser.provincia != province) {
+            await authUser.update({
+                provincia: province
+            });
+        }
+        if (existPhone) {
+            console.log('Already');
+        } else {
+            await Telefone.create({
+                user_id: authUser_id,
+                telefone: phone
+            });
+
+        }
+
+        // Check if the user is already student
+        const isStudent = await Aluno.findOne({
+            where: { user_id: authUser_id }
+        })
+        if (isStudent) {
+
+            // Check if the student is already enrolled into the selected course
+            const isEnrolled = await Inscricao.findOne({
+                where: {
+                    aluno_id: isStudent.id,
+                    curso_id: curso_id
+                }
+            });
+
+            if (isEnrolled) {
+                const alert = {
+                    id: 1,
+                    message: "Já se encontra inscrito neste curso!"
+                }
+                res.status(200).json(alert);
+            } else {
+                await Inscricao.create({
+                    aluno_id: isStudent.id,
+                    curso_id: curso_id,
+                    data: date
+                });
+            }
+
+        } else {
+            await Aluno.create({
+                user_id: authUser_id,
+                ocupacao: ocupation,
+            }).then(async post => {
+
+                await Inscricao.create({
+                    aluno_id: post.id,
+                    curso_id: curso_id,
+                    data: date
+                });
+
+            });
+            const alert = {
+                id: 2,
+                message: "A Inscrição foi realizada com sucesso!"
+            }
+            res.status(200).json(alert);
+        } // END INNER IF
+
     } // END MAIN IF
+
 
 }
 
@@ -975,4 +1002,5 @@ module.exports = {
     imgUpload2,
     parcialModule,
     modulosView,
+    search,
 }

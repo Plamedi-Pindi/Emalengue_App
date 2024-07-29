@@ -117,8 +117,8 @@
                     email_warnig1.innerHTML = result[1]
                 }
                 else if (result.user) {
-                    location.assign('/');
-                    
+                    //location.assign('/');
+                    window.location.href = document.referrer;
                     //history.back();
                     setTimeout(()=>{
                         window.location.reload();

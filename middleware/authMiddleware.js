@@ -23,7 +23,7 @@ const isLogged = (req, res, next) => {
     } else if (req.user) {
         next()
     } else {
-        res.redirect('/login')
+        res.redirect('/login');
     }
 
     // req.user ? next() : res.sendStatus(401)

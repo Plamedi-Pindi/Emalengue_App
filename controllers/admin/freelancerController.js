@@ -1,19 +1,20 @@
 /**IMPORTS CONFIG ===========================================================*/
 
-const Freelancer = require('../../models/Freelancer')
-const User = require('../../models/User')
-const multer = require('multer')
-const bcrypt = require('bcrypt')
-const { name } = require('body-parser')
-const Habilidade = require('../../models/Habilidade')
-const Freelancerhabilidade = require('../../models/freelancerhabilidades')
-const { log } = require('console')
+const Freelancer = require('../../models/Freelancer');
+const User = require('../../models/User');
+const multer = require('multer');
+const bcrypt = require('bcrypt');
+const { name } = require('body-parser');
+const Habilidade = require('../../models/Habilidade');
+const Freelancerhabilidade = require('../../models/freelancerhabilidades');
+const { log } = require('console');
 const fs = require('fs').promises;
-require('dotenv').config()
-const nodemailer = require('nodemailer')
-const jwt = require('jsonwebtoken')
-const country = require('country-state-city').Country
-const province = require('country-state-city').State
+require('dotenv').config();
+const nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
+const country = require('country-state-city').Country;
+const province = require('country-state-city').State;
+const Telephone = require('../../models/Telefone');
 
 
 
@@ -25,17 +26,22 @@ const index = async (req, res) => {
         include: [
             {
                 model: User,
+                include: [
+                    {model: Telephone}
+                ]
             },
             {
                 model: Habilidade,
                 as: 'habilidades',
-            }
+            },
+          
         ],
         order: [
             ['id', 'DESC']
         ]
     }).then(async (posts) => {
-        const freelancer = posts
+
+        console.log(posts[0].user.telefones);
         res.render('admin/freelancer/index', {
             freelancers: posts,
             layout: 'main2',
@@ -170,8 +176,6 @@ const store = async (req, res) => {
 
     //Verify if there is alread a user with the email entered
     const user = await User.findOne({ row: true, where: { email: email } })
-
-
     if (user && checkbox != "on") {
         const userId = user.id
         const freelancer = await Freelancer.findOne({ row: true, where: { user_id: userId } })
@@ -182,7 +186,7 @@ const store = async (req, res) => {
                 code: 1,
                 desc: "Já há um freelancer cadastrado com este email. Por favor, tente com um outro email! "
             }
-            res.status(401).json(message)
+            res.status(401).json(message);
         } else {
             const message = {
                 code: 1,
@@ -192,6 +196,7 @@ const store = async (req, res) => {
         }
 
     } else if (user && checkbox == "on") {
+        /** Check if there is a user and the checkbox is clicked */
         const userId = user.id
         const freelancer = await Freelancer.findOne({ where: { user_id: userId } })
         if (freelancer) {
@@ -209,7 +214,20 @@ const store = async (req, res) => {
                 // const token = createToken(user.id)
                 // res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
             }
-            user.update({ imagem: img })
+            user.update({ imagem: img });
+
+            const telefone = await Telephone.findAll({ where: { user_id: user.id } });
+
+            if (telefone) {
+                telefone.update({
+                    telefone: req.body.phone
+                });
+            } else {
+                Telephone.create({
+                    user_id: user.id,
+                    telefone: req.body.phone
+                });
+            }
 
             // Registra como freelancer
             await Freelancer.create({
@@ -222,7 +240,6 @@ const store = async (req, res) => {
                 cv: cv,
                 user_id: user.id,
                 especialidade: req.body.especialidade,
-                phone: req.body.phone
 
             }).then(async () => {
                 // res.redirect('/dashboard/freelancer')
@@ -269,16 +286,28 @@ const store = async (req, res) => {
                 // res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
             }
             // Registra como freelancer
+
+            const telefone = await Telephone.findAll({ where: { user_id: user.id } });
+
+            if (telefone) {
+                telefone.update({
+                    telefone: req.body.phone
+                });
+            } else {
+                Telephone.create({
+                    user_id: user.id,
+                    telefone: req.body.phone
+                });
+            }
+
             await Freelancer.create({
 
                 certificacoes: req.body.certification,
                 sobre: req.body.about,
-                // imagem: img,
                 bi: bi,
                 cv: cv,
                 user_id: user.id,
                 especialidade: req.body.especialidade,
-                phone: req.body.phone
 
             }).then(async () => {
                 // res.redirect('/dashboard/freelancer')
@@ -380,7 +409,7 @@ const updateView = async (req, res) => {
             layout: 'main2',
             freelancer: result,
             habilidades: habilidade,
-             country: country.getAllCountries(),
+            country: country.getAllCountries(),
             province: province.getStatesOfCountry('AO')
         })
     })
@@ -532,7 +561,7 @@ const update = async (req, res) => {
             res.json(message)
         })
     }
-     else if (pais) {  // Update Pais
+    else if (pais) {  // Update Pais
         await Freelancer.findOne({
             where: { id: freeId },
             include: [
@@ -550,7 +579,7 @@ const update = async (req, res) => {
         })
 
     }
-     else if (sobre) {
+    else if (sobre) {
         await Freelancer.findOne({
             where: { id: freeId },
             include: [

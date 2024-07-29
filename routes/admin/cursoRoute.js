@@ -2,11 +2,13 @@
 const express = require('express');
 const cursoController = require('../../controllers/admin/cursoController')
 const curso = express.Router();
-const {authorizeRole} = require('../../middleware/authMiddleware');
+const {authorizeRole, checkUsser, isLogged} = require('../../middleware/authMiddleware');
 
 
 // INDEX ========================================================
 curso.get('/', cursoController.index);
+// SEARCH ========================================================
+curso.get('/search', cursoController.search);
 // SEARCH ========================================================
 curso.get('/pesquisa/:id', cursoController.searching);
 // SEARCH ========================================================
@@ -24,7 +26,7 @@ curso.get('/detalhes/alunos/:id', cursoController.alunos);
 // PUBLISHING NEW COURSE ROUTE ==================================
 curso.post('/publicar/:id', cursoController.imgUpload, cursoController.publicarCurso);
 // ENROL TO COURSE ROUTE ==================================
-curso.post('/inscrever/:user/:course', cursoController.enrol);
+curso.post('/inscrever/:course/:user?', cursoController.enrol);
 // UPDATE A COURSE ROUTE ==================================
 curso.get('/atualizar/:id', authorizeRole('admin'), cursoController.cursoUpdate);
 // UPDATE A COURSE ROUTE ==================================

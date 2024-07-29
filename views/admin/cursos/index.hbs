@@ -50,8 +50,9 @@
                     {{/if}}
                     {{!-- SEARCH BAR --}}
                     <li>
-                        <form>
-                            <input type="search" placeholder="Pesquise...">
+                        <form method="get">
+                            <input type="search" id="search" name="search" placeholder="Pesquise...">
+                            {{!-- <button>search</button> --}}
                         </form>
                     </li>
                 </ul>
@@ -75,13 +76,13 @@
                                         ../enrolNumber }} {{/NumFormat}}
                                         Inscritos</span></li> --}}
                             </ul>
-                            <p> {{#TruncateText descricao 80}} {{/TruncateText}}
-                            </p>
+                            <p> {{#TruncateText descricao 80}} {{/TruncateText}} </p>
 
                             <a href="/dashboard/cursos/detalhes/{{id}}" class="btn btn-primary">Saber Mais </a>
                             {{#if isEnrolled}}
-                                <a href="/dashboard/cursos/detalhes/acompanhar/{{id}}" class="btn btn-warning">Continuar </a>
-                               
+                            <a href="/dashboard/cursos/detalhes/acompanhar/{{id}}" class="btn btn-warning">Continuar
+                            </a>
+
                             {{/if}}
 
                         </div>
@@ -109,12 +110,111 @@
             </div>
             {{!-- CONTENT END --}}
 
+            {{!-- ================= SEARCH CONTENT ONLY ==================--}}
+            <div class="allcourse_content">
+                <div class="row">
+
+                </div>
+            </div>
+            {{!-- ================= SEARCH CONTENT ================== --}}
+
         </div>
 
     </div>
 </main>
+<!-- MAIN END -->
+
 <script>
+    const search = document.getElementById('search');
+    const allcourse_content = document.getElementsByClassName('allcourse_content');
+    const row = document.getElementsByClassName('row')[1];
+    allcourse_content[1].style.display = 'none';
+
+    function truncateText(text, length) {
+        if (text.length > length) {
+            return text.substring(0, length) + '...';
+        } else {
+            return text;
+        }
+    }
+
+    search.addEventListener('input', async() => {
+        let query = search.value;
+        row.innerHTML = '';
+        await fetch(`/dashboard/cursos/search?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+
+                    if (query) {
+                        for (let item of data) {
+
+                            //Create Card div
+                            const card = document.createElement('div');
+                            card.setAttribute("class", "allCourse_card col-11 col-md-4 container-fluid");
+                            row.appendChild(card);
+
+                            //create image
+                            const image = document.createElement('img');
+                            image.setAttribute("src", `/admin/img/cursos/${item.image}`);
+                            image.setAttribute("alt", `${item.name}`);
+                            card.prepend(image);
+
+                            //create content div
+                            const content = document.createElement('div');
+                            content.setAttribute("class", "acl_card_content");
+                            card.appendChild(content);
+
+                            // create title h5
+                            const title = document.createElement('h5');
+                            const titleText = document.createTextNode(item.name);
+                            title.appendChild(titleText);
+                            content.prepend(title);
+
+                            //create list
+                            const list = document.createElement('ul');
+                            content.appendChild(list);
+                            const listItem = document.createElement('li');
+                            list.appendChild(listItem);
+                            const span = document.createElement('span');
+                            listItem.appendChild(span);
+                            const icon = document.createElement('i');
+                            icon.setAttribute("class", "bi bi-calendar-week");
+                            span.appendChild(icon)
+                            const dateText = document.createTextNode(` ${item.data}`);
+                            icon.appendChild(dateText);
+
+                            // create paragraph for description
+                            const desc = document.createElement('p');
+                            const textTuncated = truncateText(item.descricao, 80)
+                            const descText = document.createTextNode(textTuncated);
+                            desc.appendChild(descText);
+                            content.appendChild(desc);
+
+                            //create a link
+                            const link = document.createElement('a');
+                            link.setAttribute("href", `/dashboard/cursos/detalhes/${item.id}`);
+                            link.setAttribute("class", "btn btn-primary");
+                             const linkText= document.createTextNode('Saber Mais');
+                             link.appendChild(linkText);
+                             content.appendChild(link);
+
+
+                            allcourse_content[0].style.display = 'none';
+                            allcourse_content[1].style.display = 'block';
+                            console.log(data);
+                        }
+                    } else {
+
+                        allcourse_content[0].style.display = 'block';
+                        allcourse_content[1].style.display = 'none';
+                        console.log('pooooooooooooooo')
+                    }
+                }
+            });
+    });
+
 
 </script>
-<!-- MAIN END -->
+
 {{> dashFooter }}

@@ -163,7 +163,7 @@
                 ocupation: form.ocupation.value,
             }
 
-            const url = "/dashboard/cursos/inscrever/{{user.id}}/{{curso.id}}";
+            const url = "/dashboard/cursos/inscrever/{{curso.id}}/{{ user.id }}";
 
             const response = await fetch(url, {
                 method: 'POST',
@@ -175,8 +175,8 @@
 
             const result = await response.json();
             if (result) {
-                console.log(result);
-                location.assign('/dashboard/cursos/detalhes/acompanhar{{curso.id}}')
+                
+                location.assign('/dashboard/cursos/detalhes/acompanhar/{{curso.id}}')
             }
         } catch (error) {
             console.error("Ocorroreu um arro ao enviar os dados ao servidor: " + error);

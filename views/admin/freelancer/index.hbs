@@ -35,7 +35,7 @@
                         <td><span class="fr_email text-primary"> {{ user.email }} </span></td>
 
                         {{!-- phonenumber --}}
-                        <td><span class="fr_email text-primary"> {{ phone }} </span></td>
+                        <td><span class="fr_email text-primary"> {{ user.telefones.telefone.[0] }} </span></td>
                         <td>
                             {{!-- edit --}}
                             <a href="/dashboard/freelancer/atualizar/{{ id }}" class="fr_edit" title="Editar"><i
@@ -73,7 +73,7 @@
 
                                             <ul>
                                                 <li>
-                                                    <i class="bi bi-telephone-fill"></i> (+244) {{ phone }}
+                                                    <i class="bi bi-telephone-fill"></i> (+244) {{ user }}
                                                 </li>
                                                 <li>
                                                     <i class="bi bi-envelope-at-fill"></i>

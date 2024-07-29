@@ -200,7 +200,7 @@
                 ocupation: form.ocupation.value,
             }
 
-            const url = "/dashboard/cursos/inscrever/{{user.id}}/{{curso.id}}";
+            const url = "/dashboard/cursos/inscrever/{{curso.id}}/{{user.id}}";
 
             const response = await fetch(url, {
                 method: 'POST',

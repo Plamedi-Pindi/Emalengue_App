@@ -1,4 +1,3 @@
-
 {{> header }}
 
 <!-- MAIN START -->
@@ -59,30 +58,30 @@
                 <!-- container -->
                 <div class="cursos-rec-container swiper-wrapper">
                     {{#each cursos}}
-                        <!-- card start-->
-                        <div class="cursos-erc-card swiper-slide">
-                            <img src="admin/img/cursos/{{ image }}" alt="">
-                            <div class="cursos-rec-content">
-                                <!-- Title -->
-                                <h5> {{#TruncateText name 50}} {{/TruncateText }} </h5>
-                                <!-- owner -->
-                                <span class="c_r_teacher"> {{ user.nome }} </span>
-                                <!-- avaliacoes -->
-                                <div class="c_r_rate">
-                                    <p>4,8 </p>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <span>(40.347)</span>
-                                </div>
-                                <!-- Coust -->
-                                <p class="c_r_price"> {{#NumberFormat custo }} {{/NumberFormat }} </p>
-                                <span class="c_r_class1">Mais vendidos</span>
+                    <!-- card start-->
+                    <a href="/cursos/detalhes/{{ id }}" class="cursos-erc-card swiper-slide">
+                        <img src="admin/img/cursos/{{ image }}" alt="">
+                        <div class="cursos-rec-content">
+                            <!-- Title -->
+                            <h5> {{#TruncateText name 50}} {{/TruncateText }} </h5>
+                            <!-- owner -->
+                            <span class="c_r_teacher"> {{ user.nome }} </span>
+                            <!-- avaliacoes -->
+                            <div class="c_r_rate">
+                                <p>4,8 </p>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <span>(40.347)</span>
                             </div>
+                            <!-- Coust -->
+                            <p class="c_r_price"> {{#NumberFormat custo }} {{/NumberFormat }} </p>
+                            <span class="c_r_class1">Mais vendidos</span>
                         </div>
-                        <!-- card end -->
+                    </a>
+                    <!-- card end -->
                     {{/each}}
 
                 </div>
@@ -118,15 +117,15 @@
                         <div class="c_f_skill">
                             <p>Skills</p>
                             {{#each ../habilidades}}
-                                <span> {{ name }} </span>    
+                            <span> {{ name }} </span>
                             {{/each}}
-                            
+
                         </div>
                     </div>
                     <!-- Card End -->
-                       
+
                     {{/each}}
-                     
+
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -138,16 +137,14 @@
 
     <!-- *************** COUNTER START ********************* -->
     <section class="counter_section">
-        <div class="container">
-            <div class="row">
-                <div class="col-10 col-md-5 col-lg-4 container-fluid counter">
-                    <h3><i class="bi bi-book"></i><span>30</span>K</h3>
-                    <span class="cntr_info">Cursos</span>
-                </div>
-                <div class="col-10 col-md-5 col-lg-4 container-fluid counter">
-                    <h3><i class="bi bi-people"></i><span>10</span>K</h3>
-                    <span class="cntr_info">Freelancers</span>
-                </div>
+        <div class="row">
+            <div class="col-10 col-md-5 col-lg-4 container-fluid counter">
+                <h3><i class="bi bi-book"></i><span>30</span>K</h3>
+                <span class="cntr_info">Cursos</span>
+            </div>
+            <div class="col-10 col-md-5 col-lg-4 container-fluid counter">
+                <h3><i class="bi bi-people"></i><span>10</span>K</h3>
+                <span class="cntr_info">Freelancers</span>
             </div>
         </div>
     </section>

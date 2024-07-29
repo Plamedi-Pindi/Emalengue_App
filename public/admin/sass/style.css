@@ -2424,7 +2424,7 @@ tr {
   border: none;
   outline: none;
 }
-.allCourse_container .allCourse_bar form input {
+.allCourse_container .allCourse_bar input {
   width: 270px;
   padding: 6px;
   padding-left: 10px;
@@ -2466,6 +2466,7 @@ tr {
 .allCourse_container .allcourse_content .allCourse_card .acl_card_content {
   padding: 10px;
   padding-bottom: 1rem;
+  overflow-x: hidden;
 }
 .allCourse_container .allcourse_content .allCourse_card .acl_card_content a {
   font-size: 14px;
@@ -2663,6 +2664,7 @@ tr {
   color: #666;
   text-transform: capitalize;
   text-align: justify;
+  overflow-x: hidden;
 }
 .details_container #dt_module_show {
   display: block;

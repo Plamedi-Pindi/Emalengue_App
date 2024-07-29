@@ -487,6 +487,8 @@ main {
   margin-left: 4px;
   margin-bottom: 1rem;
   border: 1px solid #eee;
+  text-decoration: none;
+  color: #333;
 }
 #cursos-recomendados .cursos-rec-container .cursos-erc-card img {
   width: 100%;
@@ -663,21 +665,18 @@ main {
 /***********CONTRATAR FREELANCERS END *****************/
 /***********  COUNTER START *****************/
 .counter_section {
-  height: 250px;
+  height: 350px;
   width: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/banner/banner\ 7.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-.counter_section .container {
-  height: 100%;
 }
 .counter_section .row {
   height: 100% !important;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .counter_section .counter {
   display: flex;
@@ -1013,6 +1012,7 @@ main {
 }
 .cursos .curso-search input {
   margin-right: 10px;
+  outline: none !important;
 }
 
 #cursos_display h2 {
@@ -1090,12 +1090,14 @@ main {
   font-size: 15px;
   padding-top: 8px;
   color: #222;
+  font-weight: bold;
 }
 #cursos_display .cs_dis_container .cs_dis_descriptio {
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 15px;
   color: #888;
+  overflow-x: hidden;
 }
 #cursos_display .cs_dis_container .cs_rate {
   margin-bottom: 20px;
@@ -1108,13 +1110,6 @@ main {
 }
 #cursos_display .cs_dis_container .cs_rate span {
   color: #888;
-}
-
-.cs_pagination_container {
-  padding-top: 10px;
-  padding-bottom: 3rem;
-  width: 80%;
-  margin: 0 auto;
 }
 
 .cs_pagination {
@@ -1135,8 +1130,12 @@ main {
   color: black;
   float: left;
   font-size: 15px;
-  color: #777;
+  color: #555;
   transition: 0.5s;
+}
+
+.of a {
+  color: #333;
 }
 
 .cs_pagination a:hover {
@@ -1173,18 +1172,20 @@ main {
   height: 340px;
 }
 
+.ctsearch {
+  margin-top: 0 !important;
+}
+
+.ctsearch2 {
+  padding-bottom: 4rem;
+}
+
 @media (min-width: 720px) {
-  .cs_pagination_container {
-    width: 65%;
-  }
   .ins_content {
     margin-top: 3rem;
   }
 }
 @media (min-width: 992px) {
-  .cs_pagination_container {
-    width: 60%;
-  }
   #cursos_display h2 {
     text-align: start;
     width: 86%;
@@ -2273,6 +2274,7 @@ label {
 }
 .cr_detail_container .cr_dt_info .course_desc {
   color: #444;
+  overflow-x: hidden;
 }
 .cr_detail_container .cr_dt_info .course_desc span {
   color: #333;
